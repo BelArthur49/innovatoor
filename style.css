@@ -357,7 +357,7 @@ hr {
     opacity: 0.1;
     position: absolute;
     left: 50%;
-    top: 70%;
+    top: 50%;
     transform: translate(-50%, -50%);
 }
 
