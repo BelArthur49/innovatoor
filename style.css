@@ -360,7 +360,32 @@ hr {
     top: 50%;
     transform: translate(-50%, -50%);
 }
+.social-links {
+    text-align: center;
+}
 
+.social-links .fa {
+    height: 40px;
+    width: 40px;
+    font-size: 20px;
+    line-height: 40px;
+    border: 1px solid #009688;
+    margin: 40px 5px 0;
+    color: #009688;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.social-links .fa:hover {
+    background: #009688;
+    color: white;
+    transform: translateY(-7px);
+}
+
+.social-links p {
+    font-size: 15px;
+    margin-top: 20px;
+}
 @media screen and (max-width: 770px) {
     .footer-left,
     .footer-right {
