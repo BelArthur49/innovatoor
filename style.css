@@ -263,11 +263,11 @@ nav ul li a {
 }
 
 .single-ressource:hover .overlay {
-    opacity: 5;
+    opacity: 0;
 }
 
 .ressource-description {
-    width: 80%;
+    width: 00%;
     position: absolute;
     bottom: 0;
     left: 50%;
