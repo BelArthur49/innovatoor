@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 
+    - primary meta tags
+  -->
+    <title>INNoVATooR</title>
+    <meta name="title" content="INNoVATooR">
+    <meta name="description" content="we use OSINT and web scraping to provide data-driven decisions, business Intelligence, different trends and consulting ">
+
+    <!-- 
+    - favicon
+  -->
+    <link rel="shortcut icon" href="./assets/images/logo-light.png" type="image/svg+xml">
+
+    <!-- 
+    - google font link
+  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- 
+    - custom css link
+  -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- 
+    - preload images
+  -->
+    <link rel="preload" as="image" href="./assets/images/hero-bg.jpg">
+    <link rel="preload" as="image" href="./assets/images/hero-slide-1.jpg">
+    <link rel="preload" as="image" href="./assets/images/hero-slide-2.jpg">
+    <link rel="preload" as="image" href="./assets/images/hero-slide-3.jpg">
+
+</head>
+
+<body>
+
+    <!-- 
+    - #HEADER
+  -->
+
+    <header class="header" data-header>
+        <div class="container">
+
+            <a href="#HOME" class="logo">
+                <img src="./assets/images/logo-light.png" width="74" height="24" alt="Innovatoor home" class="logo-light">
+
+                <img src="./assets/images/logo-light.png" width="74" height="24" alt="Innovatoor home" class="logo-dark">
+            </a>
+
+            <nav class="navbar" data-navbar>
+
+                <div class="navbar-top">
+                    <a href="#HOME" class="logo">
+                        <img src="./assets/images/logo-light.png" width="74" height="24" alt="Innovatoor home">
+                    </a>
+
+                    <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          </button>
+                </div>
+
+                <ul class="navbar-list">
+
+                    <li>
+                        <a href="#HOME" class="navbar-link">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="#OSINT" class="navbar-link">OSINT</a>
+                    </li>
+
+                    <li>
+                        <a href="#DATA" class="navbar-link">Data</a>
+                    </li>
+
+                    <li>
+                        <a href="#PACKAGES" class="navbar-link">Packages</a>
+                    </li>
+
+                    <li>
+                        <a href="#OURTOOLS" class="navbar-link">Tools</a>
+                    </li>
+
+                </ul>
+
+                <div class="wrapper">
+                    <a href="mailto:belarthur@gmail.com" class="contact-link">info@innovatoor.com</a>
+
+                    <a href="tel:+250782010317" class="contact-link">+250782010317</a>
+                </div>
+
+                <ul class="social-list">
+
+                    <li>
+                        <a href="https://twitter.com/bel_beau" target="_blank" aria-label="Arthur Twittter" class="social-link">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://www.instagram.com/m_belarthur/" target="_blank" class="social-link">
+                            <ion-icon name="logo-instagram"></ion-icon>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <!--<a href="#" class="btn btn-primary">Free Trial</a>-->
+
+            <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+      </button>
+
+            <div class="overlay" data-nav-toggler data-overlay></div>
+
+        </div>
+    </header>
+
+
+
+
+
+    <main>
+        <article>
+
+            <!-- 
+        - #HERO
+      -->
+
+            <section id="HOME" class="section hero has-bg-image" aria-label="home" style="background-image: url('./assets/images/hero-bg.jpg')">
+                <div class="container">
+
+                    <div class="hero-content">
+
+                        <h1 class="h1 hero-title">Data is the new gold</h1>
+
+                        <p class="hero-text">
+                            In a rapidly changing and unpredictable world, making investment decisions or starting a business can be challenging. Whether you're a startup navigating investor options or contemplating an IPO, understanding market trends and local preferences is crucial.
+                            At Innovatoor, we offer data-driven insights to empower you in making informed decisions.
+                        </p>
+
+                        <div class="btn-wrapper">
+
+                            <a href="#WHATWEDO" class="btn btn-primary">Explore Now</a>
+
+                            <a href="#CONTACT" class="btn btn-outline">Contact Us</a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="hero-slider" data-slider>
+
+                        <div class="slider-inner">
+                            <ul class="slider-container" data-slider-container>
+
+                                <li class="slider-item">
+
+                                    <figure class="img-holder" style="--width: 575; --height: 550;">
+                                        <img src="./assets/images/hero-slide-1.jpg" width="575" height="550" alt="" class="img-cover">
+                                    </figure>
+
+                                </li>
+
+                                <li class="slider-item">
+
+                                    <div class="hero-card">
+                                        <figure class="img-holder" style="--width: 575; --height: 550;">
+                                            <img src="./assets/images/hero-slide-2.jpg" width="575" height="550" alt="hero banner" class="img-cover">
+                                        </figure>
+
+                                        <button class="play-btn" aria-label="play adex intro">
+                      <ion-icon name="play" aria-hidden="true"></ion-icon>
+                    </button>
+                                    </div>
+
+                                </li>
+
+                                <li class="slider-item">
+
+                                    <figure class="img-holder" style="--width: 575; --height: 550;">
+                                        <img src="./assets/images/hero-slide-3.jpg" width="575" height="550" alt="" class="img-cover">
+                                    </figure>
+
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <button class="slider-btn prev" aria-label="slide to previous" data-slider-prev>
+              <ion-icon name="arrow-back"></ion-icon>
+            </button>
+
+                        <button class="slider-btn next" aria-label="slide to next" data-slider-next>
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+
+                    </div>
+
+                </div>
+            </section>
+
+
+
+
+
+            <!-- 
+        - #SERVICE
+      -->
+
+            <section id="WHATWEDO" class="section service" aria-labelledby="service-label">
+                <div class="container">
+
+                    <p class="section-subtitle" id="service-label">What We Do?</p>
+
+                    <h2 class="h2 section-title">
+                        The service we offer is specifically designed to meet your needs.
+                    </h2>
+
+                    <ul class="grid-list">
+
+                        <li>
+                            <div class="service-card">
+
+                                <div class="card-icon">
+                                    <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
+                                </div>
+
+                                <h3 class="h4 card-title">OSINT</h3>
+
+                                <p class="card-text">
+                                    We offer OSINT services, involving the systematic collection and analysis of publicly available data from diverse sources, to individuals, startups, and businesses.
+                                </p>
+
+                                <a href="#OSINT" class="btn-text">
+                                    <span class="span">Learn More</span>
+
+                                    <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                                </a>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="service-card">
+
+                                <div class="card-icon">
+                                    <ion-icon name="shield-checkmark-outline" aria-hidden="true"></ion-icon>
+                                </div>
+
+                                <h3 class="h4 card-title">Data mining and data extraction</h3>
+
+                                <p class="card-text">
+                                    We employ sophisticated data scraping tools and techniques to gather, organize, and analyze information from diverse online platforms
+                                </p>
+
+                                <a href="#DATA" class="btn-text">
+                                    <span class="span">Learn More</span>
+
+                                    <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                                </a>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="service-card">
+
+                                <div class="card-icon">
+                                    <ion-icon name="cloud-download-outline" aria-hidden="true"></ion-icon>
+                                </div>
+
+                                <h3 class="h4 card-title">BI & Consulting</h3>
+
+                                <p class="card-text">
+                                    We offer data-driven strategies and solutions
+                                    <!--technologies -->utilized by businesses, providing our clients with a deeper understanding of the risks and opportunities within their operating environment.
+                                </p>
+
+
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="service-card">
+
+                                <div class="card-icon">
+                                    <ion-icon name="pie-chart-outline" aria-hidden="true"></ion-icon>
+                                </div>
+
+                                <h3 class="h4 card-title">Company Digitarization</h3>
+
+                                <p class="card-text">
+                                    We integrate digital technologies to modernize and enhance business processes, transitioning from manual to digital systems for improved efficiency and innovation.
+                                </p>
+
+
+
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </section>
+
+
+
+
+
+            <!-- 
+        - #ABOUT
+      -->
+
+            <section id="OSINT" class="about" aria-labelledby="about-label">
+                <div class="container">
+
+                    <figure class="about-banner">
+                        <img src="./assets/images/about-banner.png" width="800" height="580" loading="lazy" alt="about banner" class="w-100">
+                    </figure>
+
+                    <div class="about-content">
+
+                        <p class="section-subtitle" id="about-label">OSINT</p>
+
+                        <h2 class="h2 section-title">
+                            We bring OSINT solutions to make life easier:
+                        </h2>
+
+                        <ul>
+
+                            <li class="about-item">
+                                <div class="accordion-card expanded" data-accordion>
+
+                                    <h3 class="card-title">
+                                        <button class="accordion-btn" data-accordion-btn>
+                      <ion-icon name="chevron-down-outline" aria-hidden="true" class="down"></ion-icon>
+
+                      <spna class="span h5">Business Intelligence and Consulting </spna>
+                    </button>
+                                    </h3>
+
+                                    <p class="accordion-content">
+                                        OSINT is crucial in Business Intelligence and consulting, leveraging publicly available data to analyze market trends, competitor activities, and industry developments. We use OSINT to gather insights on customer sentiment, brand reputation, and risks,
+                                        enabling businesses to make informed decisions and stay competitive. It serves as a powerful tool, contributing to a comprehensive understanding of the business environment.
+                                    </p>
+
+                                </div>
+                            </li>
+
+                            <li class="about-item">
+                                <div class="accordion-card" data-accordion>
+
+                                    <h3 class="card-title">
+                                        <button class="accordion-btn" data-accordion-btn>
+                      <ion-icon name="chevron-down-outline" aria-hidden="true" class="down"></ion-icon>
+
+                      <spna class="span h5">Identifying scammers</spna>
+                    </button>
+                                    </h3>
+
+                                    <p class="accordion-content">
+                                        OSINT is instrumental in identifying scammers by mining publicly available data from various sources. It helps uncover patterns, track online behavior, and identify red flags associated with fraudulent activities. By analyzing social media, websites,
+                                        forums, and public records, OSINT assists in profiling and exposing scammers, providing a valuable tool for individuals and organizations to protect themselves against online fraud.
+                                    </p>
+
+                                </div>
+                            </li>
+
+                            <li class="about-item">
+                                <div class="accordion-card" data-accordion>
+
+                                    <h3 class="card-title">
+                                        <button class="accordion-btn" data-accordion-btn>
+                      <ion-icon name="chevron-down-outline" aria-hidden="true" class="down"></ion-icon>
+                      <spna class="span h5">Collecting data:Background checks on companies and individuals</spna>
+                    </button>
+                                    </h3>
+
+                                    <p class="accordion-content">
+                                        OSINT is instrumental in gathering data and conducting background checks on both companies and individuals. By extracting information from various publicly available sources, it enables a comprehensive analysis of a company's reputation, financial standing,
+                                        and activities. Similarly, for individuals, OSINT provides insights into online presence, professional history, and potential risks. This powerful tool aids in making informed decisions and assessments in various
+                                        contexts, from business partnerships to personal interactions.
+                                    </p>
+
+                                </div>
+                            </li>
+
+                            <li class="about-item">
+                                <div class="accordion-card" data-accordion>
+
+                                    <h3 class="card-title">
+                                        <button class="accordion-btn" data-accordion-btn>
+                      <ion-icon name="chevron-down-outline" aria-hidden="true" class="down"></ion-icon>
+                      <spna class="span h5">Market trends and customer sentiments</spna>
+                    </button>
+                                    </h3>
+
+                                    <p class="accordion-content">
+                                        OSINT plays a crucial role in deciphering market trends and customer sentiments. By harnessing publicly available data from diverse sources, it enables businesses to analyze consumer preferences, monitor industry shifts, and gauge sentiment towards products
+                                        or services. This valuable intelligence aids in making informed decisions, adapting marketing strategies, and staying responsive to the ever-changing dynamics of the market.
+                                    </p>
+
+                                </div>
+                            </li>
+
+                            <li class="about-item">
+                                <div class="accordion-card" data-accordion>
+
+                                    <h3 class="card-title">
+                                        <button class="accordion-btn" data-accordion-btn>
+                      <ion-icon name="chevron-down-outline" aria-hidden="true" class="down"></ion-icon>
+                      <spna class="span h5">CI and competitor activities</spna>
+                    </button>
+                                    </h3>
+
+                                    <p class="accordion-content">
+                                        OSINT is a pivotal tool in competitive intelligence, leveraging publicly available data to analyze market trends, competitor strategies, and industry developments. By systematically collecting and assessing information from diverse sources such as social
+                                        media, news, and online platforms, organizations gain valuable insights. This enables informed decision-making, allowing businesses to stay agile, anticipate market shifts, and maintain a strategic edge in their
+                                        competitive landscape.
+                                    </p>
+
+                                </div>
+                            </li>
+
+                            <li class="about-item">
+                                <div class="accordion-card" data-accordion>
+
+                                    <h3 class="card-title">
+                                        <button class="accordion-btn" data-accordion-btn>
+                      <ion-icon name="chevron-down-outline" aria-hidden="true" class="down"></ion-icon>
+                      <spna class="span h5">Political and geopolitical tendencies</spna>
+                    </button>
+                                    </h3>
+
+                                    <p class="accordion-content">
+                                        OSINT plays a crucial role in comprehending political and geopolitical tendencies by systematically gathering and analyzing publicly available information. It enables analysts to monitor public sentiment, track government policies, and stay informed about
+                                        global events through sources like social media, news articles, and official statements. OSINT contributes valuable insights to understand the dynamics of political landscapes, leadership changes, and international
+                                        relations, empowering decision-makers to make informed choices in diplomacy, security, and strategic planning.
+                                    </p>
+
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+
+
+
+
+
+            <!-- 
+        - #FEATURE
+      -->
+
+            <section id="DATA" class="section feature" aria-labelledby="feature-label">
+                <div class="container">
+
+                    <figure class="feature-banner">
+                        <img src="./assets/images/feature-banner.png" width="800" height="531" loading="lazy" alt="feature banner" class="w-100">
+                    </figure>
+
+                    <div class="feature-content">
+
+                        <p class="section-subtitle" id="feautre-label">Data mining and Data extraction
+                        </p>
+
+                        <h2 class="h2 section-title">
+                            You need data before taking any decision, and we are here for that.
+                        </h2>
+
+                        <p class="section-text">
+                            Data mining uncovers patterns for informed decisions, while data extraction efficiently retrieves valuable information. Both are vital in today's data-driven landscape for:
+                        </p>
+
+                        <ul class="feature-list">
+
+                            <li>
+                                <div class="feature-card">
+
+                                    <div class="card-icon">
+                                        <ion-icon name="checkmark" aria-hidden="true"></ion-icon>
+                                    </div>
+
+                                    <span class="span">
+                    Developing smart business decisions.
+                  </span>
+
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="feature-card">
+
+                                    <div class="card-icon">
+                                        <ion-icon name="checkmark" aria-hidden="true"></ion-icon>
+                                    </div>
+
+                                    <span class="span">
+                    Lead generation. 
+                  </span>
+
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="feature-card">
+
+                                    <div class="card-icon">
+                                        <ion-icon name="checkmark" aria-hidden="true"></ion-icon>
+                                    </div>
+
+                                    <span class="span">
+                    Customer segmentation and customer behaviors.
+                  </span>
+
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="feature-card">
+
+                                    <div class="card-icon">
+                                        <ion-icon name="checkmark" aria-hidden="true"></ion-icon>
+                                    </div>
+
+                                    <span class="span">
+                    Organizational innovation and optimization.
+                  </span>
+
+                                </div>
+                            </li>
+                            <li>
+                                <div class="feature-card">
+
+                                    <div class="card-icon">
+                                        <ion-icon name="checkmark" aria-hidden="true"></ion-icon>
+                                    </div>
+
+                                    <span class="span">
+                    Market basket analysis.
+                  </span>
+
+                                </div>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+            </section>
+
+
+
+
+
+            <!-- 
+        - #STATS
+      -->
+
+            <section id="PACKAGES" class="section service" aria-labelledby="service-label">
+                <div class="container">
+
+                    <p class="section-subtitle" id="service-label">Our Packages</p>
+
+                    <h2 class="h2 section-title">
+                        We Offer Affordable and Accessible Packages according to your needs.
+                    </h2>
+
+                    <ul class="grid-list">
+
+                        <li>
+                            <div class="service-card">
+
+                                <div class="card-icon">
+                                    <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
+                                </div>
+
+                                <h3 class="h4 card-title">$500-$5000</h3>
+
+                                <p class="card-text">
+
+                                    <ul>Company Digitarization</ul>
+                                    <ul>Social Media OSINT</ul>
+                                    <ul>Lead generation</ul>
+                                    <ul>Website OSINT</ul>
+                                    <ul>Email OSINT</ul>
+
+
+                                </p>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="service-card">
+
+                                <div class="card-icon">
+                                    <ion-icon name="shield-checkmark-outline" aria-hidden="true"></ion-icon>
+                                </div>
+
+                                <h3 class="h4 card-title">$20000</h3>
+
+                                <p class="card-text">
+                                    <ul>1st Package</ul>
+                                    <ul>.Data mining</ul>
+                                    <ul>.Consulting</ul>
+                                    <ul>.Data extraction</ul>
+                                    <ul>.Intenal process optimization</ul>
+                                    <ul>.Competitor activities</ul>
+
+
+                                </p>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="service-card">
+
+                                <div class="card-icon">
+                                    <ion-icon name="cloud-download-outline" aria-hidden="true"></ion-icon>
+                                </div>
+
+                                <h3 class="h4 card-title">$50000</h3>
+
+                                <p class="card-text">
+                                    <ul>1st Package</ul>
+                                    <ul>2nd Package</ul>
+                                    <ul>Market Analysis</ul>
+                                    <ul>Full OSINT</ul>
+                                    <ul>BI</ul>
+                                </p>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="service-card">
+
+                                <div class="card-icon">
+                                    <ion-icon name="pie-chart-outline" aria-hidden="true"></ion-icon>
+                                </div>
+
+                                <h3 class="h4 card-title">$100000</h3>
+
+                                <p class="card-text">
+                                    <ul>All Packages</ul>
+                                    <ul>Daily Support</ul>
+                                    <ul>The Whole Year</ul>
+                                    <ul>From 0 to Infinity</ul>
+
+
+                                </p>
+
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </section>
+
+            <section id="OURTOOLS" class="stats" aria-label="our stats">
+                <div class="container">
+
+                    <ul class="stats-card has-bg-image" style="background-image: url('./assets/images/stats-bg.jpg')">
+
+                        <li>
+                            <p class="card-text">
+                                <span class="h1">+200</span>
+
+                                <spna class="span">OSINT Tools
+                                    <ul>Maltego, google dorks,...</ul>
+                                </spna>
+                            </p>
+                        </li>
+
+                        <li>
+                            <p class="card-text">
+                                <span class="h1">+8</span>
+
+                                <spna class="span">Search engines</spna>
+                            </p>
+                        </li>
+
+                        <li>
+                            <p class="card-text">
+                                <span class="h1">+10</span>
+
+                                <spna class="span">Web scraping tools</spna>
+                            </p>
+                        </li>
+
+                        <li>
+                            <p class="card-text">
+                                <span class="h1">+2</span>
+
+                                <spna class="span">OSINT tools we developed</spna>
+                            </p>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+            </section>
+
+
+
+
+
+
+
+            <section class="section project" aria-labelledby="project-label">
+                <div class="container">
+                </div>
+
+
+            </section>
+
+
+
+
+
+
+
+        </article>
+    </main>
+
+
+
+
+
+    <!-- 
+    - #FOOTER
+  -->
+
+    <footer id="CONTACT" class="footer">
+        <div class="container grid-list">
+
+            <div class="footer-brand">
+
+                <a href="#HOME" class="logo">
+                    <img src="./assets/images/logo-light.png" width="74" height="24" alt="Innovatoor home">
+                </a>
+
+                <p class="footer-text">
+                    &copy; 2023 Innovatoor Limited. <br> All rights reserved.
+                </p>
+
+                <ul class="social-list">
+
+
+
+                    <li>
+                        <a href="https://twitter.com/bel_beau" target="_blank" aria-label="Arthur Twittter" class="social-link">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://www.instagram.com/m_belarthur/" target="_blank" class="social-link">
+                            <ion-icon name="logo-instagram"></ion-icon>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <ul class="footer-list">
+
+                <li>
+                    <p class="h4 footer-list-title">Get in Touch</p>
+                </li>
+
+                <li>
+                    <address class="footer-text">
+            kk 185 st, Kigali, Rwanda
+          </address>
+                </li>
+
+                <li>
+                    <a href="mailto:belarthur49@gmail.com" target="_blank" class="footer-link">info@innovatoor.com</a>
+                </li>
+
+                <li>
+                    <a href="tel:+250782010317" class="footer-link">+250782010317</a>
+                </li>
+
+            </ul>
+
+            <ul class="footer-list">
+
+                <li>
+                    <p class="h4 footer-list-title">Learn More</p>
+                </li>
+
+                <li>
+                    <a href="#WHATWEDO" class="footer-link">Our services</a>
+                </li>
+
+                <li>
+                    <a href="#OSINT" class="footer-link">OSINT</a>
+                </li>
+
+                <li>
+                    <a href="#DATA" class="footer-link">Data scraping</a>
+                </li>
+
+                <li>
+                    <a href="#PACKAGES" class="footer-link">Our Prices</a>
+                </li>
+
+                <li>
+                    <a href="#OURTOOLS" class="footer-link">Tools</a>
+                </li>
+
+            </ul>
+
+            <div class="footer-list">
+
+                <p class="h4 footer-list-title">Our Publication</p>
+
+                <p class="footer-text">
+                    We publish articles on OSINT and web scraping
+                </p>
+
+                <form action="" class="input-wrapper">
+                    <input type="email" name="email_address" placeholder="Email Address" required class="input-field">
+
+                    <button type="submit" class="submit-btn">Join</button>
+                </form>
+
+            </div>
+
+        </div>
+    </footer>
+
+
+
+
+
+    <!-- 
+    - custom js link
+  -->
+    <script src="./assets/js/script.js"></script>
+
+    <!-- 
+    - ionicon
+  -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <!--========== SCROLL UP ==========-->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="ri-arrow-up-line scrollup__icon"></i>
+    </a>
+
+    <!--=============== SCROLL REVEAL===============-->
+    <script src="assets/js/scrollreveal.min.js"></script>
+
+    <!--=============== SWIPER JS ===============-->
+    <script src="assets/js/swiper-bundle.min.js"></script>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="assets/js/main.js"></script>
+
+
+</body>
+
+</html>
