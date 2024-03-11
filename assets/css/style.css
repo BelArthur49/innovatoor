@@ -774,7 +774,7 @@ body.nav-active {
 \*-----------------------------------*/
 
 .footer {
-    background-color: var(--charcoal);
+    background-color: black;
     padding-block: 60px 100px;
     color: var(--light-gray);
 }
