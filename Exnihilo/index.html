@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/png">
+
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <title>Exnihilo</title>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">Exnihilo</a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link active-link">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#discover" class="nav__link">Discover</a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="#place" class="nav__link">Places</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#services" class="nav__link">Services</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link">About</a>
+                    </li>
+                </ul>
+
+                <div class="nav__dark">
+                    <!-- Theme change button -->
+                    <span class="change-theme-name">Dark mode</span>
+                    <i class="ri-moon-line change-theme" id="theme-button"></i>
+                </div>
+
+                <i class="ri-close-line nav__close" id="nav-close"></i>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-function-line"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!--==================== HOME ====================-->
+        <section class="home" id="home">
+            <img src="assets/img/homehome1.jpg" alt="" class="home__img">
+
+            <div class="home__container container grid">
+                <div class="home__data">
+                    <span class="home__data-subtitle">Discover the heart of Africa</span>
+                    <h1 class="home__data-title">Explore The <br> Hidden<b> Beauty <br> of Rwanda</b></h1>
+                    <a href="#explore" class="button">Explore</a>
+
+                </div>
+
+                <div class="home__social">
+                    <a href="https://www.facebook.com/" target="_blank" class="home__social-link">
+                        <i class="ri-facebook-box-fill"></i>
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" class="home__social-link">
+                        <i class="ri-instagram-fill"></i>
+                    </a>
+                    <a href="https://twitter.com/" target="_blank" class="home__social-link">
+                        <i class="ri-twitter-fill"></i>
+                    </a>
+                </div>
+                <!--
+                <div class="home__info">
+                    <div>
+                        <span class="home__info-title">5 best places to visit</span>
+                        <a href="" class="button button--flex button--link home__info-button">
+                                More <i class="ri-arrow-right-line"></i>
+                            </a>
+                    </div>
+
+                    <div class="home__info-overlay">
+                        <img src="assets/img/homehome.png" alt="" class="home__info-img">
+                    </div>
+                </div>-->
+            </div>
+        </section>
+
+        <!--==================== ABOUT ====================-->
+        <section class="about section" id="about">
+            <div class="about__container container grid">
+                <div class="about__data">
+                    <h2 class="section__title about__title">More Information <br> About Exnihilo Traveling</h2>
+                    <p class="about__description">Welcome to Exnihilo, your premier destination for unforgettable adventures and seamless transportation solutions in Rwanda. As a dynamic company, we specialize in guide touring and car rental services, ensuring you explore our beautiful
+                        landscapes with ease and comfort. But we're more than just tours and rentals – we offer a diverse range of services tailored to meet your needs.
+                    </p>
+                    <a href="#footer" class="button">Contact us</a>
+                    <a href="#services" class="button1">Find Out</a>
+                </div>
+
+                <div class="about__img">
+                    <div class="about__img-overlay">
+                        <img src="assets/img/about1.jpg" alt="" class="about__img-one">
+                    </div>
+
+                    <div class="about__img-overlay">
+                        <img src="assets/img/about2.jpg" alt="" class="about__img-two">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== DISCOVER ====================-->
+        <section class="discover section" id="discover">
+            <h2 class="section__title">Discover the most <br> attractive places</h2>
+
+            <div class="discover__container container swiper-container">
+                <div class="swiper-wrapper">
+
+                    <!--==================== DISCOVER 1 ====================-->
+                    <div class="discover__card swiper-slide">
+                        <img src="assets/img/kigali.jpg" alt="" class="discover__img">
+                        <div class="discover__data">
+                            <h2 class="discover__title">Kigali</h2>
+                            <span class="discover__description">Tours available</span>
+                        </div>
+                    </div>
+
+                    <!--==================== DISCOVER 2 ====================-->
+                    <div class="discover__card swiper-slide">
+                        <img src="assets/img/volcanoes.jpg" alt="" class="discover__img">
+                        <div class="discover__data">
+                            <h2 class="discover__title">Volcanoes</h2>
+                            <span class="discover__description">Tours available</span>
+                        </div>
+                    </div>
+
+                    <!--==================== DISCOVER 4 ====================-->
+                    <div class="discover__card swiper-slide">
+                        <img src="assets/img/nyungwe.png" alt="" class="discover__img">
+                        <div class="discover__data">
+                            <h2 class="discover__title">Nyungwe</h2>
+                            <span class="discover__description">Tours available</span>
+                        </div>
+                    </div>
+                    <!--==================== DISCOVER 1 ====================-->
+                    <div class="discover__card swiper-slide">
+                        <img src="assets/img/muhazi.jpg" alt="" class="discover__img">
+                        <div class="discover__data">
+                            <h2 class="discover__title">Muhazi</h2>
+                            <span class="discover__description">Tours available</span>
+                        </div>
+                    </div>
+
+                    <!--==================== DISCOVER 4 ====================-->
+                    <div class="discover__card swiper-slide">
+                        <img src="assets/img/akagera.jpg" alt="" class="discover__img">
+                        <div class="discover__data">
+                            <h2 class="discover__title">Akagera</h2>
+                            <span class="discover__description">Tours available</span>
+                        </div>
+                    </div>
+                    <!--==================== DISCOVER 1 ====================-->
+                    <div class="discover__card swiper-slide">
+                        <img src="assets/img/kibuye.jpg" alt="" class="discover__img">
+                        <div class="discover__data">
+                            <h2 class="discover__title">Kibuye</h2>
+                            <span class="discover__description">Tours available</span>
+                        </div>
+                    </div>
+                    <!--==================== DISCOVER 4 ====================-->
+                    <div class="discover__card swiper-slide">
+                        <img src="assets/img/nyanza.jpeg" alt="" class="discover__img">
+                        <div class="discover__data">
+                            <h2 class="discover__title">Nyanza</h2>
+                            <span class="discover__description">Tours available</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </section>
+
+        <!--==================== EXPERIENCE ====================-->
+        <section class="experience section" id="experience">
+            <h2 class="section__title">With Our Experience <br> We Will Serve You</h2>
+
+            <div class="experience__container container grid">
+                <div class="experience__content grid">
+                    <div class="experience__data">
+                        <h2 class="experience__number">9</h2>
+                        <span class="experience__description">Years <br> of Experience</span>
+                    </div>
+
+                    <div class="experience__data">
+                        <h2 class="experience__number">15</h2>
+                        <span class="experience__description">Complete <br> tours</span>
+                    </div>
+
+                    <div class="experience__data">
+                        <h2 class="experience__number">20+</h2>
+                        <span class="experience__description">Luxury <br> Cars</span>
+                    </div>
+                </div>
+
+                <div class="experience__img grid">
+                    <div class="experience__overlay">
+                        <img src="assets/img/experience1.jpg" alt="" class="experience__img-one">
+                    </div>
+
+                    <div class="experience__overlay">
+                        <img src="assets/img/experience2.jpg" alt="" class="experience__img-two">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== VIDEO ====================-->
+        <section class="video section" id="explore">
+            <h2 class="section__title">More About Rwanda</h2>
+
+            <div class="video__container container">
+                <p class="video__description">Welcome to Rwanda, one of Africa's safest and cleanest destinations. Explore lush landscapes and vibrant culture worry-free, from the misty mountains of Volcanoes National Park to the tranquil shores of Lake Kivu. Discover Kigali's historic
+                    streets and bustling markets or immerse yourself in traditional villages. At Exnihilo, we're dedicated to showcasing Rwanda's best while ensuring your safety and comfort. Join us for an unforgettable adventure!
+                </p>
+
+                <div class="video__content">
+                    <video id="video-file">
+                            <source src="assets/video/video.mp4" type="video/mp4">
+                        </video>
+
+                    <button class="button button--flex video__button" id="video-button">
+                            <i class="ri-play-line video__button-icon" id="video-icon"></i>
+                        </button>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== PLACES ====================-->
+        <section class="place section" id="place">
+            <h2 class="section__title">Choose Your Place</h2>
+
+            <div class="place__container container grid">
+                <!--==================== PLACES CARD 1 ====================-->
+                <div class="place__card">
+                    <img src="assets/img/place1.jpeg" alt="Gisenyi" class="place__img">
+
+                    <div class="place__content">
+                        <span class="place__rating">
+                                <i class="ri-star-line place__rating-icon"></i>
+                                
+                        </span>
+
+                        <div class="place__data">
+                            <h3 class="place__title">Gisenyi</h3>
+                            <span class="place__subtitle">Nestled along the shores of Lake Kivu, offers a captivating blend of natural beauty, vibrant culture, and serene relaxation.</span>
+                            <span class="place__price">Beaches</span>
+
+                        </div>
+                    </div>
+                    <!--
+                    <button class="button button--flex place__button">
+                            <i class="ri-arrow-right-line"></i>
+                        </button>-->
+                </div>
+
+                <!--==================== PLACES CARD 2 ====================-->
+                <div class="place__card">
+                    <img src="assets/img/place2.jpeg" alt="" class="place__img">
+
+                    <div class="place__content">
+                        <span class="place__rating">
+                                <i class="ri-star-line place__rating-icon"></i>
+                                
+                        </span>
+
+                        <div class="place__data">
+                            <h3 class="place__title">Volcanoes</h3>
+                            <span class="place__subtitle">Home to majestic mountain gorillas, thrilling treks, and breathtaking landscapes, a must-visit destination.</span>
+                            <span class="place__price">Gorillas</span>
+                        </div>
+                    </div>
+
+                    <!--<button class="button button--flex place__button">
+                            <i class="ri-arrow-right-line"></i>
+                        </button>-->
+                </div>
+
+                <!--==================== PLACES CARD 3 ====================-->
+                <div class="place__card">
+                    <img src="assets/img/place3.jpeg" alt="" class="place__img">
+
+                    <div class="place__content">
+                        <span class="place__rating">
+                                <i class="ri-star-line place__rating-icon"></i>
+                                
+                        </span>
+
+                        <div class="place__data">
+                            <h3 class="place__title">Huye</h3>
+                            <span class="place__subtitle">Huye, a cultural hub with vibrant markets, historic landmarks, and scenic landscapes, awaits your exploration.</span>
+                            <span class="place__price">Museum</span>
+                        </div>
+                    </div>
+
+                    <!--<button class="button button--flex place__button">
+                            <i class="ri-arrow-right-line"></i>
+                        </button>-->
+                </div>
+
+                <!--==================== PLACES CARD 4 ====================-->
+                <div class="place__card">
+                    <img src="assets/img/place4.png" alt="" class="place__img">
+
+                    <div class="place__content">
+                        <span class="place__rating">
+                                <i class="ri-star-line place__rating-icon"></i>
+                                
+                        </span>
+
+                        <div class="place__data">
+                            <h3 class="place__title">Kigali</h3>
+                            <span class="place__subtitle">Explore Kigali's vibrant culture, modern amenities, and warm hospitality, offering a memorable experience in Rwanda's capital city.</span>
+                            <span class="place__price">Capital City</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!--==================== PLACES CARD 5 ====================-->
+                <div class="place__card">
+                    <img src="assets/img/place6.jpg" alt="" class="place__img">
+
+                    <div class="place__content">
+                        <span class="place__rating">
+                                <i class="ri-star-line place__rating-icon"></i>
+                                
+                        </span>
+
+                        <div class="place__data">
+                            <h3 class="place__title">Akagera</h3>
+                            <span class="place__subtitle">Rwanda's oldest national park, boasts diverse wildlife, scenic landscapes, thrilling safaris, and unforgettable adventures for nature enthusiasts.</span>
+                            <span class="place__price">Eastern</span>
+                        </div>
+                    </div>
+
+                </div>
+                <!--==================== PLACES CARD 6 ====================-->
+                <div class="place__card">
+                    <img src="assets/img/place5.jpg" alt="" class="place__img">
+
+                    <div class="place__content">
+                        <span class="place__rating">
+                                <i class="ri-star-line place__rating-icon"></i>
+                                <span class="place__rating-number"></span>
+                        </span>
+
+                        <div class="place__data">
+                            <h3 class="place__title">Nyungwe</h3>
+                            <span class="place__subtitle">A lush rainforest sanctuary, beckons with its biodiversity, thrilling canopy walks, and enchanting chimpanzee encounters. Unforgettable adventure awaits!</span>
+                            <span class="place__price">Canopy</span>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+        <!--==================== EXPERIENCE ====================-->
+        <section class="experience section" id="services">
+            <h2 class="section__title">We offer a diversity of services <br> We Will Serve You</h2>
+
+            <div class="experience__container container grid">
+                <div class="experience__content grid">
+                    <div class="experience__data">
+                        <!--<h2 class="experience__number">5</h2>-->
+                        <span class="experience__description">Renting and leasing of motor vehicles</span>
+                        <span class="experience__description"> <br></span>
+                        <span class="experience__description">Tour operator activities <br> Other Building</span>
+                        <span class="experience__description">and industrial cleaning <br> Creative arts and </span>
+                        <span class="experience__description">entertainment activities</span>
+                        <span class="experience__description">
+                            Sales of Motor vehicles parts&accessories
+                        </span>
+                    </div>
+
+                    <div class="experience__data">
+                        <!--<h2 class="experience__number">15</h2>-->
+                        <span class="experience__description">Sale of Motor vehicle <br> Maintenance</span>
+                        <span class="experience__description">and repair of motor vehicles</span><br>Freight air transport
+                        <span class="experience__description"> <br> Freight transport by road</span>
+                        <span class="experience__description"><br>Passenger air transport</span>
+                    </div>
+
+                    <div class="experience__data">
+                        <!--<h2 class="experience__number">20+</h2>-->
+                        <span class="experience__description">Mixed farming <br> Electric power generation</span>
+                        <span class="experience__description"> <br>Wholesale machinery and equipment</span>
+                        <span class="experience__description"><br>Non-specialized Wholesale trade<br> Urban and suburban</span>
+                        <span class="experience__description">passenger transport <br> Wholesale and retail of food and beverages</span>
+                    </div>
+                </div>
+                <!--
+                <div class="experience__img grid">
+                    <div class="experience__overlay">
+                        <img src="assets/img/experience1.jpg" alt="" class="experience__img-one">
+                    </div>
+
+                    <div class="experience__overlay">
+                        <img src="assets/img/experience2.jpg" alt="" class="experience__img-two">
+                    </div>
+                </div>-->
+            </div>
+        </section>
+
+        <!--==================== SUBSCRIBE ====================-->
+        <section class="subscribe section">
+            <div class="subscribe__bg">
+                <div class="subscribe__container container">
+                    <h2 class="section__title subscribe__title">At <br> Exnihilo</h2>
+                    <p class="subscribe__description">Discover the essence of adventure
+                        <!--with Exnihilo!-->!<br>From guided tours to seamless transportation, <br>we're your gateway to Rwanda's wonders.<br> Let's explore together!.
+                    </p>
+                    <!--
+                    <form action="" class="subscribe__form">
+                        <input type="text" placeholder="Enter email" class="subscribe__input">
+
+                        <button class="button">
+                                Subscribe
+                            </button>
+                    </form>-->
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer section" id="footer">
+        <div class="footer__container container grid">
+            <div class="footer__content grid">
+                <div class="footer__data">
+                    <h3 class="footer__title">Exnihilo</h3>
+                    <p class="footer__description">Your one-stop solution <br> for unforgettable adventures <br> in Rwanda.
+                    </p>
+                    <div>
+                        <!--<a href="https://www.facebook.com/" target="_blank" class="footer__social">
+                            <i class="ri-facebook-box-fill"></i>
+                        </a>-->
+                        <a href="https://twitter.com/" target="_blank" class="footer__social">
+                            <i class="ri-twitter-fill"></i>
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank" class="footer__social">
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                        <!-- <a href="https://www.youtube.com/" target="_blank" class="footer__social">
+                            <i class="ri-youtube-fill"></i>
+                        </a>-->
+                    </div>
+                </div>
+
+                <div class="footer__data">
+                    <h3 class="footer__subtitle">About</h3>
+                    <ul>
+                        <li class="footer__item">
+                            <a href="#about" class="footer__link">About Us</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="#experience" class="footer__link">Experience</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Exploring and serving since 2015</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+                <div class="footer__data">
+                    <h3 class="footer__subtitle">Contact Us</h3>
+                    <ul>
+                        <li class="footer__item">
+                            <a href="+250788225553" class="footer__link">+250788225553</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="mailto:uwihyace@gmail.com" class="footer__link">uwihyace@gmail.com</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="" class="footer__link">Nyarugenge, Kigali</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__rights">
+                <p class="footer__copy"> Terms and Agreements.</p>
+                <div class="footer__terms">
+                    <a href="https://innovatoor.com" target="_blank" class="footer__terms-link">&#169; developed by Innovatoor</a>
+                    <a href="#" class="footer__terms-link">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!--========== SCROLL UP ==========-->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="ri-arrow-up-line scrollup__icon"></i>
+    </a>
+
+    <!--=============== SCROLL REVEAL===============-->
+    <script src="assets/js/scrollreveal.min.js"></script>
+
+    <!--=============== SWIPER JS ===============-->
+    <script src="assets/js/swiper-bundle.min.js"></script>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
