@@ -567,7 +567,8 @@ body.nav-active {
     align-items: center;
     gap: 4px;
     margin-block-start: 10px;
-    color: var(--violet-blue-crayola);
+    /*color: var(--violet-blue-crayola);*/
+    color: black;
     font-weight: var(--fw-700);
     transition: var(--transition-1);
 }
