@@ -258,7 +258,8 @@ body.nav-active {
 .section-subtitle {
     font-size: var(--fs-7);
     text-transform: uppercase;
-    color: var(--violet-blue-crayola);
+    /*color: var(--violet-blue-crayola);*/
+    color: black;
     font-weight: var(--fw-700);
     margin-block-end: 16px;
 }
