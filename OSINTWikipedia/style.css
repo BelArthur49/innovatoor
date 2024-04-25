@@ -5,7 +5,8 @@ body {
     line-height: 1.5;
     font-weight: 400;
     color: #fff;
-    background-color:  #330335;
+    background-color:  #6a0270;
+    background-image: linear-gradient(90deg, #2e222e 40%, #590d68 75%, #09080b 100%)
     background-size: cover;
     background-position: cover;
 }
