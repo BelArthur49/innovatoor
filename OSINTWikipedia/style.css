@@ -7,6 +7,7 @@ body {
     color: #fff;
     background-color:  #330335;
     background-size: cover;
+    background-position: cover;
 }
 
 .container {
@@ -14,6 +15,7 @@ body {
     padding-bottom: 400px;
     margin: 0 auto;
     max-width: 800px;
+    overflow: hidden;
 }
 
 .top-section {
