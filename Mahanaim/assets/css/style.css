@@ -1036,7 +1036,7 @@ body.nav-active {
     transform: translateX(-50%);
     width: 140px;
     height: 100%;
-    background-image: url('../images/img-pattern.svg');
+    background-image: url('../images/img-pattern.jpeg');
     background-position: center;
     background-size: cover;
     background-repeat: repeat;
@@ -1120,7 +1120,7 @@ body.nav-active {
     left: 50%;
     transform: translateX(-50%);
     width: 140px;
-    background-image: url('../images/img-pattern.svg');
+    background-image: url('../images/img-pattern.jpeg');
     background-repeat: repeat;
 }
 
