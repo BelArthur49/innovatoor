@@ -1410,6 +1410,30 @@ textarea.input-field {
     background-repeat: repeat;
     background-position: top left;
 }
+.form-right {
+    background-image: url('./assets/images/Apotre.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 40px 20px 30px;
+    min-height: 300px; /* Ensure a minimum height so the image is visible */
+}
+
+@media (max-width: 768px) {
+    .form-right {
+        background-size: contain; /* Adjust image size for smaller screens */
+        min-height: 200px; /* Adjust minimum height for smaller screens */
+        padding: 20px 10px; /* Adjust padding for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .form-right {
+        background-size: contain; /* Further adjustment for very small screens */
+        min-height: 150px; /* Further adjustment for very small screens */
+        padding: 15px 5px; /* Further adjustment for very small screens */
+    }
+}
 
 
 /*-----------------------------------*\
