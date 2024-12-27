@@ -442,11 +442,16 @@ nav li a.active,
 
 
 /* Sidebar */
+/* Sidebar Style */
 
 aside {
     background-color: #3d0f41;
-    z-index: 10;
+    z-index: 1050;
+    /* Ensure the sidebar stays above the navbar */
 }
+
+
+/* Side Panel (Sidebar) */
 
 .sidepanel {
     width: 320px;
@@ -454,10 +459,16 @@ aside {
     height: 100vh;
     top: 0;
     left: -320px;
+    /* Initially hidden */
     overflow-x: hidden;
     transition: 0.5s;
     padding: 40px 20px 20px 20px;
+    z-index: 1050;
+    /* Ensure it's above navbar */
 }
+
+
+/* Sidebar Scrollbar */
 
 .sidepanel::-webkit-scrollbar {
     width: 3px;
@@ -477,16 +488,21 @@ aside {
     width: 100px;
 }
 
+
+/* Sidebar Button */
+
 .sidebar button {
     width: 44px;
     height: 44px;
     background: linear-gradient(42deg, #7436bb 0.01%, #b520a3 100%);
-    padding: 10px 12px 10px 12px;
+    padding: 10px 12px;
     margin-bottom: -15px;
     border-radius: 0.25em;
     border: 1.5px solid #b520a3;
     color: #ffffff;
     cursor: pointer;
+    z-index: 1060;
+    /* Make sure it's above the sidebar */
 }
 
 .btn_hover1 {
@@ -590,6 +606,23 @@ aside .pages {
 .show {
     height: 500px !important;
     transition: height 0.35s ease;
+}
+
+
+/* Collapse Button Styling */
+
+.collapse_btn i {
+    border: 1px solid #d3c9c1;
+    padding: 7px 8px;
+    border-radius: 40px;
+}
+
+.collapse_btn i:hover {
+    border: 1px solid #000000;
+}
+
+.sidebar button:hover {
+    background: inherit;
 }
 
 
