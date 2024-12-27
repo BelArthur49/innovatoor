@@ -275,6 +275,10 @@ header {
     margin-right: 25px;
 }
 
+.navbar-logo img {
+    filter: brightness(0) invert(1); /* Makes it white */
+}
+
 .navbar-nav {
     gap: 50px;
 }
