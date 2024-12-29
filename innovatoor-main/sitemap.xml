@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://innovatoor.com/</loc>
+    </url>
+    <url>
+        <loc>https://innovatoor.com/#HOME</loc>
+    </url>
+    <url>
+        <loc>https://innovatoor.com/#WHATWEDO</loc>
+    </url>
+    <url>
+        <loc>https://innovatoor.com/#OSINT</loc>
+    </url>
+    <url>
+        <loc>https://innovatoor.com/#DATA</loc>
+    </url>
+    <url>
+        <loc>https://innovatoor.com/#PACKAGES</loc>
+    </url>
+    <url>
+        <loc>https://innovatoor.com/#OURTOOLS</loc>
+    </url><url>
+        <loc>https://innovatoor.com/#CONTACT</loc>
+    </url>
+    <!-- Add more URL entries as needed -->
+</urlset>
