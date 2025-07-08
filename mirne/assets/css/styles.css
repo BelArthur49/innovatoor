@@ -1148,7 +1148,7 @@ img {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 3rem;
+    font-size: 1rem;
     color: white;
     background: rgba(116, 151, 226, 0.086);
     border: none;
