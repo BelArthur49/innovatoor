@@ -657,7 +657,7 @@ img {
 
 .haan {
     padding: 4rem 0;
-    background-color: #f9f9f9;
+    background-color: #f9f9f900;
     /* Optional: background for contrast */
 }
 
@@ -681,8 +681,8 @@ img {
 
 .haan__description {
     line-height: 1.8;
-    font-size: 1rem;
-    color: var(--text-color, #707070);
+    font-size: 0.9rem;
+    color: #707070;
 }
 
 .haan__img {
