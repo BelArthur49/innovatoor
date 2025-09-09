@@ -1,0 +1,1107 @@
+/* Animations */
+.appear-animation {
+	opacity: 0;
+}
+
+.appear-animation-visible {
+	opacity: 1;
+}
+
+.block-appear-animation {
+	opacity: 1;
+	overflow: hidden;
+	position: relative;
+	.block-appear-animation-wrapper {
+		@include animated();
+		animation-delay: 300ms;
+		opacity: 0;
+	}
+	&.appear-animation-visible {
+		.block-appear-animation-wrapper {
+			animation-name: fadeIn;
+		}
+	}
+}
+
+/* Transitions */
+.transition-2ms {
+	transition: all 0.2s ease-in-out;
+}
+
+.transition-3ms {
+	transition: all 0.3s ease-in-out;
+}
+
+.transition-4ms {
+	transition: all 0.4s ease-in-out;
+}
+
+.transition-5ms {
+	transition: all 0.5s ease-in-out;
+}
+
+.transition-1s {
+	transition: all 1s ease-in-out;
+}
+
+/* Transition Magnetic */
+.transition-magnetic {
+	transition: transform .5s cubic-bezier(.25,1,.2,1);
+}
+
+/* Translate Animations */
+$sizes: 0px, 5px, 10px, 20px, 30px, 40px;
+
+@each $size in $sizes {
+
+	.anim-hover-translate-top-#{$size}:hover {
+	    transform: translateY(-$size) !important;
+	}
+	.anim-hover-translate-bottom-#{$size}:hover {
+	    transform: translateY($size) !important;
+	}	
+	.anim-hover-translate-left-#{$size}:hover {
+	    transform: translateX(-$size) !important;
+	}		
+	.anim-hover-translate-right-#{$size}:hover {
+	    transform: translateX($size) !important;
+	}
+
+}
+
+.anim-hover-inner-wrapper:hover {
+	@each $size in $sizes {
+		.anim-hover-inner-translate-top-#{$size} {
+		    transform: translateY(-$size) !important;
+		}
+		.anim-hover-inner-translate-bottom-#{$size} {
+		    transform: translateY($size) !important;
+		}
+		.anim-hover-inner-translate-left-#{$size} {
+		    transform: translateX(-$size) !important;
+		}
+		.anim-hover-inner-translate-right-#{$size} {
+		    transform: translateX($size) !important;
+		}
+	}
+}
+
+.anim-hover-scale-1-1:hover {
+	transform: scale(1.1);
+}
+
+.anim-hover-scale-1-2:hover {
+	transform: scale(1.2);
+}
+
+/* Opacity Animations */
+.anim-hover-opacity-0:hover {
+	opacity: 0 !important;
+}
+
+.anim-hover-inner-wrapper:hover {
+	.anim-hover-inner-opacity-0 {
+		opacity: 0 !important;
+	}
+}
+
+.anim-hover-opacity-10:hover {
+	opacity: 1 !important;
+}
+
+.anim-hover-inner-wrapper:hover {
+	.anim-hover-inner-opacity-10 {
+		opacity: 1 !important;
+	}
+}
+
+/* Side Header Arrow Animations */
+@keyframes sideMenuArrow {
+	0% {
+		left: 5px;
+	}
+	50%{
+		left: 10px;
+	}
+	100% {
+		left: 5px;
+	}
+}
+
+@keyframes sideMenuArrowBack {
+	0% {
+		right: 5px;
+	}
+	50%{
+		right: 10px;
+	}
+	100% {
+		right: 5px;
+	}
+}
+
+/* Mask Up */
+@keyframes maskUp {
+	from {
+	    transform: translate(0, 100%);
+	}
+
+	to {
+	    transform: translate(0, 0);
+	}
+}
+
+/* Mask Right */
+@keyframes maskRight {
+	from {
+	    transform: translate(-100%, 0);
+	}
+
+	to {
+	    transform: translate(0, 0);
+	}
+}
+
+/* Mask Down */
+@keyframes maskDown {
+	from {
+	    transform: translate(0, -100%);
+	}
+
+	to {
+	    transform: translate(0, 0);
+	}
+}
+
+/* Mask Left */
+@keyframes maskLeft {
+	from {
+	    transform: translate(100%, 0);
+	}
+
+	to {
+	    transform: translate(0, 0);
+	}
+}
+
+.maskUp {
+	animation-name: maskUp;
+}
+
+.maskRight {
+	animation-name: maskRight;
+}
+
+.maskDown {
+	animation-name: maskDown;
+}
+
+.maskLeft {
+	animation-name: maskLeft;
+}
+
+/* Text Entrance */
+@keyframes textEntrance {
+	from {
+		opacity: 0;
+    	transform: translateY(100%) rotateX(-80deg);
+	}
+
+	to {
+	    transform: none;
+	    opacity: 1;
+	}
+}
+
+.textEntrance {
+    transform-origin: center top;
+    transform-style: preserve-3d;
+    transition: opacity 0s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition-duration: 0.8s;
+    animation-name: textEntrance;
+}
+
+// Header Effect - Reveal
+@keyframes headerReveal {
+	from {
+		top: -150px;
+	}	
+	to {
+		top: 0;
+	}
+}
+
+/* Fade In Up Shorter */
+@keyframes fadeInUpShorter {
+	from {
+	    opacity: 0;
+	    transform: translate(0, 50px);
+	}
+
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+.fadeInUpShorter {
+	animation-name: fadeInUpShorter;
+}
+
+/* Fade In Up Shorter Plus */
+@keyframes fadeInUpShorterPlus {
+	from {
+	    opacity: 0;
+	    transform: translate(0, 15px);
+	}
+
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+.fadeInUpShorterPlus {
+	animation-name: fadeInUpShorterPlus;
+}
+
+/* Fade In Left Shorter */
+@keyframes fadeInLeftShorter {
+	from {
+	    opacity: 0;
+	    transform: translate(50px, 0);
+	}
+
+	to {
+	    opacity: 1;
+	    transform: none;
+	}
+}
+
+.fadeInLeftShorter {
+	animation-name: fadeInLeftShorter;
+}
+
+/* Fade In Left Shorter Plus */
+@keyframes fadeInLeftShorterPlus {
+	from {
+	    opacity: 0;
+	    transform: translate(15px, 0);
+	}
+
+	to {
+	    opacity: 1;
+	    transform: none;
+	}
+}
+
+.fadeInLeftShorterPlus {
+	animation-name: fadeInLeftShorterPlus;
+}
+
+/* Fade In Right Shorter */
+@keyframes fadeInRightShorter {
+	from {
+	    opacity: 0;
+	    transform: translate(-50px, 0);
+	}
+
+	to {
+	    opacity: 1;
+	    transform: none;
+	}
+}
+
+.fadeInRightShorter {
+	animation-name: fadeInRightShorter;
+}
+
+/* Fade In Right Shorter Plus */
+@keyframes fadeInRightShorterPlus {
+	from {
+	    opacity: 0;
+	    transform: translate(-15px, 0);
+	}
+
+	to {
+	    opacity: 1;
+	    transform: none;
+	}
+}
+
+.fadeInRightShorterPlus {
+	animation-name: fadeInRightShorterPlus;
+}
+
+/* Fade In Right Shorter With Opacity */
+@keyframes fadeInRightShorterOpacity {
+	from {
+	    opacity: 0;
+	    transform: translate(-50px, 0);
+	}
+
+	to {
+	    opacity: 0.7;
+	    transform: none;
+	}
+}
+
+.fadeInRightShorterOpacity {
+	animation-name: fadeInRightShorterOpacity;
+}
+
+/* Fade In Down Shorter */
+@keyframes fadeInDownShorter {
+	from {
+	    opacity: 0;
+	    transform: translate(0, -50px);
+	}
+
+	to {
+	    opacity: 1;
+	    transform: none;
+	}
+}
+
+.fadeInDownShorter {
+	animation-name: fadeInDownShorter;
+}
+
+/* Fade In Down Shorter Plus */
+@keyframes fadeInDownShorterPlus {
+	from {
+	    opacity: 0;
+	    transform: translate(0, -15px);
+	}
+
+	to {
+	    opacity: 1;
+	    transform: none;
+	}
+}
+
+.fadeInDownShorterPlus {
+	animation-name: fadeInDownShorterPlus;
+}
+
+/* Fade In Right and Down Shorter */
+@keyframes fadeInRightDownShorter {
+	from {
+	    opacity: 0;
+	    transform: translate(-50px, -50px);
+	}
+
+	to {
+	    opacity: 1;
+	    transform: none;
+	}
+}
+
+.fadeInRightDownShorter {
+	animation-name: fadeInRightDownShorter;
+}
+
+/* Fade In Right and Up Shorter */
+@keyframes fadeInRightUpShorter {
+	from {
+	    opacity: 0;
+	    transform: translate(-50px, 50px);
+	}
+
+	to {
+	    opacity: 1;
+	    transform: none;
+	}
+}
+
+.fadeInRightUpShorter {
+	animation-name: fadeInRightUpShorter;
+}
+
+/* Fade In Left and Down Shorter */
+@keyframes fadeInLeftDownShorter {
+	from {
+	    opacity: 0;
+	    transform: translate(50px, -50px);
+	}
+
+	to {
+	    opacity: 1;
+	    transform: none;
+	}
+}
+
+.fadeInLeftDownShorter {
+	animation-name: fadeInLeftDownShorter;
+}
+
+/* Fade In Left and Up Shorter */
+@keyframes fadeInLeftUpShorter {
+	from {
+	    opacity: 0;
+	    transform: translate(50px, 50px);
+	}
+
+	to {
+	    opacity: 1;
+	    transform: none;
+	}
+}
+
+.fadeInLeftUpShorter {
+	animation-name: fadeInLeftUpShorter;
+}
+
+/* Expand In */
+@keyframes expandIn {
+	from {
+	    opacity: 0;
+	    transform: scale(0.8);
+	}
+
+	to {
+	    opacity: 1;
+	    transform: scale(1);
+	}
+}
+
+.expandIn {
+	animation-name: expandIn;
+}
+
+
+/* Gradient Transition */
+@keyframes gradientTransition {
+	0% {
+		background-position:0% 50%
+	}
+    50% {
+    	background-position:100% 50%
+    }
+    100% {
+    	background-position:0% 50%
+    }
+}
+
+/* Slider Scroll Button Animation */
+@keyframes sliderScrollButton {
+	0% {
+		opacity: 1;
+		transform: translate3d(-50%, 0, 0);
+	}
+
+	70% {
+		opacity: 1;
+		transform: translate3d(-50%, 10px, 0);
+	}
+
+	100% {
+		opacity: 0;
+		transform: translate3d(-50%, 10px, 0);
+	}
+}
+
+/* Arrow Left Right */
+@keyframes arrowLeftRight {
+	0% {
+		transform: translate3d(-1px, 0, 0);
+	}
+
+	50% {
+		transform: translate3d(1px, 0, 0);
+	}
+
+	100% {
+		transform: translate3d(-1px, 0, 0);
+	}
+}
+
+/* Nav Item Arrow */
+@keyframes navItemArrow {
+	0% {
+		position: relative;
+		#{$left}: -1px;
+	}
+	50% {
+		position: relative;
+		#{$left}: 3px;
+	}
+	100% {
+		position: relative;
+		#{$left}: -1px;
+	}
+}
+
+/* Hover 3d Effect */
+.hover-in {
+	transition: .1s ease-out !important;
+}
+
+.hover-out {
+	transition: .1s ease-in !important;
+}
+
+.hover-3d {
+	transition: none;
+}
+
+// Infinite
+@keyframes upDownInfinite {
+	0% {
+		transform: translateY(5px);
+	}
+	50% {
+		transform: translateY(10px);
+	}
+	100% {
+		transform: translateY(5px);
+	}
+}
+
+.anim-up-down-infinite {
+	animation: upDownInfinite 600ms ease;
+	animation-iteration-count: infinite;
+}
+
+// Infinite - Left/Right
+@keyframes leftRightInfinite {
+	0% {
+		transform: translateX(5px);
+	}
+	50% {
+		transform: translateX(10px);
+	}
+	100% {
+		transform: translateX(5px);
+	}
+}
+
+.anim-left-right-infinite {
+	animation: leftRightInfinite 600ms ease;
+	animation-iteration-count: infinite;
+}
+
+/* Hotspot */
+@keyframes hotspot-pulsate {
+	0% {
+		transform: scale(1);
+		opacity:0.8;
+	}
+	45% {
+		transform: scale(1.75);
+		opacity:0;
+	}
+}
+@keyframes stop-hotspot-pulsate {
+	from {
+		opacity:0.4;
+	}
+	to {
+		transform: scale(2);
+		opacity:0;
+	}
+}
+
+/* Dot Pulse */
+@keyframes dotPulse {
+	from {
+		opacity: 1;
+		transform: scale(0.2);
+	}
+	to {
+		opacity: 0;
+		transform: scale(1);
+	}
+}
+
+.dotPulse {
+	animation-name: dotPulse;
+	animation-iteration-count: infinite;
+	animation-duration: 4s;
+}
+
+/* Blur In */
+@keyframes blurIn {
+	from {
+		opacity: 0;
+		filter: blur(20px);
+		transform: scale(1.3);
+	}
+	to {
+		opacity: 1;
+		filter: blur(0.1px);
+		transform: none;
+	}
+}
+
+.blurIn {
+	animation-name: blurIn;
+}
+
+/* Ken Burns To Right */
+@keyframes kenBurnsToRight {
+	from {
+		transform: scale(1.2);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+
+.kenBurnsToRight {
+	animation-name: kenBurnsToRight;
+	animation-timing-function: linear;
+	transform-origin: right;
+}
+
+/* Ken Burns To Left and Top */
+.kenBurnsToRightTop {
+	animation-name: kenBurnsToRight;
+	animation-timing-function: linear;
+	transform-origin: right top;
+}
+
+/* Ken Burns To Left */
+@keyframes kenBurnsToLeft {
+	from {
+		transform: scale(1.2);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+
+.kenBurnsToLeft {
+	animation-name: kenBurnsToLeft;
+	animation-timing-function: linear;
+	transform-origin: left;
+}
+
+/* Ken Burns To Left and Top */
+.kenBurnsToLeftTop {
+	animation-name: kenBurnsToLeft;
+	animation-timing-function: linear;
+	transform-origin: left top;
+}
+
+/* Moving From Top to Bottom */
+@keyframes bgPositionBottomToTop {
+	from {
+		background-position: bottom;
+	}
+	to {
+		background-position: top;
+	}
+}
+
+.bgPositionBottomToTop {
+	animation-name: bgPositionBottomToTop;
+	animation-timing-function: linear;
+	transform-origin: right;
+}
+
+/* Pulse */
+@keyframes pulseAnim {
+	from {
+		transform: scale(1);
+		opacity: 1;
+	}
+	to {
+		transform: scale(1.4);
+		opacity: 0;
+	}
+}
+
+.pulseAnim {
+	&:not(:hover) {
+		&:after {
+			animation-name: pulseAnim;
+		}
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: inherit;
+		border-radius: inherit;
+		z-index: -1;
+	}
+
+	&.pulseAnimAnimated {
+		&:after {
+			animation-duration: 1.5s;
+			animation-iteration-count: infinite;
+			animation-delay: 1s; 
+		}
+	}
+
+	&:not(i) {
+		&:after {
+			z-index: 0;
+		}
+		* {
+			position: relative;
+			z-index: 1;
+		}
+	}
+}
+
+/* Basic Rotation */
+@keyframes basicRotation {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.basicRotation {
+	animation-name: basicRotation;
+}
+
+/* Block Slide */
+@keyframes blockSlideToRight {
+	from {
+	    transform: translate(-110%, 0);
+	}
+
+	to {
+	    transform: translate(110%, 0);
+	}
+}
+
+@keyframes blockSlideToLeft {
+	from {
+	    transform: translate(110%, 0);
+	}
+
+	to {
+	    transform: translate(-110%, 0);
+	}
+}
+
+@keyframes blockSlideToTop {
+	from {
+	    transform: translate(0, 110%);
+	}
+
+	to {
+	    transform: translate(0, -110%);
+	}
+}
+
+@keyframes blockSlideToBottom {
+	from {
+	    transform: translate(0, -110%);
+	}
+
+	to {
+	    transform: translate(0, 110%);
+	}
+}
+
+.blockSlide {
+	&:after {
+		content: "";
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background: var(--dark);
+		position: absolute;
+		z-index: 1000;
+		@include animated();
+		animation-name: blockSlideToRight;
+	}
+}
+
+.blockSlideLight {
+	&:after {
+		background: var(--grey-100);
+	}
+}
+
+.blockSlideToLeft {
+	&:after {
+		animation-name: blockSlideToLeft;
+	}
+}
+
+.blockSlideToTop {
+	&:after {
+		animation-name: blockSlideToTop;
+	}
+}
+
+.blockSlideToBottom {
+	&:after {
+		animation-name: blockSlideToBottom;
+	}
+}
+
+/* SVG Animation Effect 1 */
+@keyframes svgAnimationEffect1 {
+	from {
+		stroke-dasharray: 1000;
+		stroke-dashoffset: -500;
+	}
+	to {
+		stroke-dasharray: 1000;
+		stroke-dashoffset: 0;
+	}
+}
+.svg-animation-effect-1-hover {
+	svg {
+		transform: scale(1);
+		transition: ease transform 300ms;
+		path, polygon, polyline, rect {
+			transition: ease fill-opacity 300ms;
+		}
+	}
+	&:hover {
+		svg {
+			transform: scale(1.1);
+			path, polygon, polyline, rect {
+				animation-name: svgAnimationEffect1;
+				animation-duration: 1s;
+				animation-fill-mode: forwards;
+				fill-opacity: 0;
+				stroke-width: 0.4px;
+			}
+		}
+	}
+}
+
+// Animated Words
+[data-plugin-animated-words] {
+	opacity: 0;
+	&.initialized {
+		opacity: 1;
+	}
+}
+
+.animated-words-wrapper {
+	display: inline-block;
+}
+
+.animated-words-item {
+	display: inline-block;
+}
+
+// Animated Letter
+.animated-letters-wrapper {
+	display: inline-block;
+}
+
+.animated-letters-item {
+	display: inline-block;
+}
+
+// Rotate
+.rotate-animation {
+	animation: rotate-animation 10s infinite linear;
+}
+
+@keyframes rotate-animation {
+	0% {
+		transform: rotate(0deg);
+	}
+	50% {
+		transform: rotate(180deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.rotate-animation-inverse {
+	animation: rotate-animation-inverse 10s infinite linear;
+}
+
+@keyframes rotate-animation-inverse {
+	0% {
+		transform: rotate(0deg);
+	}
+	50% {
+		transform: rotate(-180deg);
+	}
+	100% {
+		transform: rotate(-360deg);
+	}
+}
+
+// Scroll Rotate
+.scroll-rotate {
+	position: relative;
+	transform:  translatex(-50%) translatey(-50%);
+}
+
+// Scribble 
+.highlight-scribble-1 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    height: 45%;
+    top: auto;
+    bottom: -25%;
+    path {
+		stroke-dasharray: 1;
+		@media (max-width: 991px) {
+			stroke-dasharray: none;
+		}
+		stroke-dashoffset: 1;
+    	stroke-linecap: round;
+    }
+}
+
+@keyframes highlightScribble1 {
+	0% {
+		stroke-dashoffset: 1;
+		opacity:0
+	}
+	1% {
+		opacity:1
+	}
+	100% {
+		stroke-dashoffset: 0
+	}
+}
+
+.highlightScribble1 {
+	path {
+		animation: highlightScribble1 1.3s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+	}
+}
+
+/* Highlighted Word */
+@keyframes pencilAnimation {
+	from {
+		width: 0;
+	}	
+	to {
+		width: 74px;
+	}
+}
+
+@keyframes pencilAnimation2 {
+	from {
+		width: 0;
+	}	
+	to {
+		width: 115px;
+	}
+}
+
+.highlighted-word {
+	font-family: $font-secondary;
+	font-weight: 500;
+
+	&.highlighted-word-animation-1 {
+		position: relative;
+		&:after {
+			content: '';
+			position: absolute;
+			right: calc(100% - 74px);
+			bottom: -6px;
+			background: url(../img/pencil-blue-line.png);
+			width: 0;
+			height: 15px;
+			animation-name: pencilAnimation;
+			animation-duration: 500ms;
+			animation-delay: 1s;
+			animation-fill-mode: forwards;
+			overflow: hidden;
+			transform: rotate(180deg);
+		}
+		&.highlighted-word-animation-1-end {
+			&:after {
+				right: 0 !important;
+			}
+		}
+		&.highlighted-word-animation-1-light {
+			&:after {
+				filter: brightness(0) invert(1);
+			}
+		}
+		&.highlighted-word-animation-1-dark {
+			&:after {
+				background: url(../img/pencil-blue-line-dark.png);
+			}
+		}
+		&.highlighted-word-animation-1-no-rotate {
+			&:after {
+				transform: rotate(0);
+			}
+		}
+		&.highlighted-word-animation-1-no-animate {
+			&:after {
+				animation-duration: 0ms;
+				animation-delay: 0ms;
+			}
+		}
+		&.highlighted-word-animation-1-2 {
+			&:after {
+				animation-name: pencilAnimation2;
+				right: calc(100% - 115px);
+				background: url(../img/pencil-blue-line-2.png);
+				background-repeat: no-repeat;
+			}
+		}
+		&.highlighted-word-animation-1-2-dark {
+			&:after {
+				background-image: url(../img/pencil-blue-line-2-dark.png);
+			}
+		}
+	}
+
+	&.highlighted-word-rotate {
+		transform: rotate(-15deg);
+		transform-origin: 0 0;
+	}
+}
+
+/* Animated Letters */
+[data-plugin-animated-letters] {
+	opacity: 0;
+	visibility: hidden;
+	&.initialized {
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+/* Animated Letters - Type Writer Effect */
+@keyframes typeWriterFlash {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.letters-wrapper {
+	& + .typeWriter:last-child {
+		position: relative;
+		padding-right: 4px;
+		opacity: 0.7;
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			height: 100%;
+			width: 1px;
+			background: #212121;
+			animation-name: typeWriterFlash;
+			animation-iteration-count: infinite;
+			animation-duration: 600ms;
+		}
+	}
+}

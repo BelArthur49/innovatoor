@@ -1,0 +1,48 @@
+<div id="googlemapsGDPR" class="google-map mt-0 mb-0" style="height: 350px;"></div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+<script>
+// Map Markers
+var locations = [
+	['<b>Office 1</b><br>5th Ave, New York<br>NY 10021, USA<br>Phone: 123-456-1234', 40.77459324309514, -73.9656499056956, 4]
+	/* Use https://www.latlong.net/convert-address-to-lat-long.html to get Latitude and Longitude of a specific address */
+];
+
+// Map Initial Location
+var initLatitude = 40.77459324309514;
+var initLongitude = -73.9656499056956;
+
+var map = new google.maps.Map(document.getElementById('googlemapsGDPR'), {
+	controls: {
+		draggable: (($.browser.mobile) ? false : true),
+		panControl: true,
+		zoomControl: true,
+		mapTypeControl: true,
+		scaleControl: true,
+		streetViewControl: true,
+		overviewMapControl: true
+	},
+	scrollwheel: false,
+	zoom: 5,
+	center: new google.maps.LatLng(initLatitude, initLongitude),
+	mapTypeId: google.maps.MapTypeId.ROADMAP
+});
+
+var infowindow = new google.maps.InfoWindow();
+
+var marker, i;
+
+for (i = 0; i < locations.length; i++) {
+	marker = new google.maps.Marker({
+		position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+		map: map
+	});
+
+	google.maps.event.addListener(marker, 'click', (function(marker, i) {
+		return function() {
+			infowindow.setContent(locations[i][0]);
+			infowindow.open(map, marker);
+		}
+	})(marker, i));
+}
+</script>

@@ -1,0 +1,468 @@
+//COMMON IMPORTS
+@import "../config/imports";
+
+$font-alternative-1: 'Tangerine', cursive;
+
+// Alternative Font
+.custom-font-1 {
+	font-family: $font-alternative-1;
+	font-weight: bold;
+}
+
+.custom-font-size-1 {
+	font-size: 70px !important;
+}
+
+.custom-font-size-2 {
+	font-size: 50px !important;
+}
+
+.custom-font-size-3 {
+	font-size: 40px !important;
+}
+
+.custom-font-size-4 {
+    font-size: 0.6em !important;
+}
+
+// Logo
+.custom-logo {
+	font-family: $font-alternative-1;
+	font-size: 50px;
+	font-weight: 700;
+	display: block;
+	padding: 10px 0;
+}
+
+// Header
+@media (min-width: 992px) {
+
+	#header {
+		.header-nav-bar {
+			.header-nav {
+				min-height: 80px;
+			}
+		}
+		.header-nav.header-nav-line.header-nav-bottom-line {
+			nav {
+				> ul {
+					> li {
+						> a {
+							letter-spacing: 3px;
+							font-weight: 400;
+							padding: 0 0.9rem !important;
+							margin: 0 0.9rem !important;
+							&:before {
+								height: 1px;
+								transform: translateX(-2px);
+							}
+						}
+						&:hover {
+							> a {
+								&:before {
+									height: 1px;
+									transform: translateX(-2px);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+}
+
+@media(max-width: 991px) {
+	#header {
+		.header-logo {
+			top: 26px;
+		}
+		.header-btn-collapse-nav {
+			top: -23px;
+		}
+	}
+}
+
+// Slider
+.slider .slotholder:after {
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    background: #333;
+    z-index: 1000;
+}
+
+.tp-caption-custom-1 {
+	font-family: $font-alternative-1;
+	color: transparent;
+	-webkit-text-stroke: 1px #FFF;
+	text-stroke: 1px #FFF;
+	opacity: 0.3 !important;
+}
+
+.tp-caption-custom-2 {
+	font-family: $font-alternative-1;
+	color: var(--light);
+}
+
+.tp-caption-custom-3-el-1 {
+	color: var(--dark--200);
+	display: inline-block;
+	letter-spacing: 2.5px;
+	padding: 15px 80px;
+	background: url(../../img/demos/wedding/backgrounds/bg-1.svg) no-repeat 0 0;
+	background-size: cover;
+}
+
+// Custom BG
+.custom-bg-1 {
+	position: absolute;
+	width: 1200px;
+	left: -800px;
+	top: -285px;
+	transform: rotate(45deg);
+}
+
+.custom-bg-2 {
+	position: relative;
+	background: url(../../img/demos/wedding/backgrounds/bg-2.svg) no-repeat 0 0;
+	background-size: 100% 100%;
+}
+
+.custom-bg-3 {
+	position: absolute;
+	width: 1200px;
+	right: -45%;
+	transform: rotate(40deg);
+}
+
+.custom-bg-4 {
+	position: absolute;
+	width: 1200px;
+}
+
+// Custom Countdown
+.custom-countdown-1 {
+	.days, .hours, .minutes, .seconds {
+		span {
+			font-weight: bold;
+		}
+	}
+}
+
+// Custom Text
+.custom-text-1 {
+	font-family: $font-alternative-1;
+	color: transparent;
+	-webkit-text-stroke: 1px #f4f0ed;
+	text-stroke: 1px #FFF;
+	font-size: 23vw;
+	white-space: nowrap;
+	position: absolute;
+	bottom: 3%;
+}
+
+// Custom Thumb Info Style
+.custom-thumb-info-style-1:hover {
+	.thumb-info-wrapper:after {
+		opacity: 0.5 !important;
+	}
+}
+
+// Photography Lightbox
+.mfp-wrap.wedding-portfolio-gallery {
+	opacity: 0;
+	transition: ease opacity 300ms;
+}
+
+#ourHistoryLightbox {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	top: 50%;
+	left: 50%;
+	transform: translate3d(-50%, -50%, 0);
+
+	.mfp-close {
+		background-color: #60635c;
+		color: var(--light);
+		top: 0;
+		#{$right}: 0;
+		opacity: 1;
+
+		&:hover {
+			opacity: 0.7;
+		}
+	}
+
+	.thumb-gallery {
+		position: absolute;
+		width: 100vw;
+		height: 95vh;
+		top: 50%;
+		left: 50%;
+		transform: translate3d(-50%, -50%, 0);
+	}
+
+	.owl-carousel {
+		.owl-item {
+			> div {
+				position: relative;
+				height: 95vh;
+
+				.img-thumbnail {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					width: 100%;
+					padding: 0;
+					border: none;
+					background: transparent;
+					text-align: center;
+					transform: translate3d(-50%, -50%, 0);
+				}
+			}
+
+			img {
+				display: inline-block !important;
+				width: auto;
+				max-width: 95vw;
+				max-height: 90vh;
+				box-shadow: 0px 0px 40px -10px #000;
+			}
+		}
+
+		.owl-nav {
+			button.owl-prev,
+			button.owl-next {
+				border: 0 none;
+				border-radius: 0;
+				color: var(--light);
+				height: 80px;
+				line-height: 68px;
+				margin-top: -20px;
+				transition: all 0.3s ease;
+
+				&:before {
+					font-family: simple-line-icons;
+					content: "\e605";
+					font-size: 11px;
+					@include if-rtl() {
+						content: "\e606";
+					}
+				}
+			}
+
+			button.owl-next {
+				&::before {
+					font-family: simple-line-icons;
+					content: "\e606";
+					@include if-rtl() {
+						content: "\e605";
+					}
+				}
+			}
+		}
+	}
+
+	#thumbGalleryThumbs {
+		width: 98%;
+		height: 13vh;
+		position: fixed;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+
+		&:hover, &.show-thumbs {
+			.owl-stage-outer {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		&.boxed-thumbs {
+			&:hover {
+				.owl-stage-outer {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			.owl-item {
+				> div {
+					height: 20vh;
+
+					.img-thumbnail {
+						height: 5.3vw;
+						overflow: hidden;
+						border: none;
+						box-shadow: none;
+					}
+				}
+
+				img {
+					width: auto;
+					height: 100%;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate3d(-50%, -50%, 0);
+				}
+			}
+		}
+
+		&.full-proportion-thumbs {
+			&:hover {
+				.owl-stage-outer {
+					opacity: 1;
+					transform: translateY(-32%);
+				}
+			}
+
+			.owl-item {
+				&.active-thumb {
+					opacity: 0.5;
+				}
+
+				> div {
+					height: 20vh;
+
+					.img-thumbnail {
+						border: none;
+						box-shadow: none;
+						overflow: visible;
+					}
+				}
+
+				img {
+					max-height: 20vh;
+					box-shadow: none;
+					height: auto;
+					width: 100%;
+				}
+			}
+		}
+
+		.owl-stage-outer {
+			opacity: 0;
+			transform: translateY(100%);
+			transition: ease all 300ms;
+		}
+
+		.owl-stage {
+			margin: 0 auto;
+		}
+
+		.owl-item {
+			&.active-thumb {
+				opacity: 0.5;
+			}
+
+			> div {
+				height: 20vh;
+
+				.img-thumbnail {
+					height: 5.3vw;
+					box-shadow: 0px 0px 50px -10px #000;
+					overflow: hidden;
+				}
+			}
+
+			img {
+				width: 100%;
+				height: auto;
+				max-height: none;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate3d(-50%, -50%, 0);
+			}
+		}
+	}
+}
+
+@media (max-width: 991px) {
+	#ourHistoryLightbox {
+		.thumb-gallery {
+			transform: translate3d(-50%, -50%, 0);
+		}
+
+		.owl-carousel {
+			.owl-item {
+				img {
+					box-shadow: 0px 0px 20px #000;
+					max-width: 89vw;
+				}
+			}
+		}
+
+		#thumbGalleryThumbs {
+			.owl-item {
+				img {
+					box-shadow: none;
+				}
+			}
+
+			.owl-stage-outer {
+				display: none;
+			}
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	#ourHistoryLightbox {
+		.owl-carousel {
+			.owl-item {
+				img {
+					max-width: 80vw;
+				}
+			}
+		}
+	}
+}
+
+/* Skin */
+// Header
+@media (min-width: 992px) {
+	#header {
+		.header-nav.header-nav-line {
+			&:not(.header-nav-light-text) {
+				nav {
+					> ul {
+						> li {
+							> a {
+								color: var(--primary);
+							}
+							&:hover {
+								> a {
+									color: var(--primary--100);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Slider
+.slider {
+	.slotholder:after {
+		background-color: var(--primary);
+	}
+}
+
+// Custom Thumb Info Style
+.custom-thumb-info-style-1 {
+	.thumb-info-wrapper:after {
+		background: var(--primary);
+	}
+}

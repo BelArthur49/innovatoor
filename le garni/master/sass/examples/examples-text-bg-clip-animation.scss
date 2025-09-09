@@ -1,0 +1,35 @@
+/*
+Name: 			Examples - Text Background Clip Animation
+Written by: 	Okler Themes - (http://www.okler.net)
+Theme Version:	@@version
+*/
+
+.text-bg-clip-animation {
+	font-size: 150px;
+	line-height: 200px;
+	@media (max-width: 1200px) {
+		font-size: 75px;
+		line-height: 100px;
+	}
+	font-weight: bolder;
+	color: #000;
+	margin: 0;
+	text-align: center;
+	background-size: 40%;
+	background-position: 50% 50%;
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: rgba(0,0,0,0.08);
+	&.appear-animation-visible {
+		animation: textBgZoom 10s ease 500ms forwards;
+	}
+}
+
+@keyframes textBgZoom {
+	from {
+		background-size: 40%;
+	}
+	to {
+		background-size: 10%;
+	}
+}

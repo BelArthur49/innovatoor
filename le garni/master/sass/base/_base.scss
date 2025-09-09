@@ -1,0 +1,73 @@
+/* Base */
+html {
+	direction: $dir;
+	overflow-x: hidden;
+	box-shadow: none !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	:root {
+	    scroll-behavior: auto;
+	}
+}
+
+body {
+	background-color: var(--light);
+	color: var(--default);
+	font-family: $font-primary;
+	font-size: $body-font-size + 0px;
+	line-height: $body-line-height + 0px;
+	margin: 0;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
+	@include if-rtl() {
+		text-align: right;
+	}
+
+	a {
+		outline: none !important;
+	}
+
+}
+
+/* Selection */
+::selection {
+	color: var(--primary-inverse);
+	background: var(--primary);
+}
+
+/* Body */
+.body {
+	background-color: var(--light);
+}
+
+html.safari:not(.no-safari-overflow-x-fix) .body {
+	overflow-x: hidden;
+}
+
+a {
+	text-decoration: none;
+	&:not(.btn):hover {
+		text-decoration: underline;
+	}
+}
+
+li {
+	line-height: 24px;
+}
+
+// Responsive
+@media (max-width: 575px) {
+
+	body {
+		font-size: 13px;
+	}
+
+}
+
+/* Bootstrap Vars */
+
+// OffCanvas
+.offcanvas, .offcanvas-xxl, .offcanvas-xl, .offcanvas-lg, .offcanvas-md, .offcanvas-sm {
+	--bs-offcanvas-zindex: 10000;
+}
