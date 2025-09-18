@@ -48,6 +48,237 @@
     <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .gallery-container {
+            background: rgb(255, 255, 255);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-title {
+            text-align: center;
+            color: rgb(5, 0, 0);
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(16, 10, 87, 0.3);
+        }
+        
+        .gallery-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .gallery-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            gap: 20px;
+            padding: 20px 0;
+        }
+        
+        .gallery-item {
+            flex: 0 0 300px;
+            position: relative;
+            cursor: pointer;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(27, 1, 1, 0.3);
+            filter: brightness(1.1);
+            border: 3px solid rgba(8, 0, 0, 0.8);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            filter: brightness(0.9);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+            background: linear-gradient(transparent, rgb(255, 255, 255));
+        }
+        
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .nav-button:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .nav-prev {
+            left: 20px;
+        }
+        
+        .nav-next {
+            right: 20px;
+        }
+        
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            max-width: 50%;
+            max-height: 50%;
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        
+        .modal-card h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .modal-card p {
+            color: rgba(17, 17, 10, 0.4);
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+        
+        .gallery-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-item {
+                flex: 0 0 250px;
+            }
+            .gallery-title {
+                font-size: 2rem;
+            }
+            .nav-button {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+        }
+    </style>
+
 </head>
 
 <body data-plugin-scroll-spy data-plugin-options="{'target': '#header'}">
@@ -58,67 +289,10 @@
             <div class="owl-stage-outer">
                 <div class="owl-stage">
                     <div class="owl-item position-relative" style="background-image: url(img/demos/coffee/slides/slide-1.jpg); background-size: cover; background-position: center;">
-                        <div class="container position-relative z-index-3 h-100">
-                            <div class="row justify-content-center align-items-center h-100">
-                                <div class="col-lg-7 text-center">
-                                    <div class="d-flex flex-column align-items-center justify-content-center h-100">
-                                        <div class="overflow-hidden mb-2">
-                                            <h2 class="position-relative text-color-dark text-5 line-height-5 font-weight-normal ls-0 px-4 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="500" data-plugin-options="{'minWindowWidth': 0}">
-                                                A few steps from the City-Centre
-                                            </h2>
-                                        </div>
-                                        <div class="overflow-hidden mb-2">
-                                            <h1 class="text-color-dark font-weight-extra-bold text-13 line-height-1 line-height-sm-3 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="1000" data-plugin-options="{'minWindowWidth': 0}">Hotel "Le GARNI" Kigali</h1>
-                                        </div>
-                                        <p class="text-4-5 text-color-dark font-weight-light text-center px-lg-5 mb-4" data-plugin-animated-letters data-plugin-options="{'startDelay': 1800, 'minWindowWidth': 0, 'animationSpeed': 30}">The amazing flavors will blow your mind.</p>
-                                        <a href="#aboutus" data-hash data-hash-offset="0" data-hash-offset-lg="92" class="btn btn-primary btn-outline font-weight-bold text-color-dark text-2 py-3 btn-px-4 mt-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="2700"
-                                            data-plugin-options="{'minWindowWidth': 0}">LEARN ABOUT US</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class="owl-item position-relative" style="background-image: url(img/demos/coffee/slides/slide-2.jpg); background-size: cover; background-position: center;">
-                        <div class="container position-relative z-index-3 h-100">
-                            <div class="row justify-content-center align-items-center h-100">
-                                <div class="col-lg-7 text-center">
-                                    <div class="d-flex flex-column align-items-center justify-content-center h-100">
-                                        <div class="overflow-hidden mb-2">
-                                            <h3 class="position-relative text-color-dark text-5 line-height-5 font-weight-normal ls-0 px-4 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="500" data-plugin-options="{'minWindowWidth': 0}">
-                                                A quelques pas du Centre-Ville
-                                            </h3>
-                                        </div>
-                                        <div class="overflow-hidden mb-2">
-                                            <h2 class="text-color-dark font-weight-extra-bold text-13 line-height-1 line-height-sm-3 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="1000" data-plugin-options="{'minWindowWidth': 0}">Dans un environnement calme et agréable</h2>
-                                        </div>
-                                        <p class="text-4-5 text-color-dark font-weight-light text-center px-lg-5 mb-4" data-plugin-animated-letters data-plugin-options="{'startDelay': 1800, 'minWindowWidth': 0, 'animationSpeed': 30}">your peaceful stay.</p>
-                                        <a href="#aboutus" data-hash data-hash-offset="0" data-hash-offset-lg="92" class="btn btn-primary btn-outline font-weight-bold text-color-dark text-2 py-3 btn-px-4 mt-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="2700"
-                                            data-plugin-options="{'minWindowWidth': 0}">LEARN ABOUT US</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class="owl-item position-relative" style="background-image: url(img/demos/coffee/slides/slide-3.jpg); background-size: cover; background-position: center;">
-                        <div class="container position-relative z-index-3 h-100">
-                            <div class="row justify-content-center align-items-center h-100">
-                                <div class="col-lg-7 text-center">
-                                    <div class="d-flex flex-column align-items-center justify-content-center h-100">
-                                        <div class="overflow-hidden mb-2">
-                                            <h3 class="position-relative text-color-dark text-5 line-height-5 font-weight-normal ls-0 px-4 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="500" data-plugin-options="{'minWindowWidth': 0}">
-                                                Minibar & satellite TV
-                                            </h3>
-                                        </div>
-                                        <div class="overflow-hidden mb-2">
-                                            <h2 class="text-color-dark font-weight-extra-bold text-13 line-height-1 line-height-sm-3 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="1000" data-plugin-options="{'minWindowWidth': 0}">Swimming pool</h2>
-                                        </div>
-                                        <p class="text-4-5 text-color-dark font-weight-light text-center px-lg-5 mb-4" data-plugin-animated-letters data-plugin-options="{'startDelay': 1800, 'minWindowWidth': 0, 'animationSpeed': 30}"></p>
-                                        <a href="#aboutus" data-hash data-hash-offset="0" data-hash-offset-lg="92" class="btn btn-primary btn-outline font-weight-bold text-color-dark text-2 py-3 btn-px-4 mt-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="2700"
-                                            data-plugin-options="{'minWindowWidth': 0}">LEARN ABOUT US</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -225,23 +399,24 @@
                 </div>
             </div>
 
-            <section class="section section-parallax section-height-4 overlay overlay-show overlay-op-7 border-0 m-0 appear-animation" data-appear-animation="fadeIn" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'parallaxHeight': '129%'}" data-image-src="img/demos/barber/backgrounds/background-1.jpg">
-                <div class="container mb-4">
-                    <div class="row justify-content-center">
-                        <div class="col col-lg-9">
-                            <div class="testimonial testimonial-style-2 custom-testimonial-style-1 mb-0">
-                                <div class="custom-testimonial-quote text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
-                                    <span class="text-color-primary">“</span>
+            <section class="section section-parallax section-height-4 border-0 m-0 appear-animation" data-appear-animation="fadeIn" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'parallaxHeight': '129%'}" data-image-src="img/demos/barber/backgrounds/background-1.jpg">
+                <div class="container-fluid mb-4">
+                    <div class="row justify-content-end">
+                        <div class="col-lg-4">
+                            <div style="background-color: white; padding: 1.5rem;">
+                                <div class="testimonial testimonial-style-2 custom-testimonial-style-1 mb-0">
+                                    <blockquote>
+                                        <p style="color: white; background-color: black;" class="font-weight-semibold text-4 line-height-8 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">“ Your peaceful escape just minutes from the city center. ”</p>
+                                    </blockquote>
                                 </div>
-                                <blockquote>
-                                    <p class="font-weight-semibold text-color-light text-7 line-height-8 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">“ Your peaceful escape just minutes from the city center. ”</p>
-                                </blockquote>
-
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+
+
+
 
             <div id="ourservices" class="container py-5 my-5">
                 <div class="row mt-4 mb-5">
@@ -274,12 +449,18 @@
                 </div>
             </div>
 
-            <section class="section section-parallax section-height-5 overlay overlay-show overlay-op-7 border-0 m-0 appear-animation" data-appear-animation="fadeIn" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'parallaxHeight': '138%'}" data-image-src="img/demos/barber/backgrounds/background-2.jpg">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-9 text-center">
-                            <h2 class="text-color-light font-weight-bold custom-tertiary-font ls-0 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">Votre refuge paisible à quelques minutes du centre-ville.</h2>
-                            <p class="text-color-light opacity-7 text-3 px-5 mx-5 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Hotel Le Garni offers you a serene stay just minutes from the city’s best restaurants, shops, and cultural spots. Whether you’re here for business or leisure, we’ve got your perfect room ready. </p>
+            <section class="section section-parallax section-height-4 border-0 m-0 appear-animation" data-appear-animation="fadeIn" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'parallaxHeight': '129%'}" data-image-src="img/demos/barber/backgrounds/background-2.jpg">
+                <div class="container-fluid mb-4">
+                    <div class="row justify-content-end">
+                        <div class="col-lg-4">
+                            <div style="background-color: white; padding: 1.5rem;">
+                                <div class="testimonial testimonial-style-2 custom-testimonial-style-1 mb-0">
+                                    <blockquote>
+                                        <p style="color: white; background-color: black;" class="font-weight-semibold text-4 line-height-8 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400"> Votre refuge paisible à quelques minutes du centre-ville.<br>Hotel Le Garni offers you a serene stay just minutes from the city’s best restaurants, shops, and cultural spots. Whether you’re here for business or
+                                            leisure, we’ve got your perfect room ready.</p>
+                                    </blockquote>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -349,18 +530,16 @@
                 </div>
             </section>
 
-            <section class="section section-parallax section-height-4 overlay overlay-show overlay-op-7 border-0 m-0 appear-animation" data-appear-animation="fadeIn" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'parallaxHeight': '129%'}" data-image-src="img/demos/barber/backgrounds/background-3.jpg">
-                <div class="container mb-4">
-                    <div class="row justify-content-center">
-                        <div class="col col-lg-9">
-                            <div class="testimonial testimonial-style-2 custom-testimonial-style-1 mb-0">
-                                <div class="custom-testimonial-quote text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
-                                    <span class="text-color-primary">“</span>
+            <section class="section section-parallax section-height-4 border-0 m-0 appear-animation" data-appear-animation="fadeIn" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'parallaxHeight': '129%'}" data-image-src="img/demos/barber/backgrounds/background-3.jpg">
+                <div class="container-fluid mb-4">
+                    <div class="row justify-content-end">
+                        <div class="col-lg-4">
+                            <div style="background-color: white; padding: 1.5rem;">
+                                <div class="testimonial testimonial-style-2 custom-testimonial-style-1 mb-0">
+                                    <blockquote>
+                                        <p style="color: white; background-color: black;" class="font-weight-semibold text-4 line-height-8 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">You deserve mornings with views like this and a peace like this</p>
+                                    </blockquote>
                                 </div>
-                                <blockquote>
-                                    <p class="font-weight-semibold text-color-light text-7 line-height-8 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">You deserve mornings with views like this and a peace like this</p>
-                                </blockquote>
-
                             </div>
                         </div>
                     </div>
@@ -553,40 +732,283 @@
 
 
             <!--Pictures-->
-            <div class="container-fluid px-0">
-                <div class="row">
-                    <div class="col-6 col-sm-4 col-lg-2 px-0">
-                        <a class="img-thumbnail img-thumbnail-no-borders d-block img-thumbnail-hover-icon lightbox" href="img/demos/coffee/others/others-2.jpg" data-plugin-options="{'type':'image'}">
-                            <img class="img-fluid rounded-0" src="img/demos/coffee/others/others-2.jpg" alt="Project Image">
-                        </a>
+
+            <div class="gallery-container">
+                <h1 class="gallery-title">Image Gallery</h1>
+
+                <div class="gallery-wrapper">
+                    <div class="gallery-track" id="galleryTrack">
+                        <div class="gallery-item" data-index="0">
+                            <img src="img/demos/coffee/others/others-1.jpg" alt="Hotel LE GARNI">
+                            <div class="gallery-overlay">
+                                <h4>Hotel LE GARNI</h4>
+                                <h5>Break Fast</h5>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-index="1">
+                            <img src="img/demos/coffee/others/others-2.jpg" alt="Forest Path">
+                            <div class="gallery-overlay">
+                                <h4>Hotel LE GARNI</h4>
+                                <h5>Break Fast</h5>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-index="2">
+                            <img src="img/demos/coffee/others/others-3.jpg" alt="Ocean Sunset">
+                            <div class="gallery-overlay">
+                                <h4>Hotel LE GARNI</h4>
+                                <h5>Break Fast</h5>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-index="3">
+                            <img src="img/demos/coffee/others/others-4.jpg" alt="Mountain Peak">
+                            <div class="gallery-overlay">
+                                <h4>Hotel LE GARNI</h4>
+                                <h5>Break Fast</h5>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-index="4">
+                            <img src="img/demos/coffee/others/others-5.jpg" alt="Forest Stream">
+                            <div class="gallery-overlay">
+                                <h4>Hotel LE GARNI</h4>
+                                <h5>Break Fast</h5>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-index="5">
+                            <img src="img/demos/coffee/others/others-6.jpg" alt="Coastal Cliffs">
+                            <div class="gallery-overlay">
+                                <h4>Hotel LE GARNI</h4>
+                                <h5>Break Fast</h5>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-index="5">
+                            <img src="img/demos/coffee/others/others-7.jpg">
+                            <div class="gallery-overlay">
+                                <h4>Hotel LE GARNI</h4>
+                                <h5>Break Fast</h5>
+                            </div>
+                        </div>
+
+
                     </div>
-                    <div class="col-6 col-sm-4 col-lg-2 px-0">
-                        <a class="img-thumbnail img-thumbnail-no-borders d-block img-thumbnail-hover-icon lightbox" href="img/demos/coffee/others/others-3.jpg" data-plugin-options="{'type':'image'}">
-                            <img class="img-fluid rounded-0" src="img/demos/coffee/others/others-3.jpg" alt="Project Image">
-                        </a>
-                    </div>
-                    <div class="col-6 col-sm-4 col-lg-2 px-0">
-                        <a class="img-thumbnail img-thumbnail-no-borders d-block img-thumbnail-hover-icon lightbox" href="img/demos/coffee/others/others-4.jpg" data-plugin-options="{'type':'image'}">
-                            <img class="img-fluid rounded-0" src="img/demos/coffee/others/others-4.jpg" alt="Project Image">
-                        </a>
-                    </div>
-                    <div class="col-6 col-sm-4 col-lg-2 px-0">
-                        <a class="img-thumbnail img-thumbnail-no-borders d-block img-thumbnail-hover-icon lightbox" href="img/demos/coffee/others/others-5.jpg" data-plugin-options="{'type':'image'}">
-                            <img class="img-fluid rounded-0" src="img/demos/coffee/others/others-5.jpg" alt="Project Image">
-                        </a>
-                    </div>
-                    <div class="col-6 col-sm-4 col-lg-2 px-0">
-                        <a class="img-thumbnail img-thumbnail-no-borders d-block img-thumbnail-hover-icon lightbox" href="img/demos/coffee/others/others-6.jpg" data-plugin-options="{'type':'image'}">
-                            <img class="img-fluid rounded-0" src="img/demos/coffee/others/others-6.jpg" alt="Project Image">
-                        </a>
-                    </div>
-                    <div class="col-6 col-sm-4 col-lg-2 px-0">
-                        <a class="img-thumbnail img-thumbnail-no-borders d-block img-thumbnail-hover-icon lightbox" href="img/demos/coffee/others/others-7.jpg" data-plugin-options="{'type':'image'}">
-                            <img class="img-fluid rounded-0" src="img/demos/coffee/others/others-7.jpg" alt="Project Image">
-                        </a>
+
+                    <button class="nav-button nav-prev" id="prevBtn">❮</button>
+                    <button class="nav-button nav-next" id="nextBtn">❯</button>
+                </div>
+
+                <div class="gallery-dots" id="galleryDots"></div>
+            </div>
+
+            <div class="modal" id="imageModal">
+                <div class="modal-content">
+                    <button class="modal-close" id="modalClose">×</button>
+                    <img class="modal-image" id="modalImage" src="img/demos/coffee/slides/slide-3.jpg" alt="">
+                    <div class="modal-card">
+                        <h3 id="modalTitle">Image Title</h3>
+                        <p id="modalDescription">Image description goes here.</p>
+                        <p><strong>Category:</strong> <span id="modalCategory">Nature</span></p>
+                        <p><strong>Location:</strong> <span id="modalLocation">Unknown</span></p>
                     </div>
                 </div>
             </div>
+
+            <script>
+                class ImageGallery {
+                    constructor() {
+                        this.track = document.getElementById('galleryTrack');
+                        this.items = document.querySelectorAll('.gallery-item');
+                        this.prevBtn = document.getElementById('prevBtn');
+                        this.nextBtn = document.getElementById('nextBtn');
+                        this.modal = document.getElementById('imageModal');
+                        this.modalImage = document.getElementById('modalImage');
+                        this.modalTitle = document.getElementById('modalTitle');
+                        this.modalDescription = document.getElementById('modalDescription');
+                        this.modalCategory = document.getElementById('modalCategory');
+                        this.modalLocation = document.getElementById('modalLocation');
+                        this.modalClose = document.getElementById('modalClose');
+                        this.dotsContainer = document.getElementById('galleryDots');
+
+                        this.currentIndex = 0;
+                        this.itemWidth = 320; // 300px + 20px gap
+                        this.visibleItems = this.getVisibleItems();
+
+                        this.imageData = [{
+                            src: "img/demos/coffee/others/others-1.jpg",
+                            title: "Lorem Ipsum",
+                            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+
+                        }, {
+                            src: "img/demos/coffee/others/others-2.jpg",
+                            title: "Lorem Ipsum",
+                            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                        }, {
+                            src: "img/demos/coffee/others/others-3.jpg",
+                            title: "Lorem Ipsum",
+                            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                        }, {
+                            src: "img/demos/coffee/others/others-4.jpg",
+                            title: "Lorem Ipsum",
+                            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                        }, {
+                            src: "img/demos/coffee/others/others-5.jpg",
+                            title: "Lorem Ipsum",
+                            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                        }, {
+                            src: "img/demos/coffee/others/others-6.jpg",
+                            title: "Lorem Ipsum",
+                            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                        }, {
+                            src: "img/demos/coffee/others/others-7.jpg",
+                            title: "Lorem Ipsum",
+                            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                        }];
+
+                        this.init();
+                    }
+
+                    init() {
+                        this.createDots();
+                        this.updateDots();
+                        this.bindEvents();
+                        this.updateNavigation();
+
+                        // Auto-slide functionality
+                        this.startAutoSlide();
+                    }
+
+                    bindEvents() {
+                        this.prevBtn.addEventListener('click', () => this.prev());
+                        this.nextBtn.addEventListener('click', () => this.next());
+
+                        this.items.forEach((item, index) => {
+                            item.addEventListener('click', () => this.openModal(index));
+                        });
+
+                        this.modalClose.addEventListener('click', () => this.closeModal());
+                        this.modal.addEventListener('click', (e) => {
+                            if (e.target === this.modal) this.closeModal();
+                        });
+
+                        document.addEventListener('keydown', (e) => {
+                            if (e.key === 'Escape') this.closeModal();
+                            if (e.key === 'ArrowLeft') this.prev();
+                            if (e.key === 'ArrowRight') this.next();
+                        });
+
+                        window.addEventListener('resize', () => {
+                            this.visibleItems = this.getVisibleItems();
+                            this.updatePosition();
+                            this.updateNavigation();
+                        });
+                    }
+
+                    getVisibleItems() {
+                        const containerWidth = this.track.parentElement.offsetWidth;
+                        return Math.floor(containerWidth / this.itemWidth);
+                    }
+
+                    createDots() {
+                        const maxIndex = Math.max(0, this.items.length - this.visibleItems);
+                        this.dotsContainer.innerHTML = '';
+
+                        for (let i = 0; i <= maxIndex; i++) {
+                            const dot = document.createElement('div');
+                            dot.className = 'dot';
+                            dot.addEventListener('click', () => this.goToSlide(i));
+                            this.dotsContainer.appendChild(dot);
+                        }
+                    }
+
+                    updateDots() {
+                        const dots = this.dotsContainer.querySelectorAll('.dot');
+                        dots.forEach((dot, index) => {
+                            dot.classList.toggle('active', index === this.currentIndex);
+                        });
+                    }
+
+                    prev() {
+                        if (this.currentIndex > 0) {
+                            this.currentIndex--;
+                            this.updatePosition();
+                            this.updateDots();
+                            this.updateNavigation();
+                        }
+                    }
+
+                    next() {
+                        const maxIndex = Math.max(0, this.items.length - this.visibleItems);
+                        if (this.currentIndex < maxIndex) {
+                            this.currentIndex++;
+                            this.updatePosition();
+                            this.updateDots();
+                            this.updateNavigation();
+                        }
+                    }
+
+                    goToSlide(index) {
+                        this.currentIndex = index;
+                        this.updatePosition();
+                        this.updateDots();
+                        this.updateNavigation();
+                    }
+
+                    updatePosition() {
+                        const translateX = -this.currentIndex * this.itemWidth;
+                        this.track.style.transform = `translateX(${translateX}px)`;
+                    }
+
+                    updateNavigation() {
+                        const maxIndex = Math.max(0, this.items.length - this.visibleItems);
+                        this.prevBtn.style.opacity = this.currentIndex === 0 ? '0.5' : '1';
+                        this.nextBtn.style.opacity = this.currentIndex === maxIndex ? '0.5' : '1';
+                        this.prevBtn.style.pointerEvents = this.currentIndex === 0 ? 'none' : 'all';
+                        this.nextBtn.style.pointerEvents = this.currentIndex === maxIndex ? 'none' : 'all';
+                    }
+
+                    openModal(index) {
+                        const data = this.imageData[index];
+                        this.modalImage.src = data.src;
+                        this.modalTitle.textContent = data.title;
+                        this.modalDescription.textContent = data.description;
+                        this.modalCategory.textContent = data.category;
+                        this.modalLocation.textContent = data.location;
+
+                        this.modal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+
+                    closeModal() {
+                        this.modal.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+
+                    startAutoSlide() {
+                        setInterval(() => {
+                            const maxIndex = Math.max(0, this.items.length - this.visibleItems);
+                            if (this.currentIndex < maxIndex) {
+                                this.next();
+                            } else {
+                                this.currentIndex = 0;
+                                this.updatePosition();
+                                this.updateDots();
+                                this.updateNavigation();
+                            }
+                        }, 4000);
+                    }
+                }
+
+                // Initialize gallery when DOM is loaded
+                document.addEventListener('DOMContentLoaded', () => {
+                    new ImageGallery();
+                });
+            </script>
+
+            <!--footer-->
 
 
             <footer id="footer" class="border-0 bg-dark mt-0">
@@ -601,7 +1023,7 @@
                                     <img src="img/demos/barber/bar-sm.png" class="img-fluid position-relative bottom-2 d-none d-xl-inline-block" alt="" />
                                     <span class="text-color-light font-weight-semibold text-4 mx-2">A few steps from the City-Centre</span>
                                     <img src="img/demos/barber/bar-sm.png" class="img-fluid position-relative bottom-2 d-none d-xl-inline-block" alt="" />
-                                    <h2 class="font-weight-semibold text-color-light line-height-1 custom-fs-2 ls-0 mb-3">Hotel "Le GARNI" Kigali</h2>
+                                    <h2 class="font-weight-semibold text-color-light line-height-1 custom-fs-2 ls-0 mb-3">LE GARNI</h2>
                                     <div class="bg-primary d-inline-flex custom-side-dots custom-side-dots-outside py-2 px-4">
                                         <span class="text-color-light">KIGALI</span>
                                         <span class="vertical-divider mx-3 border-color-light opacity-3 my-1"></span>
@@ -672,11 +1094,11 @@
             <!-- Google Maps -->
             <script>
                 /* 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                			Map Markers:
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                			- Get an API Key: https://developers.google.com/maps/documentation/javascript/get-api-key
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                			- Generate Map Id: https://console.cloud.google.com/google/maps-apis/studio/maps
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                			- Use https://www.latlong.net/convert-address-to-lat-long.html to get Latitude and Longitude of a specific address
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                			*/
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                			Map Markers:
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                			- Get an API Key: https://developers.google.com/maps/documentation/javascript/get-api-key
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                			- Generate Map Id: https://console.cloud.google.com/google/maps-apis/studio/maps
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                			- Use https://www.latlong.net/convert-address-to-lat-long.html to get Latitude and Longitude of a specific address
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                			*/
                 (g => {
                     var h, a, k, p = "The Google Maps JavaScript API",
                         c = "google",
@@ -774,4 +1196,3 @@
 </body>
 
 </html>
-
