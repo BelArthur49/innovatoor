@@ -1,0 +1,56 @@
+@import "mixins";
+
+/* General */
+:root {
+	--border-radius: @border-radius;
+	--border-radius2x: @border-radius2x;
+	--default: #777;
+}
+
+/* Skin Colors */
+:root {
+
+	.for(@colors-list); .-each(@value) {
+		@name:  extract(@value, 1);
+		@color:  extract(@value, 2);
+
+		--@{name}: @color;
+		--@{name}-100: darken(@color, 5%);
+		--@{name}-200: darken(@color, 7.5%);
+		--@{name}-300: darken(@color, 10%);
+		--@{name}--100: lighten(@color, 5%);
+		--@{name}--200: lighten(@color, 7.5%);
+		--@{name}--300: lighten(@color, 10%);
+		--@{name}-rgba-0: fade(@color, 0%);
+		--@{name}-rgba-10: fade(@color, 10%);
+		--@{name}-rgba-20: fade(@color, 20%);
+		--@{name}-rgba-30: fade(@color, 30%);
+		--@{name}-rgba-40: fade(@color, 40%);
+		--@{name}-rgba-50: fade(@color, 50%);
+		--@{name}-rgba-60: fade(@color, 60%);
+		--@{name}-rgba-70: fade(@color, 70%);
+		--@{name}-rgba-80: fade(@color, 80%);
+		--@{name}-rgba-90: fade(@color, 90%);
+	}
+}
+
+/* Skin Colors - Inverse */
+:root {
+	.for(@colors-list); .-each(@value) {
+		@name:  extract(@value, 1);
+		@color:  extract(@value, 2);
+		@color-inverse:  extract(@value, 3);
+
+		--@{name}-inverse: @color-inverse;
+	}
+}
+
+/* Grey Colors */
+:root {
+	.for(@colors-list-grey); .-each(@value) {
+		@name:  extract(@value, 1);
+		@color:  extract(@value, 2);
+
+		--@{name}: @color;
+	}
+}

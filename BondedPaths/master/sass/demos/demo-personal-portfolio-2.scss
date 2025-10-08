@@ -1,0 +1,113 @@
+//COMMON IMPORTS
+@import "../config/imports";
+
+// Header
+.custom-perspective {
+	perspective: 1000px;
+}
+
+// Available
+.custom-available-bullet {
+	padding-left: 18px;
+	position: relative;
+	&:before {
+		animation: blinker 1s linear infinite;
+		content: '';
+		position: absolute;
+		width: 12px;
+		height: 12px;
+		top: 3px;
+		left: 0;
+		display: block;
+		border-radius: 100%;
+		background-color: #39b54a;
+	}
+}
+
+@keyframes blinker {
+	50% {
+		opacity: 0.4;
+	}
+}
+
+// Custom Hero
+.custom-hero-font-1 {
+	font-size: calc(40px + 50 * ((100vw - 300px) / (1200 - 300)));
+	line-height: calc(40px + 50 * ((100vw - 300px) / (1200 - 300)));
+	text-transform: uppercase;
+}
+
+// Custom Border Bottom
+.custom-border-bottom-1 {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);;
+}
+
+.custom-border-bottom-2 {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);;
+}
+
+// Custom Hero Text
+.custom-hero-text-1 {
+	padding: 0 0 0 15px;
+	display: block;
+	max-width: 430px;
+	font-size: 1.3rem;
+	line-height: 1.7;
+	margin: 0;
+	@media (max-width: 1200px) {
+		font-size: 1rem;
+	}
+	@media (max-width: 991px) {
+		max-width: 95%;
+	}
+}
+
+.custom-stroke-text-effect-1 {
+	-webkit-text-fill-color: transparent;
+	-webkit-text-stroke-width: 1.5px;
+	-webkit-text-stroke-color: var(--dark);
+	white-space: nowrap;
+}
+
+.custom-stroke-text-effect-2 {
+	-webkit-text-fill-color: transparent;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: var(--light);
+	white-space: nowrap;
+}
+
+// Custom Hero Img
+.custom-hero-img-1 {
+	max-width: 100px;
+	max-height: 100px;
+	margin: 15px;
+}
+
+// Custom Footer
+.custom-footer-font-1 {
+	font-size: calc(40px + 50 * ((100vw - 300px) / (1200 - 300)));
+	line-height: calc(40px + 50 * ((100vw - 300px) / (1200 - 300)));
+	text-transform: uppercase;
+	em {
+		padding: 0 40px;
+		border-radius: 20px;
+		font-style: normal;
+		zoom: 0.52;
+		position: relative;
+		top: -40px;
+	}
+}
+
+// Custom Footer Img
+.custom-footer-img-1 {
+	max-width: 100px;
+	max-height: 100px;
+	margin: 15px;
+}
+
+// Custom Disable Scroll Mobile
+.custom-disable-scroll-mobile-1 {
+	@media (max-width: 991px) {
+		transform: none !important;
+	}
+}

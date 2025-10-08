@@ -1,0 +1,9 @@
+/* Tables */
+.table {
+	td, th {
+		border-color: rgba(0, 0, 0, 0.06);
+	}
+	&>:not(:first-child) {
+	    border-top-color: rgba(0, 0, 0, 0.06);
+	}
+}

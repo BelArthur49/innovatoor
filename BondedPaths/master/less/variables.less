@@ -1,0 +1,37 @@
+// =============================================================================
+// BORDERS
+// =============================================================================
+
+@border-radius: 4px;
+@border-radius2x: (@border-radius + @border-radius);
+
+// =============================================================================
+// COLORS
+// =============================================================================
+
+@color-primary: #0088CC;
+@color-primary-inverse: contrast(@color-primary, #777, #FFF);
+
+@color-secondary: #e36159;
+@color-secondary-inverse: contrast(@color-secondary, #777, #FFF);
+
+@color-tertiary: #2BAAB1;
+@color-tertiary-inverse: contrast(@color-tertiary, #777, #FFF);
+
+@color-quaternary: #383f48;
+@color-quaternary-inverse: contrast(@color-quaternary, #777, #FFF);
+
+@color-dark: #212529;
+@color-dark-inverse: #FFF;
+
+@color-light: #FFF;
+@color-light-inverse: #777;
+
+@color-grey: #969696;
+@color-light-grey: #f4f4f4;
+
+// colors list
+@colors-list: primary @color-primary @color-primary-inverse, secondary @color-secondary @color-secondary-inverse, tertiary @color-tertiary @color-tertiary-inverse, quaternary @color-quaternary @color-quaternary-inverse, dark @color-dark @color-dark-inverse, light @color-light @color-light-inverse;
+
+// colors list grey
+@colors-list-grey: grey @color-grey, grey-100 @color-light-grey, grey-200 darken(@color-light-grey, 4%), grey-300 darken(@color-light-grey, 6%), grey-400 darken(@color-light-grey, 8%), grey-500 darken(@color-light-grey, 10%), grey-600 darken(@color-light-grey, 15%), grey-700 darken(@color-light-grey, 20%), grey-800 darken(@color-light-grey, 30%), grey-900 darken(@color-light-grey, 40%), grey-1000 darken(@color-light-grey, 50%);

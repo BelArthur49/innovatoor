@@ -1,0 +1,24 @@
+// TYPOGRAPHY
+// ---------------------------------------------------------------
+$font-primary: "Poppins", Arial, sans-serif;
+$font-secondary: "Shadows Into Light", cursive;
+$font-tertiary: "Oswald", sans-serif;
+
+$body-font-size: 14;
+$root-font-size: 10;
+$body-line-height: 26;
+
+// COLORS
+// ---------------------------------------------------------------
+
+// Color List
+$colors-list: (primary var(--primary)), (secondary var(--secondary)), (tertiary var(--tertiary)), (quaternary var(--quaternary)), (dark var(--dark)), (light var(--light));
+
+// Grid Breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
