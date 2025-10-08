@@ -9,6 +9,7 @@
 
     <title>Le Garni</title>
 
+<<<<<<< HEAD
     <meta name="keywords" content="WebSite Template" />
     <meta name="description" content="Le GARNI">
     <meta name="author" content="okler.net">
@@ -16,6 +17,15 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+=======
+    <meta name="keywords" content="Le garni website" />
+    <meta name="description" content="Le GARNI">
+
+
+    <!-- Favicon 
+    <link rel="shortcut icon" href="img/" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">-->
+>>>>>>> c224003a120b113992fbea31a0baa18fe88b6b17
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
@@ -48,12 +58,363 @@
     <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
 
+<<<<<<< HEAD
+=======
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .gallery-container {
+            background: rgb(255, 255, 255);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-title {
+            text-align: center;
+            color: rgb(5, 0, 0);
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(16, 10, 87, 0.3);
+        }
+        
+        .gallery-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .gallery-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            gap: 20px;
+            padding: 20px 0;
+        }
+        
+        .gallery-item {
+            flex: 0 0 300px;
+            position: relative;
+            cursor: pointer;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(27, 1, 1, 0.3);
+            filter: brightness(1.1);
+            border: 3px solid rgba(8, 0, 0, 0.8);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            filter: brightness(0.9);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+            background: linear-gradient(transparent, rgb(255, 255, 255));
+        }
+        
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .nav-button:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .nav-prev {
+            left: 20px;
+        }
+        
+        .nav-next {
+            right: 20px;
+        }
+        
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            max-width: 50%;
+            max-height: 50%;
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        
+        .modal-card h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .modal-card p {
+            color: rgba(17, 17, 10, 0.4);
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+        
+        .gallery-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+        
+        .mantis-section {
+            position: relative;
+            width: 80%;
+            height: 60vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        
+        .mantis-section .overlay {
+            background-color: black;
+            color: white;
+            padding: 40px;
+            max-width: 500px;
+            margin: 20px;
+            margin-right: -250px;
+            /* desktop look */
+            margin-bottom: -80px;
+        }
+        
+        .mantis-section .overlay h2 {
+            font-style: italic;
+            margin-top: 0;
+            color: white;
+        }
+        
+        .mantis-section .overlay h3 {
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-top: 0;
+            margin-bottom: 40px;
+            font-style: normal;
+            text-transform: lowercase;
+        }
+        
+        .mantis-section .overlay p {
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .mantis-section .overlay a {
+            color: white;
+            font-weight: 500;
+            text-decoration: underline;
+        }
+        /* Mobile adjustments */
+        
+         @media (max-width: 768px) {
+            .mantis-section {
+                width: 100%;
+                height: auto;
+                justify-content: center;
+                padding: 20px;
+                flex-direction: column;
+                /* stack image and overlay vertically */
+            }
+            .mantis-section .overlay {
+                margin: 0;
+                max-width: 90%;
+                padding: 10px;
+                background-color: rgba(0, 0, 0, 0.5);
+                /* make overlay semi-transparent */
+                color: white;
+                position: relative;
+                /* ensure it doesn't overlap image weirdly */
+            }
+            .mantis-section img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+        }
+    </style>
+    <header id="header" class="header-transparent header-transparent-dark-bottom-border header-transparent-dark-bottom-border-1 header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': false, 'stickyChangeLogo': true, 'stickyStartAt': 30, 'stickyHeaderContainerHeight': 70}">
+        <div class="header-body border-top-0 bg-dark box-shadow-none">
+            <div class="header-container container">
+                <div class="header-row">
+                    <div class="header-column d-lg-none">
+                        <div class="header-row">
+                            <h1 class="font-weight-semibold text-7 mb-0"><a href="index.html" class="text-decoration-none text-color-light custom-primary-font">Hotel " Le GARNI " Kigali</a></h1>
+                        </div>
+                    </div>
+                    <div class="header-column">
+                        <div class="header-row justify-content-end">
+                            <div class="header-nav header-nav-links header-nav-dropdowns-dark header-nav-light-text justify-content-center">
+                                <div class="header-nav-main header-nav-main-mobile-dark header-nav-main-square header-nav-main-dropdown-no-borders header-nav-main-effect-2 header-nav-main-sub-effect-1">
+                                    <nav class="collapse">
+                                        <ul class="nav nav-pills" id="mainNav">
+                                            <li>
+                                                <a data-hash class="dropdown-item active" style="font-size: 40px; text-transform: none;" href="#home">Hotel "Le GARNI" Kigali</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="68" href="#aboutus">About Us</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="68" href="#ourservices">Our Services</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="68" href="#hours">Hours</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="68" href="#prices">Prices</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="68" href="#footer">Contact Us</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="position-absolute bottom-0 left-50pct transform3dx-n50">
+                                    <a href="#aboutus" data-hash data-hash-offset="0" data-hash-offset-lg="68" class="d-block text-decoration-none text-color-light appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="3000" data-plugin-options="{'minWindowWidth': 0, 'forceAnimation': true, 'accY': 200}">
+                                        <i class="icons icon-arrow-down p-events-none"></i>
+                                    </a>
+                                </div>
+                                <button class="btn header-btn-collapse-nav" data-bs-toggle="collapse" data-bs-target=".header-nav-main nav">
+                                        	<i class="fas fa-bars"></i>
+                                        </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+>>>>>>> c224003a120b113992fbea31a0baa18fe88b6b17
 </head>
 
 <body data-plugin-scroll-spy data-plugin-options="{'target': '#header'}">
 
     <div class="body">
         <div id="home" class="owl-carousel owl-carousel-light owl-carousel-light-init-fadeIn owl-theme manual dots-inside dots-horizontal-center show-dots-hover show-dots-xs dots-light nav-style-1 nav-inside nav-inside-plus nav-light nav-md nav-font-size-md show-nav-hover mb-0"
+<<<<<<< HEAD
             data-plugin-options="{'autoplayTimeout': 7000}" style="height: 100vh;">
             <div class="owl-stage-outer">
                 <div class="owl-stage">
@@ -127,6 +488,17 @@
                         </div>
                     </div>
 
+=======
+            data-plugin-options="{'autoplayTimeout': 2500}" style="height: 95vh;">
+            <div class="owl-stage-outer">
+                <div class="owl-stage">
+                    <div class="owl-item position-relative" style="background-image: url(img/demos/coffee/slides/slide-1.jpg); background-size: cover; background-position: center;">
+                    </div>
+                    <div class="owl-item position-relative" style="background-image: url(img/demos/coffee/slides/slide-2.jpg); background-size: cover; background-position: center;">
+                    </div>
+                    <div class="owl-item position-relative" style="background-image: url(img/demos/coffee/slides/slide-3.jpg); background-size: cover; background-position: center;">
+                    </div>
+>>>>>>> c224003a120b113992fbea31a0baa18fe88b6b17
                 </div>
             </div>
             <div class="owl-nav">
@@ -134,6 +506,7 @@
                 <button type="button" role="presentation" class="owl-next" aria-label="Next"></button>
             </div>
         </div>
+<<<<<<< HEAD
         <header id="header" class="header-transparent header-transparent-dark-bottom-border header-transparent-dark-bottom-border-1 header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': false, 'stickyChangeLogo': true, 'stickyStartAt': 30, 'stickyHeaderContainerHeight': 70}">
             <div class="header-body border-top-0 bg-dark box-shadow-none">
                 <div class="header-container container">
@@ -185,6 +558,12 @@
                 </div>
             </div>
         </header>
+=======
+
+
+
+
+>>>>>>> c224003a120b113992fbea31a0baa18fe88b6b17
 
 
         <div role="main" class="main">
@@ -228,6 +607,7 @@
                 </div>
             </div>
 
+<<<<<<< HEAD
             <section class="section section-parallax section-height-4 overlay overlay-show overlay-op-7 border-0 m-0 appear-animation" data-appear-animation="fadeIn" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'parallaxHeight': '129%'}" data-image-src="img/demos/barber/backgrounds/background-1.jpg">
                 <div class="container mb-4">
                     <div class="row justify-content-center">
@@ -245,6 +625,23 @@
                     </div>
                 </div>
             </section>
+=======
+            <!-- First section -->
+            <div class="mantis-section" style="background-image: url('img/demos/barber/backgrounds/background-2.jpg');">
+                <div class="overlay">
+                    <h2>Standard Room
+                    </h2>
+                    <h3>Our roms are just steps away from the water, combining comfort and convenience. With a king-size bed, en-suite bathroom, and a cozy seating area, they’re designed to make you feel at home while enjoying the pool right in front of you</h3>
+                    <p>
+
+                    </p>
+
+                </div>
+            </div>
+
+
+
+>>>>>>> c224003a120b113992fbea31a0baa18fe88b6b17
 
             <div id="ourservices" class="container py-5 my-5">
                 <div class="row mt-4 mb-5">
@@ -277,6 +674,7 @@
                 </div>
             </div>
 
+<<<<<<< HEAD
             <section class="section section-parallax section-height-5 overlay overlay-show overlay-op-7 border-0 m-0 appear-animation" data-appear-animation="fadeIn" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'parallaxHeight': '138%'}" data-image-src="img/demos/barber/backgrounds/background-2.jpg">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -287,6 +685,21 @@
                     </div>
                 </div>
             </section>
+=======
+            <!-- Second section -->
+            <div class="mantis-section" style="background-image: url('img/demos/IMG_4079.JPG');">
+                <div class="overlay">
+                    <h2>Breakfast Dining
+
+                    </h2>
+                    <h3>Our breakfast is served in a warm, light-filled space where wooden accents and fresh details create a homely feel. Guests get to enjoy freshly prepared meals each morning with views that make the start of the day even more special.</h3>
+                    <p>
+
+                    </p>
+
+                </div>
+            </div>
+>>>>>>> c224003a120b113992fbea31a0baa18fe88b6b17
 
             <section id="hours" class="section section-height-4 bg-light position-relative border-0 m-0">
                 <div class="container">
@@ -352,6 +765,7 @@
                 </div>
             </section>
 
+<<<<<<< HEAD
             <section class="section section-parallax section-height-4 overlay overlay-show overlay-op-7 border-0 m-0 appear-animation" data-appear-animation="fadeIn" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'parallaxHeight': '129%'}" data-image-src="img/demos/barber/backgrounds/background-3.jpg">
                 <div class="container mb-4">
                     <div class="row justify-content-center">
@@ -369,6 +783,22 @@
                     </div>
                 </div>
             </section>
+=======
+            <!-- Second section -->
+            <div class="mantis-section" style="background-image: url('img/demos/IMG_4071.JPG');">
+                <div class="overlay">
+                    <h2>Swimming Pool
+
+
+                    </h2>
+                    <h3>Our swimming pool is the perfect place to relax and refresh. Surrounded by greenery and open skies, it offers a peaceful escape whether you want a quiet swim, a sunny afternoon, or simply a moment of calm by the water.</h3>
+                    <p>
+
+                    </p>
+
+                </div>
+            </div>
+>>>>>>> c224003a120b113992fbea31a0baa18fe88b6b17
 
             <section id="prices" class="section section-height-4 bg-light border-0 position-relative m-0">
                 <div class="custom-circle-pos-1 position-absolute z-index-1 top-0 left-0 appear-animation" data-appear-animation="fadeInRightShorter" data-plugin-options="{'accY': -500}">
@@ -552,6 +982,7 @@
             </section>
 
 
+<<<<<<< HEAD
             <div class="container-fluid px-0">
                 <div class="row">
                     <div class="col-6 col-sm-4 col-lg-2 px-0">
@@ -583,10 +1014,293 @@
                         <a class="img-thumbnail img-thumbnail-no-borders d-block img-thumbnail-hover-icon lightbox" href="img/demos/coffee/others/others-7.jpg" data-plugin-options="{'type':'image'}">
                             <img class="img-fluid rounded-0" src="img/demos/coffee/others/others-7.jpg" alt="Project Image">
                         </a>
+=======
+
+
+
+            <!--Pictures-->
+
+            <div class="gallery-container">
+                <h1 class="gallery-title">Image Gallery</h1>
+
+                <div class="gallery-wrapper">
+                    <div class="gallery-track" id="galleryTrack">
+                        <div class="gallery-item" data-index="0">
+                            <img src="img/demos/coffee/others/others-1.jpg" alt="Hotel LE GARNI">
+                            <div class="gallery-overlay">
+                                <h4>Hotel LE GARNI</h4>
+                                <h5>Break Fast</h5>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-index="1">
+                            <img src="img/demos/coffee/others/others-2.jpg" alt="Forest Path">
+                            <div class="gallery-overlay">
+                                <h4>Hotel LE GARNI</h4>
+                                <h5>Swimming Pool</h5>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-index="2">
+                            <img src="img/demos/coffee/others/others-3.jpg" alt="Ocean Sunset">
+                            <div class="gallery-overlay">
+                                <h4>Hotel LE GARNI</h4>
+                                <h5>Rooms</h5>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-index="3">
+                            <img src="img/demos/coffee/others/others-4.jpg" alt="Mountain Peak">
+                            <div class="gallery-overlay">
+                                <h4>Hotel LE GARNI</h4>
+                                <h5>Fresh Coffee</h5>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-index="4">
+                            <img src="img/demos/coffee/others/others-5.jpg" alt="Forest Stream">
+                            <div class="gallery-overlay">
+                                <h4>Hotel LE GARNI</h4>
+                                <h5>Outside Areas</h5>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-index="5">
+                            <img src="img/demos/coffee/others/others-6.jpg" alt="Coastal Cliffs">
+                            <div class="gallery-overlay">
+                                <h4>Hotel LE GARNI</h4>
+                                <h5>Break Fast</h5>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item" data-index="5">
+                            <img src="img/demos/coffee/others/others-7.jpg">
+                            <div class="gallery-overlay">
+                                <h4>Hotel LE GARNI</h4>
+                                <h5>Rooms with views</h5>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <button class="nav-button nav-prev" id="prevBtn">❮</button>
+                    <button class="nav-button nav-next" id="nextBtn">❯</button>
+                </div>
+
+                <div class="gallery-dots" id="galleryDots"></div>
+            </div>
+
+            <div class="modal" id="imageModal">
+                <div class="modal-content">
+                    <button class="modal-close" id="modalClose">×</button>
+                    <img class="modal-image" id="modalImage" src="img/demos/coffee/slides/slide-3.jpg" alt="">
+                    <div class="modal-card">
+                        <h3 id="modalTitle">Image Title</h3>
+                        <p id="modalDescription">Image description goes here.</p>
+                        <p><strong></strong> <span id="modalCategory">Nature</span></p>
+                        <p><strong></strong> <span id="modalLocation">Unknown</span></p>
+>>>>>>> c224003a120b113992fbea31a0baa18fe88b6b17
                     </div>
                 </div>
             </div>
 
+<<<<<<< HEAD
+=======
+            <script>
+                class ImageGallery {
+                    constructor() {
+                        this.track = document.getElementById('galleryTrack');
+                        this.items = document.querySelectorAll('.gallery-item');
+                        this.prevBtn = document.getElementById('prevBtn');
+                        this.nextBtn = document.getElementById('nextBtn');
+                        this.modal = document.getElementById('imageModal');
+                        this.modalImage = document.getElementById('modalImage');
+                        this.modalTitle = document.getElementById('modalTitle');
+                        this.modalDescription = document.getElementById('modalDescription');
+                        this.modalCategory = document.getElementById('modalCategory');
+                        this.modalLocation = document.getElementById('modalLocation');
+                        this.modalClose = document.getElementById('modalClose');
+                        this.dotsContainer = document.getElementById('galleryDots');
+
+                        this.currentIndex = 0;
+                        this.itemWidth = 320; // 300px + 20px gap
+                        this.visibleItems = this.getVisibleItems();
+
+                        this.imageData = [{
+                            src: "img/demos/IMG_4010.JPG",
+                            title: "Break Fast",
+                            description: "Our breakfast is served in a warm, light-filled space where wooden accents and fresh details create a homely feel.",
+
+                        }, {
+                            src: "img/demos/IMG_4071.JPG",
+                            title: "Swimming pool",
+                            description: "Surrounded by greenery and open skies, it offers a peaceful escape whether you want a quiet swim, a sunny afternoon, or simply a moment of calm by the water.",
+                        }, {
+                            src: "img/demos/IMG_4103.JPG",
+                            title: "Rooms",
+                            description: "Our roms are just steps away from the water, combining comfort and convenience. With a king-size bed, en-suite bathroom, and a cozy seating area, they’re designed to make you feel at home while enjoying the pool right in front of you.",
+                        }, {
+                            src: "img/demos/IMG_4046.JPG",
+                            title: "Fresh Coffee",
+                            description: "A quiet corner, fresh coffee and maybe your favorite book? This is the ideal place to spend your morning and it is waiting for you!",
+                        }, {
+                            src: "img/demos/IMG_4013.JPG",
+                            title: "Outside Areas",
+                            description: "Dive into pure relaxation wether you are starting the day or unwinding under the sun, this is the ideal place to spend your day.",
+                        }, {
+                            src: "img/demos/others-2.JPG",
+                            title: "Breakfast",
+                            description: "Breakfast at Le Garni is simple, fresh, and just what you need to start the day right.",
+                        }, {
+                            src: "img/demos/IMG_garni.JPG",
+                            title: "Rooms with views",
+                            description: "You deserve mornings with views like this and a peace like this",
+                        }];
+
+                        this.init();
+                    }
+
+                    init() {
+                        this.createDots();
+                        this.updateDots();
+                        this.bindEvents();
+                        this.updateNavigation();
+
+                        // Auto-slide functionality
+                        this.startAutoSlide();
+                    }
+
+                    bindEvents() {
+                        this.prevBtn.addEventListener('click', () => this.prev());
+                        this.nextBtn.addEventListener('click', () => this.next());
+
+                        this.items.forEach((item, index) => {
+                            item.addEventListener('click', () => this.openModal(index));
+                        });
+
+                        this.modalClose.addEventListener('click', () => this.closeModal());
+                        this.modal.addEventListener('click', (e) => {
+                            if (e.target === this.modal) this.closeModal();
+                        });
+
+                        document.addEventListener('keydown', (e) => {
+                            if (e.key === 'Escape') this.closeModal();
+                            if (e.key === 'ArrowLeft') this.prev();
+                            if (e.key === 'ArrowRight') this.next();
+                        });
+
+                        window.addEventListener('resize', () => {
+                            this.visibleItems = this.getVisibleItems();
+                            this.updatePosition();
+                            this.updateNavigation();
+                        });
+                    }
+
+                    getVisibleItems() {
+                        const containerWidth = this.track.parentElement.offsetWidth;
+                        return Math.floor(containerWidth / this.itemWidth);
+                    }
+
+                    createDots() {
+                        const maxIndex = Math.max(0, this.items.length - this.visibleItems);
+                        this.dotsContainer.innerHTML = '';
+
+                        for (let i = 0; i <= maxIndex; i++) {
+                            const dot = document.createElement('div');
+                            dot.className = 'dot';
+                            dot.addEventListener('click', () => this.goToSlide(i));
+                            this.dotsContainer.appendChild(dot);
+                        }
+                    }
+
+                    updateDots() {
+                        const dots = this.dotsContainer.querySelectorAll('.dot');
+                        dots.forEach((dot, index) => {
+                            dot.classList.toggle('active', index === this.currentIndex);
+                        });
+                    }
+
+                    prev() {
+                        if (this.currentIndex > 0) {
+                            this.currentIndex--;
+                            this.updatePosition();
+                            this.updateDots();
+                            this.updateNavigation();
+                        }
+                    }
+
+                    next() {
+                        const maxIndex = Math.max(0, this.items.length - this.visibleItems);
+                        if (this.currentIndex < maxIndex) {
+                            this.currentIndex++;
+                            this.updatePosition();
+                            this.updateDots();
+                            this.updateNavigation();
+                        }
+                    }
+
+                    goToSlide(index) {
+                        this.currentIndex = index;
+                        this.updatePosition();
+                        this.updateDots();
+                        this.updateNavigation();
+                    }
+
+                    updatePosition() {
+                        const translateX = -this.currentIndex * this.itemWidth;
+                        this.track.style.transform = `translateX(${translateX}px)`;
+                    }
+
+                    updateNavigation() {
+                        const maxIndex = Math.max(0, this.items.length - this.visibleItems);
+                        this.prevBtn.style.opacity = this.currentIndex === 0 ? '0.5' : '1';
+                        this.nextBtn.style.opacity = this.currentIndex === maxIndex ? '0.5' : '1';
+                        this.prevBtn.style.pointerEvents = this.currentIndex === 0 ? 'none' : 'all';
+                        this.nextBtn.style.pointerEvents = this.currentIndex === maxIndex ? 'none' : 'all';
+                    }
+
+                    openModal(index) {
+                        const data = this.imageData[index];
+                        this.modalImage.src = data.src;
+                        this.modalTitle.textContent = data.title;
+                        this.modalDescription.textContent = data.description;
+                        this.modalCategory.textContent = data.category;
+                        this.modalLocation.textContent = data.location;
+
+                        this.modal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+
+                    closeModal() {
+                        this.modal.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+
+                    startAutoSlide() {
+                        setInterval(() => {
+                            const maxIndex = Math.max(0, this.items.length - this.visibleItems);
+                            if (this.currentIndex < maxIndex) {
+                                this.next();
+                            } else {
+                                this.currentIndex = 0;
+                                this.updatePosition();
+                                this.updateDots();
+                                this.updateNavigation();
+                            }
+                        }, 4000);
+                    }
+                }
+
+                // Initialize gallery when DOM is loaded
+                document.addEventListener('DOMContentLoaded', () => {
+                    new ImageGallery();
+                });
+            </script>
+
+            <!--footer-->
+
+>>>>>>> c224003a120b113992fbea31a0baa18fe88b6b17
 
             <footer id="footer" class="border-0 bg-dark mt-0">
                 <div class="container-fluid px-0">
@@ -600,7 +1314,11 @@
                                     <img src="img/demos/barber/bar-sm.png" class="img-fluid position-relative bottom-2 d-none d-xl-inline-block" alt="" />
                                     <span class="text-color-light font-weight-semibold text-4 mx-2">A few steps from the City-Centre</span>
                                     <img src="img/demos/barber/bar-sm.png" class="img-fluid position-relative bottom-2 d-none d-xl-inline-block" alt="" />
+<<<<<<< HEAD
                                     <h2 class="font-weight-semibold text-color-light line-height-1 custom-fs-2 ls-0 mb-3">LE GARNI</h2>
+=======
+                                    <h6 class="font-weight-semibold text-color-light line-height-1 custom-fs-2 ls-0 mb-3, text-transform: none;">Hotel "Le GARNI" Kigali</h6>
+>>>>>>> c224003a120b113992fbea31a0baa18fe88b6b17
                                     <div class="bg-primary d-inline-flex custom-side-dots custom-side-dots-outside py-2 px-4">
                                         <span class="text-color-light">KIGALI</span>
                                         <span class="vertical-divider mx-3 border-color-light opacity-3 my-1"></span>
@@ -625,6 +1343,7 @@
                         <div class="row py-4">
                             <div class="col-12 text-center">
                                 <ul class="social-icons social-icons-clean social-icons-icon-light mb-2">
+<<<<<<< HEAD
                                     <li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
                                     <li class="social-icons-x mx-3"><a href="http://www.x.com/" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a></li>
                                     <li class="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
@@ -632,6 +1351,27 @@
                             </div>
                             <div class="col-12 text-center">
                                 <p class="text-color-light font-weight-light opacity-4 mb-0">Copyrights © 2025 Developed By Innovatoor</p>
+=======
+                                    <li class="social-icons-facebook">
+                                        <a href="https://www.facebook.com/people/Hotel-Legarni/61579291836038/?mibextid=wwXIfr&rdid=wJwg8WFNEHok5AAT&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19mdLY5XCv%2F%3Fmibextid%3DwwXIfr" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                    </li>
+                                    <li class="social-icons-instagram mx-3"><a href="http://www.x.com/" target="_blank" title="X"><i class="fab fa-instagram"></i></a></li>
+                                    <li class="social-icons-tiktok">
+                                        <a href="https://www.tiktok.com/@hotel.le.garni?_t=ZM-8zaCtj87QIC&_r=1" target="_blank" title="TikTok">
+                                            <i class="fab fa-tiktok"></i>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="col-12 text-center">
+                                <p class="text-white font-light opacity-60 mb-0 text-sm">
+                                    Copyrights © 2025 Developed By
+                                    <a href="https://innovatoor.com/" target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors duration-200">
+                Innovatoor
+            </a>
+                                </p>
+>>>>>>> c224003a120b113992fbea31a0baa18fe88b6b17
                             </div>
                         </div>
                     </div>
@@ -659,11 +1399,19 @@
             <!-- Google Maps -->
             <script>
                 /* 
+<<<<<<< HEAD
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 			Map Markers:
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 			- Get an API Key: https://developers.google.com/maps/documentation/javascript/get-api-key
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 			- Generate Map Id: https://console.cloud.google.com/google/maps-apis/studio/maps
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 			- Use https://www.latlong.net/convert-address-to-lat-long.html to get Latitude and Longitude of a specific address
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 			*/
+=======
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                			Map Markers:
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                			- Get an API Key: https://developers.google.com/maps/documentation/javascript/get-api-key
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                			- Generate Map Id: https://console.cloud.google.com/google/maps-apis/studio/maps
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                			- Use https://www.latlong.net/convert-address-to-lat-long.html to get Latitude and Longitude of a specific address
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                			*/
+>>>>>>> c224003a120b113992fbea31a0baa18fe88b6b17
                 (g => {
                     var h, a, k, p = "The Google Maps JavaScript API",
                         c = "google",
@@ -760,4 +1508,13 @@
     </div>
 </body>
 
+<<<<<<< HEAD
 </html>
+=======
+</html>
+
+
+
+
+
+>>>>>>> c224003a120b113992fbea31a0baa18fe88b6b17
