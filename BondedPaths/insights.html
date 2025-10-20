@@ -2,27 +2,14 @@
 <html lang="en" class="light">
 
 <head>
-
-    <!-- Basic -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Bonded paths</title>
-
     <meta name="keywords" content="WebSite Template" />
     <meta name="description" content="Bonded Paths">
-
-    <!-- Favicon -->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-
-    <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
-
-    <!-- Web Fonts  -->
     <link id="googleFonts" href="https://fonts.googleapis.com/css?family=family=Lora:400,400i,700,700i|Poppins:300,400,500,600,700,800,900&display=swap" rel="stylesheet" type="text/css">
-
-    <!-- Vendor CSS -->
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="vendor/animate/animate.compat.css">
@@ -30,26 +17,285 @@
     <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.min.css">
-
-    <!-- Theme CSS -->
     <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/theme-elements.css">
     <link rel="stylesheet" href="css/theme-blog.css">
     <link rel="stylesheet" href="css/theme-shop.css">
-
-    <!-- Demo CSS -->
     <link rel="stylesheet" href="css/demos/demo-digital-agency-2.css">
-
-    <!-- Skin CSS -->
     <link id="skinCSS" rel="stylesheet" href="css/skins/skin-digital-agency-2.css">
-
-    <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
 
+    <style>
+        /* Enhanced Typography and Layout Styles */
+        
+        .enhanced-content-wrapper {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .enhanced-content-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(33, 150, 243, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .meta-info {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 25px;
+            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+            margin-bottom: 35px;
+        }
+        
+        .meta-info .meta-item {
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .meta-info .meta-item i {
+            font-size: 14px;
+        }
+        
+        .meta-divider {
+            width: 1px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .enhanced-paragraph {
+            font-size: 17px;
+            line-height: 1.9;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: justify;
+            position: relative;
+            padding-left: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .enhanced-paragraph::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(180deg, #2196F3 0%, #1976D2 100%);
+            border-radius: 2px;
+            transition: height 0.4s ease;
+        }
+        
+        .enhanced-paragraph:hover::before {
+            height: calc(100% - 16px);
+        }
+        
+        .enhanced-paragraph:hover {
+            padding-left: 30px;
+        }
+        
+        .first-letter {
+            font-size: 72px;
+            font-weight: 700;
+            float: left;
+            line-height: 60px;
+            padding-right: 15px;
+            margin-top: 8px;
+            color: #2196F3;
+            font-family: 'Poppins', serif;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border-left: 5px solid #ff9800;
+            padding: 25px 30px;
+            margin: 35px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(255, 152, 0, 0.15);
+            font-style: italic;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #2196F3 0%, #1976D2 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .stat-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .stat-icon {
+            font-size: 36px;
+            color: #2196F3;
+            margin-bottom: 15px;
+        }
+        
+        .stat-title {
+            font-size: 14px;
+            color: #7f8c8d;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        
+        .author-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 50px 0;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .author-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+        
+        .author-card h3 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+        
+        .author-content {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            position: relative;
+        }
+        
+        .author-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+        }
+        
+        .author-info {
+            flex: 1;
+        }
+        
+        .author-name {
+            color: white;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .author-bio {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 15px;
+            line-height: 1.7;
+            margin: 0;
+        }
+        
+        .section-divider {
+            display: flex;
+            align-items: center;
+            margin: 50px 0;
+        }
+        
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, #e0e0e0 50%, transparent 100%);
+        }
+        
+        .section-divider i {
+            margin: 0 20px;
+            color: #2196F3;
+            font-size: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .enhanced-content-wrapper {
+                padding: 30px 20px;
+            }
+            .first-letter {
+                font-size: 52px;
+                line-height: 45px;
+            }
+            .enhanced-paragraph {
+                font-size: 16px;
+                padding-left: 15px;
+            }
+            .author-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
-
     <div class="body">
         <header id="header" class="header-transparent header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': false, 'stickyChangeLogo': false, 'stickyStartAt': 1, 'stickyHeaderContainerHeight': 100}">
             <div class="header-body border-top-0 bg-color-dark box-shadow-none">
@@ -71,34 +317,26 @@
                                         <nav class="collapse">
                                             <ul class="nav nav-pills" id="mainNav">
                                                 <li class="dropdown-primary">
-                                                    <a class="nav-link text-capitalize font-weight-semibold custom-text-3" href="index.html">
-															Home
-														</a>
+                                                    <a class="nav-link text-capitalize font-weight-semibold custom-text-3" href="index.html">Home</a>
                                                 </li>
                                                 <li class="dropdown-primary">
-                                                    <a class="nav-link text-capitalize font-weight-semibold custom-text-3" href="about-us.html">
-															About Us
-														</a>
+                                                    <a class="nav-link text-capitalize font-weight-semibold custom-text-3" href="about-us.html">About Us</a>
                                                 </li>
                                                 <li class="dropdown-primary">
-                                                    <a class="nav-link text-capitalize font-weight-semibold custom-text-3" href="our-services-detail.html">
-															Our Services
-														</a>
+                                                    <a class="nav-link text-capitalize font-weight-semibold custom-text-3" href="our-services-detail.html">Our Services</a>
                                                 </li>
-
-
-                                                
                                                 <li class="dropdown-primary">
-                                                    <a class="nav-link text-capitalize font-weight-semibold custom-text-3" href="contact-us.html">
-															Contact Us
-														</a>
+                                                    <a class="nav-link text-capitalize font-weight-semibold custom-text-3 active" href="our-work-detail.html">Our Work</a>
+                                                </li>
+                                                <li class="dropdown-primary">
+                                                    <a class="nav-link text-capitalize font-weight-semibold custom-text-3" href="contact-us.html">Contact Us</a>
                                                 </li>
                                             </ul>
                                         </nav>
                                     </div>
                                     <button class="btn header-btn-collapse-nav" data-bs-toggle="collapse" data-bs-target=".header-nav-main nav">
-											<i class="fas fa-bars"></i>
-										</button>
+                                        <i class="fas fa-bars"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -117,8 +355,7 @@
         </header>
 
         <div role="main" class="main">
-
-            <section class="page-header page-header-modern page-header-background bg-color-dark p-relative z-index-1 lazyload" data-bg-src="img/demos/digital-agency-2/bg/page-header-bg.jpg">
+            <section class="page-header page-header-modern page-header-background bg-color-dark p-relative z-index-1 lazyload" data-bg-src="img/demos/digital-agency-2/bg/KCC.jpg">
                 <span class="custom-circle custom-circle-1 bg-color-light custom-circle-blur appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="400"></span>
                 <span class="custom-circle custom-circle-2 bg-color-primary appear-animation" data-appear-animation="zoomIn" data-appear-animation-delay="500"></span>
                 <span class="custom-circle custom-circle-3 bg-color-primary appear-animation" data-appear-animation="zoomIn" data-appear-animation-delay="600"></span>
@@ -129,7 +366,7 @@
                                 <li><a href="index.html">Home</a></li>
                                 <li class="active">Our Insights</li>
                             </ul>
-                            <h1 class="custom-text-10 font-weight-bold">Let’s Talk About Rwanda</h1>
+                            <h1 class="custom-text-10 font-weight-bold">Let's Talk About Rwanda</h1>
                         </div>
                     </div>
                 </div>
@@ -139,52 +376,94 @@
                 <div class="row">
                     <div class="col-lg-9 pb-5">
                         <article>
-
-                            <p class="text-uppercase text-1 mb-3 text-color-default"><time pubdate datetime="2025-01-10">Independance 1 July 1962</time> <span class="opacity-3 d-inline-block px-2">|</span> Liberation 4 July 1994 <span class="opacity-3 d-inline-block px-2">|</span> Capital City: Kigali</p>
-
-                            <p style="font-size: 15px;">Rwanda, the Land of a Thousand Hills, is a place where breathtaking beauty meets peace and purpose. Nestled in the heart of Africa, it stands as one of the cleanest, safest, and most organized nations on the continent. The
-                                country’s rolling green hills, volcanic peaks, and misty rainforests create a landscape unlike anywhere else on Earth, home to rare mountain gorillas, playful chimpanzees, and the Big Five safari icons.<br> Rwanda also
-                                leads globally in women’s representation, with over 60% of its parliament seats held by women, proving that progress and equality can coexist with tradition.
-                            </p>
-                            <p style="font-size: 15px;">Beyond its natural wonders, Rwanda holds countless hidden treasures. It’s the only destination where you can trek endangered gorillas in Volcanoes National Park in the morning and enjoy a savannah sunset with lions and rhinos
-                                in Akagera by evening. The annual Kwita Izina ceremony, where newborn gorillas are officially named, captures the country’s deep respect for wildlife conservation and culture. Travelers are often surprised by Rwanda’s modernity
-                                sleek roads, digital services, and drone-powered medical deliveries are part of daily life.<br> Its people radiate optimism, creativity, and resilience, transforming the nation into a beacon of renewal and innovation.</p>
-                            <p style="font-size: 15px;">For visitors, Rwanda offers both luxury and authenticity. From high-end eco-lodges perched on volcanic slopes to tranquil boat rides on Lake Kivu, the country caters to adventurers, conservationists, and first-time African
-                                travelers alike. English, French, Kinyarwanda, and Swahili flow easily across its borders, while the Rwandan Franc (RWF) and USD are widely accepted. Whether you’re sipping world-renowned coffee grown on volcanic soil,
-                                exploring ancient rainforests, or attending a global conference at the Kigali Convention Centre, Rwanda delivers a rare blend of serenity, sophistication, and soul an African story of harmony between people, nature, and
-                                progress.
-                            </p>
-
-
-
-                            <hr class="my-5">
-
-                            <div class="post-block post-author">
-                                <h3 class="text-color-dark text-capitalize font-weight-bold text-5 m-0 mb-3">Author</h3>
-                                <div class="img-thumbnail img-thumbnail-no-borders d-block pb-3">
-                                    <a href="#">
-                                        <img src="img/avatars/avatar.jpg" class="rounded-circle" alt="">
-                                    </a>
+                            <div class="enhanced-content-wrapper">
+                                <div class="meta-info">
+                                    <div class="meta-item">
+                                        <i class="fas fa-flag"></i>
+                                        <span>Independence: 1 July 1962</span>
+                                    </div>
+                                    <div class="meta-divider"></div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-star"></i>
+                                        <span>Liberation: 4 July 1994</span>
+                                    </div>
+                                    <div class="meta-divider"></div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>Capital: Kigali</span>
+                                    </div>
                                 </div>
-                                <p><strong class="name"><a href="#" class="text-4 text-dark pb-2 pt-2 d-block">Chouchou Bucura</a></strong></p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus.</p>
+
+                                <p class="enhanced-paragraph">
+                                    <span class="first-letter">R</span>wanda, the Land of a Thousand Hills, is a place where breathtaking beauty meets peace and purpose. Nestled in the heart of Africa, it stands as one of the cleanest, safest, and most
+                                    organized nations on the continent. The country's rolling green hills, volcanic peaks, and misty rainforests create a landscape unlike anywhere else on Earth, home to rare mountain gorillas, playful chimpanzees, and
+                                    the Big Five safari icons. Rwanda also leads globally in women's representation, with over 60% of its parliament seats held by women, proving that progress and equality can coexist with tradition.
+                                </p>
+
+                                <div class="stats-grid">
+                                    <div class="stat-card">
+                                        <div class="stat-icon"><i class="fas fa-mountain"></i></div>
+                                        <div class="stat-title">Landscape</div>
+                                        <div class="stat-value">1000 Hills</div>
+                                    </div>
+                                    <div class="stat-card">
+                                        <div class="stat-icon"><i class="fas fa-venus"></i></div>
+                                        <div class="stat-title">Women in Parliament</div>
+                                        <div class="stat-value">60%+</div>
+                                    </div>
+                                    <div class="stat-card">
+                                        <div class="stat-icon"><i class="fas fa-paw"></i></div>
+                                        <div class="stat-title">Mountain Gorillas</div>
+                                        <div class="stat-value">Protected</div>
+                                    </div>
+                                </div>
+
+                                <div class="section-divider">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+
+                                <p class="enhanced-paragraph">
+                                    Beyond its natural wonders, Rwanda holds countless hidden treasures. It's the only destination where you can trek endangered gorillas in Volcanoes National Park in the morning and enjoy a savannah sunset with lions and rhinos in Akagera by evening. The
+                                    annual Kwita Izina ceremony, where newborn gorillas are officially named, captures the country's deep respect for wildlife conservation and culture. Travelers are often surprised by Rwanda's modernity sleek roads, digital
+                                    services, and drone-powered medical deliveries are part of daily life. Its people radiate optimism, creativity, and resilience, transforming the nation into a beacon of renewal and innovation.
+                                </p>
+
+                                <div class="highlight-box">
+                                    <p class="mb-0" style="font-size: 16px; color: #e65100; font-weight: 500;">
+                                        <i class="fas fa-quote-left" style="margin-right: 10px;"></i> Rwanda is the only destination where you can trek with gorillas in the morning and watch lions at sunset the same day — a truly unique African experience.
+                                        <i class="fas fa-quote-right" style="margin-left: 10px;"></i>
+                                    </p>
+                                </div>
+
+                                <p class="enhanced-paragraph">
+                                    For visitors, Rwanda offers both luxury and authenticity. From high-end eco-lodges perched on volcanic slopes to tranquil boat rides on Lake Kivu, the country caters to adventurers, conservationists, and first-time African travelers alike. English, French,
+                                    Kinyarwanda, and Swahili flow easily across its borders, while the Rwandan Franc (RWF) and USD are widely accepted. Whether you're sipping world-renowned coffee grown on volcanic soil, exploring ancient rainforests,
+                                    or attending a global conference at the Kigali Convention Centre, Rwanda delivers a rare blend of serenity, sophistication, and soul — an African story of harmony between people, nature, and progress.
+                                </p>
                             </div>
 
-                            <hr class="my-5">
+                            <div class="section-divider">
+                                <i class="fas fa-circle" style="font-size: 8px;"></i>
+                            </div>
 
+                            <div class="author-card">
+                                <h3><i class="fas fa-user-edit" style="margin-right: 10px;"></i>About the Author</h3>
+                                <div class="author-content">
 
+                                    <div class="author-info">
+                                        <strong class="author-name">Chouchou Bucura</strong>
+                                        <p class="author-bio">Passionate travel expert and storyteller dedicated to showcasing the beauty and transformation of Rwanda. With years of experience in tourism and conservation, Chouchou brings authentic insights into East African
+                                            adventures.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </article>
                     </div>
-
                 </div>
             </div>
         </div>
-
-
-
     </div>
-
-    <!--Footer-->
 
     <footer id="footer" class="mt-0 py-5">
         <div class="container py-5">
@@ -192,8 +471,6 @@
                 <div class="col-sm-12 col-lg-6 col-xl-6">
                     <div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="100">
                         <h4 class="custom-font-primary custom-newsletter-title font-weight-bold mb-4 custom-text-7">Start your adventure today with Bonded Paths Safari and Tours, where every journey is made just for you.</h4>
-
-
                     </div>
                 </div>
                 <div class="col-sm-12 col-lg-6 col-xl-4 col-info-footer mt-4 mt-sm-5 mt-lg-0">
@@ -225,7 +502,6 @@
                                                 <li>
                                                     <a class="text-color-hover-primary font-weight-semibold custom-text-2 text-capitalize" href="our-services-detail.html">Our Services</a>
                                                 </li>
-
                                                 <li>
                                                     <a class="text-color-hover-primary font-weight-semibold custom-text-2 text-capitalize" href="contact-us.html">Contact Us</a>
                                                 </li>
@@ -255,22 +531,11 @@
         </div>
     </footer>
 
-    <!-- Vendor -->
     <script src="vendor/plugins/js/plugins.min.js"></script>
-
-    <!-- Theme Base, Components and Settings -->
     <script src="js/theme.js"></script>
-
-    <!-- Current Page Vendor and Views -->
     <script src="js/views/view.contact.js"></script>
-
-    <!-- Theme Custom -->
     <script src="js/custom.js"></script>
-
-    <!-- Theme Initialization Files -->
     <script src="js/theme.init.js"></script>
-
 </body>
-
 
 </html>
