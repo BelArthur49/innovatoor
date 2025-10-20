@@ -1,0 +1,180 @@
+//COMMON IMPORTS
+@import "../config/imports";
+
+.custom-font-primary {
+	font-family: 'Poppins', Arial, sans-serif !important;
+}
+
+.custom-font-secondary {
+	font-family: 'Merriweather', serif !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Merriweather', serif !important;
+}
+
+.bg-color-light-grey {
+	background-color: #F8F8F8 !important;
+}
+
+// Header
+@media (min-width: 992px) {
+	#header {
+		.header-nav-bar {
+			.header-nav-main {
+				#{$left}: -15px;
+				top: -2px;
+				position: relative;
+				nav {
+					> ul {
+						> li {
+							> a {
+								text-transform: none !important;
+								font-size: 0.9rem;
+								font-weight: 600;
+								&:before {
+									height: 2px !important;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#header {
+	.header-nav-bar {
+		border-top: 1px solid #e6e6e6;
+		padding: 3px 0;
+		.simple-search {
+			background: #f4f4f4;
+			padding: 3px 0;
+			input[type="search"]::-webkit-search-decoration,
+			input[type="search"]::-webkit-search-cancel-button,
+			input[type="search"]::-webkit-search-results-button,
+			input[type="search"]::-webkit-search-results-decoration {
+				-webkit-appearance:none;
+			}
+		}
+	}
+	.simple-search {
+		border-radius: 4px !important;
+		.form-control {
+			border-radius: 4px !important;
+		}
+	}
+}
+
+// Slider
+.custom-font-slider-1 {
+	font-size: 46px;
+	line-height: 46px;
+	@media (min-width: 992px) {
+		font-size: 76px;
+		line-height: 76px;
+	}
+}
+
+.custom-font-slider-2 {
+	font-size: 16px;
+	line-height: 20px;
+	letter-spacing: 2px;
+	font-weight: 600;
+	margin: 0 0 5px 0;
+}
+
+// Carousels
+.custom-dots-modern-1 {
+	.owl-dots {
+		margin: 30px 0 0 60px !important;
+	}
+}
+
+// Custom Sort
+.custom-sort-source.sort-source.sort-source-style-3 {
+	flex-direction: column;
+	padding-bottom: 30px;
+	li {
+		&, &.active {
+			a {
+				border-bottom: 1px solid #E7E7E7 !important;
+				border-radius: 0 !important;
+				text-transform: none;
+				font-weight: 600;
+				&:before {
+					font-family: 'Font Awesome 6 Free';
+					font-weight: 900;
+					content: "\f105";
+					display: inline-block;
+					padding-right: 7px;
+					position: relative;
+					top: 1px;
+				}
+			}
+		}
+		&:last-child, &.active:last-child {
+			a {
+				border-bottom: 0 !important;
+			}
+		}
+	}
+}
+
+// Footer
+#footer {
+	background: #222;
+	border: 0;
+	.custom-footer-label-1 {
+	    display: block;
+	    margin: 0;
+	    color: #999;
+	    font-size: 0.75rem;
+	    line-height: 1.2;
+	}
+
+	.custom-footer-strong-1 {
+	    display: block;
+	    margin: 0;
+	    color: var(--dark--200);
+	    font-size: 0.9rem;
+	    line-height: 1.3;
+	}
+
+	.custom-social-icons-style-1 {
+		li {
+			a {
+				font-size: 1.4rem;
+				width: auto;
+				height: auto;
+				line-height: 1.3;
+			}
+			&:hover {
+				a {
+					opacity: 0.8;
+				}
+				&.social-icons-instagram {
+					a {
+						background: none !important;
+					}
+				}
+				&.social-icons-facebook {
+					a {
+						background: none !important;
+					}
+				}
+				&.social-icons-x {
+					a {
+						background: none !important;
+					}
+				}
+			}
+		}
+	}
+
+	.footer-copyright.footer-copyright-style-2 {
+		background: #202020;
+		border: 0;
+	}
+}

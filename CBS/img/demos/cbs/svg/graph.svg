@@ -1,0 +1,81 @@
+<svg version="1.1" style="Poppins, Arial, sans-serif; font-size: 12px;" xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" aria-hidden="false" aria-label="Interactive chart">
+  <defs aria-hidden="true">
+    <clipPath>
+      <rect x="0" y="0" width="346" height="279" fill="none"></rect>
+    </clipPath>
+    <clipPath>
+      <rect x="0" y="0" width="346" height="279" fill="none"></rect>
+    </clipPath>
+  </defs>
+  <rect fill="none" x="44" y="47" width="346" height="279" aria-hidden="true"></rect>
+  <g data-z-index="0" aria-hidden="true"></g>
+  <rect fill="none" data-z-index="1" x="44" y="47" width="346" height="279" aria-hidden="true"></rect>
+  <g data-z-index="1" aria-hidden="true">
+    <path fill="none" stroke-dasharray="none" data-z-index="1" d="M 130.5 47 L 130.5 326" opacity="1"></path>
+    <path fill="none" stroke-dasharray="none" data-z-index="1" d="M 216.5 47 L 216.5 326" opacity="1"></path>
+    <path fill="none" stroke-dasharray="none" data-z-index="1" d="M 303.5 47 L 303.5 326" opacity="1"></path>
+    <path fill="none" stroke-dasharray="none" data-z-index="1" d="M 389.5 47 L 389.5 326" opacity="1"></path>
+    <path fill="none" stroke-dasharray="none" data-z-index="1" d="M 43.5 47 L 43.5 326" opacity="1"></path>
+  </g>
+  <g data-z-index="1" aria-hidden="true">
+    <path fill="none" stroke="#e6e6e6" stroke-width="1" stroke-dasharray="none" data-z-index="1" d="M 44 326.5 L 390 326.5" opacity="1"></path>
+    <path fill="none" stroke="#e6e6e6" stroke-width="1" stroke-dasharray="none" data-z-index="1" d="M 44 140.5 L 390 140.5" opacity="1"></path>
+    <path fill="none" stroke="#e6e6e6" stroke-width="1" stroke-dasharray="none" data-z-index="1" d="M 44 280.5 L 390 280.5" opacity="1"></path>
+    <path fill="none" stroke="#e6e6e6" stroke-width="1" stroke-dasharray="none" data-z-index="1" d="M 44 233.5 L 390 233.5" opacity="1"></path>
+    <path fill="none" stroke="#e6e6e6" stroke-width="1" stroke-dasharray="none" data-z-index="1" d="M 44 187.5 L 390 187.5" opacity="1"></path>
+    <path fill="none" stroke="#e6e6e6" stroke-width="1" stroke-dasharray="none" data-z-index="1" d="M 44 94.5 L 390 94.5" opacity="1"></path>
+    <path fill="none" stroke="#e6e6e6" stroke-width="1" stroke-dasharray="none" data-z-index="1" d="M 44 46.5 L 390 46.5" opacity="1"></path>
+  </g>
+  <g data-z-index="2" aria-hidden="true">
+    <path fill="none" stroke="#ccd6eb" stroke-width="1" data-z-index="7" d="M 44 326.5 L 390 326.5"></path>
+  </g>
+  <g data-z-index="2" aria-hidden="true">
+    <path fill="none" data-z-index="7" d="M 44 47 L 44 326"></path>
+  </g>
+  <g data-z-index="3" aria-hidden="false">
+    <g data-z-index="0.1" opacity="1" transform="translate(44,47) scale(1 1)" clip-path="url(#highcharts-p0h3j3r-49-)" aria-hidden="false" role="region" tabindex="-1" aria-label="Item 2, bar series 1 of 2 with 4 bars." style="outline: none;">
+      <rect x="21.5" y="67.5" width="42" height="67" fill="#999" class="custom-graph-svg-color-primary" stroke="#ffffff" stroke-width="0" opacity="1" tabindex="-1" role="img" aria-label="Category 1, 36. Item 2." style="outline: none;"></rect>
+      <rect x="108.5" y="24.5" width="42" height="147" fill="#999" class="custom-graph-svg-color-primary" stroke="#ffffff" stroke-width="0" opacity="1" tabindex="-1" role="img" aria-label="Category 2, 79. Item 2." style="outline: none;"></rect>
+      <rect x="194.5" y="99.5" width="42" height="128" fill="#999" class="custom-graph-svg-color-primary" stroke="#ffffff" stroke-width="0" opacity="1" tabindex="-1" role="img" aria-label="Category 3, 69. Item 2." style="outline: none;"></rect>
+      <rect x="281.5" y="140.5" width="42" height="72" fill="#999" class="custom-graph-svg-color-primary" stroke="#ffffff" stroke-width="0" opacity="1" tabindex="-1" role="img" aria-label="Category 6, 39. Item 2." style="outline: none;"></rect>
+    </g>
+    <g data-z-index="0.1" opacity="1" transform="translate(44,47) scale(1 1)" clip-path="none" aria-hidden="true"></g>
+    <g data-z-index="0.1" opacity="1" transform="translate(44,47) scale(1 1)" clip-path="url(#highcharts-p0h3j3r-49-)" aria-hidden="false" role="region" tabindex="-1" aria-label="Item 1, bar series 2 of 2 with 4 bars." style="outline: none;">
+      <rect x="21.5" y="134.5" width="42" height="145" fill="#666" class="custom-graph-svg-color-secondary" stroke="#ffffff" stroke-width="0" opacity="1" tabindex="-1" role="img" aria-label="Category 1, 78. Item 1." style="outline: none;"></rect>
+      <rect x="108.5" y="171.5" width="42" height="108" fill="#666" class="custom-graph-svg-color-secondary" stroke="#ffffff" stroke-width="0" opacity="1" tabindex="-1" role="img" aria-label="Category 2, 58. Item 1." style="outline: none;"></rect>
+      <rect x="194.5" y="227.5" width="42" height="52" fill="#666" class="custom-graph-svg-color-secondary" stroke="#ffffff" stroke-width="0" opacity="1" tabindex="-1" role="img" aria-label="Category 3, 28. Item 1." style="outline: none;"></rect>
+      <rect x="281.5" y="212.5" width="42" height="67" fill="#666" class="custom-graph-svg-color-secondary" stroke="#ffffff" stroke-width="0" opacity="1" tabindex="-1" role="img" aria-label="Category 6, 36. Item 1." style="outline: none;"></rect>
+    </g>
+    <g data-z-index="0.1" opacity="1" transform="translate(44,47) scale(1 1)" clip-path="none" aria-hidden="true"></g>
+  </g>
+  <g data-z-index="7" aria-hidden="true" transform="translate(125,359)">
+    <rect fill="none" rx="0" ry="0" x="0" y="0" width="150" height="26"></rect>
+    <g data-z-index="1">
+      <g>
+        <g data-z-index="1" transform="translate(85.029296875,3)">
+          <text font-family='Poppins, Arial, sans-serif' x="21" text-anchor="start" data-z-index="2" y="15" style="color: rgb(51, 51, 51); cursor: pointer; font-size: 12px; font-weight: bold; fill: rgb(51, 51, 51);">Item 2</text>
+          <rect x="2" y="4" width="12" height="12" fill="#999" class="custom-graph-svg-color-primary" rx="6" ry="6" data-z-index="3"></rect>
+        </g>
+        <g data-z-index="1" transform="translate(8,3)">
+          <text font-family='Poppins, Arial, sans-serif' x="21" y="15" text-anchor="start" data-z-index="2" style="color: rgb(51, 51, 51); cursor: pointer; font-size: 12px; font-weight: bold; fill: rgb(51, 51, 51);">Item 1</text>
+          <rect x="2" y="4" width="12" height="12" fill="#666" class="custom-graph-svg-color-secondary" rx="6" ry="6" data-z-index="3"></rect>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g data-z-index="7" aria-hidden="true">
+    <text font-family='Poppins, Arial, sans-serif' x="87.25" text-anchor="middle" transform="translate(0,0)" style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: rgb(102, 102, 102);" y="345" opacity="1">Category 1</text>
+    <text font-family='Poppins, Arial, sans-serif' x="173.75" text-anchor="middle" transform="translate(0,0)" style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: rgb(102, 102, 102);" y="345" opacity="1">Category 2</text>
+    <text font-family='Poppins, Arial, sans-serif' x="260.25" text-anchor="middle" transform="translate(0,0)" style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: rgb(102, 102, 102);" y="345" opacity="1">Category 3</text>
+    <text font-family='Poppins, Arial, sans-serif' x="346.75" text-anchor="middle" transform="translate(0,0)" style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: rgb(102, 102, 102);" y="345" opacity="1">Category 6</text>
+  </g>
+  <g data-z-index="7" aria-hidden="true">
+    <text font-family='Poppins, Arial, sans-serif' x="29" text-anchor="end" transform="translate(0,0)" style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: rgb(102, 102, 102);" y="331" opacity="1">0</text>
+    <text font-family='Poppins, Arial, sans-serif' x="29" text-anchor="end" transform="translate(0,0)" style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: rgb(102, 102, 102);" y="145" opacity="1">100</text>
+    <text font-family='Poppins, Arial, sans-serif' x="29" text-anchor="end" transform="translate(0,0)" y="284" opacity="1" style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: rgb(102, 102, 102);">25</text>
+    <text font-family='Poppins, Arial, sans-serif' x="29" text-anchor="end" transform="translate(0,0)" y="238" opacity="1" style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: rgb(102, 102, 102);">50</text>
+    <text font-family='Poppins, Arial, sans-serif' x="29" text-anchor="end" transform="translate(0,0)" y="191" opacity="1" style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: rgb(102, 102, 102);">75</text>
+    <text font-family='Poppins, Arial, sans-serif' x="29" text-anchor="end" transform="translate(0,0)" y="98" opacity="1" style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: rgb(102, 102, 102);">125</text>
+    <text font-family='Poppins, Arial, sans-serif' x="29" text-anchor="end" transform="translate(0,0)" y="52" opacity="1" style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: rgb(102, 102, 102);">150</text>
+  </g>
+</svg>

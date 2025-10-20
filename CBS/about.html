@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>CBS</title>
+
+    <meta name="keywords" content="WebSite Template" />
+    <meta name="description" content="CBS Rwanda">
+
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link id="googleFonts" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="vendor/animate/animate.compat.css">
+    <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.min.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/theme-elements.css">
+    <link rel="stylesheet" href="css/theme-blog.css">
+    <link rel="stylesheet" href="css/theme-shop.css">
+
+    <!-- Demo CSS -->
+    <link rel="stylesheet" href="css/demos/demo-cbs.css">
+
+    <!-- Skin CSS -->
+    <link id="skinCSS" rel="stylesheet" href="css/skins/skin-cbs.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+    <style>
+        .container1 {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .header h2 {
+            font-size: 2.5em;
+            color: #333;
+        }
+        
+        .highlight {
+            background: #FF8C00;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 5px;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-card {
+            perspective: 1000px;
+            height: 450px;
+        }
+        
+        .team-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 1s;
+            transform-style: preserve-3d;
+        }
+        
+        .team-card:hover .team-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .team-card-front,
+        .team-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .team-card-front {
+            background: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+        }
+        
+        .flip-indicator {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #FF8C00;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        
+        .team-card-front img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid #f0f0f0;
+        }
+        
+        .team-card-front h4 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #333;
+        }
+        
+        .team-card-front p {
+            color: #668;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+            padding: 0;
+            margin-top: auto;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            color: #668;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-3px);
+        }
+        
+        .social-icons-instagram a:hover {
+            background: #e1306c;
+            color: white;
+        }
+        
+        .social-icons-x a:hover {
+            background: #645c5c;
+            color: white;
+        }
+        
+        .social-icons-facebook a:hover {
+            background: #1877f2;
+            color: white;
+        }
+        
+        .team-card-back {
+            background: linear-gradient(135deg, #FF8C00 30%, rgba(2, 55, 28, 0.2)100%);
+            transform: rotateY(180deg);
+            padding: 30px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .team-card-back h4 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            text-align: center;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 10px;
+        }
+        
+        .bio-content {
+            overflow-y: auto;
+            flex: 1;
+            line-height: 1.6;
+        }
+        
+        .bio-content p {
+            color: black;
+        }
+        
+        .bio-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .bio-content::-webkit-scrollbar-track {
+            background: rgb(16, 16, 16);
+            border-radius: 10px;
+        }
+        
+        .bio-content::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+        }
+        
+        .team-card-inner {
+            transition: transform 1s;
+            transition-delay: 0s;
+            /* No delay when leaving */
+        }
+        
+        .team-card:hover .team-card-inner {
+            transform: rotateY(180deg);
+            transition-delay: 1s;
+            /* 0.8 second delay before flipping on hover */
+        }
+        /* Instant flip when clicking info badge */
+        
+        .team-card-inner.flipped {
+            transform: rotateY(180deg);
+            transition-delay: 0s !important;
+            /* No delay when clicked */
+        }
+        /* OR USE SOLUTION 2: Hover only on the card image area */
+        /*
+.team-card-front img {
+    cursor: pointer;
+}
+
+.team-card-front img:hover ~ * {
+    pointer-events: none;
+}
+
+.team-card:has(.team-card-front img:hover) .team-card-inner {
+    transform: rotateY(180deg);
+}
+*/
+    </style>
+</head>
+
+<body>
+
+    <div class="body">
+
+
+        <!--Header-->
+        <header id="header" data-plugin-options="{'stickyScrollUp': true, 'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': false, 'stickyChangeLogo': false, 'stickyStartAt': 100, 'stickyHeaderContainerHeight': 100}">
+            <div class="header-body border-top-0 h-auto box-shadow-none">
+                <div class="container-fluid px-3 px-lg-5 p-static">
+                    <div class="row align-items-center py-3">
+                        <div class="col-auto col-lg-2 col-xxl-3 me-auto me-lg-0">
+                            <div class="header-logo" data-clone-element-to="#offCanvasLogo">
+                                <a href="index.html">
+                                    <img alt="CBS" width="131" height="27" src="img/demos/cbs/logo.png">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-auto col-lg-8 col-xxl-6 justify-content-lg-center">
+                            <div class="header-nav header-nav-links justify-content-lg-center">
+                                <div class="header-nav-main header-nav-main-text-capitalize header-nav-main-arrows header-nav-main-effect-2">
+                                    <nav class="collapse">
+                                        <ul class="nav nav-pills" id="mainNav">
+                                            <li>
+                                                <a href="index.html" class="nav-link active">
+														Home
+													</a>
+                                            </li>
+
+
+                                            <li class="dropdown">
+                                                <a href="infographicandresearch.html" class="nav-link dropdown-toggle">Publications</a>
+                                                <ul class="dropdown-menu">
+
+
+
+                                                    <li><a href="infographicandresearch.html#researches" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Researches</a></li>
+
+                                                    <li><a href="infographicandresearch.html#infographic" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Infographic</a></li>
+                                                    <li><a href="storiesofchange.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Stories of changes</a></li>
+
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link" href="about.html">
+														About
+													</a>
+
+                                            </li>
+
+
+                                            <li class="dropdown">
+                                                <a class="nav-link" href="ourwork.html">
+														Our Work
+													</a>
+                                                <ul class="dropdown-menu">
+                                                    <li class="dropdown">
+                                                        <a class="nav-link" href="ourwork.html">
+                                                          CBS Approach </a>
+                                                        <ul class="dropdown-menu">
+                                                            <!-- LINK MODIFIED TO INCLUDE THE PAGE AND THE SECTION ID -->
+                                                            <li><a href="ourwork.html#cbs-approach" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">CBS Approach</a></li>
+                                                        </ul>
+                                                    </li>
+
+
+                                                    <li><a href="ourwork.html#community" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Community</a></li>
+
+                                                    <li><a href="ourwork.html#projects" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Projects</a></li>
+                                                    <li><a href="ourwork.html#themes" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Themes</a></li>
+
+                                                </ul>
+
+                                            </li>
+
+                                            <li>
+                                                <a class="nav-link" href="news.html">
+														News
+													</a>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link" href="contact.html">
+														Contact
+													</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-auto col-lg-2 col-xxl-3">
+                            <div class="d-flex justify-content-end align-items-center">
+                                <div class="d-none d-sm-flex d-lg-none d-xxl-flex">
+                                    <img src="img/icons/phone-2.svg" width="24" height="24" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-secondary pe-1'}" />
+                                    <a href="tel:+(250)788 483 210" class="text-decoration-none font-secondary text-4 font-weight-semibold text-color-dark text-color-hover-primary transition-2ms negative-ls-05 ws-nowrap">+(250)788 483 210</a>
+                                </div>
+                                <a href="contact.html" class="btn btn-rounded btn-dark box-shadow-7 font-weight-medium px-3 py-2 text-2-5 btn-swap-1 ms-3 d-none d-md-flex" data-clone-element="1">
+                                    <span>    Donate <i class="fa-solid fa-arrow-right ms-2"></i></span>
+                                </a>
+                                <button class="btn header-btn-collapse-nav rounded-pill" data-bs-toggle="offcanvas" href="#offcanvasMain" role="button" aria-controls="offcanvasMain">
+										<i class="fas fa-bars"></i>
+									</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!--End Of Header-->
+
+
+
+        <div role="main" class="main px-3 px-lg-5">
+
+            <div class="page-header py-0 bg-primary px-3 px-xl-0 border-radius-2 p-relative mb-5">
+                <div class="overflow-hidden p-absolute top-0 left-0 bottom-0 h-100 w-100">
+                    <div class="custom-el-5 custom-pos-4">
+                        <img class="img-fluid opacity-2 opacity-hover-2" src="img/demos/cbs/svg/waves.svg" alt="">
+                    </div>
+                </div>
+                <div class="container p-relative z-index-1 py-2">
+                    <div class="row align-items-center py-4">
+                        <div class="col-8 col-md-7">
+                            <div class="appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="0">
+                                <span class="badge bg-color-dark-rgba-10 text-light rounded-pill text-uppercase font-weight-semibold text-2-5 px-3 py-2 px-4 mb-3"><span class="d-inline-flex py-1 px-2">
+                                    
+                                    Who We Are
+                                
+                                
+                                </span></span>
+                            </div>
+                            <div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">
+                                <h1 class="text-dark text-9 text-lg-12 font-weight-semibold line-height-1 mb-2">
+
+
+                                    About Us
+
+
+                                </h1>
+                            </div>
+                            <div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">
+                                <ul class="breadcrumb d-flex text-3-5 font-weight-semi-bold pb-2 mb-3">
+                                    <li><a href="index.html" class="text-dark text-decoration-none">
+                                        
+                                        Home
+                                    
+                                    </a></li>
+                                    <li class="active">
+
+                                        About Us
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-4 col-md-5 p-relative">
+                            <div class="opacity-2 p-absolute w-100 rotate-r-50 custom-pos-5 d-none d-lg-block">
+                                <img src="img/icons/abstract-bg-1.svg" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-secondary w-100'}" />
+                            </div>
+                            <div class="custom-mask-img custom-mask-img-4 custom-el-6">
+                                <img src="img/demos/cbs/generic/Tujyane-Project-in-Nyabihu.jpeg" loading="lazy" class="img-fluid" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Who We Are -->
+            <div class="container pt-lg-5" id="intro">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <div class="appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="0">
+                            <span class="badge bg-gradient-light-primary-rgba-20 text-secondary rounded-pill text-uppercase font-weight-semibold text-2-5 px-3 py-2 px-4 mb-4"><span class="d-inline-flex py-1 px-2">
+                                
+                                Who We Are
+                            
+                            </span></span>
+                        </div>
+                        <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                            <h2 class="text-9 text-lg-12 font-weight-semibold line-height-1 mb-4">
+
+                                Our Story
+
+
+                            </h2>
+                        </div>
+                        <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
+                            <p class="pe-lg-5 mb-0">The history of Rwanda has been marked by politically motivated ethnic discrimination and repression which repeatedly escalated into episod es of mass killings and eventually led to a well-orchestrated genocide against the Tutsi
+                                in Rwanda. <br><br>The genocide claimed the lives of more than one million people while its execution was marked by an unprecedented high level of mass involvement by the civilian population. In addition to the massive
+                                number of deaths, the genocide left behind countless orphans, widows and severely traumatized individuals. Immense personal losses were exacerbated by the destruction of the wider society’s fundaments.
+                                <br><br>In order to effectively deal with the long-lasting consequences of the 1994 Genocide, the Rwanda Government and humanitarian assistance organisations have established initiatives that foster healing and reconciliation
+                                processes in Rwanda. Many projects were introduced to address the consequences at individual, family and community level.</p>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="col-lg-6 p-relative">
+                        <div class="accordion accordion-modern-status accordion-modern-status-arrow accordion-modern-status-arrow-dark mb-4 my-lg-4 pb-3 pb-lg-0" id="accordionWhoWeAre">
+                            <div class="card card-default box-shadow-8 border-radius-2 bg-light">
+                                <div class="card-header bg-transparent" id="collapseWhoWeAreHeadingOne">
+                                    <h4 class="card-title m-0">
+                                        <a class="accordion-toggle bg-transparent text-3-5 text-color-dark font-weight-semi-bold" data-bs-toggle="collapse" data-bs-target="#collapseWhoWeAreOne" aria-expanded="true" aria-controls="collapseWhoWeAreOne">
+												Our Mission
+											</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseWhoWeAreOne" class="collapse show" aria-labelledby="collapseWhoWeAreHeadingOne" data-bs-parent="#accordionWhoWeAre">
+                                    <div class="card-body pt-0">
+                                        <p class="mb-0">The mission of CBS Rwanda is to contribute to the improvement of psychosocial wellbeing of people affected by the Genocide against Tutsi, painful past and/or on-going daily stressors, restoring the social fabric
+                                            and promoting and protecting the peace.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card-default box-shadow-8 border-radius-2 bg-light">
+                                <div class="card-header bg-transparent" id="collapseWhoWeAreHeadingTwo">
+                                    <h4 class="card-title m-0">
+                                        <a class="accordion-toggle bg-transparent text-3-5 text-color-dark font-weight-semi-bold collapsed" data-bs-toggle="collapse" data-bs-target="#collapseWhoWeAreTwo" aria-expanded="false" aria-controls="collapseWhoWeAreTwo">
+												Our Vision
+											</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseWhoWeAreTwo" class="collapse" aria-labelledby="collapseWhoWeAreHeadingTwo" data-bs-parent="#accordionWhoWeAre">
+                                    <div class="card-body pt-0">
+                                        <p class="mb-0">
+
+                                            CBS Rwanda recognizes that the psychosocial recovery from political violence and conflict is a prerequisite to the social change that is needed to reach sustainable peace. Thus, CBS Rwanda envisions to contributing to psychosocial recovery from a history
+                                            of political violence and to the social change for the promotion of sustainable peace across the generations.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card-default box-shadow-8 border-radius-2 bg-light">
+                                <div class="card-header bg-transparent" id="collapseWhoWeAreHeadingThree">
+                                    <h4 class="card-title m-0">
+                                        <a class="accordion-toggle bg-transparent text-3-5 text-color-dark font-weight-semi-bold collapsed" data-bs-toggle="collapse" data-bs-target="#collapseWhoWeAreThree" aria-expanded="false" aria-controls="collapseWhoWeAreThree">
+												Our Values
+											</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseWhoWeAreThree" class="collapse" aria-labelledby="collapseWhoWeAreHeadingThree" data-bs-parent="#accordionWhoWeAre">
+                                    <div class="card-body pt-0">
+                                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non odio at orci vulputate tincidunt. Fusce eget lacus sit amet ligula bibendum efficitur. Mauris mollis orci vel justo tempor, eget volutpat dolor
+                                            eleifend. </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Gel-->
+
+            <div class="container">
+                <div class="row py-3">
+                    <div class="col">
+                        <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
+                            <div class="py-2 d-flex flex-column flex-md-row align-items-center justify-content-center text-4-5 n-ls-1 text-dark">
+                                <img src="img/demos/cbs/icons/icon-4.svg" width="28" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-secondary me-md-2'}" /> <strong class="custom-font-secondary pe-2">
+                                    
+                                    Join Us
+                                
+                                </strong>
+                                <span class="d-none d-md-inline-block pe-2"> | </span> Since 2005!
+
+
+                                <p class="ms-md-2 mb-0 text-3-5 p-relative bottom-2"><i class="fas fa-star custom-text-color-2 text-2"></i><i class="fas fa-star custom-text-color-2 text-2"></i><i class="fas fa-star custom-text-color-2 text-2"></i><i class="fas fa-star custom-text-color-2 text-2"></i>
+                                    <i class="fas fa-star custom-text-color-2 text-2"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Gallery-->
+
+
+            <div class="container pt-5 pb-4">
+
+
+                <!--Gallery-->
+
+
+                <div class="container pt-5 pb-4">
+                    <div class="row" data-masonry='{"percentPosition": true }'>
+                        <div class="col-sm-6 col-lg-4 mb-4">
+                            <img class="img-fluid border-radius-2" src="img/demos/cbs/generic/generic-5.jpg" alt="">
+                        </div>
+
+
+                        <div class="col-sm-6 col-lg-4 mb-4">
+                            <img class="img-fluid border-radius-2" src="img/demos/cbs/generic/generic-8.jpg" alt="">
+                        </div>
+
+
+                        <div class="col-sm-6 col-lg-4 mb-4">
+                            <img class="img-fluid border-radius-2" src="img/demos/cbs/generic/generic-6.jpg" alt="">
+                        </div>
+
+
+                        <div class="col-sm-6 col-lg-4 mb-4">
+                            <img class="img-fluid border-radius-2" src="img/demos/cbs/generic/generic-7.jpg" alt="">
+                        </div>
+
+
+                        <div class="col-sm-6 col-lg-4 mb-4">
+                            <img class="img-fluid border-radius-2" src="img/demos/cbs/generic/generic-9.jpg" alt="">
+                        </div>
+
+
+                        <div class="col-sm-6 col-lg-4">
+                            <img class="img-fluid border-radius-2" src="img/demos/cbs/generic/generic-10.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Why Choose Us -->
+                <div class="border-top border-top-color-grey-100 mt-5">
+                    <div class="container pt-4">
+                        <div class="row py-5">
+
+                            <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 p-relative">
+                                <div class="accordion accordion-modern-status accordion-modern-status-arrow accordion-modern-status-arrow-dark" id="accordionWhyChooseUs">
+                                    <div class="card card-default box-shadow-8 border-radius-2 bg-light">
+                                        <div class="card-header bg-transparent" id="collapseWhyChooseUsHeadingOne">
+                                            <h4 class="card-title m-0">
+                                                <a class="accordion-toggle bg-transparent text-3-5 text-color-dark font-weight-semi-bold collapsed" data-bs-toggle="collapse" data-bs-target="#collapseWhyChooseUsOne" aria-expanded="false" aria-controls="collapseWhyChooseUsOne">
+                                                    Since 2005
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseWhyChooseUsOne" class="collapse" aria-labelledby="collapseWhyChooseUsHeadingOne" data-bs-parent="#accordionWhyChooseUs">
+                                            <div class="card-body pt-0">
+                                                <p class="mb-0">
+
+                                                    Mvura Nkuvure has been implemented in Rwanda after the approach had been developed by a Dutch Sociotherapist, Cora Dekker, in co-creation with Eglise Anglican du Rwanda (EAR), Byumba Diocese.
+
+
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card card-default box-shadow-8 border-radius-2 bg-light">
+                                        <div class="card-header bg-transparent" id="collapseWhyChooseUsHeadingTwo">
+                                            <h4 class="card-title m-0">
+                                                <a class="accordion-toggle bg-transparent text-3-5 text-color-dark font-weight-semi-bold collapsed" data-bs-toggle="collapse" data-bs-target="#collapseWhyChooseUsTwo" aria-expanded="false" aria-controls="collapseWhyChooseUsTwo">
+
+
+                                                     Starting
+
+
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseWhyChooseUsTwo" class="collapse" aria-labelledby="collapseWhyChooseUsHeadingTwo" data-bs-parent="#accordionWhyChooseUs">
+                                            <div class="card-body pt-0">
+                                                <p class="mb-0">
+
+                                                    It started on small scale, first in the northern part of the country and later in the south-east. Based on the remarkable outcomes of the program and the engagement of local communities, the program implementation was expanded in 2014 to eight more districts
+                                                    across the country.
+
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card card-default box-shadow-8 border-radius-2 bg-light">
+                                        <div class="card-header bg-transparent" id="collapseWhyChooseUsHeadingThree">
+                                            <h4 class="card-title m-0">
+                                                <a class="accordion-toggle bg-transparent text-3-5 text-color-dark font-weight-semi-bold collapsed" data-bs-toggle="collapse" data-bs-target="#collapseWhyChooseUsThree" aria-expanded="false" aria-controls="collapseWhyChooseUsThree">
+                                                    2014 - 2016
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseWhyChooseUsThree" class="collapse" aria-labelledby="collapseWhyChooseUsHeadingThree" data-bs-parent="#accordionWhyChooseUs">
+                                            <div class="card-body pt-0">
+                                                <p class="mb-0">
+
+                                                    From 2014 till 2016 the Community Based Sociotherapy Program (CBSP) was implemented by a consortium consisting of Prison Fellowship Rwanda (PFR), EAR Byumba Diocese and Duhumurizanye Iwacu Rwanda (DIR).
+
+
+
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card card-default box-shadow-8 border-radius-2 bg-light">
+                                        <div class="card-header bg-transparent" id="collapseWhyChooseUsHeadingFour">
+                                            <h4 class="card-title m-0">
+                                                <a class="accordion-toggle bg-transparent text-3-5 text-color-dark font-weight-semi-bold collapsed" data-bs-toggle="collapse" data-bs-target="#collapseWhyChooseUsFour" aria-expanded="false" aria-controls="collapseWhyChooseUsThree">
+                                                    During the implementation of CBSP
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseWhyChooseUsFour" class="collapse" aria-labelledby="collapseWhyChooseUsHeadingFour" data-bs-parent="#accordionWhyChooseUs">
+                                            <div class="card-body pt-0">
+                                                <p class="mb-0">During the implementation of CBSP, the consortium experienced the great value and need of building on the existing capacities within the communities themselves when it comes to conflict resolution and restoring
+                                                    social relationships. To ensure effective scale up and sustainability of the programmatic activities, the consortium established a local Rwandan organisation (Community Based Sociotherapy/ CBS Rwanda).
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div class="col-lg-6">
+                                <div class="appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="0">
+                                    <span class="badge bg-gradient-light-primary-rgba-20 text-secondary rounded-pill text-uppercase font-weight-semibold text-2-5 px-3 py-2 px-4 mb-4"><span class="d-inline-flex py-1 px-2">
+                                    
+                                    
+                                    Heal Me I Heal You
+                                
+                                
+                                </span></span>
+                                </div>
+                                <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                                    <h2 class="text-9 text-lg-12 font-weight-semibold line-height-1 mb-4">
+
+
+                                        Mvura Nkuvure
+
+                                    </h2>
+                                </div>
+                                <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
+                                    <p>
+
+                                        The community-based sociotherapy approach, in Rwanda known as Mvura Nkuvure (heal me, I heal you), is also one of the approaches that was introduced in Rwanda as a contribution to psychosocial wellbeing, as well as unity and reconciliation. <br><br>Since
+                                        2005, Mvura Nkuvure has been implemented in Rwanda after the approach had been developed by a Dutch Sociotherapist, Cora Dekker, in co-creation with Eglise Anglican du Rwanda (EAR), Byumba Diocese.
+                                    </p>
+                                </div>
+                                <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
+                                    <div class="d-flex pt-3 align-items-center">
+                                        <a href="contact.html" class="btn btn-rounded btn-dark box-shadow-7 font-weight-medium btn-swap-1" data-clone-element="1">
+                                            <span>Contact Us <i class="fa-solid fa-arrow-right ms-2 p-relative left-10"></i></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <br>
+
+
+
+            </div>
+
+
+            <!-- Team -->
+
+
+
+            <div class="container1">
+                <div class="header">
+                    <h2>
+                        Meet The Professionals Full Of
+                        <span class="highlight">Expertise</span> and
+                        <span class="highlight">Dedication</span>
+                    </h2>
+                </div>
+                <br> <br>
+                <div class="team-grid">
+                    <!-- Team Member 1 -->
+                    <div class="team-card">
+                        <div class="team-card-inner">
+                            <div class="team-card-front">
+                                <div class="flip-indicator">
+                                    BIO
+                                </div>
+                                <img src="https://via.placeholder.com/150" alt="Team Member">
+                                <h4>Dr Marie Chantal Ingabire</h4>
+                                <p>Executive Director</p>
+                                <ul class="social-icons">
+                                    <li class="social-icons-instagram"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    <li class="social-icons-x"><a href="#"><i class="fab fa-x-twitter"></i></a></li>
+                                    <li class="social-icons-facebook"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="team-card-back">
+                                <h4>Bio</h4>
+                                <div class="bio-content">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 2 -->
+                    <div class="team-card">
+                        <div class="team-card-inner">
+                            <div class="team-card-front">
+                                <div class="flip-indicator">
+                                    BIO
+                                </div>
+                                <img src="https://via.placeholder.com/150" alt="Team Member">
+                                <h4>Reverien Interayamahanga</h4>
+                                <p>Title</p>
+                                <ul class="social-icons">
+                                    <li class="social-icons-instagram"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    <li class="social-icons-x"><a href="#"><i class="fab fa-x-twitter"></i></a></li>
+                                    <li class="social-icons-facebook"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="team-card-back">
+                                <h4>Bio</h4>
+                                <div class="bio-content" s>
+                                    <p style="color:#040000 !important">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 3 -->
+                    <div class=" team-card ">
+                        <div class="team-card-inner ">
+                            <div class="team-card-front ">
+                                <div class="flip-indicator ">
+                                    BIO
+                                </div>
+                                <img src="https://via.placeholder.com/150 " alt="Team Member ">
+                                <h4>Emmanuel Sarabwe</h4>
+                                <p>Title</p>
+                                <ul class="social-icons ">
+                                    <li class="social-icons-instagram "><a href="# "><i class="fab fa-instagram "></i></a></li>
+                                    <li class="social-icons-x "><a href="# "><i class="fab fa-x-twitter "></i></a></li>
+                                    <li class="social-icons-facebook "><a href="# "><i class="fab fa-facebook-f "></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="team-card-back ">
+                                <h4>Bio</h4>
+                                <div class="bio-content ">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 4 -->
+                    <div class="team-card ">
+                        <div class="team-card-inner ">
+                            <div class="team-card-front ">
+                                <div class="flip-indicator ">
+                                    BIO
+                                </div>
+                                <img src="https://via.placeholder.com/150 " alt="Team Member ">
+                                <h4>Thierry Nsanzimihigo</h4>
+                                <p>Finance and Administration Manager</p>
+                                <ul class="social-icons ">
+                                    <li class="social-icons-instagram "><a href="# "><i class="fab fa-instagram "></i></a></li>
+                                    <li class="social-icons-x "><a href="# "><i class="fab fa-x-twitter "></i></a></li>
+                                    <li class="social-icons-facebook "><a href="# "><i class="fab fa-facebook-f "></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="team-card-back ">
+                                <h4>Bio</h4>
+                                <div class="bio-content ">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 5 -->
+                    <div class="team-card ">
+                        <div class="team-card-inner ">
+                            <div class="team-card-front ">
+                                <div class="flip-indicator ">
+                                    BIO
+                                </div>
+                                <img src="https://via.placeholder.com/150 " alt="Team Member ">
+                                <h4>Esther Mudahogora</h4>
+                                <p>Communication</p>
+                                <ul class="social-icons ">
+                                    <li class="social-icons-instagram "><a href="# "><i class="fab fa-instagram "></i></a></li>
+                                    <li class="social-icons-x "><a href="# "><i class="fab fa-x-twitter "></i></a></li>
+                                    <li class="social-icons-facebook "><a href="# "><i class="fab fa-facebook-f "></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="team-card-back ">
+                                <h4>Bio</h4>
+                                <div class="bio-content ">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 6 - Long Bio -->
+                    <div class="team-card ">
+                        <div class="team-card-inner ">
+                            <div class="team-card-front ">
+                                <div class="flip-indicator ">
+                                    BIO
+                                </div>
+                                <img src="https://via.placeholder.com/150 " alt="Team Member ">
+                                <h4>Fridaus Benimana Francine</h4>
+                                <p>Title</p>
+                                <ul class="social-icons ">
+                                    <li class="social-icons-instagram "><a href="# "><i class="fab fa-instagram "></i></a></li>
+                                    <li class="social-icons-x "><a href="# "><i class="fab fa-x-twitter "></i></a></li>
+                                    <li class="social-icons-facebook "><a href="# "><i class="fab fa-facebook-f "></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="team-card-back ">
+                                <h4>Bio</h4>
+                                <div class="bio-content ">
+                                    <p>
+
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,.
+
+
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+
+
+
+            <!--End Of team-->
+
+
+
+
+
+
+
+
+
+
+
+            <!-- Our Commitment to You -->
+            <div class="container py-4 ">
+                <div class="row align-items-center py-5 my-3 ">
+                    <div class="col ">
+                        <div class="row justify-content-center ">
+                            <div class="col-9 text-center ">
+                                <div class="appear-animation " data-appear-animation="fadeIn " data-appear-animation-delay="0 ">
+                                    <h2 class="text-9 text-lg-12 font-weight-semibold line-height-1 mb-4 ">Our Commitment to You</h2>
+                                    <div class="appear-animation " data-appear-animation="fadeInUpShorter " data-appear-animation-delay="400 ">
+                                        <p>
+
+
+                                            We work tirelessly to facilitate psychosocial healing by building solutions that are not only effective in reducing distress but are deeply aligned with your community’s long-term goals for social cohesion and dignity
+
+
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row text-center justify-content-center ">
+                            <div class="col-lg-4 mb-4 mb-lg-0 ">
+                                <div class="appear-animation px-lg-4 " data-appear-animation="blurIn " data-appear-animation-delay="300 ">
+                                    <div class="d-flex justify-content-center align-items-center pt-4 ">
+                                        <!--<strong class="d-inline-flex text-15 text-dark n-ls-5 ">
+                                        
+                                        90%
+                                    
+                                    </strong>-->
+                                        <div class="p-2 ps-3 ">
+                                            <img src="img/demos/cbs/icons/icon-6.svg " width="48 " alt=" " data-icon data-plugin-options="{ 'onlySVG': true, 'extraClass': 'svg-fill-color-primary'} " />
+                                        </div>
+                                    </div>
+                                    <span class="custom-font-tertiary text-7 text-dark n-ls-1 fst-italic ">
+                                    
+                                    Increased Psychosocial Well-being
+
+
+                                </span>
+                                    <p class="mb-0 pt-2 text-3-5 line-height-7 ">
+
+                                        Through structured group therapy and collective dialogue, participants report significant reductions in distress, anxiety, and depression.
+
+
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 ">
+                                <div class="appear-animation px-lg-4 " data-appear-animation="blurIn " data-appear-animation-delay="600 ">
+                                    <div class="d-flex justify-content-center align-items-center pt-4 ">
+
+
+                                        <!-- <strong class="d-inline-flex text-15 text-dark n-ls-5 ">70%</strong>-->
+
+
+                                        <div class="p-2 ps-3 ">
+                                            <img src="img/demos/cbs/icons/icon-6.svg " width="48 " alt=" " data-icon data-plugin-options="{ 'onlySVG': true, 'extraClass': 'svg-fill-color-primary'} " />
+                                        </div>
+                                    </div>
+                                    <span class="custom-font-tertiary text-7 text-dark n-ls-1 fst-italic ">
+                                    
+                                    
+                                    Improved Social Cohesion
+
+
+
+                                </span>
+                                    <p class="mb-0 pt-2 text-3-5 line-height-7 ">
+
+
+
+                                        Successfully rebuilding trust and strengthening the social fabric by bridging divides between historically conflicted groups in the community.
+
+
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <!-- Explore Further -->
+            <div class="bg-secondary border-radius-2 p-relative overflow-hidden ">
+                <div class="container-fluid ">
+                    <div class="row ">
+                        <div class="col px-0 text-center text-color-light ">
+                            <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-lg-center ">
+                                <div class="me-lg-4 flex-grow-1 flex-lg-grow-0 ">
+                                    <span class="d-inline-block text-3 py-4 px-5 text-uppercase font-weight-medium custom-bg-gradient-1 w-100 rounded-pill ">Explore Further:</span>
+                                </div>
+                                <div class="me-3 ps-3 p-relative bottom-1 pt-3 pt-lg-0 ">
+                                    <a href="ourwork.html " class="btn btn-arrow-effect-1 bg-transparent text-light border-0 text-lg-3-5 py-2 py-lg-0 ">Learn About Our ourwork <i class="fas fa-arrow-right ms-2 "></i></a>
+                                </div>
+                                <div class="py-3 py-lg-0 p-relative bottom-1 border-start border-color-light-rgba-20 ">
+                                    <a href="contact.html " class="btn btn-arrow-effect-1 bg-transparent text-light border-0 text-lg-3-5 py-2 py-lg-0 ">Contact Us<i class="fas fa-arrow-right ms-2 "></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <div>
+                <footer id="footer " class="border-0 bg-light px-3 px-lg-5 pt-0 text-3 ">
+
+
+
+
+
+                    <div class="container pb-lg-4 pt-5 ">
+                        <div class="row pt-3 ">
+                            <div class="col-lg-4 ">
+                                <div class="col-auto col-lg-2 col-xxl-3 me-auto me-lg-0 ">
+                                    <div class="header-logo " data-clone-element-to="#offCanvasLogo ">
+                                        <a href="index.html ">
+                                            <img alt="CBS " width="131 " height="27 " src="img/demos/cbs/logo.png ">
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <p class="text-3-5 text-color-grey ">
+
+
+                                    <br> NGO dedicated to psychosocial healing, particularly in the aftermath of the 1994 Genocide against the Tutsi and subsequent social conflict.
+
+                                </p>
+
+                                <div class="d-flex align-items-center pt-2 pb-4 ">
+                                    <p class="d-inline-block mb-0 font-weight-bold line-height-1 "><mark class="text-dark mark mark-pos-2 mark-height-50 mark-color bg-color-before-primary-rgba-30 font-secondary text-8 mark-height-30 n-ls-5 p-0 ">21+</mark></p>
+                                    <span class="custom-font-tertiary text-5 text-dark n-ls-1 fst-italic ps-2 ">Years of Experience</span>
+                                </div>
+
+
+                            </div>
+                            <div class="col-sm-6 col-lg-2 pt-4 pt-lg-0 ">
+                                <h4 class="text-color-dark font-weight-bold mb-3 ">About</h4>
+                                <ul class="list list-unstyled ">
+                                    <li>
+                                        <a href="index.html " class="text-color-grey text-color-hover-primary ">
+										Home
+									</a>
+                                    </li>
+
+                                    <li>
+                                        <a class="text-color-grey text-color-hover-primary " href="about.html ">
+										About
+									</a>
+                                    </li>
+                                    <li>
+                                        <a class="text-color-grey text-color-hover-primary " href="ourwork.html ">
+										Our Work
+									</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+
+
+
+
+                            <div class="col-sm-6 col-lg-3 pt-4 pt-lg-0 ">
+                                <h4 class="text-color-dark font-weight-bold mb-3 ">Publications</h4>
+                                <ul class="list list-unstyled ">
+
+
+
+
+                                    <li>
+                                        <a class="text-color-grey text-color-hover-primary " target="_blank " href="news.html ">
+										News
+									</a>
+                                    </li>
+                                    <li>
+                                        <a class="text-color-grey text-color-hover-primary " href="storiesofchange.html ">
+										Stories of Change
+									</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="infographicandresearch.html " class="text-color-grey text-color-hover-primary ">Researches</a>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 pt-4 pt-lg-0 ">
+                                <h4 class="text-color-dark font-weight-bold mb-3 ">CBS RWANDA</h4>
+
+
+
+                                <ul class="list list-unstyled ">
+
+
+
+                                    <li>
+                                        <a class="text-color-grey text-color-hover-primary " href="tel:+(250)788 483 210 ">
+        Call us +(250)788 483 210
+    </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-color-grey text-color-hover-primary " href="mailto:info@cbsrwanda.org ">
+        Write to us (info@cbsrwanda.org)
+    </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-color-grey text-color-hover-primary " target="_blank " href="https://login.microsoftonline.com/ ">
+        Staff Email 
+    </a>
+                                    </li>
+
+
+                                </ul>
+
+                                <ul class="social-icons social-icons-clean social-icons-medium ">
+                                    <li class="social-icons-instagram ">
+                                        <a href="http://www.instagram.com/ " target="_blank " title="Instagram ">
+                                            <i class="fab fa-instagram "></i>
+                                        </a>
+                                    </li>
+                                    <li class="social-icons-x ">
+                                        <a href="http://www.x.com/ " target="_blank " title="X ">
+                                            <i class="fab fa-x-twitter "></i>
+                                        </a>
+                                    </li>
+                                    <li class="social-icons-facebook ">
+                                        <a href="http://www.facebook.com/ " target="_blank " title="Facebook ">
+                                            <i class="fab fa-facebook-f "></i>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+                    <!--copyright-->
+                    <div class="footer-copyright bg-transparent pb-2 ">
+                        <div class="container ">
+                            <hr>
+                            <div class="row ">
+                                <div class="col-lg-6 text-center text-lg-start py-3 ">
+                                    <p class="text-3 mb-0 opacity-6 ">© 2025 By <a href="https://innovatoor.com " target="_blank " class="text-decoration-underline text-color-secondary text-color-hover-primary ">Innovatoor</a></p>
+                                </div>
+                                <div class="col-lg-6 py-3 text-center text-lg-end ">
+                                    <a href="# " class="text-color-grey text-color-hover-primary ">Privacy Policy</a>
+                                    <a href="# " class="text-color-grey text-color-hover-primary ms-3 ">Terms of Use</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </footer>
+            </div>
+
+
+
+            <div class="offcanvas offcanvas-start " data-bs-scroll="true " tabindex="-1 " id="offcanvasMain " aria-labelledby="offcanvasMain ">
+                <div class="offcanvas-header ">
+                    <button type="button " class="btn-close " data-bs-dismiss="offcanvas " aria-label="Close "></button>
+                </div>
+                <div class="offcanvas-body ">
+                    <div class="mb-4 " id="offCanvasLogo "></div>
+                    <nav class="offcanvas-nav w-100 " id="offCanvasNav "></nav>
+                </div>
+            </div>
+
+            <!-- Vendor -->
+            <script src="vendor/plugins/js/plugins.min.js "></script>
+
+            <!-- Theme Base, Components and Settings -->
+            <script src="js/theme.js "></script>
+
+            <!-- Demo -->
+            <script src="js/demos/demo-cbs.js "></script>
+
+            <!-- Theme Custom -->
+            <script src="js/custom.js "></script>
+
+            <!-- Theme Initialization Files -->
+            <script src="js/theme.init.js "></script>
+
+            <!-- Current Page Vendor and Views -->
+            <script src="js/views/view.contact.js "></script>
+        </div>
+
+    </div>
+</body>
+
+</html>

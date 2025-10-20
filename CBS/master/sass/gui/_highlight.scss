@@ -1,0 +1,39 @@
+/* Highlight */
+.highlight {
+	position: relative;
+	background-image: linear-gradient(90deg,var(--light-rgba-0) 50%,var(--grey-500) 0);
+    background-size: 200%;
+    background-position: 0;
+	padding-right: .5rem;
+	padding-left: .5rem;
+    transition: background-position .8s;
+	&.highlight-bg-opacity {
+		background-image: linear-gradient(90deg,var(--light-rgba-0) 50%, rgba(var(--grey-500), 0.2) 0);
+	}
+	&.highlight-change-text-color {
+		color: var(--light);
+	}
+	&.highlight-animated {
+		&.highlight-animated-start {
+		    @include if-ltr() {
+		    	background-position: -100%;
+		    }
+		    @include if-rtl() {
+		    	background-position: 100%;
+		    }
+		}
+	}
+}
+
+/* Highlight Text - Skin */
+@each $name, $var in $colors-list {
+	.highlight-#{$name} {
+		background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 50%, var(--#{$name}) 0);
+		&.highlight-bg-opacity {
+			background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 50%, var(--#{$name}-rgba-35) 0);
+		}
+		&.highlight-change-text-color {
+			color: var(--#{$name}-inverse);
+		}
+	}
+}

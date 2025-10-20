@@ -1,0 +1,293 @@
+/* Toggles */
+.toggle {
+	margin: 10px 0 20px;
+	position: relative;
+	clear: both;
+	.toggle {
+		margin: 10px 0 0;
+	}
+	> {
+		input {
+			cursor: pointer;
+			filter: alpha(opacity = 0);
+			height: 45px;
+			margin: 0;
+			opacity: 0;
+			position: absolute;
+			width: 100%;
+			z-index: 2;
+		}
+		label,
+		.toggle-title {
+			transition: all .15s ease-out;
+			background: var(--grey-100);
+			border-#{$left}: 3px solid var(--grey-500);
+			border-radius: 5px;
+			color: var(--grey-500);
+			display: block;
+			min-height: 20px;
+			padding: side-values(12px 20px 12px 15px);
+			position: relative;
+			cursor: pointer;
+			font-weight: 600;
+			letter-spacing: -0.2px;
+			text-decoration: none !important;
+			&:-moz-selection {
+				background: none;
+			}
+			i {
+				&.fa-minus {
+					display: none;
+				}
+				&.fa-plus {
+					display: inline;
+				}
+			}
+			&:before {
+				content: " ";
+			    position: absolute;
+			    top: calc(50% + 1px);
+			    #{$right}: 14px;
+			    border-color: var(--grey-500);
+			    border-top: 1px solid;
+			    border-right: 1px solid;
+			    width: 8px;
+			    height: 8px;
+			   	backface-visibility: hidden;
+				transition: transform 0.3s, top 0.3s;
+				transform: rotate(-45deg) translate3d(0, -50%, 0);
+			    transform-origin: 35%;
+			}
+			&:hover {
+				background: #f5f5f5;
+			}
+			+ p {
+				color: #999;
+				display: block;
+				overflow: hidden;
+				padding-#{$left}: 30px;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				height: 25px;
+			}
+			i {
+				font-size: 0.7em;
+				margin-#{$right}: 8px;
+				position: relative;
+				top: -1px;
+			}
+		}
+		.toggle-content {
+			display: none;
+			> p {
+				margin-bottom: 0;
+				padding: 10px 0;
+			}
+		}
+	}
+	&.active {
+		i {
+			&.fa-minus {
+				display: inline;
+			}
+			&.fa-plus {
+				display: none;
+			}
+		}
+		> label,
+		> .toggle-title {
+			background: var(--grey-100);
+			border-color: var(--grey-500);
+			&:before {
+				top: calc(50% - 8px);
+				transform: rotate(135deg);
+			}
+		}
+		> p {
+			white-space: normal;
+		}
+	}
+	> p.preview-active {
+		height: auto;
+		white-space: normal;
+	}
+
+	&.toggle-sm {
+		.toggle {
+			> label,
+			> .toggle-title {
+				font-size: 0.9em;
+				padding: 6px 20px 6px 10px;
+			}
+			> .toggle-content > p {
+				font-size: 0.9em;
+			}
+		}
+	}
+
+	&.toggle-lg {
+		.toggle {
+			> label,
+			> .toggle-title {
+				font-size: 1.1em;
+				padding: 16px 20px 16px 20px;
+			}
+			> .toggle-content > p {
+				font-size: 1.1em;
+			}
+		}
+	}
+
+	&.toggle-simple {
+		.toggle {
+			> label,
+			> .toggle-title {
+				border-radius: 0;
+				border: 0;
+				background: transparent;
+				color: var(--default);
+				padding-#{$left}: 32px;
+				margin-bottom: -10px;
+				font-size: 1em;
+				font-weight: 600;
+				color: var(--dark);
+				&:after {
+					content: '';
+					position: absolute;
+					#{$left}: 0;
+					display: block;
+					width: 24px;
+					height: 24px;
+					background: var(--grey-500);
+					top: 25px;
+					margin-top: -12px;
+					border-radius: 3px;
+					z-index: 1;
+				}
+				&:before {
+					border: 0;
+					#{$left}: 9px;
+					#{$right}: auto;
+					margin-top: 0;
+					top: 12px;
+					font-family: 'Font Awesome 6 Free';
+					font-weight: 900;
+					content: "\f067";
+					z-index: 2;
+					color: var(--light);
+					font-size: 7px;
+					width: auto;
+					height: auto;
+					transform: none;
+				}
+			}
+			&.active {
+				> label,
+				> .toggle-title {
+					background: transparent;
+					color: var(--dark);
+					&:before {
+						content: "\f068";
+					}
+				}
+			}
+		}
+	}
+
+	&.toggle-minimal {
+		.toggle {
+			margin: 0;
+			> label,
+			> .toggle-title {
+			    background: transparent;
+			    color: var(--default);
+			    border-left: 0;
+			    border-bottom: 1px solid var(--grey-500);
+			    border-radius: 0;
+			    margin: 0;
+		        padding: 12px 20px 12px 0;
+		        font-weight: 600;
+			}
+			&.active {
+				> label,
+				> .toggle-title {
+					background: transparent;
+					border-bottom-color: var(--grey-500);
+				}
+			}
+		}
+	}
+
+	&.toggle-faqs {
+		.toggle {
+			border-bottom: 1px solid var(--grey-300);
+			margin-bottom: 10px;
+			padding-bottom: 10px;
+			&:last-child {
+				border-bottom: 0;
+			}
+			> label,
+			> .toggle-title {
+				border: 0;
+				padding-right: 35px;
+				&:before {
+					font-family: 'Font Awesome 6 Free';
+					content: "\2b";
+					border: 0;
+					transform: none;
+					top: 50%;
+					#{$right}: 0px;
+					width: auto;
+					height: auto;
+					transform: translateY(-50%);
+				}
+			}
+			&.active {
+				> label,
+				> .toggle-title {
+					border: 0;
+					&:before {
+						content: "\f068";
+					}
+				}
+			}
+			> .toggle-content > p {
+				padding-top: 5px;
+			}
+		}
+	}
+}
+
+/* Toggle - Skin */
+@each $name, $var in $colors-list {
+	.toggle-#{$name} {
+		.toggle {
+			label,
+			.toggle-title {
+				color: var(--#{$name});
+				border-left-color: var(--#{$name});
+				border-right-color: var(--#{$name});
+			}
+			&.active {
+				> label,
+				> .toggle-title {
+					background-color: var(--#{$name});
+					border-color: var(--#{$name});
+					color: var(--#{$name}-inverse);
+				}
+			}
+		}
+		&.toggle-simple .toggle {
+			> label:after,
+			> .toggle-title:after {
+				background-color: var(--#{$name});
+			}
+		}
+		&.toggle-minimal .toggle.active {
+			> label,
+			> .toggle-title {
+				color: var(--#{$name});
+			}
+		}
+	}
+}

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBS News</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="vendor/animate/animate.compat.css">
+    <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.min.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/theme-elements.css">
+    <link rel="stylesheet" href="css/theme-blog.css">
+    <link rel="stylesheet" href="css/theme-shop.css">
+    <link rel="stylesheet" href="css/demos/demo-cbs.css">
+    <link rel="stylesheet" href="css/skins/skin-cbs.css">
+    <link rel="stylesheet" href="css/custom.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f2f2f5;
+            color: #212529;
+        }
+        
+        .news-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .news-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .news-meta {
+            font-size: 0.95rem;
+            color: #6c757d;
+            margin-bottom: 1.5rem;
+        }
+        
+        .news-category {
+            font-size: 0.85rem;
+            padding: 0.35rem 0.85rem;
+            background-color: #343a40;
+            color: #fff;
+            border-radius: 50px;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        
+        .news-content {
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        .news-content img {
+            max-width: 100%;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+            transition: transform 0.6s ease;
+        }
+        
+        .news-feature-image {
+            width: 100%;
+            max-height: 550px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+            transition: transform 0.6s ease;
+        }
+        
+        .news-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+        }
+        
+        .news-navigation a {
+            text-decoration: none;
+            color: #fff;
+            background: linear-gradient(45deg, #343a40, #495057);
+            padding: 0.6rem 1.5rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        
+        .news-navigation a:hover {
+            background: linear-gradient(45deg, #495057, #343a40);
+        }
+        
+        .btn-back {
+            display: inline-block;
+            margin-top: 2.5rem;
+            background-color: #6c757d;
+            color: #fff;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .btn-back:hover {
+            background-color: #495057;
+        }
+        /* Fade-up animation */
+        
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Image zoom on scroll */
+        
+        .zoom-on-scroll {
+            transform: scale(1);
+            transition: transform 0.6s ease-out;
+        }
+        
+        .zoom-on-scroll.visible {
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+            .news-title {
+                font-size: 2rem;
+            }
+            .news-content {
+                font-size: 1rem;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="body">
+
+        <header id="header" data-plugin-options="{'stickyScrollUp': true, 'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': false, 'stickyChangeLogo': false, 'stickyStartAt': 100, 'stickyHeaderContainerHeight': 100}">
+            <div class="header-body border-top-0 h-auto box-shadow-none">
+                <div class="container-fluid px-3 px-lg-5 p-static">
+                    <div class="row align-items-center py-3">
+                        <div class="col-auto col-lg-2 col-xxl-3 me-auto me-lg-0">
+                            <div class="header-logo" data-clone-element-to="#offCanvasLogo">
+                                <a href="index.html">
+                                    <img alt="CBS" width="131" height="27" src="img/demos/cbs/logo.png">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-auto col-lg-8 col-xxl-6 justify-content-lg-center">
+                            <div class="header-nav header-nav-links justify-content-lg-center">
+                                <div class="header-nav-main header-nav-main-text-capitalize header-nav-main-arrows header-nav-main-effect-2">
+                                    <nav class="collapse">
+                                        <ul class="nav nav-pills" id="mainNav">
+                                            <li>
+                                                <a href="index.html" class="nav-link active">
+														Home
+													</a>
+                                            </li>
+
+
+                                            <li class="dropdown">
+                                                <a href="publications.html" class="nav-link dropdown-toggle">Publications</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="publications.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Overview</a></li>
+
+
+                                                    <li><a href="publications-details.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Researches</a></li>
+
+                                                    <li><a href="publications-details.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Infographic</a></li>
+                                                    <li><a href="storiesofchange.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Stories of changes</a></li>
+
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link" href="about.html">
+														About
+													</a>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link" href="ourwork.html">
+														Our Work
+													</a>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link" href="projects.html">
+														Projects
+													</a>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link" href="news.html">
+														News
+													</a>
+                                            </li>
+                                            <!-- <li>
+                                                <a class="nav-link" href="contact.html">
+														Contact
+													</a>
+                                            </li>-->
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-auto col-lg-2 col-xxl-3">
+                            <div class="d-flex justify-content-end align-items-center">
+                                <div class="d-none d-sm-flex d-lg-none d-xxl-flex">
+                                    <img src="img/icons/phone-2.svg" width="24" height="24" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-secondary pe-1'}" />
+                                    <a href="tel:+(250)788 483 210" class="text-decoration-none font-secondary text-4 font-weight-semibold text-color-dark text-color-hover-primary transition-2ms negative-ls-05 ws-nowrap">+(250)788 483 210</a>
+                                </div>
+
+                                <button class="btn header-btn-collapse-nav rounded-pill" data-bs-toggle="offcanvas" href="#offcanvasMain" role="button" aria-controls="offcanvasMain">
+										<i class="fas fa-bars"></i>
+									</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+
+
+
+
+        <!-- News Container -->
+        <div class="news-container" id="news-detail">
+            <p class="text-center">Loading news...</p>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <!-- Footer -->
+        <div>
+            <footer id="footer" class="border-0 bg-light px-3 px-lg-5 pt-0 text-3">
+
+
+
+
+
+                <div class="container pb-lg-4 pt-5">
+                    <div class="row pt-3">
+                        <div class="col-lg-4">
+                            <div class="col-auto col-lg-2 col-xxl-3 me-auto me-lg-0">
+                                <div class="header-logo" data-clone-element-to="#offCanvasLogo">
+                                    <a href="index.html">
+                                        <img alt="Porto" width="131" height="27" src="img/demos/cbs/logo.png">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <p class="text-3-5 text-color-grey">
+
+
+                                <br> NGO dedicated to psychosocial healing, particularly in the aftermath of the 1994 Genocide against the Tutsi and subsequent social conflict.
+
+                            </p>
+
+                            <div class="d-flex align-items-center pt-2 pb-4">
+                                <p class="d-inline-block mb-0 font-weight-bold line-height-1"><mark class="text-dark mark mark-pos-2 mark-height-50 mark-color bg-color-before-primary-rgba-30 font-secondary text-8 mark-height-30 n-ls-5 p-0">21+</mark></p>
+                                <span class="custom-font-tertiary text-5 text-dark n-ls-1 fst-italic ps-2">Years of Experience</span>
+                            </div>
+
+
+                        </div>
+                        <div class="col-sm-6 col-lg-2 pt-4 pt-lg-0">
+                            <h4 class="text-color-dark font-weight-bold mb-3">About</h4>
+                            <ul class="list list-unstyled">
+                                <li>
+                                    <a href="index.html" class="text-color-grey text-color-hover-primary">
+										Home
+									</a>
+                                </li>
+                                <li>
+                                    <a href="publications.html" class="text-color-grey text-color-hover-primary">publications</a>
+                                </li>
+                                <li>
+                                    <a class="text-color-grey text-color-hover-primary" href="about.html">
+										About
+									</a>
+                                </li>
+                                <li>
+                                    <a class="text-color-grey text-color-hover-primary" href="ourwork.html">
+										Our Work
+									</a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+
+
+
+                        <div class="col-sm-6 col-lg-3 pt-4 pt-lg-0">
+                            <h4 class="text-color-dark font-weight-bold mb-3">Publications</h4>
+                            <ul class="list list-unstyled">
+
+
+
+                                <li>
+                                    <a class="text-color-grey text-color-hover-primary" href="projects.html">
+										Projects
+									</a>
+                                </li>
+                                <li>
+                                    <a class="text-color-grey text-color-hover-primary" target="_blank" href="news.html">
+										News
+									</a>
+                                </li>
+                                <li>
+                                    <a class="text-color-grey text-color-hover-primary" href="contact.html">
+										Contact
+									</a>
+                                </li>
+
+
+                            </ul>
+                        </div>
+                        <div class="col-lg-3 pt-4 pt-lg-0">
+                            <h4 class="text-color-dark font-weight-bold mb-3">CBS RWANDA</h4>
+
+
+
+                            <ul class="list list-unstyled">
+
+
+
+                                <li>
+                                    <a class="text-color-grey text-color-hover-primary" href="tel:+(250)788 483 210">
+        Call us +(250)788 483 210
+    </a>
+                                </li>
+                                <li>
+                                    <a class="text-color-grey text-color-hover-primary" href="mailto:info@cbsrwanda.org">
+        Write to us (info@cbsrwanda.org)
+    </a>
+                                </li>
+                                <li>
+                                    <a class="text-color-grey text-color-hover-primary" target="_blank" href="https://login.microsoftonline.com/">
+        Staff Email 
+    </a>
+                                </li>
+
+
+                            </ul>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+                <!--copyright-->
+                <div class="footer-copyright bg-transparent pb-2">
+                    <div class="container">
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-6 text-center text-lg-start py-3">
+                                <p class="text-3 mb-0 opacity-6">© 2025 By <a href="https://innovatoor.com" target="_blank" class="text-decoration-underline text-color-secondary text-color-hover-primary">Innovatoor</a></p>
+                            </div>
+                            <div class="col-lg-6 py-3 text-center text-lg-end">
+                                <a href="#" class="text-color-grey text-color-hover-primary">Privacy Policy</a>
+                                <a href="#" class="text-color-grey text-color-hover-primary ms-3">Terms of Use</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </footer>
+        </div>
+
+        <!-- Scripts -->
+        <script>
+            const urlParams = new URLSearchParams(window.location.search);
+            let newsId = parseInt(urlParams.get('id'));
+            const newsDetailContainer = document.getElementById('news-detail');
+
+            fetch('data/news.json')
+                .then(res => res.json())
+                .then(newsList => {
+                        if (!newsList[newsId]) {
+                            newsDetailContainer.innerHTML = "<p class='text-center text-danger'>News not found.</p>";
+                            return;
+                        }
+                        const news = newsList[newsId];
+
+                        const contentParagraphs = news.content.split("\n").map(p => `<p class="fade-up">${p}</p>`).join('');
+
+                        newsDetailContainer.innerHTML = `
+                    <div class="news-category fade-up">${news.category}</div>
+                    <h1 class="news-title fade-up">${news.title}</h1>
+                    <p class="news-meta fade-up">by ${news.author} | ${news.date}</p>
+                    <img src="${news.image}" alt="${news.title}" class="news-feature-image fade-up zoom-on-scroll">
+                    <div class="news-content">${contentParagraphs}</div>
+
+                    <div class="news-navigation fade-up">
+                        ${newsId > 0 ? `<a href="news-post.html?id=${newsId - 1}"><i class="fas fa-angle-left"></i> Previous</a>` : '<div></div>'}
+                        ${newsId < newsList.length - 1 ? `<a href="news-post.html?id=${newsId + 1}">Next <i class="fas fa-angle-right"></i></a>` : '<div></div>'}
+                    </div>
+
+                    <a href="news.html" class="btn-back fade-up">Back to News</a>
+                `;
+
+                // Animate fade-up elements
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            setTimeout(() => entry.target.classList.add('visible'), entry.target.dataset.delay || 0);
+                        }
+                    });
+                }, { threshold: 0.2 });
+
+                document.querySelectorAll('.fade-up').forEach((el, i) => {
+                    el.dataset.delay = i * 150;
+                    observer.observe(el);
+                });
+
+                // Zoom image on scroll
+                const imgObserver = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, { threshold: 0.3 });
+
+                const featureImg = document.querySelector('.zoom-on-scroll');
+                if (featureImg) imgObserver.observe(featureImg);
+            })
+            .catch(err => {
+                newsDetailContainer.innerHTML = "<p class='text-center text-danger'>Failed to load news.</p>";
+                console.error(err);
+            });
+        </script>
+
+    </div>
+</body>
+
+</html>
