@@ -1,58 +1,456 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<div lang="en">
 
-<head>
+    <head>
+        <!-- Basic -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Basic -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bonded Paths</title>
 
-    <title>Bonded Paths</title>
-
-    <meta name="keywords" content="WebSite Template" />
-    <meta name="description" content="Bonded Paths">
+        <meta name="keywords" content="WebSite Template" />
+        <meta name="description" content="Bonded Paths">
 
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 
-    <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+        <!-- Mobile Metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
 
-    <!-- Web Fonts  -->
-    <link id="googleFonts" href="https://fonts.googleapis.com/css?family=family=Lora:400,400i,700,700i|Poppins:300,400,500,600,700,800,900&display=swap" rel="stylesheet" type="text/css">
+        <!-- Web Fonts  -->
+        <link id="googleFonts" href="https://fonts.googleapis.com/css?family=family=Lora:400,400i,700,700i|Poppins:300,400,500,600,700,800,900&display=swap" rel="stylesheet" type="text/css">
 
-    <!-- Vendor CSS -->
-    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="vendor/animate/animate.compat.css">
-    <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.min.css">
-    <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.min.css">
-    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.min.css">
+        <!-- Vendor CSS -->
+        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">
+        <link rel="stylesheet" href="vendor/animate/animate.compat.css">
+        <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.min.css">
+        <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.min.css">
+        <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.min.css">
+        <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.min.css">
 
-    <!-- Theme CSS -->
-    <link rel="stylesheet" href="css/theme.css">
-    <link rel="stylesheet" href="css/theme-elements.css">
-    <link rel="stylesheet" href="css/theme-blog.css">
-    <link rel="stylesheet" href="css/theme-shop.css">
+        <!-- Theme CSS -->
+        <link rel="stylesheet" href="css/theme.css">
+        <link rel="stylesheet" href="css/theme-elements.css">
+        <link rel="stylesheet" href="css/theme-blog.css">
+        <link rel="stylesheet" href="css/theme-shop.css">
 
-    <!-- Demo CSS -->
-    <link rel="stylesheet" href="css/demos/demo-digital-agency-2.css">
+        <!-- Demo CSS -->
+        <link rel="stylesheet" href="css/demos/BondedPaths.css">
 
-    <!-- Skin CSS -->
-    <link id="skinCSS" rel="stylesheet" href="css/skins/skin-digital-agency-2.css">
+        <!-- Skin CSS -->
+        <link id="skinCSS" rel="stylesheet" href="css/skins/skin-BondedPaths.css">
 
-    <!-- Theme Custom CSS -->
-    <link rel="stylesheet" href="css/custom.css">
+        <!-- Theme Custom CSS -->
+        <link rel="stylesheet" href="css/custom.css">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-</head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-<body>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            body {
+                font-family: 'Poppins', sans-serif;
+                background: black;
+                color: #f5f0f0;
+                overflow-x: hidden;
+            }
+            
+            .hero {
+                position: relative;
+                height: 70vh;
+                background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23228B22" width="1200" height="600"/></svg>');
+                background-size: cover;
+                background-position: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+            }
+            
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: radial-gradient(circle at 30% 50%, rgba(139, 195, 74, 0.3), transparent 50%), radial-gradient(circle at 70% 50%, rgba(76, 175, 80, 0.3), transparent 50%);
+                animation: pulse 8s ease-in-out infinite;
+            }
+            
+            @keyframes pulse {
+                0%,
+                100% {
+                    opacity: 0.5;
+                }
+                50% {
+                    opacity: 0.8;
+                }
+            }
+            
+            .hero-content {
+                text-align: center;
+                z-index: 2;
+                color: white;
+                padding: 2rem;
+            }
+            
+            .hero-title {
+                font-family: 'Playfair Display', serif;
+                font-size: 4rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+                text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
+                animation: fadeInUp 1s ease-out;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.5rem;
+                font-weight: 300;
+                margin-bottom: 2rem;
+                animation: fadeInUp 1s ease-out 0.3s backwards;
+            }
+            
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 4rem 2rem;
+            }
+            
+            .section-title {
+                font-family: 'Playfair Display', serif;
+                font-size: 3rem;
+                color: #fff;
+                text-align: center;
+                margin-bottom: 3rem;
+                position: relative;
+                padding-bottom: 1rem;
+            }
+            
+            .section-title::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100px;
+                height: 4px;
+                background: linear-gradient(90deg, #8BC34A, #4CAF50);
+                border-radius: 2px;
+            }
+            
+            .intro-text {
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 20px;
+                padding: 2rem;
+                margin-bottom: 3rem;
+                color: #fff;
+                text-align: center;
+                font-size: 1.1rem;
+                line-height: 1.8;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            }
+            
+            .services-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                align-items: start;
+                /* prevents stretching of other cards */
+                gap: 20px;
+                /* adds space between cards */
+                padding: 20px 0;
+                /* Key: prevents stretching other cards */
+            }
+            
+            @media (min-width: 768px) {
+                .services-grid {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+            
+            @media (min-width: 1024px) {
+                .services-grid {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+            }
+            
+            .service-card {
+                background: #fff;
+                border-radius: 12px;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+                cursor: pointer;
+            }
+            
+            .service-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 5px;
+                background: linear-gradient(90deg, #8BC34A, #4CAF50, #2E7D32);
+                transform: scaleX(0);
+                transition: transform 0.4s ease;
+            }
+            
+            .service-card:hover::before {
+                transform: scaleX(1);
+            }
+            
+            .service-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            }
+            
+            .service-header {
+                background: linear-gradient(135deg, #556B2F, #6B8E23);
+                color: white;
+                padding: 1.5rem;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                transition: background 0.3s ease;
+            }
+            
+            .service-card:hover .service-header {
+                background: linear-gradient(135deg, #6B8E23, #8BC34A);
+            }
+            
+            .service-icon {
+                font-size: 2rem;
+                margin-right: 1rem;
+            }
+            
+            .service-title {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.5rem;
+                font-weight: 600;
+                flex: 1;
+            }
+            
+            .service-arrow {
+                font-size: 1.5rem;
+                transition: transform 0.3s ease;
+            }
+            
+            .service-card.active .service-arrow {
+                transform: rotate(180deg);
+            }
+            
+            .service-content {
+                max-height: 0;
+                overflow: hidden;
+                opacity: 0;
+                transition: max-height 0.4s ease, opacity 0.3s ease;
+                background: white;
+                position: relative;
+            }
+            
+            .service-card.active .service-content {
+                opacity: 1;
+                max-height: 1000px;
+                /* enough for your tallest card */
+            }
+            
+            .service-card.active .service-content {
+                opacity: 1;
+            }
+            
+            .service-card.active .service-content {
+                max-height: 3000px;
+                opacity: 1;
+                transition: max-height 0.5s ease-in, opacity 0.3s ease-in 0.1s;
+            }
+            
+            .service-body {
+                padding: 2rem;
+                color: #333;
+                min-height: 50px;
+            }
+            
+            .service-item {
+                padding: 1rem;
+                margin-bottom: 1rem;
+                background: linear-gradient(135deg, #f5f5f5, #e8f5e9);
+                border-left: 4px solid #4CAF50;
+                border-radius: 8px;
+                transition: all 0.3s ease;
+                line-height: 1.6;
+                display: block;
+                visibility: visible;
+            }
+            
+            .service-item:hover {
+                transform: translateX(10px);
+                box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+            }
+            
+            .service-item strong {
+                color: #2E7D32;
+                display: block;
+                margin-bottom: 0.5rem;
+                font-size: 1.1rem;
+            }
+            
+            .testimonial-section {
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 20px;
+                padding: 3rem;
+                margin: 3rem 0;
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .testimonial-section::before {
+                content: '"';
+                position: absolute;
+                top: -20px;
+                left: 20px;
+                font-size: 8rem;
+                color: rgba(255, 255, 255, 0.1);
+                font-family: 'Playfair Display', serif;
+            }
+            
+            .testimonial-text {
+                color: #fff;
+                font-size: 1.3rem;
+                line-height: 1.8;
+                margin-bottom: 2rem;
+                position: relative;
+                z-index: 1;
+                font-style: italic;
+            }
+            
+            .testimonial-author {
+                text-align: right;
+                color: #8BC34A;
+            }
+            
+            .testimonial-author strong {
+                display: block;
+                font-size: 1.3rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .testimonial-author span {
+                color: rgba(255, 255, 255, 0.8);
+                font-size: 0.9rem;
+            }
+            
+            footer {
+                background: linear-gradient(135deg, #1a1a2e, #16213e);
+                color: white;
+                padding: 4rem 2rem 2rem;
+                margin-top: 4rem;
+            }
+            
+            .footer-content {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 3rem;
+                margin-bottom: 3rem;
+            }
+            
+            .footer-section h4 {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+                color: #8BC34A;
+            }
+            
+            .footer-info {
+                line-height: 2;
+            }
+            
+            .footer-info a {
+                color: white;
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+            
+            .footer-info a:hover {
+                color: #8BC34A;
+            }
+            
+            .social-links {
+                display: flex;
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+            
+            .social-links a {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                text-decoration: none;
+                transition: all 0.3s ease;
+            }
+            
+            .social-links a:hover {
+                background: #8BC34A;
+                transform: translateY(-5px);
+            }
+            
+            .footer-bottom {
+                text-align: center;
+                padding-top: 2rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                color: rgba(255, 255, 255, 0.6);
+            }
+            
+            @media (max-width: 768px) {
+                .hero-title {
+                    font-size: 2.5rem;
+                }
+                .section-title {
+                    font-size: 2rem;
+                }
+                .services-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+    </head>
 
-    <div class="body">
-        <header id="header" class="header-transparent header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': false, 'stickyChangeLogo': false, 'stickyStartAt': 1, 'stickyHeaderContainerHeight': 100}">
+    <body>
+
+
+
+        <header id="header" class="header-transparent header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': false, 'stickyStartAt': 1, 'stickyHeaderContainerHeight': 100}">
             <div class="header-body border-top-0 bg-color-dark box-shadow-none">
                 <div class="header-container container">
                     <div class="header-row">
@@ -73,39 +471,39 @@
                                             <ul class="nav nav-pills" id="mainNav">
                                                 <li class="dropdown-primary">
                                                     <a class="nav-link text-capitalize font-weight-semibold custom-text-3" href="index.html">
-															Home
-														</a>
+                                                                                Home
+                                                                            </a>
                                                 </li>
                                                 <li class="dropdown-primary">
                                                     <a class="nav-link text-capitalize font-weight-semibold custom-text-3" href="about-us.html">
-															About Us
-														</a>
+                                                                                About Us
+                                                                            </a>
                                                 </li>
                                                 <li class="dropdown">
-                                                    <a class="nav-link dropdown-toggle text-capitalize font-weight-semibold custom-text-3 active" class="dropdown-toggle" href="our-services-detail.html">
-															Our Services
-														</a>
-                                                    
-                                                </li>
+                                                    <a class="nav-link dropdown-toggle text-capitalize font-weight-semibold custom-text-3" class="dropdown-toggle" href="our-services-detail.html">
+                                                                                Our Services
+                                                                            </a>
 
-                                                
+                                                </li>
 
                                                 <li class="dropdown-primary">
                                                     <a class="nav-link text-capitalize font-weight-semibold custom-text-3" href="insights.html">
-															Our Insights
-														</a>
+                                                                                Our Insights
+                                                                            </a>
                                                 </li>
+
                                                 <li class="dropdown-primary">
                                                     <a class="nav-link text-capitalize font-weight-semibold custom-text-3" href="contact-us.html">
-															Contact Us
-														</a>
+                                                                                Contact Us
+                                                                            </a>
                                                 </li>
+
                                             </ul>
                                         </nav>
                                     </div>
                                     <button class="btn header-btn-collapse-nav" data-bs-toggle="collapse" data-bs-target=".header-nav-main nav">
-											<i class="fas fa-bars"></i>
-										</button>
+                                                                <i class="fas fa-bars"></i>
+                                                            </button>
                                 </div>
                             </div>
                         </div>
@@ -123,400 +521,313 @@
             </div>
         </header>
 
-        <div role="main" class="main">
 
-            <section class="page-header page-header-modern page-header-background bg-color-dark p-relative z-index-1 lazyload" data-bg-src="img/demos/digital-agency-2/bg/lake kivu.jpg">
-                <span class="custom-circle custom-circle-1 bg-color-light custom-circle-blur appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="400"></span>
-                <span class="custom-circle custom-circle-2 bg-color-primary appear-animation" data-appear-animation="zoomIn" data-appear-animation-delay="500"></span>
-                <span class="custom-circle custom-circle-3 bg-color-primary appear-animation" data-appear-animation="zoomIn" data-appear-animation-delay="600"></span>
 
-            </section>
 
-            <section class="mt-3 mt-xl-0 py-5 p-relative z-index-2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-4 our-services">
-                            <h4 class="text-color- custom-text-8 font-weight-bold custom-title-with-icon custom-title-with-icon-primary mb-4 pb-3" style="color:black !important">We Can Help You With:</h4>
-                            <div class="row flex-column pb-lg-5">
+
+
+
+
+        <br><br><br><br><br>
+
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+
+            <div class="intro-text">
+                Discover Rwanda's incredible beauty and diversity through our tailored travel experiences. From wildlife adventures and scenic landscapes to cultural and historical tours, we ensure every journey is memorable, comfortable, and inspiring.
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-header" onclick="toggleService(event, this)">
+                        <span class="service-icon">🦍</span>
+                        <h3 class="service-title">Volcanoes National Park</h3>
+                        <span class="service-arrow">▼</span>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-body">
+                            <div class="service-item">
+                                <strong>Gorilla Trekking</strong> Experience the unforgettable adventure of trekking through the lush volcanic forests to meet Rwanda's endangered mountain gorillas.
                             </div>
-                        </div>
-                        <div class="col-xl-8 mt-lg-5 mt-xl-0">
-                            <!-- <p class="custom-font-tertiary line-height-6 custom-text-7 mb-4 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut tellus ante. Nam suscipit urna risus.
-                            </p>
-                            <p class="custom-text-4 mb-4 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="400">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at massa quam. Maecenas et sem accumsan, dictum arcu eu, consectetur eros. Nulla tortor est, lobortis vestibulum turpis sed, mollis commodo orci.
-                            </p>
-                            <p class="custom-text-4 mb-5 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="600">
-                                Sed elementum cursus ante in suscipit. Etiam a arcu consequat, vehicula nisi in, efficitur lectus. Interdum et malesuada fames ac ante ipsum primis in faucibus. In eu lectus ultricies, pellentesque libero vitae, dictum erat.
-                            </p>-->
-                            <div class="pb-5 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="800">
-                                <img src="img/demos/digital-agency-2/our-services/our-services-detail-1.jpg" class="img-fluid">
+                            <div class="service-item">
+                                <strong>Golden Monkey Tracking</strong> Discover playful and rare golden monkeys in their natural bamboo habitat.
                             </div>
-
-
-                            <p class="custom-text-4 mb-4" data-appear-animation="fadeIn" data-appear-animation-delay="1000">
-                                Discover Rwanda’s incredible beauty and diversity through our tailored travel experiences. From wildlife adventures and scenic landscapes to cultural and historical tours, we ensure every journey is memorable, comfortable, and inspiring.
-                            </p>
-
-                            <div class="accordion custom-accordion mb-4 appear-animation" id="accordion" data-appear-animation="fadeIn" data-appear-animation-delay="1000">
-                                <div class="card card-default custom-card-default rounded-0">
-                                    <div class="card-header m-0 bg-color-tertiary">
-                                        <h4 class="card-title m-0">
-                                            <a class="accordion-toggle px-0 py-3" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapse1One" style="color:olive !important">
-													Volcanoes National Park
-												</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse1One" class="collapse custom-card-body-collapse show">
-                                        <div class="card-body">
-                                            <p class="mb-3">•<b> Gorilla Trekking</b>: Experience the unforgettable adventure of trekking through the lush volcanic forests to meet Rwanda’s endangered mountain gorillas.
-                                            </p>
-                                            <p class="mb-3"><b>• Golden Monkey Tracking:</b> Discover playful and rare golden monkeys in their natural bamboo habitat.
-                                            </p>
-
-                                            <p class="mb-3"><b>• Volcano Hiking:</b> Hike one of the Virunga volcanoes such as Mount Bisoke or Mount Muhabura for panoramic views.
-                                            </p>
-
-                                            <p class="mb-3"><b>• Cultural Visit:</b> Engage in a traditional Rwandan cultural experience with the Iby’Iwacu Cultural Village.
-                                            </p>
-
-
-
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="card card-default custom-card-default rounded-0">
-                                    <div class="card-header m-0 bg-color-tertiary">
-                                        <h4 class="card-title m-0">
-                                            <a class="accordion-toggle px-0 py-3" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapse2Two" style="color:olive !important">
-													Nyungwe National Park
-												</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse2Two" class="collapse custom-card-body-collapse">
-                                        <div class="card-body">
-                                            <p class="mb-3"><b>•	Canopy Walkway:</b> Enjoy Africa’s highest canopy walk offering spectacular views of the rainforest and its wildlife.
-                                            </p>
-                                            <p class="mb-3"><b>•	Chimpanzee Tracking:</b> Follow experienced guides to encounter wild chimpanzees in their natural environment.
-                                            </p>
-                                            <p class="mb-0"><b>•	Nature Walks:</b> Discover over 13 hiking trails, waterfalls, and diverse flora and fauna.
-                                            </p>
-
-                                            <p class="mb-0"><b>•	Bird Watching:</b> Spot some of the 300+ bird species that call Nyungwe home.
-
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card card-default custom-card-default rounded-0">
-                                    <div class="card-header m-0 bg-color-tertiary">
-                                        <h4 class="card-title m-0">
-                                            <a class="accordion-toggle px-0 py-3" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapse3Three" style="color:olive !important">
-													Akagera National Park
-												</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse3Three" class="collapse custom-card-body-collapse">
-                                        <div class="card-body">
-                                            <p class="mb-3"><b>Game Drive: 
-</b> Explore Rwanda’s only savannah park and spot the Big Five—lion, leopard, elephant, buffalo, and rhino.
-                                            </p>
-                                            <p class="mb-3"><b>•	Boat Safari on Lake Ihema: 
-</b> Observe hippos, crocodiles, and a variety of water birds up close.
-                                            </p>
-                                            <p class="mb-0"><b>•	Bird Watching: 
-</b> Enjoy the scenic views while identifying unique bird species across the park.
-                                            </p>
-
-                                            <p class="mb-0"><b>•	Sunset Viewing: 
-</b> Witness breathtaking sunsets over the park’s rolling plains and lakes.
-
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="card card-default custom-card-default rounded-0 ">
-                                    <div class="card-header m-0 bg-color-tertiary">
-                                        <h4 class="card-title m-0">
-                                            <a class="accordion-toggle px-0 py-3" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapse4Four" style="color:olive !important">
-													Gishwati Mukura National Park
-												</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse4Four" class="collapse custom-card-body-collapse">
-                                        <div class="card-body">
-                                            <p class="mb-3"><b>•	Nature Hikes: </b> Walk through beautiful montane forests filled with indigenous trees and plants.
-                                            </p>
-                                            <p class="mb-3"><b>•	Chimpanzee Tracking:</b> Follow experienced guides to encounter wild chimpanzees in their natural environment.
-                                            </p>
-                                            <p class="mb-0"><b>•	Community Tours: 
-
-</b> Visit nearby communities to learn about local conservation and sustainable living initiatives.
-                                            </p>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="card card-default custom-card-default rounded-0">
-                                    <div class="card-header m-0 bg-color-tertiary">
-                                        <h4 class="card-title m-0">
-                                            <a class="accordion-toggle px-0 py-3" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapse5Five" style="color:olive !important">
-													Kigali City Tours
-												</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse5Five" class="collapse custom-card-body-collapse">
-                                        <div class="card-body">
-                                            <p class="mb-3"><b>•	Kigali Genocide Memorial:</b> Learn Rwanda’s history and resilience at this important memorial site.
-                                            </p>
-
-
-                                            <p class="mb-3"><b>•	Kimironko Market:</b> Experience local life and shop for fresh produce, crafts, and fabrics.
-                                            </p>
-
-
-                                            <p class="mb-0"><b>•	Kigali Art Scene:</b> Visit art galleries such as Inema Arts Center for contemporary Rwandan art.
-                                            </p>
-
-                                            <p class="mb-0">
-                                                <b>• Kigali Convention Centre & City Landmarks: </b>Admire modern architecture and scenic viewpoints around the city.
-
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="card card-default custom-card-default rounded-0">
-                                    <div class="card-header m-0 bg-color-tertiary">
-                                        <h4 class="card-title m-0">
-                                            <a class="accordion-toggle px-0 py-3" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapse6Six" style="color:olive !important">
-													Historical Tours
-												</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse6Six" class="collapse custom-card-body-collapse">
-                                        <div class="card-body">
-                                            <p class="mb-3"><b>•	King’s Palace Museum (Nyanza):
-</b> Discover Rwanda’s royal history and traditional architecture.
-                                            </p>
-
-
-                                            <p class="mb-3"><b>•	Ethnographic Museum (Huye):
-</b> Explore Rwanda’s rich cultural heritage and artifacts.
-                                            </p>
-
-
-                                            <p class="mb-0"><b>•	Richard Kandt House Museum: 
-</b> Learn about Kigali’s colonial past and natural history.
-                                            </p>
-
-                                            <p class="mb-0">
-                                                <b>• Kigali Convention Centre & City Landmarks: </b>Admire modern architecture and scenic viewpoints around the city.
-
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="card card-default custom-card-default rounded-0">
-                                    <div class="card-header m-0 bg-color-tertiary">
-                                        <h4 class="card-title m-0">
-                                            <a class="accordion-toggle px-0 py-3" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapse7Seven" style="color:olive !important">
-													Lake Kivu
-												</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse7Seven" class="collapse custom-card-body-collapse">
-                                        <div class="card-body">
-                                            <p class="mb-3">
-                                                <b>• Boat Cruise: </b>Enjoy a relaxing boat ride to nearby islands such as Napoleon and Peace Island.
-                                            </p>
-                                            <p class="mb-3"><b>•	Swimming and Relaxation:</b> Swim in the clean, calm waters or unwind on the beach.
-                                            </p>
-                                            <p class="mb-0">
-                                                <b>• Coffee Tours:</b> Visit local coffee plantations to learn about Rwandan coffee production.</p>
-
-                                            <p class="mb-0">
-                                                <b>•	Water Sports:</b> Engage in kayaking, paddleboarding, or fishing experiences.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-
-
-
-
-                                <div class="card card-default custom-card-default rounded-0">
-                                    <div class="card-header m-0 bg-color-tertiary">
-                                        <h4 class="card-title m-0">
-                                            <a class="accordion-toggle px-0 py-3" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapse9Nine" style="color:olive !important">
-													Accomodations
-												</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse9Nine" class="collapse custom-card-body-collapse">
-                                        <div class="card-body">
-                                            <p class="mb-3">We provide preferred accommodation based on your budget, ranging from luxury lodges and mid-range hotels to budget-friendly guesthouses, ensuring comfort and convenience throughout your stay.
-                                            </p>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-
-                                <div class="card card-default custom-card-default rounded-0">
-                                    <div class="card-header m-0 bg-color-tertiary">
-                                        <h4 class="card-title m-0">
-                                            <a class="accordion-toggle px-0 py-3" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapse10Ten" style="color:olive !important">
-													Transportation
-												</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse10Ten" class="collapse custom-card-body-collapse">
-                                        <div class="card-body">
-                                            <p class="mb-3">All transfers and tours are conducted in a 4WD Safari Vehicle or Toyota TXL, offering comfort, reliability, and panoramic views during your journey across Rwanda. </p>
-
-
-
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-
-
+                            <div class="service-item">
+                                <strong>Volcano Hiking</strong> Hike one of the Virunga volcanoes such as Mount Bisoke or Mount Muhabura for panoramic views.
                             </div>
-
-                            <div class="testimonial testimonial-style-2">
-                                <blockquote>
-                                    <p class="mb-0">With our dedicated service, expert guidance, comfortable accommodation, and reliable transportation, we guarantee an unforgettable Rwandan experience. Let us take care of every detail while you explore, relax, and create
-                                        lasting memories.</p>
-                                </blockquote>
-                                <div class="testimonial-arrow-down"></div>
-                                <div class="testimonial-author">
-                                    <strong class="font-weight-extra-bold">Bucura Chouchou</strong><span>CEO & Founder - Bonded Paths</span>
-                                </div>
-
+                            <div class="service-item">
+                                <strong>Cultural Visit</strong> Engage in a traditional Rwandan cultural experience with the Iby'Iwacu Cultural Village.
                             </div>
-
                         </div>
                     </div>
                 </div>
-            </section>
+
+                <div class="service-card">
+                    <div class="service-header" onclick="toggleService(event, this)">
+                        <span class="service-icon">🌳</span>
+                        <h3 class="service-title">Nyungwe National Park</h3>
+                        <span class="service-arrow">▼</span>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-body">
+                            <div class="service-item">
+                                <strong>Canopy Walkway</strong> Enjoy Africa's highest canopy walk offering spectacular views of the rainforest and its wildlife.
+                            </div>
+                            <div class="service-item">
+                                <strong>Chimpanzee Tracking</strong> Follow experienced guides to encounter wild chimpanzees in their natural environment.
+                            </div>
+                            <div class="service-item">
+                                <strong>Nature Walks</strong> Discover over 13 hiking trails, waterfalls, and diverse flora and fauna.
+                            </div>
+                            <div class="service-item">
+                                <strong>Bird Watching</strong> Spot some of the 300+ bird species that call Nyungwe home.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header" onclick="toggleService(event, this)">
+                        <span class="service-icon">🦁</span>
+                        <h3 class="service-title">Akagera National Park</h3>
+                        <span class="service-arrow">▼</span>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-body">
+                            <div class="service-item">
+                                <strong>Game Drive</strong> Explore Rwanda's only savannah park and spot the Big Five—lion, leopard, elephant, buffalo, and rhino.
+                            </div>
+                            <div class="service-item">
+                                <strong>Boat Safari on Lake Ihema</strong> Observe hippos, crocodiles, and a variety of water birds up close.
+                            </div>
+                            <div class="service-item">
+                                <strong>Bird Watching</strong> Enjoy the scenic views while identifying unique bird species across the park.
+                            </div>
+                            <div class="service-item">
+                                <strong>Sunset Viewing</strong> Witness breathtaking sunsets over the park's rolling plains and lakes.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header" onclick="toggleService(event, this)">
+                        <span class="service-icon">🐵</span>
+                        <h3 class="service-title">Gishwati Mukura National Park</h3>
+                        <span class="service-arrow">▼</span>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-body">
+                            <div class="service-item">
+                                <strong>Nature Hikes</strong> Walk through beautiful montane forests filled with indigenous trees and plants.
+                            </div>
+                            <div class="service-item">
+                                <strong>Chimpanzee Tracking</strong> Follow experienced guides to encounter wild chimpanzees in their natural environment.
+                            </div>
+                            <div class="service-item">
+                                <strong>Community Tours</strong> Visit nearby communities to learn about local conservation and sustainable living initiatives.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header" onclick="toggleService(event, this)">
+                        <span class="service-icon">🏙️</span>
+                        <h3 class="service-title">Kigali City Tours</h3>
+                        <span class="service-arrow">▼</span>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-body">
+                            <div class="service-item">
+                                <strong>Kigali Genocide Memorial</strong> Learn Rwanda's history and resilience at this important memorial site.
+                            </div>
+                            <div class="service-item">
+                                <strong>Kimironko Market</strong> Experience local life and shop for fresh produce, crafts, and fabrics.
+                            </div>
+                            <div class="service-item">
+                                <strong>Kigali Art Scene</strong> Visit art galleries such as Inema Arts Center for contemporary Rwandan art.
+                            </div>
+                            <div class="service-item">
+                                <strong>Kigali Convention Centre & City Landmarks</strong> Admire modern architecture and scenic viewpoints around the city.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header" onclick="toggleService(event, this)">
+                        <span class="service-icon">🏛️</span>
+                        <h3 class="service-title">Historical Tours</h3>
+                        <span class="service-arrow">▼</span>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-body">
+                            <div class="service-item">
+                                <strong>King's Palace Museum (Nyanza)</strong> Discover Rwanda's royal history and traditional architecture.
+                            </div>
+                            <div class="service-item">
+                                <strong>Ethnographic Museum (Huye)</strong> Explore Rwanda's rich cultural heritage and artifacts.
+                            </div>
+                            <div class="service-item">
+                                <strong>Richard Kandt House Museum</strong> Learn about Kigali's colonial past and natural history.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header" onclick="toggleService(event, this)">
+                        <span class="service-icon">🌊</span>
+                        <h3 class="service-title">Lake Kivu</h3>
+                        <span class="service-arrow">▼</span>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-body">
+                            <div class="service-item">
+                                <strong>Boat Cruise</strong> Enjoy a relaxing boat ride to nearby islands such as Napoleon and Peace Island.
+                            </div>
+                            <div class="service-item">
+                                <strong>Swimming and Relaxation</strong> Swim in the clean, calm waters or unwind on the beach.
+                            </div>
+                            <div class="service-item">
+                                <strong>Coffee Tours</strong> Visit local coffee plantations to learn about Rwandan coffee production.
+                            </div>
+                            <div class="service-item">
+                                <strong>Water Sports</strong> Engage in kayaking, paddleboarding, or fishing experiences.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header" onclick="toggleService(event, this)">
+                        <span class="service-icon">🏨</span>
+                        <h3 class="service-title">Accommodations</h3>
+                        <span class="service-arrow">▼</span>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-body">
+                            <div class="service-item">
+                                We provide preferred accommodation based on your budget, ranging from luxury lodges and mid-range hotels to budget-friendly guesthouses, ensuring comfort and convenience throughout your stay.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header" onclick="toggleService(event, this)">
+                        <span class="service-icon">🚙</span>
+                        <h3 class="service-title">Transportation</h3>
+                        <span class="service-arrow">▼</span>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-body">
+                            <div class="service-item">
+                                All transfers and tours are conducted in a 4WD Safari Vehicle or Toyota TXL, offering comfort, reliability, and panoramic views during your journey across Rwanda.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-section">
+                <p class="testimonial-text">
+                    With our dedicated service, expert guidance, comfortable accommodation, and reliable transportation, we guarantee an unforgettable Rwandan experience. Let us take care of every detail while you explore, relax, and create lasting memories.
+                </p>
+                <div class="testimonial-author">
+                    <strong>Bucura Chouchou</strong>
+                    <span>CEO & Founder - Bonded Paths</span>
+                </div>
+            </div>
+
+
+
+
 
 
 
         </div>
 
-        <!--Footer-->
-
-        <footer id="footer" class="mt-0 py-5">
-            <div class="container py-5">
-                <div class="row justify-content-between">
-                    <div class="col-sm-12 col-lg-6 col-xl-6">
-                        <div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="100">
-                            <h4 class="custom-font-primary custom-newsletter-title font-weight-bold mb-4 custom-text-7">Start your adventure today with Bonded Paths Safari and Tours, where every journey is made just for you.</h4>
-
-
-                        </div>
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Start Your Adventure</h4>
+                    <p>Every journey is made just for you with Bonded Paths Safari and Tours.</p>
+                    <div class="social-links">
+                        <a href="#" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" title="Twitter">
+                            <i class="fab fa-x-twitter"></i>
+                        </a>
+                        <a href="#" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
                     </div>
-                    <div class="col-sm-12 col-lg-6 col-xl-4 col-info-footer mt-4 mt-sm-5 mt-lg-0">
-                        <div class="row">
 
-
-                            <span class="d-block text-start text-lg-end text-color-light font-weight-semibold text-5 pb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="100">Rwanda</span>
-                            <p class="mb-0 text-start text-lg-end text-4 font-weight-medium appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="150">123 The Main Street</p>
-                            <p class="mb-0 text-start text-lg-end text-4 font-weight-medium appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">Kigali</p>
-                            <p class="mb-0 text-start text-lg-end text-4 font-weight-medium appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="250"><a href="tel:+1234567890" class="text-color-default">(123) 456-7890</a></p>
-
-                        </div>
+                </div>
+                <div class="footer-section">
+                    <h4></h4>
+                    <div class="footer-info">
+                        <p></p>
+                        <p></p>
+                        <p></p>
                     </div>
                 </div>
 
-                <div class="row justify-content-between">
-                    <div class="col-sm-12 col-lg-7 col-xl-6 d-none d-sm-flex">
-                        <div class="nav-footer w-100 pt-5 mt-0 mt-lg-4">
-                            <div class="row justify-content-between">
-                                <div class="col-auto me-auto">
-                                    <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
-                                        <div class="footer-nav footer-nav-links">
-                                            <nav>
-                                                <ul class="nav" id="footerNav">
-                                                    <li>
-                                                        <a class="text-color-hover-primary font-weight-semibold custom-text-2 text-capitalize" href="our-services-detail.html">Our Services</a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a class="text-color-hover-primary font-weight-semibold custom-text-2 text-capitalize" href="contact-us.html">Contact Us</a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-auto">
-                                    <div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="100">
-                                        <ul class="header-social-icons social-icons social-icons-clean social-icons-icon-light social-icons-big d-none d-lg-block m-0 p-relative bottom-10">
-                                            <li class="social-icons-instagram"><a href="http://www.instagram.com/" target="_blank" class="text-4" title="Instagram"><i class="fab fa-instagram"></i></a></li>
-                                            <li class="social-icons-x"><a href="http://www.twitter.com/" target="_blank" class="text-4" title="Twitter"><i class="fab fa-x-twitter"></i></a></li>
-                                            <li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" class="text-4" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-5 col-xl-6">
-                        <div class="d-flex justify-content-end custom-footer-copywriting pt-5 mt-0 mt-lg-4">
-                            <p class="mb-0 text-start text-lg-end d-block w-100 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="300">Developed By Innovatoor. © 2025. All Rights Reserved</p>
-                        </div>
+                <div class="footer-section">
+                    <h4>Rwanda Office</h4>
+                    <div class="footer-info">
+                        <p>123 The Main Street</p>
+                        <p>Kigali, Rwanda</p>
+                        <p><a href="tel:+1234567890">(123) 456-7890</a></p>
                     </div>
                 </div>
+
+
+            </div>
+            <div class="footer-bottom">
+                <p>Developed By Innovatoor. © 2025. All Rights Reserved</p>
             </div>
         </footer>
 
+        <script>
+            document.querySelectorAll('.service-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const card = header.closest('.service-card');
+                    const alreadyActive = card.classList.contains('active');
+
+                    // Close all
+                    document.querySelectorAll('.service-card').forEach(c => c.classList.remove('active'));
+
+                    // Reopen only if it wasn’t already open
+                    if (!alreadyActive) {
+                        card.classList.add('active');
+                    }
+                });
+            });
+        </script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="vendor/theme.js"></script>
+        <script src="js/theme.init.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="vendor/theme.js"></script>
+        <script src="js/theme.init.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                // Initialize sticky header in Porto theme
+                if (typeof theme !== 'undefined' && typeof theme.StickyHeader !== 'undefined') {
+                    theme.StickyHeader.initialize();
+                }
+            });
+        </script>
 
 
-		
-    </div>
 
-    <!-- Vendor -->
-    <script src="vendor/plugins/js/plugins.min.js"></script>
+    </body>
 
-    <!-- Theme Base, Components and Settings -->
-    <script src="js/theme.js"></script>
-
-    <!-- Current Page Vendor and Views -->
-    <script src="js/views/view.contact.js"></script>
-
-    <!-- Theme Custom -->
-    <script src="js/custom.js"></script>
-
-    <!-- Theme Initialization Files -->
-    <script src="js/theme.init.js"></script>
-
-</body>
-
-</html>
-
-
+</div>
