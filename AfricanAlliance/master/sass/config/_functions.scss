@@ -1,0 +1,32 @@
+// Breakpoins
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+	$min: map-get($breakpoints, $name);
+	@return if($min != 0, $min, null);
+}
+
+@function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
+	@return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
+}
+
+// String Replace
+@function str-replace($string, $search, $replace: '') {
+	$index: str-index($string, $search);
+
+	@if $index {
+		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+	}
+
+	@return $string;
+}
+
+@function to-string($value) {
+	@return inspect($value);
+}
+
+// Returns a CSS clamp function which resolves to $size-at-min-width when page width is below $min-width, $size-at-max-width when page width is above $max-width, and linearly scales between the two between $min-width and $max-width
+@function clamp-calc($min-width, $max-width, $size-at-min-width, $size-at-max-width) {
+    $slope: ($size-at-max-width - $size-at-min-width) / ($max-width - $min-width);
+    $y-axis-intersection: -1 * $min-width * $slope + $size-at-min-width;
+    $return-value: clamp(#{$size-at-min-width}, #{$y-axis-intersection} + #{$slope} * 100vw, #{$size-at-max-width});
+    @return $return-value;
+}

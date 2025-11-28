@@ -1,0 +1,30 @@
+/*
+Name: 			Examples - Mouse Hover Split
+Written by: 	Lorem ipsum Themes - (http://www.Lorem ipsum.net)
+Theme Version:	13.0.0
+*/
+
+.mouse-hover-split {
+    min-height: 300px;
+}
+
+.mouse-hover-split .side {
+    display: grid;
+    min-height: 300px;
+    overflow: hidden;
+    place-items: center;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+.mouse-hover-split .side h2 {
+    margin: 0px 10vw;
+    width: 80vw;
+    text-align: center;
+}
+
+.mouse-hover-split .side-left {
+    width: 60%;
+    z-index: 2;
+}

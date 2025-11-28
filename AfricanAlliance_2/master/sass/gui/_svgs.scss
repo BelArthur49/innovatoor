@@ -1,0 +1,74 @@
+/* Clip SVG */
+.clip-svg {
+	width: 0;
+	height: 0;
+}
+
+/* SVG Colors */
+@each $name, $var in $colors-list {
+
+    .svg-fill-color-#{$name} {
+        fill: var(--#{$name}) !important;
+        svg {
+            path, rect, line, polyline, polygon {
+                fill: var(--#{$name}) !important;
+            }
+        }
+    }
+
+    .svg-fill-color-hover-#{$name} {
+        &:hover {
+            fill: var(--#{$name}) !important;
+        }
+        svg:hover {
+            path, rect, line, polyline, polygon {
+                fill: var(--#{$name}) !important;
+            }
+        }
+    }
+
+    .svg-stroke-color-#{$name} {
+        stroke: var(--#{$name}) !important;
+        svg {
+            path, rect, line, polyline, polygon {
+                stroke: var(--#{$name}) !important;
+            }
+        }
+    }
+
+    .svg-stroke-color-hover-#{$name} {
+        &:hover {
+            stroke: var(--#{$name}) !important;
+        }
+        svg:hover {
+            path, rect, line, polyline, polygon {
+                stroke: var(--#{$name}) !important;
+            }
+        }
+    }
+}
+
+/* SVG Animations */
+.svg-animation-effect-1-hover {
+	&:hover {
+		svg {
+			path, polygon, polyline, rect {
+				stroke: var(--primary);
+			}
+		}
+	}
+
+    @each $name, $var in $colors-list {
+
+		&.svg-animation-effect-1-hover-#{$name} {
+			&:hover {
+				svg {
+					path, polygon, polyline, rect {
+						stroke: var(--#{$name});
+					}
+				}
+			}
+		}
+    
+    }
+}

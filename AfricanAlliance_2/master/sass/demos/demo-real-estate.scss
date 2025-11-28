@@ -1,0 +1,236 @@
+//COMMON IMPORTS
+@import "../config/imports";
+
+// Headings
+h2 {
+	text-transform: none;
+	font-weight: 600;
+	font-size: 2.2em;
+}
+
+h3 {
+	text-transform: none;
+	font-weight: 600;
+	font-size: 1.6em;
+}
+
+h4, h5, h6 {
+	text-transform: none;
+	font-weight: 600;
+}
+
+// Header
+#header {
+	.header-top {
+		border-bottom-width: 1px;
+	}
+}
+
+@media (min-width: 992px) {
+	#header {
+		.header-nav-main {
+			nav {
+				> ul {
+					> li {
+						> a {
+							text-transform: capitalize;
+							font-size: 1.1em;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	#header {
+		.header-nav-main.header-nav-main-dropdown-modern {
+			nav {
+				>ul {
+					>li.dropdown {
+						.dropdown-menu {
+							li {
+								a {
+									font-weight: 500;
+									color: var(--default);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Custom Card
+.custom-card-info {
+	background: transparent;
+	&.custom-card-info-shadow:before {
+		display: block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		opacity: 0;
+		content: '';
+		box-shadow: 0 30px 110px #bbb;
+		border-radius: .25rem;
+		transition: opacity 0.2s ease-in-out;
+	}
+	.custom-card-info-arrow {
+		transition: all 0.2s ease-in-out;
+		right: 0 !important;
+	}
+	&:hover {
+		&.custom-card-info-shadow:before {
+			opacity: 0.5;
+		}
+		.custom-card-info-arrow {
+			right: -7px !important;
+		}
+	}
+	max-width: 100%;
+	.card-body {
+		padding: 0;
+		border-radius: .25rem;
+		background: var(--light);
+	}
+	.featured-tag {
+		color: var(--light);
+		text-transform: uppercase;
+		padding: 15px 102px;
+		position: absolute;
+		right: -24%;
+		top: 6%;
+		transform: rotate(45deg);
+		transition: none 0s ease 0s;
+		text-align: inherit;
+		line-height: 24px;
+		border-width: 0px;
+		margin: 0px;
+		letter-spacing: -0.5px;
+		font-weight: 600;
+		font-size: 14px;
+	}
+	.custom-card-info-header {
+		border-bottom: 1px solid #E7E7E7;
+		padding: 1rem;
+	}
+	.custom-card-info-content {
+		padding: 1rem;
+	}
+}
+
+.custom-card-info-slider {
+	max-width: 390px;
+	.custom-card-info-header {
+		padding: 2rem;
+	}
+	.custom-card-info-content {
+		padding: 2rem;
+	}
+}
+
+// Custom Cards Locations
+.custom-card-info-locations {
+	img {
+		transition: ease all 300ms;
+		filter: grayscale(100%);
+	}
+	.card-body {
+		&:before {
+			transition: ease all 300ms;
+		}
+	}
+	&:hover {
+		img {
+			filter: none;
+		}
+		.card-body {
+			&:before {
+				opacity: 0.4 !important;
+			}
+		}
+	}
+	.custom-card-info-desc {
+		top: 50%;
+		position: absolute;
+		transform: translateY(-50%);
+		width: 100%;
+		text-align: center;
+		display: block;
+		z-index: 10;
+	}
+}
+
+// Custom Card Special Offers
+.custom-card-info-special-offers {
+	.custom-card-info-desc {
+		top: 50%;
+		position: absolute;
+		transform: translateY(-50%);
+		width: 100%;
+		text-align: center;
+		display: block;
+		z-index: 10;
+	}
+}
+
+// Custom View More
+.custom-view-more {
+	svg {
+		@include if-rtl() {
+			transform: rotate(180deg);
+		}
+		transition: ease transform 300ms;
+	}
+	&:hover {
+		svg {
+			@include if-ltr() {
+				transform: translate3d(7px, 0, 0);
+			}
+			@include if-rtl() {
+				transform: rotate(180deg) translate3d(7px, 0, 0);
+			}
+		}
+	}
+}
+
+// Custom Btn Search
+.btn.custom-btn-search-page-header {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	position: relative;
+	bottom: 5px;
+}
+
+// Page Header
+.page-header {
+	.form-style-3 {
+		margin-top: -30px;
+		position: relative;
+		z-index: 10;
+	}
+}
+
+// Footer
+#footer {
+	border: 0;
+	background: #333;
+	.footer-copyright {
+		border-top: 1px solid #454545;
+		background: #333;
+		p {
+			color: #999;
+		}
+	}
+}
+
+/* Skin */
+// Header
+@media (min-width: 992px) {
+	html #header .header-nav:not(.header-nav-line):not(.header-nav-links) .header-nav-main nav > ul:not(:hover) > li.dropdown-full-color.dropdown-quaternary > a.active {
+	    color: var(--primary);
+	}
+}

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Programmes</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #1a1a1a;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .flip-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #292929 100%);
+            padding: 80px 20px;
+            position: relative;
+        }
+        
+        .flip-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e41645, transparent);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header-section {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 0.8s ease;
+        }
+        
+        .header-section h2 {
+            font-size: 48px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .header-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #e41645, transparent);
+            border-radius: 2px;
+        }
+        
+        .header-section p {
+            font-size: 18px;
+            color: #777;
+            max-width: 600px;
+            margin: 20px auto 0;
+            line-height: 1.6;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            padding: 20px 0;
+        }
+        /* =======================
+           FLIP CARD (CLEAN + FIXED)
+           ======================= */
+        
+        .flip-card {
+            height: 350px;
+            perspective: 1200px;
+            -webkit-perspective: 1200px;
+            transform: translateZ(0);
+        }
+        
+        .flip-card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 0.8s ease;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+        }
+        
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+        }
+        
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+        }
+        /* FRONT */
+        
+        .flip-card-front {
+            background: #292929;
+            border: 1px solid rgba(228, 22, 69, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transform: rotateY(0deg);
+        }
+        
+        .flip-card:hover .flip-card-front {
+            border-color: rgba(228, 22, 69, 0.5);
+            box-shadow: 0 0 30px rgba(228, 22, 69, 0.3);
+        }
+        /* BACK */
+        
+        .flip-card-back {
+            background: linear-gradient(135deg, #292929 0%, #1f1f1f 100%);
+            transform: rotateY(180deg);
+            padding: 40px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border: 1px solid rgba(228, 22, 69, 0.3);
+        }
+        /* Fix mirrored children */
+        
+        .flip-card-front *,
+        .flip-card-back * {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        
+        .card-icon {
+            font-size: 80px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            transition: 0.4s ease;
+        }
+        
+        .flip-card:hover .card-icon {
+            transform: scale(1.1);
+        }
+        
+        .card-cta {
+            z-aa: 5;
+            color: #e41645;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 2px solid #e41645;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        
+        .flip-card:hover .card-cta {
+            background: rgba(228, 22, 69, 0.2);
+        }
+        
+        .flip-card-back h4 {
+            color: #fff;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .flip-card-back p {
+            color: #aaa;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .flip-card-back a {
+            padding: 14px 32px;
+            background: #e41645;
+            color: #fff;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(228, 22, 69, 0.3);
+            transition: 0.3s;
+        }
+        
+        .flip-card-back a:hover {
+            background: #ff1744;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(228, 22, 69, 0.5);
+        }
+        /* ANIMATIONS */
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* RESPONSIVE */
+        
+        @media (max-width: 1200px) {
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            .flip-card {
+                height: 320px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="flip-section">
+        <div class="container">
+
+            <div class="header-section">
+                <h2>Our Programmes</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur to elevate Lorem Ipsum and drive sustainable growth</p>
+            </div>
+
+            <div class="cards-grid">
+
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-icon">📊</div>
+                            <div class="card-cta">Hover Me</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4>Lorem ipsum dolor</h4>
+                            <p>Comprehensive programmes tailored to your unique Lorem ipsum needs.</p>
+                            <a href="#">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-icon">💼</div>
+                            <div class="card-cta">Hover Me</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4>Lorem ipsum</h4>
+                            <p>Maximize Lorem ipsum dolor with Lorem ipsum Lorem ipsum and strategy.</p>
+                            <a href="#">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-icon">📈</div>
+                            <div class="card-cta">Hover Me</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4>Lorem ipsum dolor sit amet,</h4>
+                            <p>Expert Lorem ipsum that improve Lorem ipsum performance.</p>
+                            <a href="#">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-icon">💰</div>
+                            <div class="card-cta">Hover Me</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4>Lorem ipsum Lorem ipsum </h4>
+                            <p>Lorem ipsum Lorem ipsum processing with complete Lorem ipsum .</p>
+                            <a href="#">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-icon">💰</div>
+                            <div class="card-cta">Hover Me</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4>Lorem ipsum Lorem ipsum </h4>
+                            <p>Lorem ipsum Lorem ipsum processing with complete Lorem ipsum .</p>
+                            <a href="#">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-icon">💰</div>
+                            <div class="card-cta">Hover Me</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4>Lorem ipsum Lorem ipsum </h4>
+                            <p>Lorem ipsum Lorem ipsum processing with complete Lorem ipsum .</p>
+                            <a href="#">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

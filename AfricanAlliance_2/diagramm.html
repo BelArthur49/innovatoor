@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Analytics Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            color: #fff;
+        }
+        
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            z-aa: 1;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' /%3E%3C/svg%3E");
+        }
+        
+        .container {
+            position: relative;
+            z-aa: 2;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 80px 60px;
+        }
+        
+        .header {
+            margin-bottom: 60px;
+            border-bottom: 1px solid rgba(119, 119, 119, 0.15);
+            padding-bottom: 40px;
+        }
+        
+        .title {
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: #fff;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+        
+        .subtitle {
+            font-size: 0.875rem;
+            color: #777;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 60px;
+            background: #292929;
+            padding: 4px;
+            border-radius: 2px;
+            width: fit-content;
+        }
+        
+        .toggle-btn {
+            padding: 12px 32px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: none;
+            background: transparent;
+            color: #777;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+        
+        .toggle-btn:hover {
+            color: #fff;
+        }
+        
+        .toggle-btn.active {
+            background: #e41645;
+            color: #fff;
+        }
+        
+        .chart-container {
+            position: relative;
+            background: #292929;
+            border-radius: 2px;
+            padding: 60px 40px;
+            min-height: 600px;
+        }
+        
+        .chart-root {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            height: 480px;
+            position: relative;
+            padding: 0 30px;
+        }
+        
+        .chart-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            max-width: 140px;
+            gap: 20px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .value {
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: #fff;
+            letter-spacing: -1px;
+            font-variant-numeric: tabular-nums;
+        }
+        
+        .bar-wrap {
+            width: 100%;
+            height: 380px;
+            display: flex;
+            align-items: flex-end;
+        }
+        
+        .bar {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            position: relative;
+        }
+        
+        .bar-fill {
+            width: 100%;
+            height: 0%;
+            position: relative;
+            transform-origin: bottom;
+            transition: height 1s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #1a1a1a;
+            position: relative;
+        }
+        
+        .bar-fill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #e41645;
+            box-shadow: 0 0 20px rgba(228, 22, 69, 0.5);
+        }
+        
+        .bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(228, 22, 69, 0.15) 0%, rgba(228, 22, 69, 0.05) 50%, transparent 100%);
+        }
+        
+        .fill-red::before {
+            background: #e41645;
+            box-shadow: 0 0 20px rgba(228, 22, 69, 0.5);
+        }
+        
+        .fill-green::before {
+            background: #777;
+            box-shadow: 0 0 20px rgba(119, 119, 119, 0.3);
+        }
+        
+        .fill-black::before {
+            background: #e41645;
+            box-shadow: 0 0 20px rgba(228, 22, 69, 0.5);
+        }
+        
+        .fill-mix::before {
+            background: #777;
+            box-shadow: 0 0 20px rgba(119, 119, 119, 0.3);
+        }
+        
+        .fill-red::after {
+            background: linear-gradient(180deg, rgba(228, 22, 69, 0.15) 0%, rgba(228, 22, 69, 0.05) 50%, transparent 100%);
+        }
+        
+        .fill-green::after {
+            background: linear-gradient(180deg, rgba(119, 119, 119, 0.15) 0%, rgba(119, 119, 119, 0.05) 50%, transparent 100%);
+        }
+        
+        .fill-black::after {
+            background: linear-gradient(180deg, rgba(228, 22, 69, 0.15) 0%, rgba(228, 22, 69, 0.05) 50%, transparent 100%);
+        }
+        
+        .fill-mix::after {
+            background: linear-gradient(180deg, rgba(119, 119, 119, 0.15) 0%, rgba(119, 119, 119, 0.05) 50%, transparent 100%);
+        }
+        
+        .label {
+            font-size: 0.8rem;
+            color: #777;
+            font-weight: 400;
+            text-align: center;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+        
+        .svg-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-aa: 10;
+        }
+        
+        .grid-lines {
+            position: absolute;
+            top: 60px;
+            left: 40px;
+            right: 40px;
+            bottom: 60px;
+            z-aa: 1;
+        }
+        
+        .grid-line {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: rgba(119, 119, 119, 0.08);
+        }
+        
+        .metric-overlay {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            display: flex;
+            gap: 40px;
+        }
+        
+        .metric {
+            text-align: right;
+        }
+        
+        .metric-label {
+            font-size: 0.7rem;
+            color: #777;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: #fff;
+            letter-spacing: -0.5px;
+            font-variant-numeric: tabular-nums;
+        }
+        
+        .metric-value.accent {
+            color: #e41645;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            .title {
+                font-size: 2rem;
+            }
+            .chart-container {
+                padding: 40px 20px;
+            }
+            .controls {
+                width: 100%;
+            }
+            .toggle-btn {
+                flex: 1;
+                padding: 12px 16px;
+            }
+            .metric-overlay {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grain"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="title" id="datasetTitle">Live Growth Metrics</h1>
+            <p class="subtitle">Real-Time Analytics Dashboard</p>
+        </div>
+
+        <div class="controls" id="chartControls"></div>
+
+        <div class="chart-container">
+            <div class="metric-overlay">
+                <div class="metric">
+                    <div class="metric-label">Peak Value</div>
+                    <div class="metric-value accent" id="peakValue">660</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Average</div>
+                    <div class="metric-value" id="avgValue">384</div>
+                </div>
+            </div>
+
+            <div class="grid-lines" id="gridLines"></div>
+            <svg class="svg-line"></svg>
+            <div class="chart-root" id="chartRoot"></div>
+        </div>
+    </div>
+
+    <script>
+        const datasets = {
+            A: {
+                title: 'Live Growth Metrics',
+                items: [{
+                    label: 'Stat 1',
+                    value: 120,
+                    color: 'red'
+                }, {
+                    label: 'Stat 2',
+                    value: 240,
+                    color: 'green'
+                }, {
+                    label: 'Stat 3',
+                    value: 380,
+                    color: 'black'
+                }, {
+                    label: 'Stat 4',
+                    value: 520,
+                    color: 'mix'
+                }, {
+                    label: 'Stat 5',
+                    value: 660,
+                    color: 'green'
+                }]
+            },
+            B: {
+                title: 'Alternate Snapshot',
+                items: [{
+                    label: 'Alpha',
+                    value: 80,
+                    color: 'red'
+                }, {
+                    label: 'Beta',
+                    value: 200,
+                    color: 'green'
+                }, {
+                    label: 'Gamma',
+                    value: 350,
+                    color: 'mix'
+                }, {
+                    label: 'Delta',
+                    value: 510,
+                    color: 'black'
+                }, {
+                    label: 'Epsilon',
+                    value: 610,
+                    color: 'green'
+                }]
+            }
+        };
+
+        let activeKey = 'A';
+
+        function createGridLines() {
+            const grid = document.getElementById('gridLines');
+            grid.innerHTML = '';
+            for (let i = 0; i <= 5; i++) {
+                const line = document.createElement('div');
+                line.className = 'grid-line';
+                line.style.top = (i * 20) + '%';
+                grid.appendChild(line);
+            }
+        }
+
+        function updateMetrics(data) {
+            const values = data.items.map(it => it.value);
+            const peak = Math.max(...values);
+            const avg = Math.round(values.reduce((a, b) => a + b, 0) / values.length);
+
+            document.getElementById('peakValue').textContent = peak;
+            document.getElementById('avgValue').textContent = avg;
+        }
+
+        function renderChart(key) {
+            const data = datasets[key];
+            document.getElementById('datasetTitle').textContent = data.title;
+            updateMetrics(data);
+
+            const root = document.getElementById('chartRoot');
+            root.innerHTML = '';
+
+            const svg = document.querySelector('.svg-line');
+            svg.innerHTML = '';
+
+            const max = Math.max(...data.items.map(it => it.value), 1);
+
+            data.items.forEach((d, i) => {
+                const frac = d.value / max;
+                const item = document.createElement('div');
+                item.className = 'chart-item';
+                item.style.animationDelay = (i * 0.08) + 's';
+                item.innerHTML = `
+                    <div class="value">${d.value}</div>
+                    <div class="bar-wrap">
+                        <div class="bar">
+                            <div class="bar-fill fill-${d.color}"></div>
+                        </div>
+                    </div>
+                    <div class="label">${d.label}</div>
+                `;
+                root.appendChild(item);
+
+                setTimeout(() => {
+                    const fill = item.querySelector('.bar-fill');
+                    fill.style.height = (frac * 100) + '%';
+                }, i * 80 + 100);
+            });
+
+            setTimeout(() => drawLineOverBars(), 600);
+        }
+
+        function setupControls() {
+            const controls = document.getElementById('chartControls');
+            controls.innerHTML = '';
+
+            Object.keys(datasets).forEach(k => {
+                const btn = document.createElement('button');
+                btn.className = 'toggle-btn' + (k === activeKey ? ' active' : '');
+                btn.textContent = 'Dataset ' + k;
+                btn.onclick = () => {
+                    activeKey = k;
+                    document.querySelectorAll('.toggle-btn').forEach(n => n.classList.remove('active'));
+                    btn.classList.add('active');
+                    renderChart(k);
+                };
+                controls.appendChild(btn);
+            });
+        }
+
+        function drawLineOverBars() {
+            const svg = document.querySelector('.svg-line');
+            const root = document.getElementById('chartRoot');
+            const items = Array.from(root.querySelectorAll('.chart-item'));
+
+            if (!items.length) return;
+
+            const w = root.clientWidth;
+            const h = root.clientHeight;
+            svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+
+            const points = items.map(it => {
+                const fill = it.querySelector('.bar-fill');
+                const barRect = fill.getBoundingClientRect();
+                const rootRect = root.getBoundingClientRect();
+                return {
+                    x: barRect.left - rootRect.left + barRect.width / 2,
+                    y: barRect.top - rootRect.top
+                };
+            });
+
+            function pointsToPath(pts) {
+                if (pts.length === 0) return '';
+                if (pts.length === 1) return `M ${pts[0].x} ${pts[0].y}`;
+
+                let d = `M ${pts[0].x} ${pts[0].y} `;
+
+                for (let i = 0; i < pts.length - 1; i++) {
+                    const p0 = pts[i - 1] || pts[i];
+                    const p1 = pts[i];
+                    const p2 = pts[i + 1];
+                    const p3 = pts[i + 2] || p2;
+
+                    const cp1x = p1.x + (p2.x - p0.x) / 6;
+                    const cp1y = p1.y + (p2.y - p0.y) / 6;
+                    const cp2x = p2.x - (p3.x - p1.x) / 6;
+                    const cp2y = p2.y - (p3.y - p1.y) / 6;
+
+                    d += `C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p2.x} ${p2.y} `;
+                }
+
+                return d;
+            }
+
+            const ns = 'http://www.w3.org/2000/svg';
+
+            const path = document.createElementNS(ns, 'path');
+            path.setAttribute('fill', 'none');
+            path.setAttribute('stroke', '#e41645');
+            path.setAttribute('stroke-width', '2');
+            path.setAttribute('stroke-linecap', 'round');
+            path.setAttribute('stroke-linejoin', 'round');
+            svg.appendChild(path);
+
+            const d = pointsToPath(points);
+            path.setAttribute('d', d);
+
+            const length = path.getTotalLength();
+            path.style.strokeDasharray = length;
+            path.style.strokeDashoffset = length;
+
+            requestAnimationFrame(() => {
+                path.style.transition = 'stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                path.style.strokeDashoffset = '0';
+            });
+
+            // Add dots at each point
+            points.forEach((p, i) => {
+                setTimeout(() => {
+                    const circle = document.createElementNS(ns, 'circle');
+                    circle.setAttribute('cx', p.x);
+                    circle.setAttribute('cy', p.y);
+                    circle.setAttribute('r', '0');
+                    circle.setAttribute('fill', '#e41645');
+                    circle.style.transition = 'r 0.3s ease';
+                    svg.appendChild(circle);
+
+                    requestAnimationFrame(() => {
+                        circle.setAttribute('r', '4');
+                    });
+                }, 1500 + (i * 100));
+            });
+        }
+
+        createGridLines();
+        setupControls();
+        renderChart(activeKey);
+
+        window.addEventListener('resize', () => {
+            renderChart(activeKey);
+            setTimeout(() => drawLineOverBars(), 300);
+        });
+    </script>
+</body>
+
+</html>

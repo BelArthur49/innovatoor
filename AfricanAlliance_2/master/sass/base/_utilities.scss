@@ -1,0 +1,1891 @@
+/* Utilities */
+.clearfix {
+	&:after {
+		content: ".";
+		display: block;
+		clear: both;
+		visibility: hidden;
+		line-height: 0;
+		height: 0;
+	}
+}
+
+html[xmlns] .clearfix {
+	display: block;
+}
+
+* html .clearfix {
+	height: 1%;
+}
+
+/* Text - Skin */
+@each $name, $var in $colors-list {
+
+    .text-color-#{$name}, .text-#{$name} {
+        color: var(--#{$name}) !important;
+    }
+
+	.text-color-#{$name}-100, .text-#{$name}-100 {
+		color: var(--#{$name}-100) !important;
+	}
+
+	.text-color-#{$name}-200, .text-#{$name}-200 {
+		color: var(--#{$name}-200) !important;
+	}
+
+	.text-color-#{$name}-300, .text-#{$name}-300 {
+		color: var(--#{$name}-300) !important;
+	}
+
+	.text-color-#{$name}--100, .text-#{$name}--100 {
+		color: var(--#{$name}--100) !important;
+	}
+
+	.text-color-#{$name}--200, .text-#{$name}--200 {
+		color: var(--#{$name}--200) !important;
+	}
+
+	.text-color-#{$name}--300, .text-#{$name}--300 {
+		color: var(--#{$name}--300) !important;
+	}
+
+    .text-color-before-#{$name} {
+		&:before {
+        	color: var(--#{$name}) !important;
+		}
+    }
+
+    .text-color-after-#{$name} {
+		&:after {
+        	color: var(--#{$name}) !important;
+		}
+    }
+
+	// Hover
+    .text-color-hover-#{$name}, .text-hover-#{$name} {
+        &:hover {
+			color: var(--#{$name}) !important;
+		}
+    }
+
+    .text-color-hover-before-#{$name} {
+		&:hover::before {
+        	color: var(--#{$name}) !important;
+		}
+    }
+
+    .text-color-hover-after-#{$name} {
+		&:hover::after {
+        	color: var(--#{$name}) !important;
+		}
+    }
+
+	@if $name != dark and $name != light {
+
+		.text-color-hover-#{$name}-100, .text-hover-#{$name}-100 {
+			&:hover {
+				color: var(--#{$name}-100) !important;
+			}
+		}
+
+		.text-color-hover-#{$name}-200, .text-hover-#{$name}-200 {
+			&:hover {
+				color: var(--#{$name}-200) !important;
+			}
+		}
+
+		.text-color-hover-#{$name}-300, .text-hover-#{$name}-300 {
+			&:hover {
+				color: var(--#{$name}-300) !important;
+			}
+		}
+
+		.text-color-hover-#{$name}--100, .text-hover-#{$name}--100 {
+			&:hover {
+				color: var(--#{$name}--100) !important;
+			}
+		}
+
+		.text-color-hover-#{$name}--200, .text-hover-#{$name}--200 {
+			&:hover {
+				color: var(--#{$name}--200) !important;
+			}
+		}
+
+		.text-color-hover-#{$name}--300, .text-hover-#{$name}--300 {
+			&:hover {
+				color: var(--#{$name}--300) !important;
+			}
+		}	
+	
+	}
+
+}
+
+.text-grey, .text-color-grey {
+	color: var(--grey) !important;
+}
+
+.text-hover-grey, .text-color-hover-grey {
+	&:hover {
+		color: var(--grey) !important;
+	}
+}
+
+@for $i from 1 through 10 {
+	.text-grey-#{$i}00, .text-color-grey-#{$i}00 {
+		color: unquote('var(--grey-' + $i + '00)') !important;
+	}
+}
+
+.text-color-danger {
+	color: #ff5b5b !important;
+}
+
+.text-color-success {
+	color: #0cc485 !important;
+}
+
+// RGBA
+@each $name, $var in $colors-list {
+	.text-color-#{$name}-rgba-0 {
+		color: var(--#{$name}-rgba-0) !important;
+	}
+	.text-color-#{$name}-rgba-10 {
+		color: var(--#{$name}-rgba-10) !important;
+	}
+	.text-color-#{$name}-rgba-20 {
+		color: var(--#{$name}-rgba-20) !important;
+	}
+	.text-color-#{$name}-rgba-30 {
+		color: var(--#{$name}-rgba-30) !important;
+	}
+	.text-color-#{$name}-rgba-40 {
+		color: var(--#{$name}-rgba-40) !important;
+	}
+	.text-color-#{$name}-rgba-50 {
+		color: var(--#{$name}-rgba-50) !important;
+	}
+	.text-color-#{$name}-rgba-60 {
+		color: var(--#{$name}-rgba-60) !important;
+	}
+	.text-color-#{$name}-rgba-70 {
+		color: var(--#{$name}-rgba-70) !important;
+	}
+	.text-color-#{$name}-rgba-80 {
+		color: var(--#{$name}-rgba-80) !important;
+	}
+	.text-color-#{$name}-rgba-90 {
+		color: var(--#{$name}-rgba-90) !important;
+	}
+
+	// Hover
+	.text-color-hover-#{$name}-rgba-0 {
+		&:hover {
+			color: var(--#{$name}-rgba-0) !important;
+		}
+	}
+	.text-color-hover-#{$name}-rgba-10 {
+		&:hover {
+			color: var(--#{$name}-rgba-10) !important;
+		}
+	}
+	.text-color-hover-#{$name}-rgba-20 {
+		&:hover {
+			color: var(--#{$name}-rgba-20) !important;
+		}
+	}
+	.text-color-hover-#{$name}-rgba-30 {
+		&:hover {
+			color: var(--#{$name}-rgba-30) !important;
+		}
+	}
+	.text-color-hover-#{$name}-rgba-40 {
+		&:hover {
+			color: var(--#{$name}-rgba-40) !important;
+		}
+	}
+	.text-color-hover-#{$name}-rgba-50 {
+		&:hover {
+			color: var(--#{$name}-rgba-50) !important;
+		}
+	}
+	.text-color-hover-#{$name}-rgba-60 {
+		&:hover {
+			color: var(--#{$name}-rgba-60) !important;
+		}
+	}
+	.text-color-hover-#{$name}-rgba-70 {
+		&:hover {
+			color: var(--#{$name}-rgba-70) !important;
+		}
+	}
+	.text-color-hover-#{$name}-rgba-80 {
+		&:hover {
+			color: var(--#{$name}-rgba-80) !important;
+		}
+	}
+	.text-color-hover-#{$name}-rgba-90 {
+		&:hover {
+			color: var(--#{$name}-rgba-90) !important;
+		}
+	}
+}
+
+/* Gradient Font - Skin */
+.gradient-text-color {
+	color: var(--primary);
+	background: linear-gradient(to bottom right, var(--primary), var(--secondary));
+	background-image: linear-gradient(to right, var(--primary), var(--secondary));
+}
+
+/* Background - Skin */
+@each $name, $var in $colors-list {
+
+    .bg-color-#{$name}, .bg-#{$name} {
+        background-color: var(--#{$name}) !important;
+    }
+
+    .bg-color-hover-#{$name}:hover, .bg-hover-#{$name}:hover {
+        background-color: var(--#{$name}) !important;
+    }
+
+    .bg-color-after-#{$name}:after {
+        background-color: var(--#{$name}) !important;
+    }
+
+    .bg-color-hover-after-#{$name}:hover::after {
+        background-color: var(--#{$name}) !important;
+    }
+
+    .bg-color-before-#{$name}:before {
+        background-color: var(--#{$name}) !important;
+    }
+
+    .bg-color-hover-before-#{$name}:hover::before {
+        background-color: var(--#{$name}) !important;
+    }
+
+	.bg-color-#{$name}-100, .bg-#{$name}-100 {
+		background-color: var(--#{$name}-100) !important;
+	}
+
+	.bg-color-#{$name}-200, .bg-#{$name}-200 {
+		background-color: var(--#{$name}-200) !important;
+	}
+
+	.bg-color-#{$name}-300, .bg-#{$name}-300 {
+		background-color: var(--#{$name}-300) !important;
+	}
+	.bg-color-#{$name}--100, .bg-#{$name}--100 {
+		background-color: var(--#{$name}--100) !important;
+	}
+
+	.bg-color-#{$name}--200, .bg-#{$name}--200 {
+		background-color: var(--#{$name}--200) !important;
+	}
+
+	.bg-color-#{$name}--300, .bg-#{$name}--300 {
+		background-color: var(--#{$name}--300) !important;
+	}
+
+}
+
+.bg-grey, .bg-color-grey {
+	background-color: var(--grey-100) !important;
+}
+
+@for $i from 1 through 10 {
+	.bg-grey-#{$i}00, .bg-color-grey-#{$i}00 {
+		background-color: unquote('var(--grey-' + $i + '00)') !important;
+	}
+}
+
+// RGBA
+@each $name, $var in $colors-list {
+	.bg-color-#{$name}-rgba-0 {
+		background-color: var(--#{$name}-rgba-0) !important;
+	}
+	.bg-color-#{$name}-rgba-10 {
+		background-color: var(--#{$name}-rgba-10) !important;
+	}
+	.bg-color-#{$name}-rgba-20 {
+		background-color: var(--#{$name}-rgba-20) !important;
+	}
+	.bg-color-#{$name}-rgba-30 {
+		background-color: var(--#{$name}-rgba-30) !important;
+	}
+	.bg-color-#{$name}-rgba-40 {
+		background-color: var(--#{$name}-rgba-40) !important;
+	}
+	.bg-color-#{$name}-rgba-50 {
+		background-color: var(--#{$name}-rgba-50) !important;
+	}
+	.bg-color-#{$name}-rgba-60 {
+		background-color: var(--#{$name}-rgba-60) !important;
+	}
+	.bg-color-#{$name}-rgba-70 {
+		background-color: var(--#{$name}-rgba-70) !important;
+	}
+	.bg-color-#{$name}-rgba-80 {
+		background-color: var(--#{$name}-rgba-80) !important;
+	}
+	.bg-color-#{$name}-rgba-90 {
+		background-color: var(--#{$name}-rgba-90) !important;
+	}
+
+	// Before
+	.bg-color-before-#{$name}-rgba-0:before {
+		background-color: var(--#{$name}-rgba-0) !important;
+	}
+	.bg-color-before-#{$name}-rgba-10:before {
+		background-color: var(--#{$name}-rgba-10) !important;
+	}
+	.bg-color-before-#{$name}-rgba-20:before {
+		background-color: var(--#{$name}-rgba-20) !important;
+	}
+	.bg-color-before-#{$name}-rgba-30:before {
+		background-color: var(--#{$name}-rgba-30) !important;
+	}
+	.bg-color-before-#{$name}-rgba-40:before {
+		background-color: var(--#{$name}-rgba-40) !important;
+	}
+	.bg-color-before-#{$name}-rgba-50:before {
+		background-color: var(--#{$name}-rgba-50) !important;
+	}
+	.bg-color-before-#{$name}-rgba-60:before {
+		background-color: var(--#{$name}-rgba-60) !important;
+	}
+	.bg-color-before-#{$name}-rgba-70:before {
+		background-color: var(--#{$name}-rgba-70) !important;
+	}
+	.bg-color-before-#{$name}-rgba-80:before {
+		background-color: var(--#{$name}-rgba-80) !important;
+	}
+	.bg-color-before-#{$name}-rgba-90:before {
+		background-color: var(--#{$name}-rgba-90) !important;
+	}
+
+	// Hover Before
+	.bg-color-hover-before-#{$name}-rgba-0:hover::before {
+		background-color: var(--#{$name}-rgba-0) !important;
+	}
+	.bg-color-hover-before-#{$name}-rgba-10:hover::before {
+		background-color: var(--#{$name}-rgba-10) !important;
+	}
+	.bg-color-hover-before-#{$name}-rgba-20:hover::before {
+		background-color: var(--#{$name}-rgba-20) !important;
+	}
+	.bg-color-hover-before-#{$name}-rgba-30:hover::before {
+		background-color: var(--#{$name}-rgba-30) !important;
+	}
+	.bg-color-hover-before-#{$name}-rgba-40:hover::before {
+		background-color: var(--#{$name}-rgba-40) !important;
+	}
+	.bg-color-hover-before-#{$name}-rgba-50:hover::before {
+		background-color: var(--#{$name}-rgba-50) !important;
+	}
+	.bg-color-hover-before-#{$name}-rgba-60:hover::before {
+		background-color: var(--#{$name}-rgba-60) !important;
+	}
+	.bg-color-hover-before-#{$name}-rgba-70:hover::before {
+		background-color: var(--#{$name}-rgba-70) !important;
+	}
+	.bg-color-hover-before-#{$name}-rgba-80:hover::before {
+		background-color: var(--#{$name}-rgba-80) !important;
+	}
+	.bg-color-hover-before-#{$name}-rgba-90:hover::before {
+		background-color: var(--#{$name}-rgba-90) !important;
+	}
+
+	// After
+	.bg-color-after-#{$name}-rgba-0:after {
+		background-color: var(--#{$name}-rgba-0) !important;
+	}
+	.bg-color-after-#{$name}-rgba-10:after {
+		background-color: var(--#{$name}-rgba-10) !important;
+	}
+	.bg-color-after-#{$name}-rgba-20:after {
+		background-color: var(--#{$name}-rgba-20) !important;
+	}
+	.bg-color-after-#{$name}-rgba-30:after {
+		background-color: var(--#{$name}-rgba-30) !important;
+	}
+	.bg-color-after-#{$name}-rgba-40:after {
+		background-color: var(--#{$name}-rgba-40) !important;
+	}
+	.bg-color-after-#{$name}-rgba-50:after {
+		background-color: var(--#{$name}-rgba-50) !important;
+	}
+	.bg-color-after-#{$name}-rgba-60:after {
+		background-color: var(--#{$name}-rgba-60) !important;
+	}
+	.bg-color-after-#{$name}-rgba-70:after {
+		background-color: var(--#{$name}-rgba-70) !important;
+	}
+	.bg-color-after-#{$name}-rgba-80:after {
+		background-color: var(--#{$name}-rgba-80) !important;
+	}
+	.bg-color-after-#{$name}-rgba-90:after {
+		background-color: var(--#{$name}-rgba-90) !important;
+	}
+
+	// Hover After
+	.bg-color-hover-after-#{$name}-rgba-0:hover::after {
+		background-color: var(--#{$name}-rgba-0) !important;
+	}
+	.bg-color-hover-after-#{$name}-rgba-10:hover::after {
+		background-color: var(--#{$name}-rgba-10) !important;
+	}
+	.bg-color-hover-after-#{$name}-rgba-20:hover::after {
+		background-color: var(--#{$name}-rgba-20) !important;
+	}
+	.bg-color-hover-after-#{$name}-rgba-30:hover::after {
+		background-color: var(--#{$name}-rgba-30) !important;
+	}
+	.bg-color-hover-after-#{$name}-rgba-40:hover::after {
+		background-color: var(--#{$name}-rgba-40) !important;
+	}
+	.bg-color-hover-after-#{$name}-rgba-50:hover::after {
+		background-color: var(--#{$name}-rgba-50) !important;
+	}
+	.bg-color-hover-after-#{$name}-rgba-60:hover::after {
+		background-color: var(--#{$name}-rgba-60) !important;
+	}
+	.bg-color-hover-after-#{$name}-rgba-70:hover::after {
+		background-color: var(--#{$name}-rgba-70) !important;
+	}
+	.bg-color-hover-after-#{$name}-rgba-80:hover::after {
+		background-color: var(--#{$name}-rgba-80) !important;
+	}
+	.bg-color-hover-after-#{$name}-rgba-90:hover::after {
+		background-color: var(--#{$name}-rgba-90) !important;
+	}
+}
+
+/* Background Gradient - Skin */
+.bg-gradient {
+	background-color: var(--primary) !important;
+	background-image: linear-gradient(to right, var(--primary) 0%, var(--secondary) 100%) !important;
+}
+
+.bg-gradient-to-top {
+	background-color: var(--primary) !important;
+	background-image: linear-gradient(to top, var(--primary) 0%, var(--secondary) 100%) !important;
+}
+
+.bg-gradient-to-bottom {
+	background-color: var(--primary) !important;
+	background-image: linear-gradient(to bottom, var(--primary) 0%, var(--secondary) 100%) !important;
+}
+
+@each $name, $var in $colors-list {
+
+	// Light to Color
+	.bg-gradient-light-#{$name} {
+		background-image: linear-gradient(to right, #FFF 0%, var(--#{$name}) 100%) !important;
+	}
+
+	.bg-gradient-light-#{$name}-rgba-10 {
+		background-image: linear-gradient(to right, #FFF 0%, var(--#{$name}-rgba-10) 100%) !important;
+	}
+
+	.bg-gradient-light-#{$name}-rgba-20 {
+		background-image: linear-gradient(to right, #FFF 0%, var(--#{$name}-rgba-20) 100%) !important;
+	}
+
+	.bg-gradient-light-#{$name}-rgba-30 {
+		background-image: linear-gradient(to right, #FFF 0%, var(--#{$name}-rgba-30) 100%) !important;
+	}
+
+	// Color to Light
+	.bg-gradient-#{$name}-light {
+		background-image: linear-gradient(to right, var(--#{$name}) 0%, #FFF 100%) !important;
+	}
+
+	.bg-gradient-#{$name}-light-rgba-10 {
+		background-image: linear-gradient(to right, var(--#{$name}-rgba-10) 0%, #FFF 100%) !important;
+	}
+
+	.bg-gradient-#{$name}-light-rgba-20 {
+		background-image: linear-gradient(to right, var(--#{$name}-rgba-20) 0%, #FFF 100%) !important;
+	}
+
+	.bg-gradient-#{$name}-light-rgba-30 {
+		background-image: linear-gradient(to right, var(--#{$name}-rgba-30) 0%, #FFF 100%) !important;
+	}
+
+}
+
+@each $name, $var in $colors-list {
+
+	// Dark to Color
+	.bg-gradient-dark-#{$name} {
+		background-image: linear-gradient(to right, var(--dark) 0%, var(--#{$name}) 100%) !important;
+	}
+
+	.bg-gradient-dark-#{$name}-rgba-10 {
+		background-image: linear-gradient(to right, var(--dark) 0%, var(--#{$name}-rgba-10) 100%) !important;
+	}
+
+	.bg-gradient-dark-#{$name}-rgba-20 {
+		background-image: linear-gradient(to right, var(--dark) 0%, var(--#{$name}-rgba-20) 100%) !important;
+	}
+
+	.bg-gradient-dark-#{$name}-rgba-30 {
+		background-image: linear-gradient(to right, var(--dark) 0%, var(--#{$name}-rgba-30) 100%) !important;
+	}
+
+	// Color to Dark
+	.bg-gradient-#{$name}-dark {
+		background-image: linear-gradient(to right, var(--#{$name}) 0%, var(--dark) 100%) !important;
+	}
+
+	.bg-gradient-#{$name}-dark-rgba-10 {
+		background-image: linear-gradient(to right, var(--#{$name}-rgba-10) 0%, var(--dark) 100%) !important;
+	}
+
+	.bg-gradient-#{$name}-dark-rgba-20 {
+		background-image: linear-gradient(to right, var(--#{$name}-rgba-20) 0%, var(--dark) 100%) !important;
+	}
+
+	.bg-gradient-#{$name}-dark-rgba-30 {
+		background-image: linear-gradient(to right, var(--#{$name}-rgba-30) 0%, var(--dark) 100%) !important;
+	}
+
+}
+
+/* Color Transition - Skin */
+@keyframes colorTransition {
+	0% {
+		background-color: var(--primary);
+	}
+	33% {
+		background-color: var(--secondary);
+	}
+	66% {
+		background-color: var(--tertiary);
+	}
+	100% {
+		background-color: var(--quaternary);
+	}
+}
+
+/* Background Gradient Animated */
+.bg-gradient-animated {
+	background-size: 200% 200% !important;
+	animation-name: gradientTransition;
+	animation-duration: 20000ms;
+	animation-iteration-count: infinite;
+}
+
+/* Position */
+.p-relative {
+	position: relative !important
+}
+
+.p-absolute {
+	position: absolute !important
+}
+
+.p-fixed {
+	position: fixed !important
+}
+
+.p-static {
+	position: static !important
+}
+
+/* Box Shadow */
+.box-shadow-none {
+	box-shadow: none !important;
+}
+
+.box-shadow-hover {
+	transition: ease all 300ms;
+}
+
+.box-shadow-1 {
+	&:before {
+		display: block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		opacity: 0.33;
+		content: '';
+		box-shadow: 0 30px 90px #BBB;
+		transition: all 0.2s ease-in-out;
+	}
+	&.box-shadow-1-hover {
+		&:before {
+			opacity: 0;
+		}
+		&:hover {
+			&:before {
+				opacity: 0.33;
+			}
+		}
+	}
+}
+
+.border-radius {
+	&.box-shadow-1 {
+		&:before {
+			border-radius: var(--border-radius) !important;
+		}
+	}
+}
+
+.border-radius-2 {
+	&.box-shadow-1 {
+		&:before {
+			border-radius: var(--border-radius2x) !important;
+		}
+	}
+}
+
+.box-shadow-2 {
+	&:not(.box-shadow-hover) {
+		box-shadow: 0 15px 30px -15px rgba(0,0,0,.45);
+	}
+	&.box-shadow-hover:hover {
+		box-shadow: 0 15px 30px -15px rgba(0,0,0,.45);
+	}
+}
+
+.box-shadow-3 {
+	&:not(.box-shadow-hover) {
+		box-shadow: 0 30px 60px -30px rgba(0,0,0,.45);
+	}
+	&.box-shadow-hover:hover {
+		box-shadow: 0 30px 60px -30px rgba(0,0,0,.45);
+	}
+}
+
+.box-shadow-4 {
+	&:not(.box-shadow-hover) {
+		box-shadow: 0px 0px 21px -5px rgba(0,0,0,0.2);
+	}
+	&.box-shadow-hover:hover {
+		box-shadow: 0px 0px 21px -5px rgba(0,0,0,0.2);
+	}
+}
+
+.box-shadow-5 {
+	&:not(.box-shadow-hover) {
+		box-shadow: 0 15px 60px -36px rgba(0, 0, 0, 0.45);
+	}
+	&.box-shadow-hover:hover {
+		box-shadow: 0 15px 60px -36px rgba(0, 0, 0, 0.45);
+	}
+}
+
+.box-shadow-6 {
+	&:not(.box-shadow-hover) {
+		box-shadow: 0 12px 45px rgba(0,0,0,.08);
+	}
+	&.box-shadow-hover:hover {
+		box-shadow: 0 12px 45px rgba(0,0,0,.08);
+	}
+}
+
+.box-shadow-7 {
+	&:not(.box-shadow-hover) {
+		box-shadow: 0 5px 20px rgba(0,0,0,.1);
+	}
+	&.box-shadow-hover:hover {
+		box-shadow: 0 5px 20px rgba(0,0,0,.1);
+	}
+}
+
+.box-shadow-8 {
+	&:not(.box-shadow-hover) {
+		box-shadow: 0 5px 20px rgba(0,0,0,.07);
+	}
+	&.box-shadow-hover:hover {
+		box-shadow: 0 5px 20px rgba(0,0,0,.07);
+	}
+}
+
+.box-shadow-9 {
+	&:not(.box-shadow-hover) {
+		box-shadow: 0 20px 60px rgba(0,0,0,.08);
+	}
+	&.box-shadow-hover:hover {
+		box-shadow: 0 20px 60px rgba(0,0,0,.08);
+	}
+}
+
+.box-shadow-10 {
+	&:not(.box-shadow-hover) {
+		box-shadow: 0 0 30px rgba(0,0,0,.025);
+	}
+	&.box-shadow-hover:hover {
+		box-shadow: 0 0 30px rgba(0,0,0,.025);
+	}
+}
+
+/* Box Shadow - Skin */
+@each $name, $var in $colors-list {
+    .box-shadow-1-#{$name} {
+        &:before {
+            box-shadow: 0 30px 90px var(--#{$name}) !important;
+        }
+    }
+}
+
+/* Flex */
+.flex-0-0-auto {
+	flex: 0 0 auto;
+}
+
+/* Color Transparent */
+.color-transparent {
+	color: transparent !important;
+}
+
+/* Background No Repeat */
+.bg-no-repeat {
+	background-repeat: no-repeat !important;
+}
+
+/* Background Size Auto */
+.bg-size-auto {
+	background-size: auto !important;
+}
+
+/* Background Size Cover */
+.bg-size-cover {
+	background-size: cover !important;
+}
+
+/* Background Position Center */
+.bg-position-center {
+	background-position: center center !important;
+}
+
+/* Background Clip Text */
+.bg-clip-text {
+	background-clip: text !important;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+/* Background Scales Overlay */
+.bg-color-scale-overlay {
+	position: relative;
+	&:before {
+		content: "";
+		display: block;
+		background: #000;
+		bottom: 0;
+		height: 100%;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 100%;
+		z-index: 1;
+		opacity: 0;
+	}
+
+	.bg-color-scale-overlay-wrapper {
+		position: relative;
+		z-index: 2;
+	}
+}
+
+@for $i from 1 through 9 {
+	.bg-color-scale-overlay-#{$i} {
+		&:before {
+			$o: ($i/2);
+			opacity: unquote('0.' + str-replace(to-string($o), '.', '')) !important;
+		}
+	}
+}
+
+/* Background Transparent */
+.background-transparent,
+.bg-transparent,
+.bg-color-transparent {
+	background: transparent !important;
+}
+
+.bg-transparent-hover {
+	&:hover {
+		background-color: transparent !important;
+	}
+}
+
+/* Background White and Black */
+.bg-color-white {
+	background: #FFF !important;
+}
+
+.bg-color-black {
+	background: #000 !important;
+}
+
+/* Inverted */
+.inverted {
+	color: var(--light);
+	display: inline-block;
+	padding-#{$left}: 10px;
+	padding-#{$right}: 10px;
+}
+
+h1 .inverted {
+	padding-#{$left}: 10px;
+	padding-#{$right}: 10px;
+}
+
+h2 .inverted {
+	padding-#{$left}: 7px;
+	padding-#{$right}: 7px;
+}
+
+h3 .inverted {
+	padding-#{$left}: 2px;
+	padding-#{$right}: 2px;;
+}
+
+h4 .inverted {
+	padding-#{$left}: 4px;
+	padding-#{$right}: 4px;
+}
+
+h5 .inverted {
+	padding-#{$left}: 2px;
+	padding-#{$right}: 2px;
+}
+
+h6 .inverted {
+	padding-#{$left}: 2px;
+	padding-#{$right}: 2px;
+}
+
+/* Display Before/After */
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include media-breakpoint-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+		
+		.d#{$infix}-none-before {
+			&:before {
+				display: none !important;
+			}
+		}
+	
+		.d#{$infix}-none-after {
+			&:after {
+				display: none !important;
+			}
+		}
+
+	}
+}
+
+/* Min Height */
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include media-breakpoint-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+		
+		.min-height-screen#{$infix} {
+			min-height: 100vh;
+		}
+	}
+}
+
+/* Paddings and Margins */
+/* We need replicate these BS classes below due to the new paddings and margins below */
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include media-breakpoint-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+		/* Margin */
+		.mb#{$infix}-0 {
+			margin-bottom: 0 !important; 
+		}
+		.mt#{$infix}-0 {
+			margin-top: 0 !important; 
+		}
+
+		/* Padding */
+		.pb#{$infix}-0 {
+			padding-bottom: 0 !important; 
+		}
+		.pt#{$infix}-0 {
+			padding-top: 0 !important; 
+		}
+	}
+}
+
+/* Negative Margins */
+.mt-n1 {
+	margin-top: -0.25rem !important;
+}
+
+$value: 0;
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include media-breakpoint-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+		@for $i from 3 through 5 {
+			@if $i == 3 {
+				$value: 0.75;
+			} @else if $i == 4 {
+				$value: 1.25;
+			} @else if $i == 5 {
+				$value: 2.25;
+			}
+
+			/* Padding */
+			.pt#{$infix}-#{$i}-5 {
+				padding-top: $value + rem !important;
+			}
+			.pe#{$infix}-#{$i}-5 {
+				padding-right: $value + rem !important;
+			}
+			.pb#{$infix}-#{$i}-5 {
+				padding-bottom: $value + rem !important;
+			}
+			.ps#{$infix}-#{$i}-5 {
+				padding-left: $value + rem !important;
+			}
+			.px#{$infix}-#{$i}-5 {
+				padding-left: $value + rem !important;
+				padding-right: $value + rem !important; 
+			}
+			.py#{$infix}-#{$i}-5 {
+				padding-top: $value + rem !important;
+				padding-bottom: $value + rem !important; 
+			}
+
+			/* Margin */
+			.mt#{$infix}-#{$i}-5 {
+				margin-top: $value + rem !important;
+			}
+			.me#{$infix}-#{$i}-5 {
+				margin-right: $value + rem !important;
+			}
+			.mb#{$infix}-#{$i}-5 {
+				margin-bottom: $value + rem !important;
+			}
+			.ms#{$infix}-#{$i}-5 {
+				margin-left: $value + rem !important;
+			}
+			.mx#{$infix}-#{$i}-5 {
+				margin-left: $value + rem !important;
+				margin-right: $value + rem !important; 
+			}
+			.my#{$infix}-#{$i}-5 {
+				margin-top: $value + rem !important;
+				margin-bottom: $value + rem !important; 
+			}
+		}
+
+	}
+}
+
+/* Before / After */
+.before-d-none {
+	&:before {
+		display: none !important;
+	}
+}
+
+.after-d-none {
+	&:after {
+		display: none !important;
+	}
+}
+
+/* Letter Spacing */
+.ls-0 {
+	letter-spacing: 0 !important;
+}
+
+.negative-ls-05, .n-ls-05 {
+	letter-spacing: -0.05em;
+}
+
+.negative-ls-1, .n-ls-1 {
+	letter-spacing: -1px;
+}
+
+.negative-ls-2, .n-ls-2 {
+	letter-spacing: -2px;
+}
+
+.negative-ls-3, .n-ls-3 {
+	letter-spacing: -2.5px;
+}
+
+.negative-ls-4, .n-ls-4 {
+	letter-spacing: -3px;
+}
+
+.negative-ls-5, .n-ls-5 {
+	letter-spacing: -3.5px;
+}
+
+.positive-ls-1, .ls-1 {
+	letter-spacing: 1px !important;
+}
+
+.positive-ls-2, .ls-2 {
+	letter-spacing: 2px !important;
+}
+
+.positive-ls-3, .ls-3 {
+	letter-spacing: 2.5px !important;
+}
+
+.positive-ls-4, .ls-4 {
+	letter-spacing: 3px !important;
+}
+
+.positive-ls-5, .ls-5 {
+	letter-spacing: 3.5px !important;
+}
+
+/* Cursor */
+.cur-pointer {
+	cursor: pointer;
+}
+
+/* Pointer Events */
+.p-events-none {
+	pointer-events: none;
+}
+
+/* Font Size */
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include media-breakpoint-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+		
+		.text#{$infix}-0 {
+			font-size: .7em !important;
+		}
+
+		.text#{$infix}-1 {
+			font-size: .8em !important;
+		}
+
+		.text#{$infix}-2 {
+			font-size: .9em !important;
+		}
+
+		.text#{$infix}-2-3,
+		.text#{$infix}-2-5 {
+			font-size: .95em !important;
+		}
+
+		.text#{$infix}-3 {
+			font-size: 1em !important;
+		}
+
+		.text#{$infix}-3-4,
+		.text#{$infix}-3-5 {
+			font-size: 1.1em !important;
+		}
+
+		.text#{$infix}-4 {
+			font-size: 1.2em !important;
+		}
+
+		.text#{$infix}-4-5 {
+			font-size: 1.35em !important;
+		}
+
+		.text#{$infix}-5 {
+			font-size: 1.50em !important;
+		}
+
+		.text#{$infix}-5-6,
+		.text#{$infix}-5-5 {
+			font-size: 1.65em !important;
+		}
+
+		.text#{$infix}-6 {
+			font-size: 1.80em !important;
+		}
+
+		.text#{$infix}-6-7,
+		.text#{$infix}-6-5 {
+			font-size: 1.9em !important;
+		}
+
+		.text#{$infix}-7 {
+			font-size: 2em !important;
+		}
+
+		.text#{$infix}-8 {
+			font-size: 2.30em !important;
+		}
+
+		.text#{$infix}-9 {
+			font-size: 2.50em !important;
+		}
+
+		.text#{$infix}-10 {
+			font-size: 2.75em !important;
+		}
+
+		.text#{$infix}-11 {
+			font-size: 3em !important;
+		}
+
+		.text#{$infix}-12 {
+			font-size: 3.5em !important;
+		}
+
+		.text#{$infix}-12-13,
+		.text#{$infix}-12-5 {
+			font-size: 3.75em !important;
+		}
+
+		.text#{$infix}-13 {
+			font-size: 4em !important;
+		}
+
+		.text#{$infix}-14 {
+			font-size: 4.5em !important;
+		}
+
+		.text#{$infix}-15 {
+			font-size: 5em !important;
+		}
+
+		.text#{$infix}-16 {
+			font-size: 5.33em !important;
+		}
+
+		.text#{$infix}-17 {
+			font-size: 5.66em !important;
+		}
+
+		.text#{$infix}-18 {
+			font-size: 6em !important;
+		}
+
+		.text#{$infix}-19 {
+			font-size: 6.33em !important;
+		}
+
+		.text#{$infix}-20 {
+			font-size: 6.66em !important;
+		}
+
+	}
+}
+
+.text-1rem {
+	font-size: 1rem !important;
+}
+
+/* Text Resp */
+.text-resp-50 {
+	line-height: 1;
+	font-size: clamp-calc(480px, 1200px, 25px, 50px);
+}
+
+.text-resp-100 {
+	line-height: 1;
+	font-size: clamp-calc(480px, 1200px, 50px, 100px);
+}
+
+.text-resp-150 {
+	line-height: 1;
+	font-size: clamp-calc(480px, 1200px, 75px, 150px);
+}
+
+.text-resp-200 {
+	line-height: 1;
+	font-size: clamp-calc(480px, 1200px, 100px, 200px);
+}
+
+.text-resp-250 {
+	line-height: 1;
+	font-size: clamp-calc(480px, 1200px, 125px, 250px);
+}
+
+/* Text Overflow Center */
+.text-overflow-center {
+    margin-left: -100%;
+    margin-right: -100%;
+    text-align: center;
+}
+
+/* Line Height */
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include media-breakpoint-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+		.line-height#{$infix}-initial {
+			line-height: initial !important;
+		}
+
+		.line-height#{$infix}-1 {
+			line-height: 1 !important;
+		}
+
+		.line-height#{$infix}-1-1 {
+			line-height: 1.1 !important;
+		}
+
+		@for $i from 2 through 9 {
+			.line-height#{$infix}-#{$i} {
+				line-height: unquote('1.' + $i) !important;
+			}
+		}
+
+	}
+}
+
+/* Opacity */
+@for $i from 0 through 9 {
+	.opacity-#{$i} {
+		opacity: unquote('0.' + $i) !important;
+	}
+}
+
+.opacity-10 {
+	opacity: 1 !important;
+}
+
+@for $i from 0 through 9 {
+	.opacity-hover-#{$i} {
+		transition: ease opacity 300ms;
+		&:hover {
+			opacity: unquote('0.' + $i) !important;
+		}
+		
+	}
+}
+
+.opacity-hover-10 {
+	transition: ease opacity 300ms;
+	&:hover {
+		opacity: 1 !important;	
+	}
+}
+
+/* Scale */
+@for $i from 1 through 6 {
+	.scale-#{$i} {
+		transform: scale(unquote('1.' + $i)) !important;
+	}
+}
+
+/* Top / Bottom / Left / Right */
+.top-auto {
+	top: auto !important;
+}
+
+.bottom-auto {
+	bottom: auto !important;
+}
+
+.top-50pct {
+	top: 50%;
+}
+
+.left-50pct {
+	left: 50%;
+}
+
+.left-100pct {
+	left: 100%;
+}
+
+.right-100pct {
+	right: 100%;
+}
+
+@for $i from 0 through 30 {
+	.top-#{$i} {
+		top: $i + px !important;
+	}
+
+	.bottom-#{$i} {
+		bottom: $i + px !important;
+	}
+
+	.left-#{$i} {
+		left: $i + px !important;
+	}
+
+	.right-#{$i} {
+		right: $i + px !important;
+	}
+}
+
+.top-40 {
+	top: 40px !important;
+}
+
+.bottom-40 {
+	bottom: 40px !important;
+}
+
+/* Transforms */
+
+/* Negative */
+.transform3dx-n50 {
+	transform: translate3d(-50%, 0, 0);
+}
+
+.transform3dy-n50 {
+	transform: translate3d(0, -50%, 0);
+}
+
+.transform3dxy-n50 {
+	transform: translate3d(-50%, -50%, 0);
+}
+
+.transform3dx-n100 {
+	transform: translate3d(-100%, 0, 0);
+}
+
+.transform3dy-n100 {
+	transform: translate3d(0, -100%, 0);
+}
+
+/* Positive */
+.transform3dx-p50 {
+	transform: translate3d(50%, 0, 0);
+}
+
+.transform3dy-p50 {
+	transform: translate3d(0, 50%, 0);
+}
+
+.transformY-p100 {
+	transform: translateY(100%);
+}
+
+/* Positive */
+.transformZ0 {
+	transform: translateZ(0px);
+}
+
+/* Outline */
+.outline-none {
+	outline: 0 !important;
+}
+
+/* Text Decoration */
+.text-decoration-none {
+	text-decoration: none !important;
+}
+
+.text-decoration-underline {
+    text-decoration: underline !important;
+}
+
+.text-decoration-underline-2 {
+	text-decoration: none !important;
+    border-bottom: 1px solid;
+    border-bottom-color: inherit;
+}
+
+/* Text Alignment */
+.text-justify {
+	text-align: justify;
+}
+
+/* Text Transform */
+.text-uppercase {
+	text-transform: uppercase !important;
+}
+
+.text-lowercase {
+	text-transform: lowercase !important;
+}
+
+.text-capitalize {
+	text-transform: capitalize !important;
+}
+
+.text-transform-none {
+	text-transform: none !important;
+}
+
+/* Transform */
+.transform-none {
+	transform: none !important;
+}
+
+/* States */
+.text-muted {
+	color: #999 !important;
+}
+
+html.dark {
+	.text-muted {
+		color: var(--grey-900) !important;
+	}
+}
+
+/* Overflow */
+.overflow-visible {
+	overflow: visible !important;
+}
+
+.overflow-hidden {
+	overflow: hidden !important;
+}
+
+/* Z-Index */
+.z-index-initial {
+	z-index: initial !important;
+}
+
+@for $i from 0 through 10 {
+	.z-index-#{$i} {
+		z-index: #{$i} !important;
+	}
+	.z-index-hover-#{$i} {
+		&:hover {
+			z-index: #{$i} !important;
+		}
+	}
+}
+
+@media(max-width: 991px) {
+	.z-index-mobile-0 {
+		z-index: 0 !important;
+	}
+}
+
+/* Star Rating */
+.rating-default {
+	.filled-stars {
+		color: #6a6a6d;
+	}
+}
+
+/* Star Rating - Skin */
+@each $name, $var in $colors-list {
+    .rating-#{$name} {
+        .filled-stars {
+            color: var(--#{$name});
+        }
+    }
+}
+
+/* Weights */
+.font-weight-thin {
+	font-weight: 100 !important;
+}
+
+.font-weight-extralight,
+.font-weight-extra-light {
+	font-weight: 200 !important;
+}
+
+.font-weight-light {
+	font-weight: 300 !important;
+}
+
+.font-weight-regular,
+.font-weight-normal {
+	font-weight: 400 !important;
+}
+
+.font-weight-medium {
+	font-weight: 500 !important;
+}
+
+.font-weight-semibold,
+.font-weight-semi-bold {
+	font-weight: 600 !important;
+}
+
+.font-weight-bold {
+	font-weight: 700 !important;
+}
+
+.font-weight-extrabold,
+.font-weight-extra-bold {
+	font-weight: 800 !important;
+}
+
+.font-weight-black {
+	font-weight: 900 !important;
+}
+
+/* Letter Space */
+.letter-spacing-minus-1 {
+	letter-spacing: -1px;
+}
+
+/* Borders */
+.no-borders {
+	border: none !important;
+}
+
+.rounded {
+	border-radius: 5px !important;
+}
+
+.b-thin {
+	border-width: 3px !important;
+}
+
+.b-normal {
+	border-width: 5px !important;
+}
+
+.b-thick {
+	border-width: 7px !important;
+}
+
+.border-top {
+	border-top-color: var(--grey-200) !important;
+}
+
+.border-bottom {
+	border-bottom-color: var(--grey-200) !important;
+}
+
+.border-left, .border-start {
+	border-left-color: var(--grey-200) !important;
+}
+
+.border-right, .border-end {
+	border-right-color: var(--grey-200) !important;
+}
+
+.border-all {
+	border: 1px solid var(--grey-200) !important;
+}
+
+.border-top-light {
+	border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.border-bottom-light {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.border-left-light {
+	border-left: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.border-right-light {
+	border-right: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.border-all-light {
+	border: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.border-white {
+	border-color: var(--light) !important;
+}
+
+.border-color-transparent-hover {
+	transition: all 0.2s;
+	&:hover {
+		border-color: transparent !important;
+	}
+}
+
+.border-color-light-2 {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.border-color-light-3 {
+    border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.border-color-light-4 {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.border-color-light-5 {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.border-color-grey-1 {
+	border-color: #e9e9e9 !important;
+}
+
+.border-color-success {
+	border-color: #0cc485 !important;
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include media-breakpoint-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+		
+		.border#{$infix} {
+			border: 1px solid #e7e7e7 !important;
+		}
+
+		.border#{$infix}-0 {
+			border: 0 !important;
+		}
+
+		.border-top#{$infix}-0 {
+			border-top: 0 !important;
+		}
+
+		.border-bottom#{$infix}-0 {
+			border-bottom: 0 !important;
+		}
+
+		.border-end#{$infix}-0 {
+			border-right: 0 !important;
+		}
+
+		.border-start#{$infix}-0 {
+			border-left: 0 !important;
+		}
+
+	}
+}
+
+@for $i from 1 through 10 {
+	.border-#{$i} {
+		border-width: #{$i}px !important;
+	}
+}
+
+/* Border - Skin */
+@each $name, $var in $colors-list {
+
+    .border-color-#{$name}, .border-#{$name} {
+        border-color: var(--#{$name}) !important;
+    }
+
+    .border-color-#{$name}-rgba-0 {
+        border-color: var(--#{$name}-rgba-0) !important;
+    }
+
+    .border-color-#{$name}-rgba-10 {
+        border-color: var(--#{$name}-rgba-10) !important;
+    }
+
+    .border-color-#{$name}-rgba-20 {
+        border-color: var(--#{$name}-rgba-20) !important;
+    }
+
+    .border-color-#{$name}-rgba-30 {
+        border-color: var(--#{$name}-rgba-30) !important;
+    }
+
+    .border-color-#{$name}-rgba-40 {
+        border-color: var(--#{$name}-rgba-40) !important;
+    }
+
+    .border-color-#{$name}-rgba-50 {
+        border-color: var(--#{$name}-rgba-50) !important;
+    }
+
+    .border-color-#{$name}-rgba-60 {
+        border-color: var(--#{$name}-rgba-60) !important;
+    }
+
+    .border-color-#{$name}-rgba-70 {
+        border-color: var(--#{$name}-rgba-70) !important;
+    }
+
+    .border-color-#{$name}-rgba-80 {
+        border-color: var(--#{$name}-rgba-80) !important;
+    }
+
+    .border-color-#{$name}-rgba-90 {
+        border-color: var(--#{$name}-rgba-90) !important;
+    }
+
+}
+
+.border-color-grey {
+	border-color: var(--grey) !important;
+}
+
+@for $i from 1 through 10 {
+	.border-color-grey-#{$i}00 {
+		border-color: unquote('var(--grey-' + $i + '00)') !important;
+	}
+}
+
+/* Border Hover */
+@each $name, $var in $colors-list {
+    .border-color-hover-#{$name}:hover {
+        border-color: var(--#{$name}) !important;
+    }
+}
+
+/* Border Radius */
+.border-radius {
+	border-radius: var(--border-radius) !important;
+}
+
+.border-radius-2 {
+	border-radius: var(--border-radius2x) !important;
+}
+
+.border-radius-2-bottom {
+	border-bottom-top-radius: var(--border-radius2x) !important;
+	border-bottom-left-radius: var(--border-radius2x) !important;
+}
+
+.border-radius-2-top {
+	border-top-left-radius: var(--border-radius2x) !important;
+	border-top-right-radius: var(--border-radius2x) !important;
+}
+
+.border-radius-0 {
+	border-radius: 0 !important;
+}
+
+:root {
+	--bs-border-radius: var(--border-radius);
+	--bs-btn-border-radius: var(--border-radius);
+}
+
+/* Rounder Circle */
+.rounded-circle {
+	border-radius: 50%! important;
+}
+
+html body .rounded-circle {
+	border-radius: 50% !important;
+}
+
+/* Border Width */
+@for $i from 1 through 10 {
+	.border-width-#{$i} {
+		border-width: unquote($i + 'px') !important;
+	}
+}
+
+@media(max-width: 767px) {
+	.border-sm-none {
+		border: 0 !important;
+	}
+}
+
+/* Perspective */
+@for $i from 1 through 10 {
+	.perspective-#{$i}00 {
+		perspective: unquote($i + '00px') !important;
+	}
+}
+
+/* Hide Text */
+.hide-text {
+	display: block;
+	text-indent: -9999px;
+	width: 0;
+	height: 0;
+}
+
+/* General Helpers */
+.ws-nowrap {
+	white-space: nowrap !important;
+}
+
+.ws-normal {
+	white-space: normal !important;
+}
+
+.ws-pre-line {
+	white-space: pre-line !important;
+}
+
+.ws-pre-wrap {
+	white-space: pre-wrap !important;	
+}
+
+.wb-all {
+	word-break: break-all !important;
+}
+
+/* Width */
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include media-breakpoint-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+		
+		.w#{$infix}-auto {
+			width: auto !important;
+		}
+
+		.w#{$infix}-25pct {
+			width: 25% !important;
+		}
+
+		.w#{$infix}-50pct {
+			width: 50% !important;
+		}
+
+		.w#{$infix}-75pct {
+			width: 75% !important;
+		}
+
+		.w#{$infix}-100pct {
+			width: 100% !important;
+		}
+
+	}
+}
+
+@media(max-width: 991px) {
+	.w-auto-mobile {
+		width: auto !important;
+	}
+
+	.w-100-mobile {
+		width: 100% !important;
+	}
+}
+
+.width-50vw {
+	width: 50vw;
+}
+
+.width-100vw {
+	width: 100vw;
+}
+
+.min-width-0 {
+	min-width: 0 !important;
+}
+
+/* Columms (useful for lists) */
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include media-breakpoint-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+		@for $i from 2 through 5 {
+			.columns#{$infix}-#{$i} {
+				columns: $i !important;
+			}
+		}
+
+	}
+}
+
+/* Height */
+$sizes: 50px, 100px, 150px, 200px, 250px, 300px, 350px, 400px, 450px, 500px, 550px, 600px, 650px, 700px, 750px, 800px, 850px, 900px, 950px, 1000px;
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include media-breakpoint-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+		@each $size in $sizes {
+			.h#{$infix}-#{$size} {
+				height: $size;
+			}
+			.mh#{$infix}-#{$size} {
+				min-height: $size;
+			}
+		}
+
+	}
+}

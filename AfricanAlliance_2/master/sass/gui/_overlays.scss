@@ -1,0 +1,200 @@
+/* Overlays */
+.overlay {
+	position: relative;
+	&:before {
+		content: ' ';
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 2;
+		background: var(--dark);
+		opacity: 0;
+		pointer-events: none;
+		transition: ease opacity 300ms 100ms;
+	}
+
+	&:hover, &.overlay-show, &.show {
+		&:before {
+			opacity: 0.8;
+		}
+	}
+
+	&.overlay-op-1 {
+		&:hover, &.overlay-show, &.show {
+			&:before {
+				opacity: 0.1;
+			}
+		}
+	}
+
+	&.overlay-op-2 {
+		&:hover, &.overlay-show, &.show {
+			&:before {
+				opacity: 0.2;
+			}
+		}
+	}
+
+	&.overlay-op-3 {
+		&:hover, &.overlay-show, &.show {
+			&:before {
+				opacity: 0.3;
+			}
+		}
+	}
+
+	&.overlay-op-4 {
+		&:hover, &.overlay-show, &.show {
+			&:before {
+				opacity: 0.4;
+			}
+		}
+	}
+
+	&.overlay-op-5 {
+		&:hover, &.overlay-show, &.show {
+			&:before {
+				opacity: 0.5;
+			}
+		}
+	}
+
+	&.overlay-op-6 {
+		&:hover, &.overlay-show, &.show {
+			&:before {
+				opacity: 0.6;
+			}
+		}
+	}
+
+	&.overlay-op-7 {
+		&:hover, &.overlay-show, &.show {
+			&:before {
+				opacity: 0.7;
+			}
+		}
+	}
+
+	&.overlay-op-8 {
+		&:hover, &.overlay-show, &.show {
+			&:before {
+				opacity: 0.8;
+			}
+		}
+	}
+
+	&.overlay-op-9 {
+		&:hover, &.overlay-show, &.show {
+			&:before {
+				opacity: 0.9;
+			}
+		}
+	}
+
+	// Backward
+	&.overlay-backward {
+		&:hover, &.overlay-show, &.show {
+			&:before {
+				z-index: 0;
+			}
+		}
+	}
+
+	.container,
+	.container-fluid {
+		position: relative;
+		z-index: 3;
+	}
+}
+
+.overlay-light {
+	&:before {
+		background-color: var(--light) !important;
+	}	
+}
+
+.overlay-dark {
+	&:before {
+		background-color: var(--dark) !important;
+	}
+}
+
+.overlay-primary {
+	&:before {
+		background: var(--primary) !important;
+	}
+}
+
+.overlay-secondary {
+	&:before {
+		background: var(--secondary) !important;
+	}
+}
+
+.overlay-tertiary {
+	&:before {
+		background: var(--tertiary) !important;
+	}
+}
+
+.overlay-quaternary {
+	&:before {
+		background: var(--quaternary) !important;
+	}
+}
+
+/* Overlay Gradient Bottom Content */
+.overlay-gradient-bottom-content {
+	&:before {
+		opacity: 1 !important;
+		background: var(--dark);
+		background: linear-gradient(to bottom,rgba(0,0,0,0) 30%,var(--dark) 100%);
+	}
+}
+
+/* Overlay Gradient Top Content */
+.overlay-gradient-top-content {
+	&:before {
+		opacity: 1 !important;
+		background: var(--dark);
+		background: linear-gradient(to top,rgba(0,0,0,0) 30%,var(--dark) 100%);
+	}
+}
+
+/* Overlay Gradient */
+.overlay-gradient {
+	&:before {
+		background-color: rgba(108,110,241,1);
+		background-image: linear-gradient(to right, rgba(108,110,241,1) 0%, rgba(226,73,142,1) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6c6ef1', endColorstr='#e2498e', GradientType=1 );
+	}
+
+	&.overlay-gradient-animated {
+		&:before {
+			background-size: 200% 200%;
+			animation-name: gradientTransition;
+			animation-duration: 20000ms;
+			animation-iteration-count: infinite;
+
+		}
+	}
+}
+
+/* Overlay - Skin */
+@each $name, $var in $colors-list {
+    .overlay-color-#{$name}:not(.no-skin) {
+        &:before {
+            background-color: var(--#{$name}) !important;
+        }
+    }
+}
+
+/* Overlay Gradient - Skin */
+.overlay-gradient {
+	&:before {
+		background-color: var(--tertiary) !important;
+		background-image: linear-gradient(to right, var(--tertiary) 0%, var(--quaternary) 100%) !important;
+	}
+}

@@ -1,0 +1,58 @@
+// Placeholder
+@mixin placeholder-color($color) {
+	&::-webkit-input-placeholder {
+		color: $color;
+	}
+
+	&::-moz-placeholder {
+		color: $color;
+	}
+
+	&:-ms-input-placeholder {
+		color: $color;
+	}
+}
+
+// Animation Performance
+@mixin performance() {
+	perspective: 1000px;
+}
+
+// Clearfix
+@mixin clearfix {
+	&::after {
+		clear: both;
+		content: "";
+		display: block;
+	}
+}
+
+// Media Breakpoint Up
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+	$min: breakpoint-min($name, $breakpoints);
+	@if $min {
+		@media (min-width: $min) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
+
+// Flexbox
+@mixin flexbox($grow, $shrink, $basis) {
+	-webkit-box-flex: $grow;
+	-ms-flex: $grow $shrink $basis;
+	flex: $grow $shrink $basis;
+	max-width: $basis;
+}
+
+// Animated
+@mixin animated() {
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-duration: var(--animate-duration);
+	animation-duration: var(--animate-duration);
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}

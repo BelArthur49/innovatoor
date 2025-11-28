@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>African Alliance Focus Areas</title>
+
+    <style>
+        /* ==========================
+   GENERAL PAGE STYLE
+========================== */
+        
+        body {
+            background: #000;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color: white;
+        }
+        /* ==========================
+   GRID LAYOUT
+========================== */
+        
+        .aa-grid {
+            display: grid !important;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: auto;
+        }
+        
+        @media(max-width: 1024px) {
+            .aa-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media(max-width: 768px) {
+            .aa-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media(max-width: 480px) {
+            .aa-grid {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+        /* ==========================
+   CARD BASE
+========================== */
+        
+        .aa-card {
+            position: relative;
+            height: 220px;
+            background: #111;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform .3s ease, height .3s ease;
+        }
+        
+        .aa-card:hover {
+            transform: translateY(-6px);
+            height: 380px;
+        }
+        /* ==========================
+   FRONT SIDE OF CARD
+========================== */
+        
+        .aa-card-front {
+            position: absolute;
+            inset: 0;
+            padding: 25px;
+            display: flex;
+            justify-content: flex-end;
+            flex-direction: column;
+            background: #111;
+            z-index: 3;
+            border-radius: 20px;
+            transition: opacity .35s ease;
+        }
+        
+        .aa-card-front h3 {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        /* ==========================
+   BACK PANEL (Slide-Up)
+========================== */
+        
+        .aa-card-back {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #ff4444, #ff6666);
+            border-radius: 20px;
+            padding: 25px;
+            transform: translateY(100%);
+            transition: transform .45s ease;
+            display: flex;
+            flex-direction: column;
+            pointer-events: auto;
+            overflow: hidden;
+        }
+        /* Reveal back panel */
+        
+        .aa-card:hover .aa-card-back {
+            transform: translateY(0);
+        }
+        /* Fade out front */
+        
+        .aa-card:hover .aa-card-front {
+            opacity: 0;
+        }
+        /* Keep card OPEN if mouse is inside scroll area */
+        
+        .aa-card-back:hover,
+        .aa-back-content:hover {
+            transform: translateY(0) !important;
+        }
+        /* ==========================
+   SCROLLABLE INNER CONTENT
+========================== */
+        
+        .aa-back-content {
+            overflow-y: auto;
+            flex: 1;
+            padding-right: 10px;
+        }
+        /* Text styling */
+        
+        .aa-back-content h3,
+        .aa-back-content p {
+            color: #fff;
+        }
+        
+        .aa-back-content h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        
+        .aa-back-content p {
+            line-height: 1.5;
+            font-size: 15px;
+            margin: 0;
+        }
+        /* Scrollbar styling */
+        
+        .aa-back-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .aa-back-content::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+        
+        .aa-back-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="text-align:center; font-size:42px; font-weight:800; margin-bottom:10px;">
+        African Alliance <span style="color:#ff4444;">Focus Areas</span>
+    </h1>
+    <p style="text-align:center; opacity:.8; margin-bottom:50px;">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    </p>
+
+    <div class="aa-grid">
+
+        <!-- CARD 1 -->
+        <div class="aa-card">
+            <div class="aa-card-front">
+                <h3>Health & Wellness</h3>
+            </div>
+            <div class="aa-card-back">
+                <div class="aa-back-content">
+                    <h3>Health & Wellness</h3>
+                    <p>We support health programs that improve community wellbeing, access to care, and long-term wellness.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="aa-card">
+            <div class="aa-card-front">
+                <h3>Education Access</h3>
+            </div>
+            <div class="aa-card-back">
+                <div class="aa-back-content">
+                    <h3>Education Access</h3>
+                    <p>Opening doors to quality education through community learning systems and scholarships.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="aa-card">
+            <div class="aa-card-front">
+                <h3>Women Empowerment</h3>
+            </div>
+            <div class="aa-card-back">
+                <div class="aa-back-content">
+                    <h3>Women Empowerment</h3>
+                    <p>Training, leadership programs, and gender protection initiatives supporting women across Africa.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="aa-card">
+            <div class="aa-card-front">
+                <h3>Youth Development</h3>
+            </div>
+            <div class="aa-card-back">
+                <div class="aa-back-content">
+                    <h3>Youth Development</h3>
+                    <p>Innovation hubs, mentorship, digital skills and leadership programs empowering youth across Africa.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add as many cards as you want below -->
+
+        <div class="aa-card">
+            <div class="aa-card-front">
+                <h3>Lorem ipsum dolor </h3>
+            </div>
+            <div class="aa-card-back">
+                <div class="aa-back-content">
+                    <h3>Lorem ipsum dolor </h3>
+                    <p>
+                        Supporting livelihoods, financial literacy, and inclusive economic participation. Long text example to show scrolling: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="aa-card">
+            <div class="aa-card-front">
+                <h3>Lorem ipsum dolor </h3>
+            </div>
+            <div class="aa-card-back">
+                <div class="aa-back-content">
+                    <h3>Lorem ipsum dolor </h3>
+                    <p>
+                        Supporting livelihoods, financial literacy, and inclusive economic participation. Long text example to show scrolling: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat, nunc in facilisis ultricies, mauris eros hendrerit massa, vitae
+                        tincidunt urna mauris vel nulla. quis nostrud exercitation ullamco laboris.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="aa-card">
+            <div class="aa-card-front">
+                <h3>Lorem ipsum dolor </h3>
+            </div>
+            <div class="aa-card-back">
+                <div class="aa-back-content">
+                    <h3>Lorem ipsum dolor </h3>
+                    <p>
+                        Supporting livelihoods, financial literacy, and inclusive economic participation. Long text example to show scrolling: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat, nunc in facilisis ultricies, mauris eros hendrerit massa, vitae
+                        tincidunt urna mauris vel nulla.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="aa-card">
+            <div class="aa-card-front">
+                <h3>Lorem ipsum dolor </h3>
+            </div>
+            <div class="aa-card-back">
+                <div class="aa-back-content">
+                    <h3>Lorem ipsum dolor </h3>
+                    <p>
+                        Supporting livelihoods, financial literacy, and inclusive economic participation. Long text example to show scrolling: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat, nunc in facilisis ultricies, mauris eros hendrerit massa, vitae
+                        tincidunt urna mauris vel nulla.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+    </div>
+
+</body>
+
+</html>

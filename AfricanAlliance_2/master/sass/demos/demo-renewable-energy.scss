@@ -1,0 +1,269 @@
+//COMMON IMPORTS
+@import "../config/imports";
+
+// General
+body {
+	font-size: 16px;
+}
+
+// Header
+@media (min-width: 992px) {
+	#header {
+		.header-nav-main {
+			nav {
+				> ul {
+					> li {
+						margin: 0 20px;
+						&:first-child {
+							margin-left: 0;
+						}
+						> a {
+							font-size: 18px;
+							padding: 0 !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+    color: var(--dark);
+}
+
+h3 {
+	text-transform: none;
+	font-weight: bold;
+	font-size: 2.3em;
+	line-height: 1.2em;
+}
+
+// Typo
+p {
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 30px;
+}
+
+// Element Position
+.custom-el-pos-1 {
+	margin-top: -100px;
+}
+
+.custom-el-pos-2 {
+	top: 25px;
+	position: relative;
+	@media (min-width: 992px) {
+		top: 0;
+	}
+}
+
+.custom-el-pos-3 {
+	bottom: -25px !important;
+}
+
+// Shape Divider
+.custom-shape-divider-1 {
+	@media (max-width: 1919px) {
+		min-width: 1920px;
+	}
+	&.custom-shape-divider-1-flip-horizonal {
+		 transform: rotateY(180deg);
+	}
+}
+
+// Hero
+.hero {
+	height: 750px;
+}
+
+.hero-el-1 {
+	width: 1400px;
+	height: 1400px;
+	position: absolute;
+	border-radius: 100%;
+	top: -62%;
+	left: -21%;
+}
+
+.hero-el-2 {
+	width: 1400px;
+	height: 1400px;
+	position: absolute;
+	border-radius: 100%;
+	top: -65%;
+	left: -20.3%;
+	background: var(--primary-100);
+}
+
+// Custom Text
+.custom-text-1 {
+	font-size: 200px;
+	position: relative;
+	top: 100px;
+	em {
+		font-size: 0.7em;
+		font-style: normal;
+	}
+
+	@media (min-width: 992px) {
+		font-size: 180px;
+	}
+
+	@media (min-width: 1400px) {
+		font-size: 300px;
+	}
+}
+
+// Custom SVG Positions
+.custom-svg-position-1 {
+	position: absolute;
+    top: -500px;
+    left: 100px;
+    opacity: 0.2;
+}
+
+.custom-svg-position-2 {
+    position: absolute;
+    top: 300px;
+    left: -62%;
+    opacity: 0.2;
+    z-index: 0;
+    max-width: 2000px;
+}
+
+.custom-svg-position-3 {
+    position: absolute;
+    top: 395px;
+    right: -60%;
+    opacity: 0.2;
+    z-index: 0;
+    max-width: 2000px;
+}
+
+// Custom SVG animations
+@keyframes customLines1anim {
+	from {
+		stroke-dasharray: 1600;
+		stroke-dashoffset: 1600;
+	}
+	to {
+		stroke-dasharray: 1600;
+		stroke-dashoffset: 0;
+	}
+}
+.customLines1anim {
+	animation-name: customLines1anim;
+}
+
+// Custom Highlight
+@media(min-width: 992px) {
+	.custom-highlight-1 {
+		position: relative;
+		z-index: 1;
+		&:after {
+			content: '';
+			position: absolute;
+			top: 60%;
+			left: 50%;
+			width: 0%;
+			height: 25%;
+			background-color: var(--primary);
+			z-index: -1;
+			right: 0;
+		}
+	}
+	.custom-highlight-1-tertiary {
+		&:after {
+			background-color: var(--tertiary);
+		}
+	}
+}
+
+.custom-highlight-anim {
+	&:after {
+		animation-name: customHighlightAnim;
+		animation-duration: 2s;
+		animation-fill-mode: forwards;
+	}
+}
+
+.custom-highlight-anim-delay {
+	&:after {
+		animation-delay: 1s;
+	}
+}
+
+@keyframes customHighlightAnim {
+	0% {
+		width: 0;
+		opacity: 1;
+	}
+	100% {
+		width: 52%;
+		opacity: 1;
+	}
+}
+
+// Carousel
+.carousel-half-full-width-wrapper {
+	> .owl-carousel {
+		.owl-stage-outer {
+			padding-top: 40px;
+			margin-bottom: 0;
+		}
+		.owl-nav {
+			position: absolute;
+			top: 0;
+			margin: 0;
+			padding: 0;
+			width: auto;
+			transform: none;
+			text-align: left;
+			button.owl-prev, button.owl-next {
+				position: static;
+				transform: none;
+			}
+			button.owl-prev {
+				margin-right: 5px;
+			}
+			button.owl-next {
+				margin-left: 5px;
+			}
+		}
+	}
+}
+
+// Custom Block
+.custom-block-1 {
+	&:after {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 40px;
+		background: var(--quaternary);
+		display: block;
+		top: -40px;
+		left: 0;
+	}
+	h4 {
+		position: relative;
+		top: -20px;
+	}
+	&.custom-block-1-bottom {
+		&:after {
+			top: auto;
+			bottom: -40px;
+		}
+		h4 {
+			top: 20px;
+		}		
+	}
+}
+
+// Min Width
+.custom-min-width-1 {
+	min-width: 195px;
+}
