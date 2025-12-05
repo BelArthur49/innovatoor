@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partners Slider</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: white;
+            font-family: Inter, Arial, sans-serif;
+        }
+        
+        .partners-section {
+            width: 100%;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .title {
+            color: #000000;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .logos-viewport {
+            width: 100%;
+            max-width: 1000px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .logos-track {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            white-space: nowrap;
+            will-change: transform;
+            transition: transform 0.5s ease;
+        }
+        
+        .logo-img {
+            height: 85px;
+            width: auto;
+            transition: 0.2s ease;
+        }
+        
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+        /* Pause automatic scroll on hover */
+        
+        .logos-viewport:hover .logos-track {
+            animation-play-state: paused;
+        }
+        /* Bottom buttons */
+        
+        .controls {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 8px 15px;
+            background: #ef8113;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #006000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="partners-section">
+        <div class="title">Partners</div>
+        <br>
+
+        <div class="logos-viewport">
+            <div class="logos-track" id="logosTrack">
+                <!-- ONE copy only -->
+                <img src="img/logo/netheland.jpg" class="logo-img">
+                <img src="img/logo/EU.png" class="logo-img">
+                <img src="img/logo/MINUBUMWE LOGO.png" class="logo-img">
+                <img src="img/logo/MOH LOGO.png" class="logo-img">
+                <img src="img/logo/smart logo .png" class="logo-img">
+                <img src="img/logo/RBC LOGO .png" class="logo-img">
+                <img src="img/logo/ICBS LOGO.png" class="logo-img">
+                <img src="img/logo/Tubibe amahoro.png" class="logo-img">
+                <img src="img/logo/EAR_Byumba_Diocese.jpg" class="logo-img">
+                <img src="img/logo/UR LOGO .jpg" class="logo-img">
+                <img src="img/logo/Kibogora Logo.png" class="logo-img">
+                <img src="img/logo/RCS LOGO.png" class="logo-img">
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="btn" onclick="prevLogo()">Previous</button>
+            <button class="btn" onclick="nextLogo()">Next</button>
+        </div>
+
+    </section>
+
+    <script>
+        const track = document.getElementById("logosTrack");
+
+        /* --------------------------------------------
+           1. DUPLICATE LOGOS FOR INFINITE LOOP
+        --------------------------------------------- */
+        const originalLogos = track.innerHTML;
+        track.innerHTML += originalLogos;
+
+        /* --------------------------------------------
+           2. AUTOMATIC SLIDING
+        --------------------------------------------- */
+        let position = 0;
+        let autoSpeed = 1; // px per frame (smooth)
+
+        function autoSlide() {
+            position -= autoSpeed;
+            applyPosition();
+
+            // Reset when half width is passed (infinite loop)
+            if (Math.abs(position) >= track.scrollWidth / 2) {
+                position = 0;
+                applyPosition();
+            }
+
+            requestAnimationFrame(autoSlide);
+        }
+
+        requestAnimationFrame(autoSlide);
+
+        /* --------------------------------------------
+           3. MANUAL PREVIOUS/NEXT BUTTONS
+        --------------------------------------------- */
+        const logoStep = 200; // distance per click
+
+        function applyPosition() {
+            track.style.transform = `translateX(${position}px)`;
+        }
+
+        function nextLogo() {
+            position -= logoStep;
+            applyPosition();
+        }
+
+        function prevLogo() {
+            position += logoStep;
+            applyPosition();
+        }
+    </script>
+
+</body>
+
+</html>

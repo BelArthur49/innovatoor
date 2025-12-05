@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBS Rwanda Section</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Roboto", Arial, sans-serif;
+            background: #fff;
+        }
+        
+        section {
+            padding: 60px 20px;
+        }
+        /* FLEX CONTAINER */
+        
+        .ourstory-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        /* IMAGE */
+        
+        .story-image {
+            flex: 1;
+            min-width: 300px;
+            height: 420px;
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            animation: fadeSlideLeft 0.8s ease-out forwards;
+        }
+        
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.15);
+            animation: parallaxMove 12s ease-in-out infinite alternate;
+        }
+        
+        @keyframes parallaxMove {
+            from {
+                transform: scale(1.15) translateY(-12px);
+            }
+            to {
+                transform: scale(1.15) translateY(12px);
+            }
+        }
+        /* TEXT CONTENT */
+        
+        .story-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 1s ease forwards 0.3s;
+        }
+        
+        .story-text h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .story-text p {
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+        /* HEAL ME SECTION */
+        
+        .healme-section {
+            max-width: 1200px;
+            margin: 60px auto 0;
+            padding: 40px;
+            background: rgba(240, 247, 255, 0.7);
+            border-radius: 14px;
+            backdrop-filter: blur(8px);
+            line-height: 1.8;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .healme-section h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .healme-section p {
+            font-size: 1rem;
+        }
+        /* ANIMATIONS */
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeSlideLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        /* RESPONSIVE */
+        
+        @media (max-width: 768px) {
+            .story-image {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section id="ourstory">
+
+        <!-- MAIN: Image + Intro Text -->
+        <div class="ourstory-container">
+
+            <div class="story-image">
+                <img src="https://igihe.com/local/cache-vignettes/L1000xH562/pa222341-37632.jpg?1713902746)" alt="CBS Rwanda Image">
+            </div>
+
+            <div class="story-text">
+                <h2>About CBS Rwanda</h2>
+                <p>
+                    The history of Rwanda has been marked by politically motivated ethnic discrimination and repression which repeatedly escalated into episodes of mass killings and eventually led to a well-orchestrated genocide against the Tutsi in Rwanda.
+                    <br><br> The genocide claimed the lives of more than one million people while its execution was marked by an unprecedented high level of civilian involvement. In addition to the massive deaths, countless orphans, widows, and severely
+                    traumatized individuals were left behind.
+                    <br><br> To respond to these long-lasting consequences, the Government of Rwanda and humanitarian organizations introduced various initiatives to support psychosocial healing, reconciliation, and resilience at individual, family, and
+                    community levels.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- FULL-WIDTH HEAL ME SECTION -->
+        <div class="healme-section">
+            <h2>Heal me, I heal you (Mvura Nkuvure)</h2>
+            <p>
+                The community-based sociotherapy approach—locally known as Mvura Nkuvure, meaning “heal me, I heal you”—is one of the interventions introduced in Rwanda to support psychosocial wellbeing, unity, and reconciliation. This approach was developed by Dutch
+                sociotherapist Cora Dekker in collaboration with the Anglican Church of Rwanda (EAR), Byumba Diocese.
+                <br><br> The program began in 2005 in northern Rwanda, later expanding to other regions. Due to positive community outcomes and strong engagement, implementation scaled up in 2014 to additional districts across the country.
+                <br><br> Between 2014 and 2016, the Community-Based Sociotherapy Program (CBSP) was implemented by a consortium consisting of Prison Fellowship Rwanda (PFR), EAR Byumba Diocese, and Duhumurizanye Iwacu Rwanda (DIR). Throughout this period,
+                community leaders and facilitators witnessed the importance of strengthening local capacities in emotional healing, restoring relationships, addressing trauma, and rebuilding social trust.
+                <br><br> To ensure sustainability, continuity, and effective scaling of the approach, the consortium established Community-Based Sociotherapy (CBS Rwanda) as a registered local organization dedicated to advancing sociotherapy initiatives
+                nationwide.
+            </p>
+        </div>
+
+    </section>
+
+</body>
+
+</html>

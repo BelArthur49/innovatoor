@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Publications</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            font-family: "Roboto", Arial, sans-serif;
+        }
+        
+        .publications-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        /* MAIN CARD CONTAINER */
+        
+        .flip-card {
+            width: 100%;
+            height: 480px;
+            perspective: 1200px;
+            border-radius: 25px;
+            position: relative;
+            overflow: hidden;
+            animation: softPulse 4s ease-in-out infinite;
+            background: transparent;
+        }
+        
+        @keyframes softPulse {
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 10px rgba(255, 140, 0, 0.15), 0 0 25px rgba(255, 140, 0, 0.1);
+            }
+            50% {
+                transform: scale(1.015);
+                box-shadow: 0 0 40px rgba(255, 140, 0, 0.4);
+            }
+        }
+        
+        .flip-card::before {
+            content: "";
+            position: absolute;
+            inset: -3px;
+            border-radius: 25px;
+            background: linear-gradient(60deg, #FF8C00, transparent, #FF8C00, transparent);
+            background-size: 300% 300%;
+            animation: orangeFlow 6s ease-in-out infinite;
+            opacity: 0.3;
+            filter: blur(2px);
+        }
+        
+        @keyframes orangeFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        /* INNER FLIP WRAPPER */
+        
+        .flip-card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.9s ease;
+        }
+        
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        /* FRONT + BACK SIDES */
+        
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            inset: 0;
+            padding: 30px;
+            border-radius: 25px;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        /* FRONT SIDE (FIXED, CLEANED, CENTERED) */
+        
+        .flip-card-front {
+            background: #003500;
+            color: #fff;
+            padding: 40px 28px;
+            gap: 16px;
+            box-shadow: inset 0 0 20px rgba(255, 140, 0, 0.05);
+        }
+        
+        .flip-card-front h4 {
+            color: #FF8C00;
+            font-weight: 700;
+            margin: 0;
+            font-size: clamp(18px, 2.4vw, 26px);
+        }
+        
+        .flip-card-front p {
+            margin: 0;
+            max-width: 80%;
+            line-height: 1.6;
+            font-size: clamp(13px, 1.3vw, 16px);
+            opacity: 0.95;
+        }
+        /* BACK SIDE */
+        
+        .flip-card-back {
+            background-size: cover;
+            background-position: center;
+            transform: rotateY(180deg);
+        }
+        
+        .flip-card-back .overlay {
+            background: rgba(0, 53, 0, 0.85);
+            width: 100%;
+            height: 100%;
+            border-radius: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .view-more-btn {
+            background: #FF8C00;
+            color: white;
+            padding: 14px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .view-more-btn:hover {
+            background: white;
+            color: #003500;
+        }
+        /* OWL CAROUSEL CENTERING */
+        
+        .owl-stage {
+            display: flex !important;
+            justify-content: center !important;
+        }
+        
+        .owl-item {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .owl-carousel .owl-nav button {
+            background: rgba(255, 140, 0, 0.8) !important;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            position: absolute;
+            top: 40%;
+        }
+        
+        .owl-prev {
+            left: -20px;
+        }
+        
+        .owl-next {
+            right: -20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="publications-wrapper">
+
+        <h2 style="font-size:32px; margin-bottom:10px;">CBS Publications</h2>
+        <p style="opacity:0.8; margin-bottom:30px;"><b>News, Research, and Stories of Change.</b></p>
+
+        <div class="owl-carousel owl-theme">
+
+            <!-- Card 1 -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h4>News</h4>
+                        <p>Ongoing journey of healing and reconciliation.</p>
+                    </div>
+                    <div class="flip-card-back" style="background-image:url('img/publicationhomepage/12.jpeg')">
+                        <div class="overlay">
+                            <a href="news.html" target="_parent" class="view-more-btn">View More <i class="fa fa-arrow-right"></i></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h4>Research</h4>
+                        <p>We partner with institutions to conduct rigorous research.</p>
+                    </div>
+                    <div class="flip-card-back" style="background-image:url('img/publicationhomepage/13.jpeg')">
+                        <div class="overlay">
+                            <a href="researches.html#researches" target="_parent" class="view-more-btn">View More <i class="fa fa-arrow-right"></i></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h4>Stories of Change</h4>
+                        <p>Personal testimonies of healing and restored trust.</p>
+                    </div>
+                    <div class="flip-card-back" style="background-image:url('img/publicationhomepage/14.jpeg')">
+                        <div class="overlay">
+                            <a href="storiesofchange.html" target="_parent" class="view-more-btn">View More <i class="fa fa-arrow-right"></i></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script>
+        $(".owl-carousel").owlCarousel({
+            loop: false,
+            nav: true,
+            dots: false,
+            margin: 20,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                768: {
+                    items: 2
+                },
+                992: {
+                    items: 3
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>

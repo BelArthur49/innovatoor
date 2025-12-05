@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Programmes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+         :root {
+            --delay-multiplier: 0.5s;
+            --glass-bg: rgba(255, 255, 255, 0.20);
+            --glass-border: rgba(255, 255, 255, 0.35);
+            --glass-blur: blur(18px);
+            --glow-color: rgba(239, 129, 19, 0.55);
+            --ios-shadow: 0 28px 60px rgba(0, 0, 0, 0.16);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Roboto", Arial, sans-serif;
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+        /* ---------------------------
+           PARALLAX BACKGROUND
+        ---------------------------*/
+        
+        .flip-section {
+            position: relative;
+            padding: 120px 20px;
+            overflow: hidden;
+        }
+        
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 120%;
+            height: 140%;
+            pointer-events: none;
+            background: radial-gradient(circle, #ffe3d0a2 0%, #ffffff 70%);
+        }
+        
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .header-section h2 {
+            font-size: 48px;
+            font-weight: 700;
+            color: #000;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+        }
+        /* ---------------------------
+           REVEAL + STAGGER
+        ---------------------------*/
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .cards-grid .flip-card:nth-child(1) {
+            transition-delay: calc(1 * var(--delay-multiplier));
+        }
+        
+        .cards-grid .flip-card:nth-child(2) {
+            transition-delay: calc(2 * var(--delay-multiplier));
+        }
+        
+        .cards-grid .flip-card:nth-child(3) {
+            transition-delay: calc(3 * var(--delay-multiplier));
+        }
+        /* ---------------------------
+           GLASSMORPHISM + GLOW + iOS 17 SHADOW
+        ---------------------------*/
+        
+        .flip-card {
+            height: 350px;
+            perspective: 1200px;
+            border-radius: 20px;
+            transition: transform 0.25s ease-out, box-shadow 0.4s ease-out;
+            backdrop-filter: var(--glass-blur);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+        /* Glowing border effect */
+        
+        .flip-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(135deg, #ef8113, #003500);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.25;
+            transition: opacity 0.3s ease;
+        }
+        /* Hover: glow + iOS shadow bloom */
+        
+        .flip-card:hover {
+            box-shadow: var(--ios-shadow);
+        }
+        
+        .flip-card:hover::before {
+            opacity: 0.75;
+        }
+        
+        .flip-card:hover {
+            transform: scale(1.04);
+        }
+        /* ---------------------------
+           FLIP LOGIC
+        ---------------------------*/
+        
+        .flip-card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 0.5s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .flip-card-front {
+            background: transparent;
+            color: #fff;
+        }
+        
+        .flip-card-back {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(12px);
+            transform: rotateY(180deg);
+            padding: 30px;
+        }
+        
+        .card-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        
+        @media (max-width: 1000px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="flip-section">
+
+        <div class="parallax-bg layer1"></div>
+
+        <div class="container">
+
+            <div class="header-section reveal">
+                <h2>Our</h2>
+                <p>
+
+                    Vision, Mission and Values
+
+
+                </p>
+            </div>
+
+            <div class="cards-grid">
+
+                <div class="flip-card reveal" data-speed="0.2">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-icon">🎯</div>
+                            <div class="card-cta" style="color: #000 !important;">
+
+                                Mission
+
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+
+
+                            CBS Rwanda is an organization whose mission is to contribute to the improvement of psychosocial wellbeing of people affected by the Genocide against Tutsi, a painful past and/or on-going daily stressors, restoring the social fabric, and promoting sustainable
+                            peace
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card reveal" data-speed="0.3">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-icon"><i class="fa-solid fa-people-group"></i></div>
+                            <div class="card-cta" style="color: #000 !important;">
+
+
+                                Vision
+
+
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+
+
+                            The vision of CBS Rwanda is to promote psychosocial wellbeing in Rwanda through interventions focusing on healing, reconciliation, social cohesion and economic empowerment.
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card reveal" data-speed="0.4">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                            <div class="card-cta" style="color: #000 !important;">
+
+                                Values
+
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+
+
+                            <ul>
+                                <li>Integrity</li>
+                                <li>Teamwork</li>
+                                <li>Dignity</li>
+                                <li>Excellence</li>
+                                <li>Inclusion</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JS EFFECTS -->
+    <script>
+        /* Scroll Reveal */
+        const reveals = document.querySelectorAll(".reveal");
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add("active");
+            });
+        }, {
+            threshold: 0.2
+        });
+        reveals.forEach(el => observer.observe(el));
+
+        /* Mouse Tilt */
+        document.querySelectorAll(".flip-card").forEach(card => {
+            card.addEventListener("mousemove", e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const rotateY = ((x / rect.width) - 0.5) * 20;
+                const rotateX = ((y / rect.height) - 0.5) * -20;
+                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            });
+
+            card.addEventListener("mouseleave", () => {
+                card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+            });
+        });
+    </script>
+
+</body>
+
+</html>

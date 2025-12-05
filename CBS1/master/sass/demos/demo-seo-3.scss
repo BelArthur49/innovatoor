@@ -1,0 +1,61 @@
+//COMMON IMPORTS
+@import "../config/imports";
+
+// Grid
+@media (min-width: 1440px) {
+	.container-xl-custom {
+	    max-width: 1420px;
+	}
+}
+
+// Header
+#header {
+	.header-body {
+		background: transparent;
+	}
+	.header-main {
+		background: var(--light);
+	}
+}
+
+.sticky-header-active {
+	#header {
+		.header-main {
+			backdrop-filter: blur(30px);
+			background: linear-gradient(rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0.5) 100%);
+		}
+	}
+}
+
+// Mouse Hover Split
+.mouse-hover-split {
+	min-height: 710px;
+
+	.side {
+		display: grid;
+		min-height: 710px;
+		overflow: hidden;
+		position: absolute;
+		width: 100%;
+	}
+
+	.side {
+		.side-content {
+			margin: 0px;
+			width: 100vw;
+		}
+	}
+
+	.side-left {
+		width: 60%;
+		z-index: 1;
+	}
+
+}
+
+// Section
+section.section.section-angled {
+	.section-angled-layer-bottom {
+		transform: skewY(-0.7deg) translate3d(0, 50%, 0);
+	}
+}

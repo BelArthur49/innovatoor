@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>CBS</title>
+
+    <meta name="keywords" content="WebSite Template" />
+    <meta name="description" content="CBS Rwanda">
+
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link id="googleFonts" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="vendor/animate/animate.compat.css">
+    <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.min.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/theme-elements.css">
+    <link rel="stylesheet" href="css/theme-blog.css">
+    <link rel="stylesheet" href="css/theme-shop.css">
+
+    <!-- Demo CSS -->
+    <link rel="stylesheet" href="css/demos/demo-cbs.css">
+
+    <!-- Skin CSS -->
+    <link id="skinCSS" rel="stylesheet" href="css/skins/skin-cbs.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+    <style>
+        .container1 {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .header h2 {
+            font-size: 2.5em;
+            color: #333;
+        }
+        
+        .highlight {
+            background: #FF8C00;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 5px;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-card {
+            perspective: 1000px;
+            height: 450px;
+        }
+        
+        .team-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 1s;
+            transform-style: preserve-3d;
+        }
+        
+        .team-card:hover .team-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .team-card-front,
+        .team-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .team-card-front {
+            background: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+        }
+        
+        .flip-indicator {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #FF8C00;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        
+        .team-card-front img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid #f0f0f0;
+        }
+        
+        .team-card-front h4 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #333;
+        }
+        
+        .team-card-front p {
+            color: #668;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+            padding: 0;
+            margin-top: auto;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            color: #668;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-3px);
+        }
+        
+        .social-icons-instagram a:hover {
+            background: #e1306c;
+            color: white;
+        }
+        
+        .social-icons-x a:hover {
+            background: #645c5c;
+            color: white;
+        }
+        
+        .social-icons-facebook a:hover {
+            background: #1877f2;
+            color: white;
+        }
+        
+        .team-card-back {
+            background: linear-gradient(135deg, #FF8C00 30%, rgba(2, 55, 28, 0.2)100%);
+            transform: rotateY(180deg);
+            padding: 30px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .team-card-back h4 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            text-align: center;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 10px;
+        }
+        
+        .bio-content {
+            overflow-y: auto;
+            flex: 1;
+            line-height: 1.6;
+        }
+        
+        .bio-content p {
+            color: black;
+        }
+        
+        .bio-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .bio-content::-webkit-scrollbar-track {
+            background: rgb(16, 16, 16);
+            border-radius: 10px;
+        }
+        
+        .bio-content::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+        }
+        
+        .team-card-inner {
+            transition: transform 1s;
+            transition-delay: 0s;
+            /* No delay when leaving */
+        }
+        
+        .team-card:hover .team-card-inner {
+            transform: rotateY(180deg);
+            transition-delay: 1s;
+            /* 0.8 second delay before flipping on hover */
+        }
+        /* Instant flip when clicking info badge */
+        
+        .team-card-inner.flipped {
+            transform: rotateY(180deg);
+            transition-delay: 0s !important;
+            /* No delay when clicked */
+        }
+        /* OR USE SOLUTION 2: Hover only on the card image area */
+        /*
+.team-card-front img {
+    cursor: pointer;
+}
+
+.team-card-front img:hover ~ * {
+    pointer-events: none;
+}
+
+.team-card:has(.team-card-front img:hover) .team-card-inner {
+    transform: rotateY(180deg);
+}
+*/
+    </style>
+</head>
+
+<body>
+
+    <div class="body">
+
+
+        <!--Header-->
+        <header id="header" data-plugin-options="{'stickyScrollUp':false, 'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': false, 'stickyChangeLogo': false, 'stickyStartAt': 100, 'stickyHeaderContainerHeight': 100}">
+            <div class="header-body border-top-0 h-auto box-shadow-none">
+                <div class="container-fluid px-3 px-lg-5 p-static">
+                    <div class="row align-items-center py-3">
+                        <div class="col-auto col-lg-2 col-xxl-3 me-auto me-lg-0">
+                            <div class="header-logo" data-clone-element-to="#offCanvasLogo">
+                                <a href="index.html">
+                                    <img alt="CBS" width="150" height="50" src="img/demos/cbs/logo.png">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-auto col-lg-8 col-xxl-6 justify-content-lg-center">
+                            <div class="header-nav header-nav-links justify-content-lg-center">
+                                <div class="header-nav-main header-nav-main-text-capitalize header-nav-main-arrows header-nav-main-effect-2">
+                                    <nav class="collapse">
+                                        <ul class="nav nav-pills" id="mainNav">
+                                            <li>
+                                                <a href="index.html" class="nav-link active">
+														Home
+													</a>
+                                            </li>
+
+                                            <li class="dropdown">
+                                                <a class="nav-link" href="about.html">
+														Who We Are
+													</a>
+                                                <ul class="dropdown-menu">
+
+                                                    <li><a href="about.html#ourstory" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">About Us</a></li>
+
+                                                    <li><a href="about.html#ourteam" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Our Team</a></li>
+
+                                                    <li><a href="about.html#boardmembers" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Board Members</a></li>
+
+                                                    <li><a href="about.html#partners" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Our Partners</a></li>
+
+
+                                                </ul>
+
+                                            </li>
+
+
+                                            <li class="dropdown">
+                                                <a class="nav-link" href="ourwork.html">
+														Our Work
+													</a>
+                                                <ul class="dropdown-menu">
+                                                    <li class="dropdown">
+                                                        <a class="nav-link" href="ourwork.html">
+                                                          CBS Approach </a>
+                                                        <ul class="dropdown-menu">
+                                                            <!-- LINK MODIFIED TO INCLUDE THE PAGE AND THE SECTION ID -->
+                                                            <li><a href="ourwork.html#cbs-approach" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">CBS Approach</a></li>
+                                                        </ul>
+                                                    </li>
+
+
+                                                    <li><a href="researches.html#researches" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Research</a></li>
+
+                                                    <li><a href="economicsupport.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Economic Support</a></li>
+
+                                                    <li><a href="victimoffendermediation.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Victim Offender Mediation</a></li>
+
+                                                    <li><a href="ourwork.html#ourcommunity" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Our Community</a></li>
+
+
+
+                                                    <li><a href="project.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Projects</a></li>
+
+
+
+
+                                                </ul>
+
+                                            </li>
+
+
+                                            <li class="dropdown">
+                                                <a>Publications</a>
+                                                <ul class="dropdown-menu">
+
+                                                    <li><a href="news.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">News</a></li>
+
+                                                    <li><a href="storiesofchange.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Stories of changes</a></li>
+
+                                                    <li><a href="researches.html#researches" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Researches</a></li>
+
+                                                    <li><a href="newsletters.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Newsletters</a></li>
+
+
+
+
+                                                </ul>
+                                            </li>
+
+
+
+
+
+                                            <li>
+                                                <a class="nav-link" href="contact.html">
+														Contact
+													</a>
+                                            </li>
+
+
+
+
+
+
+
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-auto col-lg-2 col-xxl-3">
+                            <div class="d-flex justify-content-end align-items-center">
+
+                                <a href="donate.html" class="btn btn-rounded btn-dark box-shadow-7 font-weight-medium px-3 py-2 text-2-5 btn-swap-1 ms-3 d-none d-md-flex" data-clone-element="1">
+                                    <span>    Donate <i class="fa-solid fa-arrow-right ms-2"></i></span>
+                                </a>
+                                <button class="btn header-btn-collapse-nav rounded-pill" data-bs-toggle="offcanvas" href="#offcanvasMain" role="button" aria-controls="offcanvasMain">
+										<i class="fas fa-bars"></i>
+									</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!--End Of Header-->
+
+
+
+        <div role="main" class="main px-3 px-lg-5">
+
+
+
+
+
+
+
+            <!-- Who We Are -->
+            <section id="ourstory">
+                <iframe src="ourstory.html" width="100%" height="1300px" style="border:0; overflow:hidden;">
+</iframe>
+            </section>
+
+
+            <!--Gel-->
+
+
+
+
+
+
+            <div class="container pt-5 pb-4">
+
+
+
+
+
+
+
+
+
+                <!-- Mvura Nkuvure -->
+
+                <br>
+
+
+
+            </div>
+
+
+            <!-- Team -->
+
+
+            <section id="ourteam">
+                <div class="container1">
+                    <div class="header">
+                        <h2>
+                            Meet The Professionals Full Of
+                            <span class="highlight">Expertise</span> and
+                            <span class="highlight">Dedication</span>
+                        </h2>
+                    </div>
+                    <br> <br>
+                    <div class="team-grid">
+                        <!-- Team Member 1 -->
+                        <div class="team-card">
+                            <div class="team-card-inner">
+                                <div class="team-card-front">
+                                    <div class="flip-indicator">
+                                        BIO
+                                    </div>
+                                    <img src="img/bio/Chantal.jpeg" alt="Team Member">
+                                    <h4>Dr Marie Chantal Ingabire</h4>
+                                    <p>Executive Director</p>
+
+                                </div>
+                                <div class="team-card-back">
+                                    <h4>Bio</h4>
+                                    <div class="bio-content">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Team Member 2 -->
+                        <div class="team-card">
+                            <div class="team-card-inner">
+                                <div class="team-card-front">
+                                    <div class="flip-indicator">
+                                        BIO
+                                    </div>
+                                    <img src="img/bio/Reverien.jpg" alt="Team Member">
+                                    <h4>Reverien Interayamahanga</h4>
+                                    <p>Social researcher </p>
+
+                                </div>
+                                <div class="team-card-back">
+                                    <h4>Bio</h4>
+                                    <div class="bio-content" s>
+                                        <p style="color:#040000 !important">Interayamahanga Reverien is a Rwandan social researcher specializing in peacebuilding, mental health, gender and participatory governance studies. <br><br>He holds a Master of Arts in Development Sociology from
+                                            Wits University (South Africa) and a Master of Science in Gender and Development from the University of Rwanda.<br> <br>He is currently a Senior Researcher with Community-Based Sociotherapy (CBS) Rwanda, where
+                                            he co- leads and supports studies on community healing, social cohesion, and resilience in post- genocide Rwanda , in the framework of sociotherapy . <br><br>Prior to joining CBS, he worked successively with
+                                            the Human Rights League in the Great Lakes Region (LDGL), Kigali Independent University, the Institute of Research and Dialogue for Peace (IRDP), and Never Again Rwanda, contributing to research, training, and
+                                            community-based peacebuilding initiatives.<br><br> He has also taught Political Sociology and Research Methods for the Social Sciences at local universities, and has led or co-led numerous baseline surveys,
+                                            evaluations, and qualitative studies with several organizations and institutions both local and international. His research and context analyses extend beyond Rwanda to cover peace and conflict dynamics, human
+                                            rights, and governance trends in the Great Lakes Region. <br><br>His work bridges the fields of reconciliation, resilience, gender, mental health and psychosocial support (MHPSS), participatory governance ,
+                                            environmental governance, advocacy combining strong field coordination and analytical skills with a deep commitment to evidence-based policy and programming..</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Team Member 3 -->
+                        <div class=" team-card ">
+                            <div class="team-card-inner ">
+                                <div class="team-card-front ">
+                                    <div class="flip-indicator ">
+                                        BIO
+                                    </div>
+                                    <img src="img/bio/Sarabwe.jpg" alt="Team Member ">
+                                    <h4>Emmanuel Sarabwe</h4>
+                                    <p>Head of Programs in CBs Rwanda
+                                    </p>
+
+                                </div>
+                                <div class="team-card-back ">
+                                    <h4>Bio</h4>
+                                    <div class="bio-content ">
+                                        <p>Emmanuel Sarabwe has an MA degree of Social Work and Social administration from the Uganda Christian University in Kabale, Uganda, obtained in 2012 and a second MA degree of Human Rights Gender and Conflict in Social
+                                            Justice Perspective from the International Institute of Social Studies in the Hague, The Netherlands, obtained in 2017.<br> <br>Since 2005, he has been working for successive programs of Community Based Sociotherapy,
+                                            supporting Rwandans to constructively deal with the consequences of the genocide against the Tutsi. He conducted applied research in the areas of family dynamism, psychosocial life, forgiveness and peacebuilding.
+                                            Currently, he is conducting research on <br>1) Forgiveness as reparative humanism of genocide crimes in Rwanda and <br>2) In the underarm of God: Surviving from community resistance to the genocide against Tutsi
+                                            in Rwanda.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Team Member 4 -->
+                        <div class="team-card ">
+                            <div class="team-card-inner ">
+                                <div class="team-card-front ">
+                                    <div class="flip-indicator ">
+                                        BIO
+                                    </div>
+                                    <img src="img/bio/Thierry.jpeg" alt="Team Member ">
+                                    <h4>Thierry Nsanzimihigo</h4>
+                                    <p>Finance Analyst and Accountant by profession</p>
+
+                                </div>
+                                <div class="team-card-back ">
+                                    <h4>Bio</h4>
+                                    <div class="bio-content ">
+                                        <p>
+                                            He is a Certified – CMA (Certified Management Accountants), & Member of the Institute of Certified Management Accountants ; a CPA (Certified Public Accountant) Advanced Level, a Certified CFO100, Certified Business Analyst with more than 15 years of working
+                                            experience, at both Senior, Middle and Junior levels of Management: in Finance, Accounting Administration, Human resource management, Audit, and Economics.<br><br>                                            He has also worked for the higher learning institutions as an assistant lecturer in Finance, Accounting, Insurance, Audit and Management courses; and He is a Personal consultant in the same fields. He holds
+                                            a Master’s Degree (MA) in Economics from Mahatma Gandhi University-Meghalaya India, and He is currently pursuing the Doctorate of Philosophy (PhD) in Business and Economics - Accounting.<br> <br>Apart from degrees
+                                            and certificates in Finance, Accounting, Audit and Economy; Thierry has expertise in the Rwandan taxation, human resource management, marketing, , peace- building, conflicts resolution, children Ministry (Child
+                                            Care) and leadership.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Team Member 5 -->
+                        <div class="team-card ">
+                            <div class="team-card-inner ">
+                                <div class="team-card-front ">
+                                    <div class="flip-indicator ">
+                                        BIO
+                                    </div>
+                                    <img src="img/bio/Esther.jpg" alt="Team Member ">
+                                    <h4>Esther Mudahogora</h4>
+                                    <p>Communication</p>
+
+                                </div>
+                                <div class="team-card-back ">
+                                    <h4>Bio</h4>
+                                    <div class="bio-content ">
+                                        <p>Mudahogora Esther is a dedicated communication professional holding a Bachelor of Arts in Mass Media and Communication with a concentration in Public Relations from Mount Kenya University. <br>She has further enhanced
+                                            her expertise through short courses in photography and a six-month internship at the Rwanda Broadcasting Agency (RBA), where she gained practical experience in media production, content development, and public
+                                            communication.
+                                            <br><br> With over one year of experience as a Communication Officer, Esther has demonstrated strong competence in developing and implementing communication strategies, producing multimedia content, managing
+                                            digital platforms, and coordinating media and public relations activities. She is committed to using effective communication to promote organizational visibility, strengthen stakeholder engagement, and support
+                                            impactful storytelling.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Team Member 6 - Long Bio -->
+                        <div class="team-card ">
+                            <div class="team-card-inner ">
+                                <div class="team-card-front ">
+                                    <div class="flip-indicator ">
+                                        BIO
+                                    </div>
+                                    <img src="img/bio/Nyampatsi.png" alt="Team Member ">
+                                    <h4> Nyampatsi</h4>
+                                    <p>Title</p>
+
+                                </div>
+                                <div class="team-card-back ">
+                                    <h4>Bio</h4>
+                                    <div class="bio-content ">
+                                        <p>
+
+                                            Nyampatsi has over 20 years of counseling and psychotherapy experience.<br><br> He is skilled in working with young people, adults and communities on issues related to trauma, depression, anxiety and other mental
+                                            disorders.
+                                            <br><br> He has the privilege of having special skills in psycho-somatic therapies in addition to skills in family therapies. He has broad understanding and ability to facilitate trainings and workshops, with
+                                            particular interest in the areas related to psychodynamic therapies, systemic therapies, cognitive therapies, behavioral therapies, psychosocial therapies, group , individual , and couples therapies.
+                                            <br><br> Nyampatsi has good interpersonal and communication skills including coaching, mentoring and supervision for professional and lay counselors and ability to work with people from diverse cultures; ability
+                                            to lead and motivate people to work in teams.
+
+
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="team-card ">
+                            <div class="team-card-inner ">
+                                <div class="team-card-front ">
+                                    <div class="flip-indicator ">
+                                        BIO
+                                    </div>
+                                    <img src="https://via.placeholder.com/150 " alt="Team Member ">
+                                    <h4> Yvonne MUCYO MANISHIMWE</h4>
+                                    <p>Title</p>
+
+                                </div>
+                                <div class="team-card-back ">
+                                    <h4>Bio</h4>
+                                    <div class="bio-content ">
+                                        <p>
+
+                                            Yvonne MUCYO MANISHIMWE is a dedicated accounting professional with a Bachelor's degree in Accounting from the University of Rwanda and certification as a Certified Public Accountant (CPA) in Rwanda. <br><br>With
+                                            over three years of hands-on experience in the accounting field, Yvonne is developed a strong foundation in financial reporting, budgeting, and compliance. <br><br>Her expertise spans across managing financial
+                                            records, preparing accurate financial statements, and ensuring adherence to regulatory standards. She is passionate about leveraging my skills to support organizational growth and financial integrity, and she
+                                            continuously seek opportunities to expand my knowledge and contribute meaningfully to the finance sector.
+
+
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="team-card ">
+                            <div class="team-card-inner ">
+                                <div class="team-card-front ">
+                                    <div class="flip-indicator ">
+                                        BIO
+                                    </div>
+                                    <img src="img/bio/Nzabonimpa.jpeg" alt="Team Member ">
+                                    <h4>Emmanuel Nzabonimpa</h4>
+                                    <p>Title</p>
+
+                                </div>
+                                <div class="team-card-back ">
+                                    <h4>Bio</h4>
+                                    <div class="bio-content ">
+                                        <p>
+
+                                            Emmanuel Nzabonimpa is a public health professional with bachelor in community health from Uganda Christian University, and master’s in public health with specialization in Monitoring and Evaluation from Mount Kenya University.<br><br>                                            He also holds a Diploma in health services management from Kabale University and an accredited Diploma in Groupwork practice from Institute of Group Analysis (UK). <br><br>Before joining CBS Rwanda, he served
+                                            as district hospital supervisor in charge of Health information management system, Maternal and Child health, Malaria and HIV prevention and a treatment as well as Project officer in a non- government organization.
+                                            Since 2014, Emmanuel is working with CBS Rwanda, he served as Project district Officer, a Participatory Action researcher and Project Coordinator. <br><br>He contributes to the capacity building of CBS group
+                                            facilitators through offering trainings on CBS approach and field supportive supervision and meetings. <br><br>He a member of CBS research team and participated in the design and implementation of different,
+                                            qualitative and quantitative studies aiming at assessing effectiveness of CBS approach in different contexts particularly supporting in study design, data collection and analysis. In terms of publication He
+                                            authored a mixed method study on social isolation among ex-genocide prisoners in Rwanda and co-authored a c-RCT protocol on evaluating the impact of Community-Based Sociotherapy on social dignity in post-genocide
+                                            Rwanda.
+
+
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="team-card ">
+                            <div class="team-card-inner ">
+                                <div class="team-card-front ">
+                                    <div class="flip-indicator ">
+                                        BIO
+                                    </div>
+                                    <img src="https://via.placeholder.com/150 " alt="Team Member ">
+                                    <h4>Fridaus Benimana Francine</h4>
+                                    <p>Ruhango District Officer, CBS Rwanda</p>
+
+                                </div>
+                                <div class="team-card-back ">
+                                    <h4>Bio</h4>
+                                    <div class="bio-content ">
+                                        <p>
+
+
+                                            Fridaus Francine Benimana serves as a District Officer at CBS Rwanda, where she is responsible for monitoring sociotherapy group sessions and supporting the implementation of community-based healing initiatives.<br><br>                                            She holds a bachelor’s degree with honors in clinical medicine and community health, and possesses strong expertise in active listening, trauma healing, and peacebuilding. <br><br>Ms. Benimana has been awarded
+                                            a Certificate in Trauma Healing and Peace Building, recognizing her commitment to advancing psychosocial wellbeing and fostering social cohesion within communities.
+
+
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="team-card ">
+                            <div class="team-card-inner ">
+                                <div class="team-card-front ">
+                                    <div class="flip-indicator ">
+                                        BIO
+                                    </div>
+                                    <img src="img/bio/Germain.jpg" alt="Team Member ">
+                                    <h4>Germain UWIRAGIYE</h4>
+                                    <p>District Officer at CBS Rwanda</p>
+
+                                </div>
+                                <div class="team-card-back ">
+                                    <h4>Bio</h4>
+                                    <div class="bio-content ">
+                                        <p>
+
+                                            Germain UWIRAGIYE Is a District Officer at CBS Rwanda, where he responsible for coordinating the implementation of community based sociotherapy as integrated of MHPSS and peacebuilding approach at district level.<br><br>                                            With over two years of experience in sociotherapy and 10 years working in MHPSS services, He is equipped with a variety of technics to support people suffering from mental health problems including crisis emotional
+                                            management. <br><br>Germain hold a master’s degree in clinical psychology and Therapeutics from University of Rwanda.
+
+
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="team-card ">
+                            <div class="team-card-inner ">
+                                <div class="team-card-front ">
+                                    <div class="flip-indicator ">
+                                        BIO
+                                    </div>
+                                    <img src="img/bio/Virgine.jpeg" alt="Team Member ">
+                                    <h4> VIRGINIE MUKAKAYIJUKA</h4>
+                                    <p>Title</p>
+
+                                </div>
+                                <div class="team-card-back ">
+                                    <h4>Bio</h4>
+                                    <div class="bio-content ">
+                                        <p>
+
+
+                                            Virginie is a skilled therapist, psychological clinician with strong experience in trauma healing, mental health, social worker, and community development. She has worked with individuals and groups in Rwandan community, hospitals, refugee camps, addressing
+                                            issues such as depression, anxiety, and conflict recovery over 20 years.<br><br> Passionate about peacebuilding and reconciliation, she empowers people to regain stability
+                                            and well-being through compassionate, culturally sensitive care. <br><br>Virginie brings a deep commitment to social cohesion and resilience, making a lasting impact in both rural and urban settings.She enjoys
+                                            creativity as a form of mental exercice.
+
+
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class="team-card ">
+                            <div class="team-card-inner ">
+                                <div class="team-card-front ">
+                                    <div class="flip-indicator ">
+                                        BIO
+                                    </div>
+                                    <img src="img/bio/Aime.jpeg" alt="Team Member ">
+                                    <h4>Aimé Kamana</h4>
+                                    <p>District Officer at CBS Rwanda</p>
+
+                                </div>
+                                <div class="team-card-back ">
+                                    <h4>Bio</h4>
+                                    <div class="bio-content ">
+                                        <p>
+                                            Aimé Kamana is a District Officer at CBS Rwanda with over 12 years of experience in sociotherapy.<br><br> Since 2013, Aimé has been dedicated to community healing, social cohesion, and psychosocial support.<br><br>                                            Since 2023, he has served in Rwamagana District, overseeing the monitoring of sociotherapy groups.<br><br> He holds a master’s degree and is certified in Trauma Healing and Peacebuilding as well as Organisational
+                                            Transformation. Aimé combines academic knowledge, practical experience, and compassion to foster resilience and sustainable peace within communities.
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+
+
+
+                <!--End Of team-->
+            </section>
+
+
+
+
+
+
+
+
+
+
+            <!-- Board Members -->
+
+
+
+
+            <section id="boardmembers">
+
+                <div class="text-center overflow-hidden w-100">
+                    <div class="appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">
+                        <h2 class="text-resp-150 ws-nowrap font-weight-semi-bold text-overflow-center text-color-grey-100 n-ls-5 mb-5">Board Members</h2>
+                    </div>
+                </div>
+                <div class="bg-grey-100 px-3 px-xl-0 border-radius-2 p-relative overflow-hidden custom-pos-3">
+                    <div class="container py-5">
+                        <div class="row pt-5">
+                            <div class="col">
+                                <div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">
+                                    <h2 class="text-9 text-lg-12 font-weight-semibold line-height-1 mb-4">Board Members</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pb-4">
+                            <div class="col">
+                                <div class="toggle toggle-minimal toggle-faqs toggle-dark m-0" data-plugin-toggle>
+
+
+                                    <section class="toggle"><b>Mr. Justus Kangwagye (Chairman)</b></section>
+                                    <section class="toggle"><b> Dr. Aggee Shyaka Mugabe, PhD. (1st Vice chair)</b></section>
+                                    <section class="toggle"><b> Mrs. Yvonne Mutakwasuku (2nd Vice chair)</b></section>
+                                    <section class="toggle"><b> Prof. Dr. Clementine Kanazayire, PhD. (Secretary to the Board)</b></section>
+                                    <section class="toggle"><b> Mr. Francois Mushimimana (Treasurer)</b></section>
+                                    <section class="toggle"><b> Mrs. Claire Gasanganwa (Member)</b></section>
+                                    <section class="toggle"><b> Mr. Lambert Kabera (Member)</b></section>
+                                    <section class="toggle"><b> Mr. Bosco Karanganwa (Member)</b></section>
+                                    <section class="toggle"><b> Mr. Fidele Rutayisire (Member)</b></section>
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+
+
+
+
+
+            <section id="partners">
+                <iframe src="partners.html" style="width:100%; height:220px; border:0; overflow:hidden;">
+</iframe>
+
+                <iframe src="partnersprevious.html" style="width:100%; height:220px; border:0; overflow:hidden;">
+</iframe>
+            </section>
+
+
+
+
+
+
+
+
+
+
+
+            <div class="offcanvas offcanvas-start " data-bs-scroll="true " tabindex="-1 " id="offcanvasMain " aria-labelledby="offcanvasMain ">
+                <div class="offcanvas-header ">
+                    <button type="button " class="btn-close " data-bs-dismiss="offcanvas " aria-label="Close "></button>
+                </div>
+                <div class="offcanvas-body ">
+                    <div class="mb-4 " id="offCanvasLogo "></div>
+                    <nav class="offcanvas-nav w-100 " id="offCanvasNav "></nav>
+                </div>
+            </div>
+
+            <!-- Vendor -->
+            <script src="vendor/plugins/js/plugins.min.js "></script>
+
+            <!-- Theme Base, Components and Settings -->
+            <script src="js/theme.js "></script>
+
+            <!-- Demo -->
+            <script src="js/demos/demo-cbs.js "></script>
+
+            <!-- Theme Custom -->
+            <script src="js/custom.js "></script>
+
+            <!-- Theme Initialization Files -->
+            <script src="js/theme.init.js "></script>
+
+            <!-- Current Page Vendor and Views -->
+            <script src="js/views/view.contact.js "></script>
+        </div>
+        <iframe src="footer.html" style="width:100%; 
+               margin:0; 
+               padding:0; 
+               border:0; 
+               display:block;height:380px;">
+               
+                    </iframe>
+
+    </div>
+</body>
+
+</html>

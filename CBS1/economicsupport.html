@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>CBS</title>
+
+    <meta name="keywords" content="WebSite Template" />
+    <meta name="description" content="CBS is rwandan Based NGO">
+
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link id="googleFonts" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="vendor/animate/animate.compat.css">
+    <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.min.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/theme-elements.css">
+    <link rel="stylesheet" href="css/theme-blog.css">
+    <link rel="stylesheet" href="css/theme-shop.css">
+
+    <!-- Demo CSS -->
+    <link rel="stylesheet" href="css/demos/demo-cbs.css">
+
+    <!-- Skin CSS -->
+    <link id="skinCSS" rel="stylesheet" href="css/skins/skin-cbs.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Roboto", Arial, sans-serif;
+            font-weight: 400;
+            background: #fff;
+        }
+        
+        section {
+            padding: 60px 20px;
+        }
+        /* FLEX CONTAINER */
+        
+        .ourstory-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        /* ------------------------------
+           LEFT IMAGE (HTML-based PARALLAX)
+        --------------------------------*/
+        
+        .story-image {
+            flex: 1;
+            min-width: 300px;
+            height: 420px;
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            animation: fadeSlideLeft 0.8s ease-out forwards;
+        }
+        
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.15);
+            /* slight zoom for smooth parallax */
+            animation: parallaxMove 12s ease-in-out infinite alternate;
+        }
+        
+        @keyframes parallaxMove {
+            from {
+                transform: scale(1.15) translateY(-12px);
+            }
+            to {
+                transform: scale(1.15) translateY(12px);
+            }
+        }
+        /* ------------------------------
+           RIGHT TEXT (GLASS EFFECT)
+        --------------------------------*/
+        
+        .story-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 1s ease forwards 0.3s;
+        }
+        
+        .story-text h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .story-text p {
+            line-height: 1.7;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        /* ANIMATIONS */
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeSlideLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        /* RESPONSIVE */
+        
+        @media (max-width: 768px) {
+            .story-image {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="header" data-plugin-options="{'stickyScrollUp':false, 'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': false, 'stickyChangeLogo': false, 'stickyStartAt': 100, 'stickyHeaderContainerHeight': 100}">
+        <div class="header-body border-top-0 h-auto box-shadow-none">
+            <div class="container-fluid px-3 px-lg-5 p-static">
+                <div class="row align-items-center py-3">
+                    <div class="col-auto col-lg-2 col-xxl-3 me-auto me-lg-0">
+                        <div class="header-logo" data-clone-element-to="#offCanvasLogo">
+                            <a href="index.html">
+                                <img alt="CBS" width="150" height="50" src="img/demos/cbs/logo.png">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-auto col-lg-8 col-xxl-6 justify-content-lg-center">
+                        <div class="header-nav header-nav-links justify-content-lg-center">
+                            <div class="header-nav-main header-nav-main-text-capitalize header-nav-main-arrows header-nav-main-effect-2">
+                                <nav class="collapse">
+                                    <ul class="nav nav-pills" id="mainNav">
+                                        <li>
+                                            <a href="index.html" class="nav-link active">
+														Home
+													</a>
+                                        </li>
+
+                                        <li class="dropdown">
+                                            <a class="nav-link" href="about.html">
+														Who We Are
+													</a>
+                                            <ul class="dropdown-menu">
+
+                                                <li><a href="about.html#ourstory" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">About Us</a></li>
+
+                                                <li><a href="about.html#ourteam" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Our Team</a></li>
+
+                                                <li><a href="about.html#boardmembers" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Board Members</a></li>
+
+                                                <li><a href="about.html#partners" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Our Partners</a></li>
+
+
+                                            </ul>
+
+                                        </li>
+
+
+                                        <li class="dropdown">
+                                            <a class="nav-link" href="ourwork.html">
+														Our Work
+													</a>
+                                            <ul class="dropdown-menu">
+                                                <li class="dropdown">
+                                                    <a class="nav-link" href="ourwork.html">
+                                                          CBS Approach </a>
+                                                    <ul class="dropdown-menu">
+                                                        <!-- LINK MODIFIED TO INCLUDE THE PAGE AND THE SECTION ID -->
+                                                        <li><a href="ourwork.html#cbs-approach" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">CBS Approach</a></li>
+                                                    </ul>
+                                                </li>
+
+
+                                                <li><a href="researches.html#researches" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Research</a></li>
+
+                                                <li><a href="economicsupport.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Economic Support</a></li>
+
+                                                <li><a href="victimoffendermediation.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Victim Offender Mediation</a></li>
+
+                                                <li><a href="ourwork.html#ourcommunity" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Our Community</a></li>
+
+
+
+                                                <li><a href="project.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Projects</a></li>
+
+
+
+
+                                            </ul>
+
+                                        </li>
+
+
+                                        <li class="dropdown">
+                                            <a>Publications</a>
+                                            <ul class="dropdown-menu">
+
+                                                <li><a href="news.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">News</a></li>
+
+                                                <li><a href="storiesofchange.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Stories of changes</a></li>
+
+                                                <li><a href="researches.html#researches" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Researches</a></li>
+
+                                                <li><a href="newsletters.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Newsletters</a></li>
+
+
+
+
+                                            </ul>
+                                        </li>
+
+
+
+
+
+                                        <li>
+                                            <a class="nav-link" href="contact.html">
+														Contact
+													</a>
+                                        </li>
+
+                                        <li>
+                                            <a class="nav-link" href="donate.html">
+														Donate
+													</a>
+                                        </li>
+
+
+
+
+
+
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <section id="ourstory">
+        <div class="ourstory-container">
+
+            <!-- IMAGE NOW PLACED DIRECTLY IN HTML -->
+            <div class="story-image">
+                <img src="https://igihe.com/local/cache-vignettes/L1000xH562/pa222341-37632.jpg?1713902746)" alt="CBS Rwanda Image">
+            </div>
+
+            <!-- RIGHT TEXT -->
+            <div class="story-text">
+                <h2>Economic support</h2>
+
+                <p>
+
+
+                    Socio-group members do not get any financial incentive or sitting allowance for participating in the group sessions. The rationale for this is that it would bypass the goal of sociotherapy, which relates to breaking the circle of victimhood and dependency,
+                    to empower people and restore their dignity, to create connectedness and group support and encourage people to remain motivated by the purpose of the group sessions and not by financial motivations. Participation through intrinsic
+                    motivation is one of the core pillars of the CBS philosophy. In addition to that, not providing sitting allowances will contribute to sustainability of the approach and ownership.<br> However, in all CBS projects,
+                    it has been observed that after the completion of 15 sessions, many sociotherapy groups decide to continue meeting. Not only to sustain their group cohesion, but also to initiate income generating activities together for their personal,
+                    family and community socio-economic wellbeing. Some groups start small livelihood projects and other groups saving and credit groups (e.g. Voluntary Saving and Loan Associations (VSLA)). <br>CBS Rwanda therefore supports graduate sociotherapy
+                    groups with an action plan and demonstrating a need of support in terms of capacity building regarding their socio-economic initiatives through coaching and training, seed funding and/or linking to organizations that may be of support
+                    of their income generating activities.
+
+
+
+                </p>
+            </div>
+
+
+
+        </div>
+    </section>
+
+    <iframe src="footer.html" style="width:100%; 
+               margin:0; 
+               padding:0; 
+               border:0; 
+               display:block;height:380px;">
+               
+    </iframe>
+
+</body>
+
+</html>

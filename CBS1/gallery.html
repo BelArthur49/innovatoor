@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Gallery</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #ffffff;
+            font-family: "Roboto", Arial, sans-serif;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            font-weight: 700;
+            color: black;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .gallery-wrapper {
+            width: 100%;
+            padding: 20px 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Arrows */
+        
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(215, 149, 5, 0.781);
+            padding: 18px;
+            border-radius: 10px;
+            font-size: 40px;
+            cursor: pointer;
+            color: rgb(9, 43, 2);
+            z-index: 20;
+            user-select: none;
+        }
+        
+        #leftArrow {
+            left: 10px;
+        }
+        
+        #rightArrow {
+            right: 10px;
+        }
+        
+        .arrow:hover {
+            background: rgba(198, 188, 3, 0.6);
+        }
+        /* Rows */
+        
+        .row {
+            display: flex;
+            gap: 20px;
+            width: max-content;
+            transition: transform 0.4s ease-out;
+            white-space: nowrap;
+        }
+        /* Extra spacing between rows */
+        
+        .row+.row {
+            margin-top: 30px;
+        }
+        /* Cards */
+        
+        .card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        /* Masonry sizes */
+        
+        .h1 {
+            width: 300px;
+            height: 220px;
+        }
+        
+        .h2 {
+            width: 300px;
+            height: 260px;
+        }
+        
+        .h3 {
+            width: 300px;
+            height: 180px;
+        }
+        
+        .h4 {
+            width: 300px;
+            height: 240px;
+        }
+        
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+        
+        .card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .caption {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 15px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 700;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.4s ease;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+        }
+        
+        .card:hover .caption {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* LIGHTBOX */
+        
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(86, 97, 0, 0.458);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 45px;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 65px;
+            padding: 20px;
+            color: white;
+            cursor: pointer;
+        }
+        
+        #lbPrev {
+            left: 40px;
+        }
+        
+        #lbNext {
+            right: 40px;
+        }
+        
+        .lightbox-img-container img {
+            max-width: 90%;
+            border-radius: 12px;
+            transition: transform 0.2s ease-out;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="section-title">Our Work in Pictures</div>
+
+    <div class="gallery-wrapper">
+
+        <div id="leftArrow" class="arrow">&#10094;</div>
+        <div id="rightArrow" class="arrow">&#10095;</div>
+
+        <div class="row" id="row1"></div>
+        <div class="row" id="row2"></div>
+
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-close">&times;</div>
+
+        <div id="lbPrev" class="lightbox-nav">&#10094;</div>
+        <div id="lbNext" class="lightbox-nav">&#10095;</div>
+
+        <div class="lightbox-img-container">
+            <img id="lightboxImg" src="img">
+        </div>
+    </div>
+
+    <script>
+        const galleryItems = [{
+                img: "img/gallery/1.jpeg",
+                caption: "CBS"
+            },
+
+            {
+                img: "img/gallery/2.jpeg",
+                caption: "Mvura Nkuvure"
+            },
+
+            {
+                img: "img/gallery/2 copy.jpeg",
+                caption: "Mvura Nkuvure"
+            },
+
+
+            {
+                img: "img/gallery/3.jpeg",
+                caption: "Social Therapy"
+            }, {
+                img: "img/gallery/4.jpeg",
+                caption: "Economic Support"
+            }, {
+                img: "img/gallery/5.jpeg",
+                caption: "stories"
+            }, {
+                img: "img/gallery/6.jpeg",
+                caption: "Research"
+            }, {
+                img: "img/gallery/7.jpeg",
+                caption: ""
+            }, {
+                img: "img/gallery/8.jpeg",
+                caption: ""
+            }, {
+                img: "img/gallery/9.jpeg",
+                caption: ""
+            }, {
+                img: "img/gallery/10.jpeg",
+                caption: ""
+            },
+
+        ]
+
+        const sizes = ["h1", "h2", "h3", "h4"];
+        const track1 = document.getElementById("row1");
+        const track2 = document.getElementById("row2");
+
+        const half = Math.ceil(galleryItems.length / 2);
+        const itemsRow1 = galleryItems.slice(0, half);
+        const itemsRow2 = galleryItems.slice(half);
+
+        function buildRow(row, items) {
+            const doubled = [...items, ...items];
+            doubled.forEach((item, i) => {
+                const div = document.createElement("div");
+                div.className = `card ${sizes[i % 4]}`;
+                div.innerHTML = `
+                    <img src="${item.img}">
+                    <div class="caption">${item.caption}</div>
+                `;
+                div.onclick = () => openLightbox(item.img);
+                row.appendChild(div);
+            });
+        }
+
+        buildRow(track1, itemsRow1);
+        buildRow(track2, itemsRow2);
+
+        let pos1 = 0;
+        let pos2 = 0;
+        let running = true;
+
+        function normalizePositions() {
+            const max1 = track1.scrollWidth / 2;
+            const max2 = track2.scrollWidth / 2;
+
+            if (pos1 >= max1) pos1 -= max1;
+            if (pos1 < 0) pos1 += max1;
+
+            if (pos2 >= max2) pos2 -= max2;
+            if (pos2 < 0) pos2 += max2;
+        }
+
+        function autoScroll() {
+            if (running) {
+                pos1 += 0.25;
+                pos2 -= 0.20;
+
+                normalizePositions();
+
+                track1.style.transform = `translateX(${-pos1}px)`;
+                track2.style.transform = `translateX(${-pos2}px)`;
+            }
+            requestAnimationFrame(autoScroll);
+        }
+        autoScroll();
+
+        const arrowStep = 330;
+
+        document.getElementById("leftArrow").onclick = () => {
+            pos1 -= arrowStep;
+            pos2 += arrowStep;
+            updateManual();
+        };
+
+        document.getElementById("rightArrow").onclick = () => {
+            pos1 += arrowStep;
+            pos2 -= arrowStep;
+            updateManual();
+        };
+
+        function updateManual() {
+            running = false;
+
+            normalizePositions();
+
+            track1.style.transform = `translateX(${-pos1}px)`;
+            track2.style.transform = `translateX(${-pos2}px)`;
+
+            setTimeout(() => running = true, 1500);
+        }
+
+        /* LIGHTBOX */
+        let currentIndex = 0;
+
+        function openLightbox(src) {
+            currentIndex = galleryItems.findIndex(i => i.img === src);
+            showLightboxImage();
+            document.getElementById("lightbox").style.display = "flex";
+            running = false;
+        }
+
+        function showLightboxImage() {
+            document.getElementById("lightboxImg").src = galleryItems[currentIndex].img;
+        }
+
+        document.getElementById("lbNext").onclick = () => {
+            currentIndex = (currentIndex + 1) % galleryItems.length;
+            showLightboxImage();
+        };
+
+        document.getElementById("lbPrev").onclick = () => {
+            currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+            showLightboxImage();
+        };
+
+        document.querySelector(".lightbox-close").onclick = () => {
+            document.getElementById("lightbox").style.display = "none";
+            running = true;
+        };
+
+        /* SWIPE */
+        let startX = 0;
+        const lightbox = document.getElementById("lightbox");
+
+        lightbox.addEventListener("touchstart", e => startX = e.touches[0].clientX);
+        lightbox.addEventListener("touchend", e => {
+            const dx = e.changedTouches[0].clientX - startX;
+            if (dx < -50) document.getElementById("lbNext").click();
+            if (dx > 50) document.getElementById("lbPrev").click();
+        });
+
+        /* DOUBLE TAP ZOOM */
+        const lightboxImg = document.getElementById("lightboxImg");
+        let scale = 1,
+            lastTap = 0;
+
+        lightbox.addEventListener("touchend", () => {
+            const now = Date.now();
+            if (now - lastTap < 300) {
+                scale = (scale === 1 ? 2.5 : 1);
+                lightboxImg.style.transform = `scale(${scale})`;
+            }
+            lastTap = now;
+        });
+    </script>
+
+</body>
+
+</html>

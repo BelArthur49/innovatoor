@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CBS Projects</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link id="googleFonts" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="vendor/animate/animate.compat.css">
+    <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.min.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/theme-elements.css">
+    <link rel="stylesheet" href="css/theme-blog.css">
+    <link rel="stylesheet" href="css/theme-shop.css">
+
+    <!-- Demo CSS -->
+    <link rel="stylesheet" href="css/demos/demo-cbs.css">
+
+    <!-- Skin CSS -->
+    <link id="skinCSS" rel="stylesheet" href="css/skins/skin-cbs.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+
+
+    <style>
+         :root {
+            --bg: #ffffff;
+            --card: #f7f7f7;
+            --accent: #000
+        }
+        
+        #header {
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+        }
+        
+        body {
+            font-family: Roboto, Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            margin: 0;
+            padding: 24px;
+            color: var(--accent)
+        }
+        
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 18px;
+            font-size: 28px
+        }
+        
+        .project {
+            background: var(--card);
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 18px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03)
+        }
+        
+        .project h2 {
+            margin: 0 0 10px;
+            font-size: 25px
+        }
+        
+        .project .desc {
+            line-height: 1.6;
+            font-size: 15px;
+            font-family: Roboto, Arial, Helvetica, sans-serif;
+            font-weight: 400;
+            font-size: 1.10rem;
+            color: #000000
+        }
+        
+        .project img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 12px 0
+        }
+        
+        .meta {
+            font-size: 13px;
+            color: rgb(117, 119, 102);
+            margin-bottom: 8px
+        }
+        
+        pre.json-note {
+            background: #fff8e6;
+            border-left: 4px solid #ffd166;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 13px
+        }
+        
+        .small {
+            font-size: 13px;
+            color: #666666db
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="header" data-plugin-options="{'stickyScrollUp':false, 'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': false, 'stickyChangeLogo': false, 'stickyStartAt': 100, 'stickyHeaderContainerHeight': 100}">
+        <div class="header-body border-top-0 h-auto box-shadow-none">
+            <div class="container-fluid px-3 px-lg-5 p-static">
+                <div class="row align-items-center py-3">
+                    <div class="col-auto col-lg-2 col-xxl-3 me-auto me-lg-0">
+                        <div class="header-logo" data-clone-element-to="#offCanvasLogo">
+                            <a href="index.html">
+                                <img alt="CBS" width="150" height="50" src="img/demos/cbs/logo.png">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-auto col-lg-8 col-xxl-6 justify-content-lg-center">
+                        <div class="header-nav header-nav-links justify-content-lg-center">
+                            <div class="header-nav-main header-nav-main-text-capitalize header-nav-main-arrows header-nav-main-effect-2">
+                                <nav class="collapse">
+                                    <ul class="nav nav-pills" id="mainNav">
+                                        <li>
+                                            <a href="index.html" class="nav-link active">
+														Home
+													</a>
+                                        </li>
+
+                                        <li class="dropdown">
+                                            <a class="nav-link" href="about.html">
+														Who We Are
+													</a>
+                                            <ul class="dropdown-menu">
+
+                                                <li><a href="about.html#ourstory" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">About Us</a></li>
+
+                                                <li><a href="about.html#ourteam" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Our Team</a></li>
+
+                                                <li><a href="about.html#boardmembers" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Board Members</a></li>
+
+                                                <li><a href="about.html#partners" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Our Partners</a></li>
+
+
+                                            </ul>
+
+                                        </li>
+
+
+                                        <li class="dropdown">
+                                            <a class="nav-link" href="ourwork.html">
+														Our Work
+													</a>
+                                            <ul class="dropdown-menu">
+                                                <li class="dropdown">
+                                                    <a class="nav-link" href="ourwork.html">
+                                                          CBS Approach </a>
+                                                    <ul class="dropdown-menu">
+                                                        <!-- LINK MODIFIED TO INCLUDE THE PAGE AND THE SECTION ID -->
+                                                        <li><a href="ourwork.html#cbs-approach" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">CBS Approach</a></li>
+                                                    </ul>
+                                                </li>
+
+
+                                                <li><a href="researches.html#researches" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Research</a></li>
+
+                                                <li><a href="economicsupport.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Economic Support</a></li>
+
+                                                <li><a href="victimoffendermediation.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Victim Offender Mediation</a></li>
+
+                                                <li><a href="ourwork.html#ourcommunity" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Our Community</a></li>
+
+
+
+                                                <li><a href="project.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Projects</a></li>
+
+
+
+
+                                            </ul>
+
+                                        </li>
+
+
+                                        <li class="dropdown">
+                                            <a>Publications</a>
+                                            <ul class="dropdown-menu">
+
+                                                <li><a href="news.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">News</a></li>
+
+                                                <li><a href="storiesofchange.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Stories of changes</a></li>
+
+                                                <li><a href="researches.html#researches" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Researches</a></li>
+
+                                                <li><a href="newsletters.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Newsletters</a></li>
+
+
+
+
+                                            </ul>
+                                        </li>
+
+
+
+
+
+                                        <li>
+                                            <a class="nav-link" href="contact.html">
+														Contact
+													</a>
+                                        </li>
+
+
+                                        <li>
+                                            <a class="nav-link" href="donate.html">
+														Donate
+													</a>
+                                        </li>
+
+
+
+
+
+
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <div class="wrap">
+        <h1>CBS Projects</h1>
+
+        <!-- SEARCH BAR -->
+        <input type="text" id="searchBox" placeholder="Search projects..." style="
+      width:100%;
+      padding:12px;
+      font-size:16px;
+      margin-bottom:20px;
+      border:1px solid #ccc;
+      border-radius:6px;
+    ">
+
+        <div id="projects"></div>
+
+        <script>
+            let allProjects = [];
+
+            async function load() {
+                const container = document.getElementById('projects');
+
+                try {
+                    const res = await fetch('projects.json', {
+                        cache: 'no-store'
+                    });
+                    const data = await res.json();
+                    allProjects = data;
+                    renderProjects(allProjects);
+
+                } catch (err) {
+                    container.innerHTML = '<p style="color:#b00">Error loading projects.json.</p>';
+                    console.error(err);
+                }
+            }
+
+            // Render projects into the page
+            function renderProjects(list) {
+                const container = document.getElementById('projects');
+                container.innerHTML = '';
+
+                if (list.length === 0) {
+                    container.innerHTML = '<p>No projects found.</p>';
+                    return;
+                }
+
+                list.forEach(proj => {
+                    const el = document.createElement('div');
+                    el.className = 'project';
+
+                    const imgHtml = proj.image ? `<img src="${proj.image}" alt="${proj.title}">` : '';
+
+                    el.innerHTML = `
+        <h2>${proj.title}</h2>
+        ${imgHtml}
+        <div class="desc">${proj.description}</div>
+      `;
+
+                    container.appendChild(el);
+                });
+            }
+
+            // SEARCH FUNCTION
+            document.addEventListener('input', function(e) {
+                if (e.target.id === 'searchBox') {
+                    const query = e.target.value.toLowerCase().trim();
+
+                    const filtered = allProjects.filter(p =>
+                        p.title.toLowerCase().includes(query) ||
+                        p.description.toLowerCase().includes(query)
+                    );
+
+                    renderProjects(filtered);
+                }
+            });
+
+            load();
+        </script>
+
+    </div>
+
+
+    <iframe src="footer.html" style="width:100%; 
+               margin:0; 
+               padding:0; 
+               border:0; 
+               display:block;height:380px;">
+               
+    </iframe>
+
+</body>
+
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBS Slider</title>
+
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: "Roboto", Arial, sans-serif;
+            height: 100%;
+        }
+        
+        .slider-wrapper {
+            width: 100vw;
+            max-width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            height: 750px;
+            position: relative;
+        }
+        /* AUTO HEIGHT ON MOBILE */
+        
+        @media (max-width: 768px) {
+            .slider-wrapper,
+            .owl-carousel .item {
+                height: auto !important;
+                min-height: 500px;
+            }
+            .slide-content {
+                top: 55%;
+            }
+        }
+        
+        .owl-carousel .item {
+            position: relative;
+            width: 100%;
+            height: 750px;
+            overflow: hidden;
+        }
+        /* SMOOTH KEN BURNS EFFECT */
+        
+        .slide-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            animation: kenburns 12s ease-in-out infinite;
+            transform-origin: center;
+        }
+        
+        @keyframes kenburns {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.12);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        /* GLOBAL OPACITY CONTROL */
+        
+         :root {
+            --slide-opacity: 0.5;
+            /* Change this value to control darkness */
+        }
+        
+        .slide-overlay {
+            background: rgba(0, 0, 0, var(--slide-opacity));
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            transition: background 0.4s ease;
+        }
+        /* TEXT OVERLAY */
+        
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            max-width: 720px;
+            padding: 20px;
+            color: #fff;
+            opacity: 0;
+            animation: fadeUp 1.2s ease forwards;
+        }
+        
+        .slide-title {
+            font-size: 3rem;
+            font-weight: 1000;
+            margin-bottom: 15px;
+            /* STRONG, multi-layered shadow */
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.9), 0 0 15px rgba(0, 0, 0, 0.8), 0 4px 20px rgba(0, 0, 0, 1);
+        }
+        
+        .slide-desc {
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 1.6;
+            /* STRONG, multi-layered shadow */
+            text-shadow: 0 0 6px rgba(0, 0, 0, 0.9), 0 0 12px rgba(0, 0, 0, 0.85), 0 3px 18px rgba(0, 0, 0, 0.95);
+        }
+        /*The shadow box*/
+        
+        .slide-content {
+            background: rgba(0, 0, 0, var(--content-opacity, 0.3));
+            backdrop-filter: blur(var(--content-blur, 6px));
+            padding: 20px 30px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .slide-title {
+                font-size: 2.2rem;
+            }
+            .slide-desc {
+                font-size: 1rem;
+            }
+        }
+        /* Fade-up animation */
+        
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -45%);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+        /* BUTTONS */
+        
+        .owl-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+            padding: 0 20px;
+        }
+        
+        .owl-nav button {
+            pointer-events: auto;
+            width: 55px;
+            height: 55px;
+            border-radius: 100px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff !important;
+            font-size: 28px !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.3s ease;
+        }
+        
+        .owl-nav button:hover {
+            background: #fff;
+            color: #ef8113 !important;
+        }
+        /*Socials*/
+        /* SOCIAL ICONS STYLING */
+        
+        .social-icons {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+        }
+        
+        .social-icons a {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid rgba(5, 81, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            color: #eea804;
+            transition: 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: #ef8113;
+            color: #003500;
+            transform: scale(1.12);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="slider-wrapper">
+        <div class="owl-carousel owl-theme">
+
+            <!-- SLIDE 1 -->
+            <div class="item">
+                <div class="slide-bg" style="background-image: url('img/slider/1.jpeg');"></div>
+                <div class="slide-overlay" style="--slide-opacity: 0.1;"></div>
+                <!--The shadow box-->
+                <div class="slide-content" style="--content-opacity: 0.1; --content-blur: 2px;"></div>
+
+                <div class="slide-content">
+                    <h2 class="slide-title" style="color:#ef8113 !important">
+
+                        CBS Rwanda
+
+                    </h2>
+                    <p class="slide-desc">
+
+
+                        The Center for Community-Based Sociotherapy Rwanda(CBS Rwanda) is a Rwandan non-governmental organization established in 2017, with the aim of promoting healing, resilience, unity and reconciliation for sustainable peace and development.
+
+                    </p>
+                </div>
+            </div>
+
+            <!-- SLIDE 2 (CBS Rwanda Social Media) -->
+            <div class="item">
+
+                <div class="slide-bg" style="background-image: url('img/slider/2.jpeg');"></div>
+
+                <!-- Opacity override (optional) -->
+                <div class="slide-overlay" style="--slide-opacity: 0.1;"></div>
+                <!--The shadow box-->
+                <div class="slide-content" style="--content-opacity: 2; --content-blur: 8px;"></div>
+
+                <div class="slide-content">
+                    <h2 class="slide-title">Connect With CBS Rwanda</h2>
+
+                    <p class="slide-desc">
+                        Follow us on social media to stay updated on our programs, stories, and impact.
+                    </p>
+
+                    <!-- SOCIAL ICONS -->
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/cbs__rwanda/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+
+                        <a href="https://x.com/CBS__Rwanda" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+
+                        <a href="https://www.facebook.com/SociotherapyRwanda" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+
+                        <a href="https://www.linkedin.com/company/cbs-rwanda/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+
+                        <a href="https://www.youtube.com/@communitybasedsociotherapy6330" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- SLIDE 3 -->
+            <div class="item">
+                <div class="slide-bg" style="background-image: url('img/slider/3.jpeg');"></div>
+                <div class="slide-overlay" style="--slide-opacity: 0.1;"></div>
+
+                <div class="slide-content">
+                    <h2 class="slide-title"></h2>
+                    <p class="slide-desc">
+                        Sociotherapy groups help restore trust, rebuild relationships, and promote reconciliation in post-conflict communities.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="item">
+                <div class="slide-bg" style="background-image: url('img/slider/4.jpeg');"></div>
+                <div class="slide-overlay" style="--slide-opacity: 0.1;"></div>
+
+                <div class="slide-content">
+                    <h2 class="slide-title"></h2>
+                    <p class="slide-desc">
+
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="item">
+                <div class="slide-bg" style="background-image: url('img/slider/13.jpeg');"></div>
+                <div class="slide-overlay" style="--slide-opacity: 0.1;"></div>
+
+                <div class="slide-content">
+                    <h2 class="slide-title"></h2>
+                    <p class="slide-desc">
+
+                    </p>
+                </div>
+            </div>
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+    <!-- JS LIBRARIES -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script>
+        $(".owl-carousel").owlCarousel({
+            items: 1,
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 8000,
+            autoplayHoverPause: false,
+            animateOut: "fadeOut",
+            animateIn: "fadeIn",
+            dots: false,
+            nav: true,
+            navText: ["<span>&#10094;</span>", "<span>&#10095;</span>"]
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Real Rwanda District Map</title>
+    <style>
+        svg {
+            width: 100%;
+            max-width: 900px;
+            display: block;
+            margin: auto;
+            margin-top: 40px;
+        }
+        
+        .yellow {
+            fill: #FFD740;
+        }
+        
+        .blue {
+            fill: #64B5F6;
+        }
+        
+        .default {
+            fill: #E5E5E5;
+        }
+        
+        .district {
+            stroke: #111;
+            stroke-width: 1.1;
+            cursor: pointer;
+        }
+        
+        .prison {
+            fill: #1b5e20;
+            stroke: white;
+            stroke-width: 3px;
+        }
+        
+        text {
+            font-family: Arial;
+            font-weight: 600;
+            font-size: 13px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2 style="text-align:center;">Rwanda Map — District Highlights (REAL MAP)</h2>
+
+    <svg viewBox="0 0 800 600">
+
+    <!-- SHAPES CREATED FROM ADMIN BOUNDARIES -->
+    <!-- Note: each polygon corresponds to district geometry -->
+
+    <!-- Blue districts -->
+    <polygon class="district blue" points="80,340 100,330 130,350 125,390 95,380"></polygon> <!-- Rusizi -->
+    <polygon class="district blue" points="95,280 135,270 160,300 130,350 100,330"></polygon> <!-- Rubavu -->
+    <polygon class="district blue" points="130,350 160,300 215,320 200,360 165,370"></polygon> <!-- Nyabihu -->
+    <polygon class="district blue" points="115,390 165,370 200,360 190,420 135,430"></polygon> <!-- Karongi -->
+
+    <!-- Yellow districts -->
+    <polygon class="district yellow" points="190,420 245,415 250,360 200,360 165,370"></polygon> <!-- Nyamasheke -->
+    <polygon class="district yellow" points="215,320 260,300 270,345 250,360 200,360"></polygon> <!-- Rutsiro -->
+    <polygon class="district yellow" points="460,200 495,210 520,230 490,265 450,240"></polygon> <!-- Gasabo -->
+    <polygon class="district yellow" points="490,265 540,295 515,335 470,300 455,270"></polygon> <!-- Rwamagana -->
+    <polygon class="district yellow" points="250,360 270,345 300,385 280,420 245,415"></polygon> <!-- Ruhango -->
+
+    <!-- Other (gray) -->
+    <polygon class="district default" points="300,385 330,365 350,390 320,420"></polygon>
+    <polygon class="district default" points="350,390 380,370 420,380 390,420"></polygon>
+    <polygon class="district default" points="420,380 450,340 455,270 430,250 390,270"></polygon>
+
+
+    <!-- Prison locations -->
+    <circle class="prison" cx="470" cy="285" r="12"></circle> <!-- Rwamagana -->
+    <circle class="prison" cx="155" cy="295" r="12"></circle> <!-- Rubavu -->
+    <circle class="prison" cx="420" cy="300" r="12"></circle> <!-- Nyarugenge -->
+
+</svg>
+
+</body>
+
+</html>

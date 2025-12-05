@@ -1,0 +1,257 @@
+//COMMON IMPORTS
+@import "../config/imports";
+
+html, body, .body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+// Font Size
+.custom-font-size-1 {
+	font-size: 50px;
+	@media (min-width: 992px) {
+		font-size: 70px;
+	}
+}
+
+// Buttons
+.btn-outline {
+	border-width: 1px;
+}
+
+// Header
+@media (min-width: 992px) {
+	#header {
+		.header-nav-main {
+			nav {
+				> ul {
+					> li {
+						> a {
+							font-size: 14px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Text Effect
+.custom-stroke-text-effect-1 {
+	-webkit-text-fill-color: transparent;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: var(--default);
+	white-space: nowrap;
+}
+
+// Carousel
+.custom-carousel-1 {
+	position: relative;
+	background: url(../../img/demos/app-landing/backgrounds/bg-smartphone.png);
+	width: 344px;
+	height: 636px;
+	.owl-carousel {
+		padding: 72px 0 0 3px;
+		.owl-nav {
+			button.owl-next {
+				&:before {
+					font-size: 32px !important;
+				}
+			}
+			button.owl-prev {
+				left: -12px;
+				&:before {
+					font-size: 32px !important;
+				}
+			}
+		}
+	}
+}
+
+// Call To Action
+.custom-call-to-action {
+	margin-left: 50px;
+	margin-right: 50px;
+	border-radius: 70px;
+}
+
+// Feature Box
+.custom-feature-box-1 {
+	.feature-box-icon {
+		&:after {
+			display: none !important;
+		}
+		width: 4.5em;
+		height: 4.5em;
+	}
+}
+
+// Img
+.custom-img-1 {
+	@media (min-width: 992px) {
+		position: absolute;
+		top: -35%;
+		right: -25px;
+	}
+}
+
+// SVG
+.custom-svg-1 {
+	position: absolute;
+	right: -200%;
+	top: -60%;
+	@media (min-width: 992px) {
+		right: -78%;
+	}
+	@media (min-width: 1200px) {
+		right: -45%;
+	}
+	@media (min-width: 1440px) {
+		right: -35%;
+	}
+	@media (min-width: 1680px) {
+		right: -21%;
+	}
+}
+
+.custom-svg-2 {
+	position: absolute;
+	left: -120%;
+	top: -207%;
+	display: none;
+	@media (min-width: 992px) {
+		display: block;
+	}
+	@media (min-width: 1200px) {
+		left: -100%;
+	}
+	@media (min-width: 1440px) {
+		left: -75%;
+	}
+	@media (min-width: 1680px) {
+		left: -55%;
+	}
+}
+
+.custom-svg-3 {
+	position: absolute;
+	right: -120%;
+	top: 12%;
+	display: none;
+	@media (min-width: 992px) {
+		display: block;
+	}
+	@media (min-width: 1200px) {
+		right: -100%;
+	}
+	@media (min-width: 1440px) {
+		right: -75%;
+	}
+	@media (min-width: 1680px) {
+		right: -55%;
+	}
+}
+
+.custom-svg-4 {
+	position: absolute;
+	left: -120%;
+	top: 0%;
+	display: none;
+	@media (min-width: 992px) {
+		display: block;
+	}
+	@media (min-width: 1200px) {
+		left: -100%;
+	}
+	@media (min-width: 1440px) {
+		left: -75%;
+	}
+	@media (min-width: 1680px) {
+		left: -55%;
+	}
+}
+
+.custom-el {
+	position: absolute;
+	display: none;
+	@media (min-width: 992px) {
+		display: block;
+	}
+}
+
+.custom-el-circle {
+	border: 2px solid var(--grey-500);
+	border-radius: 50%;
+}
+
+.custom-el-rounded-rectangle {
+	border: 2px solid var(--grey-500);
+	border-radius: var(--border-radius);
+}
+
+.custom-el-blur-1 {
+	filter: blur(1px);
+}
+
+.custom-el-blur-2 {
+	filter: blur(2px);
+}
+
+// Rotate
+.custom-rotate-45 {
+	transform: rotate(45deg);
+}
+
+// Step Icons
+.custom-steps-icons {
+	@media (min-width: 992px) {
+		display: flex;
+	}
+	.custom-steps-icon {
+		text-align: center;
+		.animated-icon {
+			border: 1px solid #d9d9d9;
+			padding: 14px;
+			border-radius: 50%;
+			max-width: 105px;
+			margin: 0 auto;
+		}
+		h4 {
+			font-size: 18px;
+			font-weight: bold;
+			letter-spacing: -0.5px;
+			display: inline-block;
+			margin-top: 5px;
+			margin-bottom: 15px;
+			@media (min-width: 992px) {
+				margin-top: 10px;
+				margin-bottom: 0;
+			}
+			
+		}
+	}
+	.custom-steps-connect {
+		position: relative;
+		min-width: 115px;
+	}
+	.custom-steps-connect-dots {
+		position: absolute;
+		top: 15%;
+		left: 5px;
+		visibility: hidden;
+		@media (min-width: 992px) {
+			visibility: visible;
+		}
+	}
+	.custom-steps-connect-point {
+		position: absolute;
+		top: 15%;
+		left: 98px;
+		margin-top: 15px;
+		visibility: hidden;
+		@media (min-width: 992px) {
+			visibility: visible;
+		}
+	}
+}
+
