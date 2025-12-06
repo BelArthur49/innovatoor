@@ -21,6 +21,8 @@
             overflow: hidden;
             font-family: "Roboto", Arial, sans-serif;
             height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
         
         .slider-wrapper {
@@ -36,11 +38,24 @@
             .slider-wrapper,
             .owl-carousel .item {
                 height: auto !important;
-                min-height: 500px;
+                min-height: 650px;
+                /* increase for text */
             }
             .slide-content {
-                top: 55%;
+                top: auto;
+                bottom: 40px;
+                transform: translateX(-50%);
             }
+            .slide-title {
+                font-size: 1.8rem;
+            }
+            .slide-desc {
+                font-size: 1rem;
+            }
+        }
+        
+        .slide-content {
+            max-height: fit-content;
         }
         
         .owl-carousel .item {
@@ -106,7 +121,7 @@
         }
         
         .slide-title {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 1000;
             margin-bottom: 15px;
             /* STRONG, multi-layered shadow */
@@ -130,7 +145,7 @@
             transition: all 0.3s ease;
         }
         
-        @media (max-width: 768px) {
+        @media (max-width: 687px) {
             .slide-title {
                 font-size: 2.2rem;
             }
