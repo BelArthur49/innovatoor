@@ -4,14 +4,21 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>DNA Helix — Top Rainbow Rungs (Fixed)</title>
+    <title>DNA Helix Interactive</title>
+
     <style>
+        /********************************************************
+     BASIC PAGE & CANVAS
+    *********************************************************/
+        
         html,
         body {
             height: 100%;
             margin: 0;
             background: #000;
-            font-family: system-ui, Arial;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            color: #fff;
+            overflow: hidden;
         }
         
         .dna-header {
@@ -28,28 +35,177 @@
             height: 100%;
             background: transparent;
         }
+        /********************************************************
+     BLOOD CELLS BACKGROUND (VISIBLE & MOVING)
+     - Generated in JS, styled here
+    *********************************************************/
+        
+        .bg-cells {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 2;
+        }
+        
+        .bg-cell {
+            position: absolute;
+            border-radius: 999px;
+            /* More “blood cell” looking */
+            background: radial-gradient(circle at 30% 30%, #ff7575, #d00000 60%, #5b0000 90%);
+            opacity: 0.95;
+            box-shadow: 0 0 22px rgba(255, 0, 0, 0.85);
+            transform-origin: center;
+            filter: saturate(1.15);
+        }
+        /********************************************************
+     LOGO IMAGE (YOU REPLACE THIS WITH YOUR IMAGE)
+    *********************************************************/
+        
+        .hero-logo-image {
+            position: absolute;
+            top: 6%;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 100px;
+            width: 200px;
+            /* change width as you need */
+            max-width: 50vw;
+            z-index: 15;
+            pointer-events: auto;
+        }
+        /********************************************************
+     LEFT & RIGHT TEXT (EASY TO EDIT)
+    *********************************************************/
+        
+        .hero-copy {
+            position: absolute;
+            top: 38%;
+            transform: translateY(-50%);
+            max-width: 300px;
+            z-index: 15;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .hero-copy-left {
+            left: 5%;
+        }
+        
+        .hero-copy-right {
+            right: 5%;
+            text-align: left;
+        }
+        
+        .hero-copy h3 {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            margin: 0 0 8px;
+            color: #ff2953;
+        }
+        
+        .hero-copy-left .copy-body {
+            border-left: 2px solid #ff2953;
+            padding-left: 12px;
+        }
+        
+        .hero-copy-right .copy-body {
+            border-right: 2px solid #ff2953;
+            padding-right: 12px;
+        }
+        
+        .hero-footer {
+            position: absolute;
+            left: 5%;
+            bottom: 16px;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            color: #ff2953;
+            z-index: 15;
+        }
+        /********************************************************
+     ROUND WIDGET ICONS OUTSIDE DNA (CLICKABLE)
+    *********************************************************/
+        
+        .floating-icon {
+            position: absolute;
+            width: 56px;
+            height: 56px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 30;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 18px rgba(255, 80, 80, 0.7);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+        }
+        
+        .floating-icon:hover {
+            transform: scale(1.12);
+            box-shadow: 0 16px 30px rgba(0, 0, 0, 0.85);
+            background: rgba(255, 60, 100, 0.3);
+            border-color: #ff2953;
+        }
+        /* Positions chosen to avoid overlapping side text */
+        
+        .icon-info {
+            left: 7%;
+            top: 18%;
+        }
+        
+        .icon-mail {
+            left: 7%;
+            bottom: 21%;
+        }
+        
+        .icon-briefcase {
+            right: 7%;
+            top: 18%;
+        }
+        
+        .icon-heart {
+            right: 7%;
+            bottom: 26%;
+        }
+        
+        .floating-icon span {
+            pointer-events: none;
+        }
+        /********************************************************
+     LITTLE HINT TEXT
+    *********************************************************/
         
         .sprite-hint {
             position: absolute;
-            left: 12px;
-            bottom: 10px;
-            font-size: 12px;
+            left: 1px;
+            bottom: 1px;
+            font-size: 11px;
             color: #ddd;
             opacity: .85;
-            z-aa: 12;
+            z-index: 18;
             pointer-events: none;
         }
+        /********************************************************
+     CENTER INFO PANEL (DNA LABEL POPUP)
+    *********************************************************/
         
         .info-panel {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.75);
-            border-radius: 12px;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: rgba(0, 0, 0, 0.78);
+            border-radius: 14px;
             padding: 22px 26px;
             color: #fff;
-            z-aa: 60;
+            z-index: 60;
             max-width: 820px;
             width: calc(100% - 40px);
             box-shadow: 0 14px 60px rgba(0, 0, 0, 0.6);
@@ -58,7 +214,7 @@
             transition: opacity .25s, transform .25s;
             background-size: cover;
             background-position: center;
-            backdrop-filter: blur(6px);
+            backdrop-filter: blur(8px);
         }
         
         .info-panel.visible {
@@ -68,7 +224,7 @@
         }
         
         .info-overlay {
-            background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.65));
+            background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.78));
             padding: 18px;
             border-radius: 10px;
         }
@@ -76,13 +232,12 @@
         .info-panel h2 {
             margin: 0 0 8px 0;
             font-size: 1.35rem;
-            color: #fff;
         }
         
         .info-panel p {
             margin: 0;
-            color: #fff;
             line-height: 1.45;
+            font-size: 0.95rem;
         }
         
         .info-panel .close-btn {
@@ -95,6 +250,108 @@
             font-size: 20px;
             cursor: pointer;
         }
+        /********************************************************
+     FULLSCREEN ZOOM PANELS (FOR WIDGET ICONS)
+    *********************************************************/
+        
+        .mega-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.96);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 70;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.28s ease;
+        }
+        
+        .mega-backdrop.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .mega-panel {
+            position: relative;
+            max-width: 880px;
+            width: 92%;
+            border-radius: 20px;
+            padding: 26px 26px 24px;
+            background: radial-gradient(circle at 0% 0%, rgba(255, 80, 140, 0.24), transparent 60%), radial-gradient(circle at 100% 100%, rgba(255, 190, 80, 0.22), transparent 60%), rgba(10, 10, 10, 0.92);
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.9);
+            transform: scale(0.86);
+            transition: transform 0.32s ease;
+            overflow: hidden;
+        }
+        
+        .mega-backdrop.visible .mega-panel {
+            transform: scale(1);
+        }
+        
+        .mega-close {
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            border: 0;
+            background: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 22px;
+        }
+        
+        .mega-title {
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.18em;
+            color: #ff2953;
+            margin-bottom: 12px;
+        }
+        
+        .mega-body h2 {
+            margin: 0 0 10px;
+            font-size: 1.6rem;
+        }
+        
+        .mega-body p {
+            margin: 0 0 10px;
+            font-size: 0.96rem;
+            line-height: 1.6;
+            color: #f1f1f1;
+        }
+        
+        .mega-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        
+        .mega-link-btn {
+            border-radius: 999px;
+            padding: 8px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            text-decoration: none;
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+        }
+        
+        .mega-link-btn:hover {
+            background: rgba(255, 60, 110, 0.22);
+            border-color: #ff2953;
+            transform: translateY(-1px);
+        }
+        
+        .mega-template {
+            display: none;
+        }
+        /********************************************************
+     ERROR OVERLAY (IF THREE FAILS)
+    *********************************************************/
         
         .error-overlay {
             position: fixed;
@@ -107,7 +364,7 @@
             justify-content: center;
             background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95));
             color: #fff;
-            z-aa: 9999;
+            z-index: 9999;
             padding: 20px;
             text-align: center;
             font-size: 15px;
@@ -120,14 +377,53 @@
             visibility: visible;
             opacity: 1;
         }
+        /********************************************************
+     RESPONSIVE TWEAKS
+    *********************************************************/
         
-        @media(max-width:768px) {
-            .info-panel {
-                max-width: 92%;
-                padding: 14px;
+        @media (max-width: 900px) {
+            .hero-copy {
+                top: auto;
+                bottom: 18%;
+                transform: none;
+                max-width: 230px;
             }
-            .info-panel h2 {
-                font-size: 1.05rem;
+            .hero-copy-right .copy-body {
+                border-right: none;
+                border-left: 2px solid #ff2953;
+                padding-left: 12px;
+                padding-right: 0;
+            }
+            .icon-info {
+                left: 6%;
+                top: 22%;
+            }
+            .icon-briefcase {
+                right: 6%;
+                top: 22%;
+            }
+            .icon-mail {
+                left: 6%;
+                bottom: 11%;
+            }
+            .icon-heart {
+                right: 6%;
+                bottom: 15%;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero-copy {
+                display: none;
+            }
+            .hero-footer {
+                font-size: 10px;
+            }
+            .sprite-hint {
+                font-size: 10px;
+            }
+            .hero-logo-image {
+                width: 140px;
             }
         }
     </style>
@@ -135,30 +431,153 @@
 
 <body>
     <div class="dna-header" id="dnaHeader">
+        <!-- 3D CANVAS -->
         <canvas id="dna-canvas" aria-label="DNA visualization"></canvas>
-        <div class="sprite-hint">Click labels inside the helix</div>
 
+        <!-- BLOOD CELLS BACKGROUND LAYER (POPULATED BY JS) -->
+        <div class="bg-cells" id="bg-cell-layer"></div>
+
+        <!-- LOGO IMAGE
+         *********************************************
+         NON PROGRAMMER: change src="" to your logo
+         Example: src="images/my-logo.png"
+         ********************************************* -->
+        <img class="hero-logo-image" id="hero-logo" src="your-logo.png" alt="Your Logo" />
+
+        <!-- LEFT TEXT BLOCK
+         *********************************************
+         NON PROGRAMMER: edit text inside <h3> and <p>
+         ********************************************* -->
+        <div class="hero-copy hero-copy-left">
+            <h3>WELCOME HOME</h3>
+            <div class="copy-body">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. You can change this text directly here.
+                </p>
+            </div>
+        </div>
+
+        <!-- RIGHT TEXT BLOCK
+         *********************************************
+         NON PROGRAMMER: edit this title + paragraph
+         ********************************************* -->
+        <div class="hero-copy hero-copy-right">
+            <h3>RESOURCES</h3>
+            <div class="copy-body">
+                <p>
+                    Access the database of shared knowledge, assets, and biological data points. Replace this paragraph with your own text.
+                </p>
+            </div>
+        </div>
+
+        <!-- SIMPLE FOOTER TEXT (OPTIONAL) -->
+        <div class="hero-footer">2026 &copy; African Alliance, All Rights Reserved.</div>
+
+        <!-- OUTER WIDGET ICONS (CLICKABLE, OPEN FULL SCREEN) -->
+        <div class="floating-icon icon-info" data-panel="panel-info">
+            <span>i</span>
+        </div>
+        <div class="floating-icon icon-mail" data-panel="panel-mail">
+            <span>&#9993;</span>
+        </div>
+        <div class="floating-icon icon-briefcase" data-panel="panel-briefcase">
+            <span>&#128188;</span>
+        </div>
+        <div class="floating-icon icon-heart" data-panel="panel-heart">
+            <span>&#10084;</span>
+        </div>
+
+        <div class="sprite-hint">Move your mouse • Click labels or icons</div>
+
+        <!-- POPUP FOR DNA LABELS -->
         <div class="info-panel" id="info-panel" role="dialog" aria-hidden="true">
             <button class="close-btn" onclick="closePanel()" aria-label="Close">×</button>
             <div class="info-overlay" id="info-content"></div>
         </div>
     </div>
 
-    <div id="fatalError" class="error-overlay" role="alert">
-        <div>
-            <strong>Rendering error</strong>
-            <div id="fatalErrorMsg" style="margin-top:10px;opacity:0.9;font-size:14px">An unexpected error occurred. Open the console for details.</div>
+    <!-- FULLSCREEN PANELS FOR OUTER WIDGETS -->
+    <div id="mega-backdrop" class="mega-backdrop" role="dialog" aria-hidden="true">
+        <div class="mega-panel">
+            <button class="mega-close" type="button" aria-label="Close">&times;</button>
+            <div id="mega-inner"></div>
         </div>
     </div>
 
-    <!-- Three.js r128 -->
+    <!-- TEMPLATES FOR THE FOUR WIDGETS (EDIT TEXT/LINKS HERE) -->
+    <div class="mega-template">
+        <!-- Info widget -->
+        <div id="panel-info">
+            <div class="mega-title">About</div>
+            <div class="mega-body">
+                <h2>Information Hub</h2>
+                <p>Replace this content with your own description of the project, alliance, or page.</p>
+                <div class="mega-links">
+                    <a href="#" class="mega-link-btn"><span>&#10148;</span> Main website</a>
+                    <a href="#" class="mega-link-btn"><span>&#128214;</span> Documentation</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mail widget -->
+        <div id="panel-mail">
+            <div class="mega-title">Connect</div>
+            <div class="mega-body">
+                <h2>Contact &amp; Collaboration</h2>
+                <p>Put your real contact information here (email addresses, contact form links, etc.).</p>
+                <div class="mega-links">
+                    <a href="mailto:info@example.com" class="mega-link-btn"><span>&#9993;</span> Email us</a>
+                    <a href="#" class="mega-link-btn"><span>&#128279;</span> Partner portal</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Briefcase widget -->
+        <div id="panel-briefcase">
+            <div class="mega-title">Resources</div>
+            <div class="mega-body">
+                <h2>Assets &amp; Tools</h2>
+                <p>Link to dashboards, datasets, APIs, or any internal tools you want to highlight.</p>
+                <div class="mega-links">
+                    <a href="#" class="mega-link-btn"><span>&#128200;</span> Open dashboard</a>
+                    <a href="#" class="mega-link-btn"><span>&#128421;</span> API docs</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Heart widget -->
+        <div id="panel-heart">
+            <div class="mega-title">Impact</div>
+            <div class="mega-body">
+                <h2>Communities &amp; Outcomes</h2>
+                <p>Show impact stories, community projects, or partner highlights here.</p>
+                <div class="mega-links">
+                    <a href="#" class="mega-link-btn"><span>&#128276;</span> Success stories</a>
+                    <a href="#" class="mega-link-btn"><span>&#127758;</span> Our partners</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ERROR OVERLAY -->
+    <div id="fatalError" class="error-overlay" role="alert">
+        <div>
+            <strong>Rendering error</strong>
+            <div id="fatalErrorMsg" style="margin-top:10px;opacity:0.9;font-size:14px">
+                An unexpected error occurred. Open the console for details.
+            </div>
+        </div>
+    </div>
+
+    <!-- THREE.JS LIBRARY -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <script>
         (function() {
-            // Wrap everything in try/catch so user never sees a silent black screen.
             try {
-                // ---------- CONFIG / DATA ----------
+                /********************************************************
+                 1) CONFIG: LABELS, TEXTS, IMAGES
+                *********************************************************/
                 const labels = ["LOREM", "Ipsum", "Dolor", "Sit", "Consectetur", "Adipiscing", "Elit"];
                 const descriptions = {
                     LOREM: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -169,7 +588,7 @@
                     Adipiscing: "Adipiscing — placeholder description for this label.",
                     Elit: "Elit — placeholder description for this label."
                 };
-                // Per-label images (public unsplash, safe for demos)
+
                 const labelImages = {
                     LOREM: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600&auto=format&fit=crop",
                     Ipsum: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1600&auto=format&fit=crop",
@@ -180,14 +599,17 @@
                     Elit: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1600&auto=format&fit=crop"
                 };
 
-                const RAINBOW_RUNGS_COUNT = 12; // top-most 4 rungs will become rainbow
+                const RAINBOW_RUNGS_COUNT = 14;
 
-                // ---------- THREE.JS SETUP ----------
+                /********************************************************
+                 2) THREE.JS: SCENE + CAMERA + RENDERER
+                *********************************************************/
                 const canvas = document.getElementById('dna-canvas');
                 if (!canvas) throw new Error('Canvas element not found');
 
                 const scene = new THREE.Scene();
-                scene.background = null; // allow CSS background to show
+                scene.background = null;
+
                 const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
                 camera.position.set(0, 0, 18);
 
@@ -200,7 +622,7 @@
                 renderer.setSize(window.innerWidth, window.innerHeight);
                 renderer.setClearColor(0x000000, 0);
 
-                // lights
+                // Lights
                 scene.add(new THREE.AmbientLight(0xffffff, 0.45));
                 const dir = new THREE.DirectionalLight(0xffffff, 0.8);
                 dir.position.set(10, 10, 10);
@@ -209,31 +631,34 @@
                 const dnaGroup = new THREE.Group();
                 scene.add(dnaGroup);
 
-                // ---------- HELIX PARAMETERS ----------
+                /********************************************************
+                 3) HELIX PARAMETERS + MATERIALS
+                *********************************************************/
                 const SEGMENTS = 160;
-                const HELIX_HEIGHT = 16;
+                const HELIX_HEIGHT = 24;
                 const RADIUS = 3.0;
                 const TURNS = 4.2;
                 const RUNG_EVERY = 4;
                 const LABEL_SCALE = 2.4;
 
-                // ---------- MATERIALS ----------
+                // Here we make the dots BIGGER: radius 0.2 (was ~0.12)
+                const BACKBONE_RADIUS = 0.25;
+
                 const backboneMatA = new THREE.MeshPhongMaterial({
-                    color: 0xdddddd,
+                    color: 0xff3333,
                     shininess: 40
                 });
                 const backboneMatB = new THREE.MeshPhongMaterial({
-                    color: 0x999999,
+                    color: 0xff3333,
                     shininess: 30
                 });
                 const rungRed = new THREE.MeshPhongMaterial({
                     color: 0xff3333
                 });
                 const rungBlue = new THREE.MeshPhongMaterial({
-                    color: 0x3388ff
+                    color: 0xff3333
                 });
 
-                // rainbow texture for cylinders
                 function makeRainbowTexture(w = 1024, h = 64) {
                     const c = document.createElement('canvas');
                     c.width = w;
@@ -252,12 +677,12 @@
                     tex.needsUpdate = true;
                     return tex;
                 }
+
                 const rainbowTex = makeRainbowTexture();
                 const rainbowMat = new THREE.MeshPhongMaterial({
                     map: rainbowTex
                 });
 
-                // rainbow color stops for sphere recolor interpolation
                 const rainbowStops = [{
                     t: 0.00,
                     color: "#E40303"
@@ -283,6 +708,7 @@
                     c.setStyle(hex);
                     return c;
                 }
+
                 const rainbowColors = rainbowStops.map(s => ({
                     t: s.t,
                     c: parseColor(s.color)
@@ -299,28 +725,33 @@
                     return a.c.clone().lerp(b.c, local);
                 }
 
-                // ---------- BUILD HELIX ----------
-                const anchors = []; // { anchor, angle, y }
-                const rungGroups = []; // per-anchor arrays of meshes (for easy removal)
-                const backboneDots = []; // {mesh, y}
+                /********************************************************
+                 4) BUILD HELIX (BACKBONE DOTS + RUNGS)
+                *********************************************************/
+                const anchors = [];
+                const rungGroups = [];
+                const backboneDots = [];
+
                 for (let i = 0; i < SEGMENTS; i++) {
                     const t = i / SEGMENTS;
                     const y = (t - 0.5) * HELIX_HEIGHT;
                     const angle = t * Math.PI * 2 * TURNS;
+
                     const xA = Math.cos(angle) * RADIUS,
                         zA = Math.sin(angle) * RADIUS;
                     const xB = Math.cos(angle + Math.PI) * RADIUS,
                         zB = Math.sin(angle + Math.PI) * RADIUS;
 
-                    // backbone dots
-                    const sA = new THREE.Mesh(new THREE.SphereGeometry(0.12, 12, 12), backboneMatA.clone());
+                    // Backbone spheres (bigger radius)
+                    const sA = new THREE.Mesh(new THREE.SphereGeometry(BACKBONE_RADIUS, 14, 14), backboneMatA.clone());
                     sA.position.set(xA, y, zA);
                     dnaGroup.add(sA);
                     backboneDots.push({
                         mesh: sA,
                         y
                     });
-                    const sB = new THREE.Mesh(new THREE.SphereGeometry(0.12, 12, 12), backboneMatB.clone());
+
+                    const sB = new THREE.Mesh(new THREE.SphereGeometry(BACKBONE_RADIUS, 14, 14), backboneMatB.clone());
                     sB.position.set(xB, y, zB);
                     dnaGroup.add(sB);
                     backboneDots.push({
@@ -328,7 +759,7 @@
                         y
                     });
 
-                    // rung halves every RUNG_EVERY
+                    // Rungs
                     if (i % RUNG_EVERY === 0) {
                         const midX = (xA + xB) / 2,
                             midZ = (zA + zB) / 2;
@@ -336,17 +767,23 @@
                         const half = distance / 2;
                         const created = [];
 
-                        const cyl = new THREE.CylinderGeometry(0.06, 0.06, half, 12);
+                        const cyl = new THREE.CylinderGeometry(0.08, 0.08, half, 16);
 
                         const r = new THREE.Mesh(cyl, rungRed.clone());
                         r.position.set(xA + (midX - xA) / 2, y, zA + (midZ - zA) / 2);
-                        r.setRotationFromQuaternion(new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), (new THREE.Vector3(midX - xA, 0, midZ - zA)).normalize()));
+                        r.setRotationFromQuaternion(new THREE.Quaternion().setFromUnitVectors(
+                            new THREE.Vector3(0, 1, 0),
+                            (new THREE.Vector3(midX - xA, 0, midZ - zA)).normalize()
+                        ));
                         dnaGroup.add(r);
                         created.push(r);
 
                         const b = new THREE.Mesh(cyl, rungBlue.clone());
                         b.position.set(midX + (xB - midX) / 2, y, midZ + (zB - midZ) / 2);
-                        b.setRotationFromQuaternion(new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), (new THREE.Vector3(xB - midX, 0, zB - midZ)).normalize()));
+                        b.setRotationFromQuaternion(new THREE.Quaternion().setFromUnitVectors(
+                            new THREE.Vector3(0, 1, 0),
+                            (new THREE.Vector3(xB - midX, 0, zB - midZ)).normalize()
+                        ));
                         dnaGroup.add(b);
                         created.push(b);
 
@@ -364,7 +801,9 @@
 
                 if (anchors.length === 0) throw new Error('No anchors created — helix parameters may be invalid.');
 
-                // ---------- determine top-most anchors for rainbow ----------
+                /********************************************************
+                 5) APPLY RAINBOW TO TOP RUNGS + RECOLOR BACKBONE
+                *********************************************************/
                 const ordered = anchors.map((v, i) => ({
                     i,
                     y: v.y
@@ -372,7 +811,6 @@
                 const topCount = Math.min(RAINBOW_RUNGS_COUNT, ordered.length);
                 const topIndices = ordered.slice(0, topCount).map(o => o.i).sort((a, b) => a - b);
 
-                // compute rainbow zone min/max Y
                 let rMin = Infinity,
                     rMax = -Infinity;
                 topIndices.forEach(i => {
@@ -386,11 +824,10 @@
                     rMax = 0;
                 }
 
-                // replace selected rung halves with rainbow cylinder
                 topIndices.forEach(idx => {
                     const a = anchors[idx];
                     if (!a) return;
-                    // remove old halves if present
+
                     const group = rungGroups[idx] || [];
                     group.forEach(m => {
                         try {
@@ -399,7 +836,6 @@
                     });
                     rungGroups[idx] = [];
 
-                    // compute geometry for single rainbow cylinder
                     const angle = a.angle;
                     const xA = Math.cos(angle) * RADIUS,
                         zA = Math.sin(angle) * RADIUS;
@@ -411,14 +847,15 @@
                     const cylGeom = new THREE.CylinderGeometry(0.12, 0.12, distance, 32);
                     const rainbow = new THREE.Mesh(cylGeom, rainbowMat.clone());
                     rainbow.position.set(midX, a.y, midZ);
-                    const dir = new THREE.Vector3(xB - xA, 0, zB - zA).normalize();
-                    rainbow.setRotationFromQuaternion(new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir));
+                    const dirVec = new THREE.Vector3(xB - xA, 0, zB - zA).normalize();
+                    rainbow.setRotationFromQuaternion(new THREE.Quaternion().setFromUnitVectors(
+                        new THREE.Vector3(0, 1, 0), dirVec
+                    ));
                     rainbow.renderOrder = 50;
                     dnaGroup.add(rainbow);
                     rungGroups[idx].push(rainbow);
                 });
 
-                // recolor backbone spheres inside rainbow zone
                 (function recolor() {
                     const zone = rMax - rMin;
                     backboneDots.forEach(entry => {
@@ -428,13 +865,11 @@
                                 const t = (y - rMin) / zone;
                                 const color = rainbowColorForT(t);
                                 entry.mesh.material = new THREE.MeshPhongMaterial({
-                                    color: color
+                                    color
                                 });
                             } else {
-                                // outside zone defaults
-                                const c = entry.mesh.position.x >= 0 ? 0xdddddd : 0x999999;
                                 entry.mesh.material = new THREE.MeshPhongMaterial({
-                                    color: c,
+                                    color: 0xff3333,
                                     shininess: 30
                                 });
                             }
@@ -444,7 +879,9 @@
                     });
                 })();
 
-                // ---------- labels (non-rotating sprites) ----------
+                /********************************************************
+                 6) LABEL SPRITES (TEXT INSIDE THE HELIX)
+                *********************************************************/
                 function makeLabelTexture(text) {
                     const cw = 512,
                         ch = 128;
@@ -465,11 +902,12 @@
                     return tex;
                 }
 
-                // spread labels evenly across anchors
                 const anchorCount = anchors.length;
                 const step = Math.max(1, Math.floor(anchorCount / labels.length));
                 const anchorsToUse = [];
-                for (let i = 0; i < labels.length; i++) anchorsToUse.push(Math.min(anchorCount - 1, i * step));
+                for (let i = 0; i < labels.length; i++) {
+                    anchorsToUse.push(Math.min(anchorCount - 1, i * step));
+                }
 
                 const labelEntries = [];
                 anchorsToUse.forEach((anchorIdx, idx) => {
@@ -493,7 +931,9 @@
                     });
                 });
 
-                // ---------- raycast for clicks ----------
+                /********************************************************
+                 7) RAYCAST LABEL CLICK -> POPUP
+                *********************************************************/
                 const raycaster = new THREE.Raycaster();
                 const mouse = new THREE.Vector2();
 
@@ -513,17 +953,22 @@
                         console.error('click handler error', e);
                     }
                 }
+
                 canvas.addEventListener('click', onClick);
 
-                // ---------- info panel ----------
+                /********************************************************
+                 8) INFO PANEL FOR DNA LABELS (CENTER POPUP)
+                *********************************************************/
+                let isPaused = false; // used to pause blood cells + auto-rotation
+
                 function showPanel(title, text, imageUrl) {
                     const panel = document.getElementById('info-panel');
                     const content = document.getElementById('info-content');
-                    if (imageUrl) panel.style.backgroundImage = `url("${imageUrl}")`;
-                    else panel.style.backgroundImage = '';
+                    panel.style.backgroundImage = imageUrl ? `url("${imageUrl}")` : "none";
                     content.innerHTML = `<h2>${title}</h2><p>${text}</p>`;
                     panel.classList.add('visible');
                     panel.setAttribute('aria-hidden', 'false');
+                    isPaused = true;
                 }
 
                 function closePanel() {
@@ -533,28 +978,150 @@
                     setTimeout(() => {
                         panel.style.backgroundImage = '';
                     }, 260);
+                    isPaused = false;
                 }
+
                 window.closePanel = closePanel;
 
-                // ---------- animation loop ----------
+                /********************************************************
+                 9) BLOOD CELLS: CREATE + MOVE WITH CURSOR
+                *********************************************************/
+                const bgLayer = document.getElementById('bg-cell-layer');
+                const bgCells = [];
+                if (bgLayer) {
+                    const numCells = 38; // increase for more blood cells
+                    for (let i = 0; i < numCells; i++) {
+                        const span = document.createElement('span');
+                        span.className = 'bg-cell';
+                        const size = 22 + Math.random() * 40;
+                        span.style.width = `${size}px`;
+                        span.style.height = `${size * 0.7}px`;
+                        const baseX = Math.random();
+                        const baseY = Math.random();
+                        span.dataset.baseX = baseX;
+                        span.dataset.baseY = baseY;
+                        span.dataset.depth = (0.5 + Math.random() * 1.2).toFixed(2);
+                        span.style.left = `${baseX * 100}%`;
+                        span.style.top = `${baseY * 100}%`;
+                        bgLayer.appendChild(span);
+                        bgCells.push(span);
+                    }
+                }
+
+                /********************************************************
+                 10) MOUSE-DRIVEN DNA MOTION + POINTER STATE
+                *********************************************************/
+                let baseRotY = 0;
+                let pointerRotX = 0;
+                let pointerRotY = 0;
+                let targetPointerRotX = 0;
+                let targetPointerRotY = 0;
+
+                window.addEventListener('mousemove', (e) => {
+                    const nx = (e.clientX / window.innerWidth) - 0.5;
+                    const ny = (e.clientY / window.innerHeight) - 0.5;
+
+                    // these determine how much DNA should tilt in each direction
+                    targetPointerRotY = nx; // left/right
+                    targetPointerRotX = ny; // up/down
+                });
+
+                /********************************************************
+                 11) WIDGET ICONS FULLSCREEN PANELS (CLICKABLE)
+                *********************************************************/
+                const megaBackdrop = document.getElementById('mega-backdrop');
+                const megaInner = document.getElementById('mega-inner');
+                const megaTemplatesRoot = document.querySelector('.mega-template');
+
+                function openMegaPanel(id) {
+                    if (!megaBackdrop || !megaInner || !megaTemplatesRoot) return;
+                    const tpl = megaTemplatesRoot.querySelector('#' + id);
+                    if (!tpl) return;
+                    megaInner.innerHTML = tpl.innerHTML;
+                    megaBackdrop.classList.add('visible');
+                    megaBackdrop.setAttribute('aria-hidden', 'false');
+                    const closeBtn = megaBackdrop.querySelector('.mega-close');
+                    if (closeBtn) closeBtn.onclick = closeMegaPanel;
+                    isPaused = true;
+                }
+
+                function closeMegaPanel() {
+                    if (!megaBackdrop) return;
+                    megaBackdrop.classList.remove('visible');
+                    megaBackdrop.setAttribute('aria-hidden', 'true');
+                    isPaused = false;
+                }
+
+                if (megaBackdrop) {
+                    megaBackdrop.addEventListener('click', (e) => {
+                        if (e.target === megaBackdrop) {
+                            closeMegaPanel();
+                        }
+                    });
+                }
+
+                window.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        closePanel();
+                        closeMegaPanel();
+                    }
+                });
+
+                document.querySelectorAll('.floating-icon').forEach(icon => {
+                    icon.addEventListener('click', () => {
+                        const panelId = icon.getAttribute('data-panel');
+                        if (panelId) {
+                            openMegaPanel(panelId);
+                        }
+                    });
+                });
+
+                /********************************************************
+                 12) ANIMATION LOOP: DNA + BLOOD CELLS
+                *********************************************************/
                 let tt = 0;
 
                 function animate() {
                     requestAnimationFrame(animate);
-                    tt += 0.009;
-                    dnaGroup.rotation.y += 0.0025;
-                    dnaGroup.position.y = Math.sin(tt * 0.7) * 0.35;
+                    tt += 0.01;
 
-                    // position non-rotating labels to follow anchors (but face camera)
+                    // Smooth interpolation between target and current mouse rotation
+                    pointerRotX += (targetPointerRotX - pointerRotX) * 0.08;
+                    pointerRotY += (targetPointerRotY - pointerRotY) * 0.08;
+
+                    if (!isPaused) {
+                        baseRotY += 0.003; // gentle auto-rotation
+                    }
+
+                    // DNA moves in ALL directions (rotation + translation)
+                    dnaGroup.rotation.x = pointerRotX * 1.3;
+                    dnaGroup.rotation.y = baseRotY + pointerRotY * 1.8;
+                    dnaGroup.position.x = pointerRotY * -2.4;
+                    dnaGroup.position.y = pointerRotX * 2.4;
+
+                    // Move blood cells with wobble + parallax
+                    if (!isPaused) {
+                        bgCells.forEach(cell => {
+                            const depth = parseFloat(cell.dataset.depth) || 1;
+                            const baseX = parseFloat(cell.dataset.baseX) || 0;
+                            const baseY = parseFloat(cell.dataset.baseY) || 0;
+                            const wobbleX = Math.sin(tt * 0.6 * depth + baseX * 10) * 18 * depth;
+                            const wobbleY = Math.cos(tt * 0.5 * depth + baseY * 10) * 18 * depth;
+                            const parallaxX = pointerRotY * 70 * depth;
+                            const parallaxY = pointerRotX * 70 * depth;
+                            cell.style.transform =
+                                `translate3d(${wobbleX + parallaxX}px, ${wobbleY + parallaxY}px, 0) rotate(${tt * 40 * depth}deg)`;
+                        });
+                    }
+
+                    // Keep label sprites attached to anchors and facing the camera
                     labelEntries.forEach(entry => {
                         const world = new THREE.Vector3();
                         entry.anchor.getWorldPosition(world);
-                        // inward offset so label sits inside helix
                         const inward = new THREE.Vector3(0, world.y, 0).sub(world).normalize().multiplyScalar(0.8);
                         const pos = world.clone().add(inward);
                         pos.y += 0.08 * Math.sin(tt * 1.1 + entry.sprite.position.x);
                         entry.sprite.position.copy(pos);
-                        // face camera
                         entry.sprite.quaternion.copy(camera.quaternion);
                         entry.sprite.renderOrder = 999;
                         entry.sprite.material.depthTest = false;
@@ -562,18 +1129,17 @@
 
                     renderer.render(scene, camera);
                 }
+
                 animate();
 
-                // handle resize
+                // Handle window resize
                 window.addEventListener('resize', () => {
                     camera.aspect = window.innerWidth / window.innerHeight;
                     camera.updateProjectionMatrix();
                     renderer.setSize(window.innerWidth, window.innerHeight);
                 });
 
-                // debug: quick console note
-                console.log('DNA helix started — anchors:', anchors.length, 'rungs groups:', rungGroups.length);
-
+                console.log('DNA helix started — anchors:', anchors.length, 'rungs:', rungGroups.length);
             } catch (err) {
                 console.error('Fatal error while building DNA scene:', err);
                 const overlay = document.getElementById('fatalError');
