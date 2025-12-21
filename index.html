@@ -21,6 +21,51 @@
     <!-- font awesome cdn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
+
+    <style>
+        .logo-slider {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .logo-track {
+            display: flex;
+            gap: 60px;
+            width: max-content;
+            animation: scroll-logos 25s linear infinite;
+        }
+        
+        .logo-track figure {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-track img {
+            max-height: 60px;
+            width: auto;
+            filter: grayscale(100%);
+            opacity: 0.75;
+            transition: all 0.3s ease;
+        }
+        
+        .logo-track img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        /* Animation */
+        
+        @keyframes scroll-logos {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -163,20 +208,44 @@
         </section>
         <!-- ====== End of 1.3. card section ====== -->
         <!-- ====== 1.4. logoipsum section ====== -->
-        <section class="logoipsum">
-            <div class="container">
-                <div class="flex flex-col gap-2">
-                    <hr class="hr1">
-                    <h3 data-aos="zoom-in" class="mb-15">DATA IS THE NEW GOLD</h3>
-                </div>
-                <!--our clients comimg soon
-                <div class="logoipsum-slider sliderlogo" data-aos="zoom-in">
-                    <figure><img src="Images/home/logoipsum1.svg" alt="logoipsum">NGOs</figure>
 
-                </div>-->
-                <hr class="hr2">
+<section class="logoipsum">
+    <div class="container">
+        <div class="flex flex-col gap-2">
+            <hr class="hr1">
+            <h3 data-aos="zoom-in" class="mb-15">OUR CLIENTS</h3>
+        </div>
+
+        <div class="logo-slider">
+            <div class="logo-track">
+                <!-- ORIGINAL LOGOS -->
+                <figure><img src="Images/sveroo.png" alt="Sveroo"></figure>
+                <figure><img src="Images/logo-1.gif" alt="African Alliance"></figure>
+                <figure><img src="Images/bondedpaths.png" alt="Bonded Paths"></figure>
+                <figure><img src="Images/cbs.png" alt="CBS"></figure>
+                <figure><img src="Images/exnihilo.png" alt="Ex Nihilo"></figure>
+                <figure><img src="Images/govarwa.png" alt="GOVARWA"></figure>
+                <figure><img src="Images/thecedar.png" alt="The Cedar"></figure>
+
+                <!-- DUPLICATE FOR INFINITE LOOP -->
+                <figure><img src="Images/sveroo.png" alt="Sveroo"></figure>
+                <figure><img src="Images/logo-1.gif" alt="African Alliance"></figure>
+                <figure><img src="Images/bondedpaths.png" alt="Bonded Paths"></figure>
+                <figure><img src="Images/cbs.png" alt="CBS"></figure>
+                <figure><img src="Images/exnihilo.png" alt="Ex Nihilo"></figure>
+                <figure><img src="Images/govarwa.png" alt="GOVARWA"></figure>
+                <figure><img src="Images/thecedar.png" alt="The Cedar"></figure>
+
             </div>
-        </section>
+        </div>
+
+        <hr class="hr2">
+    </div>
+</section>
+
+
+
+        
         <!-- ====== End of 1.4. logoipsum section ====== -->
         <!-- ====== 1.5. About us section ====== -->
         <section id="ABOUT" class="about">
