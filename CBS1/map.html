@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rwanda Province Map</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        #map-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        #map-wrapper {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        #map-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .hotspot {
+            position: absolute;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        
+        .hotspot:hover {
+            opacity: 0.3;
+            background-color: white;
+        }
+        
+        .tooltip {
+            position: absolute;
+            background-color: white;
+            border: 2px solid #333;
+            border-radius: 5px;
+            padding: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1000;
+            max-width: 300px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .tooltip.show {
+            opacity: 1;
+        }
+        
+        .tooltip h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+            font-size: 16px;
+        }
+        
+        .legend {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        
+        .legend h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        .legend-item {
+            display: inline-block;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .legend-color {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            vertical-align: middle;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map-container">
+        <h1>CBS Community</h1>
+
+        <div id="map-wrapper">
+            <img id="map-image" src="img/usmap.png" alt="Rwanda Map">
+
+            <!-- Hotspot areas for each province (positioned based on your map) -->
+            <!-- Western - left side -->
+            <div class="hotspot" data-province="western" style="left: 0%; top: 20%; width: 35%; height: 60%;"></div>
+
+            <!-- Northern - top middle -->
+            <div class="hotspot" data-province="northern" style="left: 36%; top: 0%; width: 23%; height: 35%;"></div>
+
+            <!-- Eastern - right side -->
+            <div class="hotspot" data-province="eastern" style="left: 68%; top: 5%; width: 45%; height: 75%;"></div>
+
+            <!-- Kigali - center -->
+            <div class="hotspot" data-province="kigali" style="left: 55%; top: 45%; width: 10%; height: 10%;"></div>
+
+            <!-- Southern - bottom middle -->
+            <div class="hotspot" data-province="southern" style="left: 30%; top: 50%; width: 25%; height: 60%;"></div>
+
+            <div id="tooltip" class="tooltip"></div>
+        </div>
+
+        <div class="legend">
+            <h3>Provinces (Hover over the map to see details)</h3>
+            <div class="legend-item">
+                <span class="legend-color" style="background-color: #7cd813;"></span>
+                <span>Kigali City</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background-color: #011e98;"></span>
+                <span>Eastern</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background-color: #8a9309;"></span>
+                <span>Northern</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background-color: #6cd4f4;"></span>
+                <span>Western</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background-color: #eaf638;"></span>
+                <span>Southern</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const provinceData = {
+            kigali: {
+                name: "Kigali City",
+                description: "<b>Correctional Facilities:</b><br>Nyarugenge Correctional Facility<br><br><b>Current Areas:</b><br>Gasabo"
+            },
+            eastern: {
+                name: "Eastern",
+                description: "<b>Rwamagana: Current Areas</b><br><br><b>Correctional Facilities:</b><br>Rwamagana Correctional Facility"
+            },
+            northern: {
+                name: "Northern",
+                description: "Northern Province of Rwanda"
+            },
+            western: {
+                name: "Western",
+                description: "<b>Current Areas:</b><br>Nyamasheke<br>Rutsiro<br><br><b>Previous Areas:</b><br>Rubavu<br>Karongi<br>Nyabihu<br>Rusizi<br><br><b>Correctional Facilities:</b><br>Rubavu Correctional Facility"
+            },
+            southern: {
+                name: "Southern",
+                description: "<b>Current Areas:</b><br>Ruhango"
+            }
+        };
+
+        const tooltip = document.getElementById('tooltip');
+        const hotspots = document.querySelectorAll('.hotspot');
+
+        hotspots.forEach(hotspot => {
+            hotspot.addEventListener('mouseenter', function(e) {
+                const province = this.getAttribute('data-province');
+                const data = provinceData[province];
+                tooltip.innerHTML = `<h3>${data.name}</h3><div>${data.description}</div>`;
+                tooltip.classList.add('show');
+            });
+
+            hotspot.addEventListener('mousemove', function(e) {
+                const rect = document.getElementById('map-wrapper').getBoundingClientRect();
+                tooltip.style.left = (e.clientX - rect.left + 15) + 'px';
+                tooltip.style.top = (e.clientY - rect.top + 15) + 'px';
+            });
+
+            hotspot.addEventListener('mouseleave', function() {
+                tooltip.classList.remove('show');
+            });
+        });
+    </script>
+</body>
+
+</html>
