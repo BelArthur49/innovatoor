@@ -248,7 +248,7 @@ a {
 /* <!-- ====== 1.1. Header section ====== --> */
 
 .header-index {
-    background-color: #2b022f;
+    background-color: #0e010f;
     background-position: center center;
     background-size: cover;
 }
@@ -2348,3 +2348,4 @@ footer form button:hover {
 .whatsapp-widget img:hover {
     transform: scale(1.1);
 }
+
