@@ -268,7 +268,7 @@ header {
     justify-content: space-between;
     padding: 0.5rem 15px;
     color: #d3c9c1;
-    background-color: #2b022f;
+    background-color: #0e010f;
     z-index: 1000;
     /* Ensure navbar stays on top of other content */
     width: 100%;
@@ -2348,4 +2348,5 @@ footer form button:hover {
 .whatsapp-widget img:hover {
     transform: scale(1.1);
 }
+
 
