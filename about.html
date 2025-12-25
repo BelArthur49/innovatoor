@@ -1,0 +1,867 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Innovatoor Data Flow</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            background: #000000;
+            font-family: 'Segoe UI', system-ui, Arial;
+            overflow: hidden;
+        }
+        
+        .data-header {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: radial-gradient(ellipse at center, #1a0a2e 0%, #000000 70%);
+        }
+        
+        #particle-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        #data-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 2;
+        }
+        
+        .hud-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(116, 54, 187, 0.1);
+            border: 1px solid rgba(116, 54, 187, 0.5);
+            border-radius: 8px;
+            padding: 15px 20px;
+            color: #7436bb;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            z-index: 12;
+            backdrop-filter: blur(10px);
+        }
+        
+        .hud-item {
+            margin: 5px 0;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+        
+        .hud-label {
+            color: #ffffff;
+            opacity: 0.7;
+        }
+        
+        .hud-value {
+            color: #7436bb;
+            font-weight: bold;
+        }
+        
+        .sprite-hint {
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+            font-size: 12px;
+            color: #ffffff;
+            opacity: .8;
+            z-index: 12;
+            pointer-events: none;
+            text-shadow: 0 0 10px rgba(116, 54, 187, 0.8);
+            font-family: 'Courier New', monospace;
+        }
+        
+        .info-panel {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: linear-gradient(135deg, rgba(61, 15, 65, 0.98), rgba(26, 10, 46, 0.98));
+            border: 2px solid #7436bb;
+            border-radius: 20px;
+            padding: 35px 40px;
+            color: #fff;
+            z-index: 60;
+            max-width: 600px;
+            width: calc(100% - 40px);
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.9), 0 0 50px rgba(116, 54, 187, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .4s, transform .4s;
+            backdrop-filter: blur(20px);
+        }
+        
+        .info-panel.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .info-panel::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #7436bb, #3d0f41, #7436bb);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0.5;
+            filter: blur(10px);
+        }
+        
+        .info-panel h2 {
+            margin: 0 0 15px 0;
+            font-size: 1.8rem;
+            color: #ffffff;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(116, 54, 187, 0.8);
+        }
+        
+        .info-panel p {
+            margin: 0;
+            color: #e8e8e8;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+        
+        .info-panel .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, rgba(116, 54, 187, 0.3), rgba(61, 15, 65, 0.5));
+            border: 1px solid rgba(116, 54, 187, 0.6);
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .info-panel .close-btn:hover {
+            background: linear-gradient(135deg, rgba(116, 54, 187, 0.5), rgba(61, 15, 65, 0.7));
+            border-color: #7436bb;
+            box-shadow: 0 0 20px rgba(116, 54, 187, 0.6);
+            transform: rotate(90deg);
+        }
+        
+        .innovatoor-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            pointer-events: none;
+        }
+        
+        .center-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid rgba(116, 54, 187, 0.6);
+            animation: rotate 20s linear infinite;
+        }
+        
+        .center-ring:nth-child(2) {
+            width: 85%;
+            height: 85%;
+            border-color: rgba(61, 15, 65, 0.4);
+            animation-duration: 15s;
+            animation-direction: reverse;
+        }
+        
+        .center-ring:nth-child(3) {
+            width: 70%;
+            height: 70%;
+            border-color: rgba(116, 54, 187, 0.3);
+            animation-duration: 10s;
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .center-core {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(116, 54, 187, 0.4), transparent 70%);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 60px rgba(116, 54, 187, 0.8), 0 0 120px rgba(116, 54, 187, 0.4), inset 0 0 40px rgba(116, 54, 187, 0.3);
+            animation: pulse 3s ease-in-out infinite;
+            z-index: 5;
+        }
+        
+        @keyframes pulse {
+            0%,
+            100% {
+                box-shadow: 0 0 60px rgba(116, 54, 187, 0.8), 0 0 120px rgba(116, 54, 187, 0.4), inset 0 0 40px rgba(116, 54, 187, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 80px rgba(116, 54, 187, 1), 0 0 160px rgba(116, 54, 187, 0.6), inset 0 0 60px rgba(116, 54, 187, 0.5);
+            }
+        }
+        
+        .innovatoor-title {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(116, 54, 187, 1);
+            margin-bottom: 8px;
+        }
+        
+        .innovatoor-services {
+            font-size: 14px;
+            color: #e6d9ff;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        @media (max-width: 768px) {
+            .innovatoor-center {
+                width: 160px;
+                height: 160px;
+            }
+            .center-core {
+                width: 120px;
+                height: 120px;
+            }
+            .innovatoor-title {
+                font-size: 18px;
+            }
+            .innovatoor-services {
+                font-size: 11px;
+            }
+            .info-panel {
+                padding: 25px;
+            }
+            .info-panel h2 {
+                font-size: 1.3rem;
+            }
+            .hud-overlay {
+                font-size: 10px;
+                padding: 10px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="data-header" id="dataHeader">
+        <canvas id="particle-canvas"></canvas>
+        <canvas id="data-canvas" aria-label="Data flow visualization"></canvas>
+
+        <div class="innovatoor-center">
+            <div class="center-ring"></div>
+            <div class="center-ring"></div>
+            <div class="center-ring"></div>
+            <div class="center-core">
+                <div class="innovatoor-title"> 12+ Years</div>
+                <div class="innovatoor-services"><b>of Experience</b></div>
+            </div>
+        </div>
+
+        <div class="hud-overlay">
+            <div class="hud-item">
+                <span class="hud-label">STATUS:</span>
+                <span class="hud-value">ACTIVE</span>
+            </div>
+            <div class="hud-item">
+                <span class="hud-label">STREAMS:</span>
+                <span class="hud-value" id="stream-count">24</span>
+            </div>
+            <div class="hud-item">
+                <span class="hud-label">DATA FLOW:</span>
+                <span class="hud-value" id="data-flow">98.7%</span>
+            </div>
+        </div>
+
+        <div class="sprite-hint">► CLICK SERVICE NODES TO EXPLORE</div>
+
+        <div class="info-panel" id="info-panel" role="dialog" aria-hidden="true">
+            <button class="close-btn" onclick="closePanel()" aria-label="Close">×</button>
+            <div id="info-content"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        // Particle Background
+        (function() {
+            const canvas = document.getElementById('particle-canvas');
+            const ctx = canvas.getContext('2d');
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            const particles = [];
+            const particleCount = 150;
+
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    size: Math.random() * 2 + 0.5,
+                    opacity: Math.random() * 0.5 + 0.2
+                });
+            }
+
+            function drawParticles() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                particles.forEach((p, i) => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(116, 54, 187, ${p.opacity})`;
+                    ctx.fill();
+
+                    // Draw connections
+                    particles.slice(i + 1).forEach(p2 => {
+                        const dx = p2.x - p.x;
+                        const dy = p2.y - p.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+
+                        if (dist < 150) {
+                            ctx.beginPath();
+                            ctx.moveTo(p.x, p.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            ctx.strokeStyle = `rgba(116, 54, 187, ${0.15 * (1 - dist / 150)})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.stroke();
+                        }
+                    });
+                });
+            }
+
+            function animate() {
+                requestAnimationFrame(animate);
+                drawParticles();
+            }
+            animate();
+        })();
+
+        // Main 3D Visualization
+        (function() {
+            try {
+                const services = [
+                    "About Us",
+                    "Frequently Asked Questions",
+                    "Our Team",
+                    "How We Work",
+
+
+                ];
+
+                const descriptions = {
+                    "About Us": " Transforming data into opportunities. Where insights lead to impact.<br><br>" +
+                        "At Innovatoor, we believe that data is the key to navigating today's complex and fast-changing world.<br><br>" +
+                        "We are a dynamic data driven team specializing in collecting, structuring, and interpreting information to help businesses make smarter, faster, and more confident decisions.<br><br>" +
+                        "Whether it's identifying market trends, conducting due diligence, analyzing competitor strategies, mitigating business risks, or supporting company digitalization, our data warehouse turns raw information into actionable intelligence.<br><br>" +
+                        "We leverage over 200 OSINT tools—including Maltego, Shodan, and more than 8 advanced search engines—combined with our own custom developed scraping bots. These cutting-edge methodologies allow us to collect high-value data at scale and deliver precise, reliable insights.<br><br>" +
+                        "Innovatoor delivers tailored data solutions that give your business a clear competitive advantage supporting sustainable growth, stronger decision-making, online safety, and secure business deals.",
+
+                    "Frequently Asked Questions": `
+                        <div style="max-height: 400px; overflow-y: auto; padding-right: 10px;">
+                            <details style="margin-bottom: 15px; border: 1px solid rgba(116, 54, 187, 0.3); border-radius: 8px; padding: 12px; background: rgba(116, 54, 187, 0.1);">
+                                <summary style="cursor: pointer; font-weight: bold; color: #ffffff; font-size: 0.95rem;">WHAT IS OSINT, AND HOW DOES INNOVATOOR USE IT?</summary>
+                                <p style="margin-top: 10px; color: #e8e8e8; line-height: 1.6;">OSINT (Open Source Intelligence) refers to the collection and analysis of publicly available data from various online sources. At Innovatoor, we use over 200 OSINT tools to gather and analyze valuable information, helping businesses with competitor analysis, market research, due diligence, and more.</p>
+                            </details>
+                            <details style="margin-bottom: 15px; border: 1px solid rgba(116, 54, 187, 0.3); border-radius: 8px; padding: 12px; background: rgba(116, 54, 187, 0.1);">
+                                <summary style="cursor: pointer; font-weight: bold; color: #ffffff; font-size: 0.95rem;">WHAT TYPES OF BUSINESSES BENEFIT FROM INNOVATOOR'S SERVICES?</summary>
+                                <p style="margin-top: 10px; color: #e8e8e8; line-height: 1.6;">Innovatoor's services are tailored to a wide range of industries, including startups, established businesses, financial institutions, and organizations seeking to enhance their decision-making with data-driven insights. Whether you're in need of market research, fraud prevention, or digital transformation, we have a solution for you.</p>
+                            </details>
+                            <details style="margin-bottom: 15px; border: 1px solid rgba(116, 54, 187, 0.3); border-radius: 8px; padding: 12px; background: rgba(116, 54, 187, 0.1);">
+                                <summary style="cursor: pointer; font-weight: bold; color: #ffffff; font-size: 0.95rem;">HOW DOES INNOVATOOR HELP WITH MARKET RESEARCH?</summary>
+                                <p style="margin-top: 10px; color: #e8e8e8; line-height: 1.6;">We use advanced data scraping tools, OSINT, and competitor analysis to gather insights on market trends, consumer behavior, and competitor activities. This information helps businesses make informed decisions and stay ahead in competitive markets.</p>
+                            </details>
+                            <details style="margin-bottom: 15px; border: 1px solid rgba(116, 54, 187, 0.3); border-radius: 8px; padding: 12px; background: rgba(116, 54, 187, 0.1);">
+                                <summary style="cursor: pointer; font-weight: bold; color: #ffffff; font-size: 0.95rem;">WHAT IS DUE DILIGENCE, AND WHY IS IT IMPORTANT?</summary>
+                                <p style="margin-top: 10px; color: #e8e8e8; line-height: 1.6;">Due diligence is the process of thoroughly investigating a business or individual before entering into a deal, partnership, or investment. We help businesses assess the risks and opportunities involved by providing accurate, actionable intelligence and background checks to ensure safe, informed decision-making.</p>
+                            </details>
+                            <details style="margin-bottom: 15px; border: 1px solid rgba(116, 54, 187, 0.3); border-radius: 8px; padding: 12px; background: rgba(116, 54, 187, 0.1);">
+                                <summary style="cursor: pointer; font-weight: bold; color: #ffffff; font-size: 0.95rem;">HOW DO YOU PREVENT SCAMS AND FRAUD?</summary>
+                                <p style="margin-top: 10px; color: #e8e8e8; line-height: 1.6;">We provide scammers identification services using OSINT tools to track fraudulent activities, identify potential threats, and protect your business from scams. Our team helps secure your online presence and business transactions, ensuring your operations remain safe and reliable.</p>
+                            </details>
+                            <details style="margin-bottom: 15px; border: 1px solid rgba(116, 54, 187, 0.3); border-radius: 8px; padding: 12px; background: rgba(116, 54, 187, 0.1);">
+                                <summary style="cursor: pointer; font-weight: bold; color: #ffffff; font-size: 0.95rem;">CAN INNOVATOOR HELP WITH LEAD GENERATION?</summary>
+                                <p style="margin-top: 10px; color: #e8e8e8; line-height: 1.6;">Yes, we specialize in lead generation by utilizing accurate data to identify potential clients and optimize outreach strategies. Our advanced tools assist businesses in gathering high-quality leads, leading to improved sales conversions and growth opportunities.</p>
+                            </details>
+                            <details style="margin-bottom: 15px; border: 1px solid rgba(116, 54, 187, 0.3); border-radius: 8px; padding: 12px; background: rgba(116, 54, 187, 0.1);">
+                                <summary style="cursor: pointer; font-weight: bold; color: #ffffff; font-size: 0.95rem;">WHAT IS DIGITALIZATION AND HOW CAN YOU ASSIST?</summary>
+                                <p style="margin-top: 10px; color: #e8e8e8; line-height: 1.6;">Digitalization is the integration of digital technologies into your business operations to improve efficiency and scalability. We help businesses streamline processes by offering customized solutions like website OSINT, social media intelligence, and automated scraping bots to enhance data collection and support smarter decision-making.</p>
+                            </details>
+                        </div>
+                    `,
+
+                    "Our Team": `
+                        <p style="margin-bottom: 15px;">The team at Innovatoor is a dynamic blend of expertise and innovation, bringing together professionals from diverse backgrounds to deliver exceptional results.</p>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 10px;">
+                            <div style="position: relative; border-radius: 12px; overflow: hidden; border: 2px solid rgba(116, 54, 187, 0.4); background: rgba(0, 0, 0, 0.3);">
+                                <img src="Images/slider/team-slider1.png" alt="MUGENZI Bel Arthur" style="width: 100%; height: 250px; object-fit: cover; object-position: center top; display: block;">
+                                <div style="padding: 15px; background: linear-gradient(to bottom, rgba(116, 54, 187, 0.2), rgba(61, 15, 65, 0.4));">
+                                    <h3 style="margin: 0 0 5px 0; font-size: 1rem; color: #ffffff;">MUGENZI Bel Arthur</h3>
+                                    <h4 style="margin: 0 0 10px 0; font-size: 0.85rem; color: #7436bb; font-weight: 600;">Founder</h4>
+                                    <div style="display: flex; gap: 10px;">
+                                        <a href="https://rw.linkedin.com/in/bel-arthur-mugenzi-998266189/" target="_blank" style="color: #ffffff; text-decoration: none; font-size: 1.2rem;">📱</a>
+                                        <a href="https://www.instagram.com/m_belarthur/" target="_blank" style="color: #ffffff; text-decoration: none; font-size: 1.2rem;">📷</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="position: relative; border-radius: 12px; overflow: hidden; border: 2px solid rgba(116, 54, 187, 0.4); background: rgba(0, 0, 0, 0.3);">
+                                <img src="Images/slider/team-slider2.png" alt="NDAYIRAGIJE Gael" style="width: 100%; height: 250px; object-fit: cover; object-position: center top; display: block;">
+                                <div style="padding: 15px; background: linear-gradient(to bottom, rgba(116, 54, 187, 0.2), rgba(61, 15, 65, 0.4));">
+                                    <h3 style="margin: 0; font-size: 1rem; color: #ffffff;">NDAYIRAGIJE Gael</h3>
+                                </div>
+                            </div>
+                            
+                            <div style="position: relative; border-radius: 12px; overflow: hidden; border: 2px solid rgba(116, 54, 187, 0.4); background: rgba(0, 0, 0, 0.3);">
+                                <img src="Images/slider/team-slider3.png" alt="NIYONKURU Odilon" style="width: 100%; height: 250px; object-fit: cover; object-position: center top; display: block;">
+                                <div style="padding: 15px; background: linear-gradient(to bottom, rgba(116, 54, 187, 0.2), rgba(61, 15, 65, 0.4));">
+                                    <h3 style="margin: 0 0 5px 0; font-size: 1rem; color: #ffffff;">NIYONKURU Odilon</h3>
+                                    <h4 style="margin: 0; font-size: 0.85rem; color: #7436bb; font-weight: 600;">Consultant</h4>
+                                </div>
+                            </div>
+                            
+                            <div style="position: relative; border-radius: 12px; overflow: hidden; border: 2px solid rgba(116, 54, 187, 0.4); background: rgba(0, 0, 0, 0.3);">
+                                <img src="Images/slider/team-slider4.png" alt="ISHIMWE David" style="width: 100%; height: 250px; object-fit: cover; object-position: center top; display: block;">
+                                <div style="padding: 15px; background: linear-gradient(to bottom, rgba(116, 54, 187, 0.2), rgba(61, 15, 65, 0.4));">
+                                    <h3 style="margin: 0 0 5px 0; font-size: 1rem; color: #ffffff;">ISHIMWE David</h3>
+                                    <h4 style="margin: 0; font-size: 0.85rem; color: #7436bb; font-weight: 600;">Designer</h4>
+                                </div>
+                            </div>
+                        </div>
+                    `,
+                    "How We Work": `
+                        <div style="position: relative; min-height: 400px; border-radius: 12px; overflow: hidden; background-image: url('Images/bg/work-bg.jpg'); background-size: center; background-position: center; padding: 30px;">
+                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(61, 15, 65, 0.0), rgba(26, 10, 46, 0.0)); backdrop-filter: blur(2px);"></div>
+                            
+                            <div style="position: relative; z-index: 2;">
+                                <h2 style="text-align: center; margin-bottom: 10px; font-size: 1.4rem; color: #ffffff; text-shadow: 0 0 20px rgba(116, 54, 187, 0.8);">HOW WE WORK</h2>
+                                <h3 style="text-align: center; margin-bottom: 15px; font-size: 1.6rem; color: #ffffff; font-weight: 700;">Our Process For Delivering Results</h3>
+                                <p style="text-align: center; margin-bottom: 30px; color: #e8e8e8; line-height: 1.6;">We turn data into Consultation and Insights delivering business success and safety in all your business deals.</p>
+                                
+                                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; max-width: 800px; margin: 0 auto;">
+                                    <div style="text-align: center;">
+                                        <div style="width: 120px; height: 120px; margin: 0 auto 15px; background: linear-gradient(135deg, rgba(147, 51, 234, 0.6), rgba(168, 85, 247, 0.6)); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(116, 54, 187, 0.5); border: 3px solid rgba(255, 255, 255, 0.2);">
+                                            <span style="font-size: 2rem; font-weight: 900; color: #ffffff; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);">01.</span>
+                                        </div>
+                                        <h4 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 8px; font-weight: 700;">Make An Appointment</h4>
+                                        <p style="color: #e8e8e8; font-size: 0.9rem; line-height: 1.5;">Schedule your consultation with our experts</p>
+                                    </div>
+                                    
+                                    <div style="text-align: center;">
+                                        <div style="width: 120px; height: 120px; margin: 0 auto 15px; background: linear-gradient(135deg, rgba(147, 51, 234, 0.6), rgba(168, 85, 247, 0.6)); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(116, 54, 187, 0.5); border: 3px solid rgba(255, 255, 255, 0.2);">
+                                            <span style="font-size: 2rem; font-weight: 900; color: #ffffff; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);">02.</span>
+                                        </div>
+                                        <h4 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 8px; font-weight: 700;">Meet Our Team</h4>
+                                        <p style="color: #e8e8e8; font-size: 0.9rem; line-height: 1.5;">Connect with our professional data specialists</p>
+                                    </div>
+                                    
+                                    <div style="text-align: center;">
+                                        <div style="width: 120px; height: 120px; margin: 0 auto 15px; background: linear-gradient(135deg, rgba(147, 51, 234, 0.6), rgba(168, 85, 247, 0.6)); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(116, 54, 187, 0.5); border: 3px solid rgba(255, 255, 255, 0.2);">
+                                            <span style="font-size: 2rem; font-weight: 900; color: #ffffff; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);">03.</span>
+                                        </div>
+                                        <h4 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 8px; font-weight: 700;">Get Consultation</h4>
+                                        <p style="color: #e8e8e8; font-size: 0.9rem; line-height: 1.5;">Receive expert insights and recommendations</p>
+                                    </div>
+                                    
+                                    <div style="text-align: center;">
+                                        <div style="width: 120px; height: 120px; margin: 0 auto 15px; background: linear-gradient(135deg, rgba(147, 51, 234, 0.6), rgba(168, 85, 247, 0.6)); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(116, 54, 187, 0.5); border: 3px solid rgba(255, 255, 255, 0.2);">
+                                            <span style="font-size: 2rem; font-weight: 900; color: #ffffff; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);">04.</span>
+                                        </div>
+                                        <h4 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 8px; font-weight: 700;">Start Project</h4>
+                                        <p style="color: #e8e8e8; font-size: 0.9rem; line-height: 1.5;">Begin your data-driven journey with us</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `,
+
+                };
+                const canvas = document.getElementById('data-canvas');
+                const scene = new THREE.Scene();
+
+                const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                camera.position.set(0, 0, 40);
+
+                const renderer = new THREE.WebGLRenderer({
+                    canvas,
+                    antialias: true,
+                    alpha: true
+                });
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setClearColor(0x000000, 0);
+
+                // Lighting
+                scene.add(new THREE.AmbientLight(0x4a2a5a, 0.3));
+
+                const centerLight = new THREE.PointLight(0x7436bb, 4, 80);
+                centerLight.position.set(0, 0, 0);
+                scene.add(centerLight);
+
+                const light1 = new THREE.PointLight(0xffffff, 2, 100);
+                light1.position.set(30, 30, 30);
+                scene.add(light1);
+
+                const dataGroup = new THREE.Group();
+                scene.add(dataGroup);
+
+                // Create futuristic geometric structure
+                const layers = 5;
+                const nodesPerLayer = 8;
+                const allNodes = [];
+                const serviceNodes = [];
+
+                for (let layer = 0; layer < layers; layer++) {
+                    const z = (layer - layers / 2) * 15;
+                    const radius = 12 + layer * 2;
+
+                    for (let i = 0; i < nodesPerLayer; i++) {
+                        const angle = (i / nodesPerLayer) * Math.PI * 2;
+                        const x = Math.cos(angle) * radius;
+                        const y = Math.sin(angle) * radius;
+
+                        // Create node with geometric shape
+                        const geometry = new THREE.OctahedronGeometry(0.6, 0);
+                        const material = new THREE.MeshPhongMaterial({
+                            color: 0x7436bb,
+                            emissive: 0x7436bb,
+                            emissiveIntensity: 0.5,
+                            transparent: true,
+                            opacity: 0.8,
+                            shininess: 100,
+                            flatShading: true
+                        });
+                        const node = new THREE.Mesh(geometry, material);
+                        node.position.set(x, y, z);
+                        dataGroup.add(node);
+
+                        allNodes.push({
+                            mesh: node,
+                            position: new THREE.Vector3(x, y, z),
+                            layer: layer,
+                            index: i
+                        });
+
+                        // Wireframe overlay
+                        const wireframe = new THREE.LineSegments(
+                            new THREE.EdgesGeometry(geometry),
+                            new THREE.LineBasicMaterial({
+                                color: 0xffffff,
+                                transparent: true,
+                                opacity: 0.3
+                            })
+                        );
+                        node.add(wireframe);
+                    }
+                }
+
+                // Create connections between layers
+                allNodes.forEach((node, idx) => {
+                    // Connect to next layer
+                    const nextLayerNodes = allNodes.filter(n => n.layer === node.layer + 1);
+                    nextLayerNodes.forEach((nextNode, i) => {
+                        if (i <= 2) { // Connect to 3 nodes
+                            const points = [node.position, nextNode.position];
+                            const geometry = new THREE.BufferGeometry().setFromPoints(points);
+                            const material = new THREE.LineBasicMaterial({
+                                color: 0x7436bb,
+                                transparent: true,
+                                opacity: 0.2
+                            });
+                            const line = new THREE.Line(geometry, material);
+                            dataGroup.add(line);
+                        }
+                    });
+
+                    // Connect within layer
+                    const sameLayerNodes = allNodes.filter(n => n.layer === node.layer && n.index === (node.index + 1) % nodesPerLayer);
+                    sameLayerNodes.forEach(sameNode => {
+                        const points = [node.position, sameNode.position];
+                        const geometry = new THREE.BufferGeometry().setFromPoints(points);
+                        const material = new THREE.LineBasicMaterial({
+                            color: 0x3d0f41,
+                            transparent: true,
+                            opacity: 0.3
+                        });
+                        const line = new THREE.Line(geometry, material);
+                        dataGroup.add(line);
+                    });
+                });
+
+                // Create energy particles
+                const particles = [];
+                for (let i = 0; i < 200; i++) {
+                    const geometry = new THREE.SphereGeometry(0.15, 8, 8);
+                    const material = new THREE.MeshBasicMaterial({
+                        color: 0xffffff,
+                        transparent: true,
+                        opacity: 0.9
+                    });
+                    const particle = new THREE.Mesh(geometry, material);
+                    dataGroup.add(particle);
+
+                    particles.push({
+                        mesh: particle,
+                        startNode: Math.floor(Math.random() * allNodes.length),
+                        endNode: Math.floor(Math.random() * allNodes.length),
+                        progress: Math.random(),
+                        speed: 0.005 + Math.random() * 0.01
+                    });
+                }
+
+                // Create service label nodes
+                function makeLabelTexture(text) {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = 1024;
+                    canvas.height = 256;
+                    const ctx = canvas.getContext('2d');
+                    ctx.clearRect(0, 0, 1024, 256);
+
+                    // Hexagon background
+                    ctx.fillStyle = 'rgba(116, 54, 187, 0.3)';
+                    ctx.strokeStyle = 'rgba(116, 54, 187, 0.8)';
+                    ctx.lineWidth = 3;
+                    ctx.beginPath();
+                    for (let i = 0; i < 6; i++) {
+                        const angle = (i / 6) * Math.PI * 2;
+                        const x = 512 + Math.cos(angle) * 450;
+                        const y = 128 + Math.sin(angle) * 100;
+                        if (i === 0) ctx.moveTo(x, y);
+                        else ctx.lineTo(x, y);
+                    }
+                    ctx.closePath();
+                    ctx.fill();
+                    ctx.stroke();
+
+                    ctx.font = 'bold 48px "Segoe UI", Arial, sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+
+                    ctx.shadowColor = 'rgba(116, 54, 187, 1)';
+                    ctx.shadowBlur = 30;
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillText(text, 512, 128);
+
+                    ctx.shadowBlur = 0;
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillText(text, 512, 128);
+
+                    const texture = new THREE.CanvasTexture(canvas);
+                    texture.needsUpdate = true;
+                    return texture;
+                }
+
+                const labelEntries = [];
+                services.forEach((service, idx) => {
+                    const texture = makeLabelTexture(service);
+                    const material = new THREE.SpriteMaterial({
+                        map: texture,
+                        transparent: true
+                    });
+                    material.depthTest = false;
+                    const sprite = new THREE.Sprite(material);
+                    sprite.scale.set(12, 3, 1);
+                    sprite.renderOrder = 999;
+                    scene.add(sprite);
+
+                    // Associate with a node
+                    const nodeIdx = Math.floor((idx / services.length) * allNodes.length);
+                    const node = allNodes[nodeIdx];
+
+                    labelEntries.push({
+                        sprite: sprite,
+                        service: service,
+                        description: descriptions[service],
+                        node: node,
+                        index: idx
+                    });
+                });
+
+                // Click interaction
+                const raycaster = new THREE.Raycaster();
+                const mouse = new THREE.Vector2();
+
+                function onClick(ev) {
+                    try {
+                        const rect = canvas.getBoundingClientRect();
+                        mouse.x = ((ev.clientX - rect.left) / rect.width) * 2 - 1;
+                        mouse.y = -((ev.clientY - rect.top) / rect.height) * 2 + 1;
+                        raycaster.setFromCamera(mouse, camera);
+                        const intersects = raycaster.intersectObjects(labelEntries.map(le => le.sprite), true);
+                        if (intersects.length) {
+                            const obj = intersects[0].object;
+                            const entry = labelEntries.find(le => le.sprite === obj);
+                            if (entry) showPanel(entry.service, entry.description);
+                        }
+                    } catch (e) {
+                        console.error('Click handler error', e);
+                    }
+                }
+                canvas.addEventListener('click', onClick);
+
+                function showPanel(title, text) {
+                    const panel = document.getElementById('info-panel');
+                    const content = document.getElementById('info-content');
+                    content.innerHTML = `<h2>${title}</h2><p>${text}</p>`;
+                    panel.classList.add('visible');
+                    panel.setAttribute('aria-hidden', 'false');
+                }
+
+                function closePanel() {
+                    const panel = document.getElementById('info-panel');
+                    panel.classList.remove('visible');
+                    panel.setAttribute('aria-hidden', 'true');
+                }
+                window.closePanel = closePanel;
+
+                // Animation
+                let time = 0;
+
+                function animate() {
+                    requestAnimationFrame(animate);
+                    time += 0.01;
+
+                    // Rotate entire structure
+                    dataGroup.rotation.y = time * 0.2;
+                    dataGroup.rotation.x = Math.sin(time * 0.3) * 0.1;
+
+                    // Animate particles
+                    particles.forEach(p => {
+                        p.progress += p.speed;
+                        if (p.progress >= 1) {
+                            p.progress = 0;
+                            p.startNode = Math.floor(Math.random() * allNodes.length);
+                            p.endNode = Math.floor(Math.random() * allNodes.length);
+                        }
+
+                        const start = allNodes[p.startNode].position;
+                        const end = allNodes[p.endNode].position;
+                        const pos = start.clone().lerp(end, p.progress);
+                        p.mesh.position.copy(pos);
+
+                        const scale = 1 + Math.sin(p.progress * Math.PI) * 0.5;
+                        p.mesh.scale.setScalar(scale);
+                    });
+
+                    // Pulse nodes
+                    allNodes.forEach((node, idx) => {
+                        node.mesh.rotation.x += 0.01;
+                        node.mesh.rotation.y += 0.01;
+                        const pulse = 0.8 + Math.sin(time * 2 + idx * 0.3) * 0.2;
+                        node.mesh.scale.setScalar(pulse);
+                    });
+
+                    // Position labels - organic floating within safe bounds
+                    labelEntries.forEach((entry, idx) => {
+                        // Each label has unique movement pattern
+                        const timeOffset = idx * 1.7;
+                        const speedX = 0.08 + (idx % 3) * 0.02;
+                        const speedY = 0.06 + (idx % 4) * 0.015;
+
+                        // Calculate safe bounds based on screen size
+                        const aspect = camera.aspect;
+                        const vFOV = camera.fov * Math.PI / 180;
+                        const distance = 15;
+                        const viewHeight = 2 * Math.tan(vFOV / 2) * distance;
+                        const viewWidth = viewHeight * aspect;
+
+                        // Keep labels within 70% of visible area for safety
+                        const safeWidth = viewWidth * 0.35;
+                        const safeHeight = viewHeight * 0.35;
+
+                        // Organic movement using different sine/cosine combinations
+                        const x = Math.sin(time * speedX + timeOffset) * safeWidth *
+                            Math.cos(time * speedY * 0.5 + timeOffset);
+                        const y = Math.cos(time * speedY + timeOffset) * safeHeight *
+                            Math.sin(time * speedX * 0.7 + timeOffset);
+                        const z = camera.position.z - distance;
+
+                        entry.sprite.position.set(x, y, z);
+                        entry.sprite.quaternion.copy(camera.quaternion);
+                    });
+
+                    // Animate lights
+                    light1.position.x = Math.cos(time * 0.5) * 40;
+                    light1.position.y = Math.sin(time * 0.5) * 40;
+                    centerLight.intensity = 3.5 + Math.sin(time * 3) * 0.5;
+
+                    // Update HUD
+                    document.getElementById('data-flow').textContent = (95 + Math.sin(time) * 3).toFixed(1) + '%';
+
+                    renderer.render(scene, camera);
+                }
+                animate();
+
+                window.addEventListener('resize', () => {
+                    camera.aspect = window.innerWidth / window.innerHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                });
+
+            } catch (err) {
+                console.error('Fatal error:', err);
+            }
+        })();
+    </script>
+</body>
+
+</html>
