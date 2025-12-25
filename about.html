@@ -101,6 +101,8 @@
             z-index: 60;
             max-width: 600px;
             width: calc(100% - 40px);
+            max-height: 85vh;
+            overflow-y: auto;
             box-shadow: 0 30px 100px rgba(0, 0, 0, 0.9), 0 0 50px rgba(116, 54, 187, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
             opacity: 0;
             pointer-events: none;
@@ -274,14 +276,48 @@
                 font-size: 11px;
             }
             .info-panel {
-                padding: 25px;
+                padding: 25px 20px;
+                max-height: 80vh;
+                width: calc(100% - 30px);
             }
             .info-panel h2 {
                 font-size: 1.3rem;
+                margin-bottom: 12px;
+            }
+            .info-panel p {
+                font-size: 0.9rem;
             }
             .hud-overlay {
                 font-size: 10px;
                 padding: 10px 15px;
+                top: 10px;
+                right: 10px;
+            }
+            .sprite-hint {
+                font-size: 10px;
+                left: 10px;
+                bottom: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .info-panel {
+                padding: 20px 15px;
+                max-height: 75vh;
+                border-radius: 15px;
+            }
+            .info-panel h2 {
+                font-size: 1.1rem;
+            }
+            .info-panel p {
+                font-size: 0.85rem;
+            }
+            .info-panel .close-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 20px;
+                top: 10px;
+                right: 10px;
             }
         }
     </style>
@@ -305,7 +341,7 @@
         <div class="hud-overlay">
             <div class="hud-item">
                 <span class="hud-label">STATUS:</span>
-                <span class="hud-value">ACTIVE SINCE 2018</span>
+                <span class="hud-value">ACTIVE SINCE</span>
             </div>
             <div class="hud-item">
                 <span class="hud-label">STREAMS:</span>
@@ -317,7 +353,7 @@
             </div>
         </div>
 
-        <div class="sprite-hint">► CLICK NODES TO EXPLORE</div>
+        <div class="sprite-hint">► CLICK SERVICE NODES TO EXPLORE</div>
 
         <div class="info-panel" id="info-panel" role="dialog" aria-hidden="true">
             <button class="close-btn" onclick="closePanel()" aria-label="Close">×</button>
@@ -403,16 +439,11 @@
                     "Frequently Asked Questions",
                     "Our Team",
                     "How We Work",
-
-
                 ];
-
                 const descriptions = {
-                    "About Us": " Transforming data into opportunities. Where insights lead to impact.<br>" +
-                        "At Innovatoor, we believe that data is the key to navigating today's complex and fast-changing world.<br>" +
-                        "We are a dynamic data driven team specializing in collecting, structuring, and interpreting information to help businesses make smarter, faster, and more confident decisions.<br>" +
-                        "Whether it's identifying market trends, conducting due diligence, analyzing competitor strategies, mitigating business risks, or supporting company digitalization, our data warehouse turns raw information into actionable intelligence.<br>" +
-                        "We leverage over 200 OSINT tools including Maltego, Shodan, and more than 8 advanced search engines—combined with our own custom developed scraping bots. These cutting-edge methodologies allow us to collect high-value data at scale and deliver precise, reliable insights.<br>" +
+                    "About Us": "We are a dynamic data driven team specializing in collecting, structuring, and interpreting information to help businesses make smarter, faster, and more confident decisions.<br><br>" +
+                        "Whether it's identifying market trends, conducting due diligence, analyzing competitor strategies, mitigating business risks, or supporting company digitalization, our data warehouse turns raw information into actionable intelligence.<br><br>" +
+                        "We leverage over 200 OSINT tools—including Maltego, Shodan, and more than 8 advanced search engines—combined with our own custom developed scraping bots. These cutting-edge methodologies allow us to collect high-value data at scale and deliver precise, reliable insights.<br><br>" +
                         "Innovatoor delivers tailored data solutions that give your business a clear competitive advantage supporting sustainable growth, stronger decision-making, online safety, and secure business deals.",
 
                     "Frequently Asked Questions": `
@@ -449,6 +480,7 @@
                     `,
 
                     "Our Team": `
+                        <p style="margin-bottom: 15px;">The team at Innovatoor is a dynamic blend of expertise and innovation, bringing together professionals from diverse backgrounds to deliver exceptional results.</p>
                         
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 10px;">
                             <div style="position: relative; border-radius: 12px; overflow: hidden; border: 2px solid rgba(116, 54, 187, 0.4); background: rgba(0, 0, 0, 0.3);">
@@ -493,6 +525,9 @@
                             
                             <div style="position: relative; z-index: 2;">
                                 <h2 style="text-align: center; margin-bottom: 10px; font-size: 1.4rem; color: #ffffff; text-shadow: 0 0 20px rgba(116, 54, 187, 0.8);">HOW WE WORK</h2>
+                                <h3 style="text-align: center; margin-bottom: 15px; font-size: 1.6rem; color: #ffffff; font-weight: 700;">Our Process For Delivering Results</h3>
+                                <p style="text-align: center; margin-bottom: 30px; color: #e8e8e8; line-height: 1.6;">We turn data into Consultation and Insights delivering business success and safety in all your business deals.</p>
+                                
                                 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; max-width: 800px; margin: 0 auto;">
                                     <div style="text-align: center;">
                                         <div style="width: 120px; height: 120px; margin: 0 auto 15px; background: linear-gradient(135deg, rgba(147, 51, 234, 0.6), rgba(168, 85, 247, 0.6)); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(116, 54, 187, 0.5); border: 3px solid rgba(255, 255, 255, 0.2);">
@@ -859,6 +894,5 @@
         })();
     </script>
 </body>
-
 
 </html>
