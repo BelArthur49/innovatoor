@@ -333,7 +333,7 @@
             <div class="center-ring"></div>
             <div class="center-ring"></div>
             <div class="center-core">
-                <div class="innovatoor-title"> 12+ Years</div>
+                <div class="innovatoor-title">12+ Years</div>
                 <div class="innovatoor-services"><b>of Experience</b></div>
             </div>
         </div>
@@ -364,7 +364,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <script>
-        // Particle Background
+        // Detect mobile device
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+
+        // Particle Background - Optimized for mobile
         (function() {
             const canvas = document.getElementById('particle-canvas');
             const ctx = canvas.getContext('2d');
@@ -377,7 +380,7 @@
             window.addEventListener('resize', resize);
 
             const particles = [];
-            const particleCount = 150;
+            const particleCount = isMobile ? 50 : 150; // Reduced particles on mobile
 
             for (let i = 0; i < particleCount; i++) {
                 particles.push({
@@ -406,21 +409,23 @@
                     ctx.fillStyle = `rgba(116, 54, 187, ${p.opacity})`;
                     ctx.fill();
 
-                    // Draw connections
-                    particles.slice(i + 1).forEach(p2 => {
-                        const dx = p2.x - p.x;
-                        const dy = p2.y - p.y;
-                        const dist = Math.sqrt(dx * dx + dy * dy);
+                    // Draw connections - fewer on mobile
+                    if (!isMobile) {
+                        particles.slice(i + 1).forEach(p2 => {
+                            const dx = p2.x - p.x;
+                            const dy = p2.y - p.y;
+                            const dist = Math.sqrt(dx * dx + dy * dy);
 
-                        if (dist < 150) {
-                            ctx.beginPath();
-                            ctx.moveTo(p.x, p.y);
-                            ctx.lineTo(p2.x, p2.y);
-                            ctx.strokeStyle = `rgba(116, 54, 187, ${0.15 * (1 - dist / 150)})`;
-                            ctx.lineWidth = 0.5;
-                            ctx.stroke();
-                        }
-                    });
+                            if (dist < 150) {
+                                ctx.beginPath();
+                                ctx.moveTo(p.x, p.y);
+                                ctx.lineTo(p2.x, p2.y);
+                                ctx.strokeStyle = `rgba(116, 54, 187, ${0.15 * (1 - dist / 150)})`;
+                                ctx.lineWidth = 0.5;
+                                ctx.stroke();
+                            }
+                        });
+                    }
                 });
             }
 
@@ -431,7 +436,7 @@
             animate();
         })();
 
-        // Main 3D Visualization
+        // Main 3D Visualization - Heavily optimized for mobile
         (function() {
             try {
                 const services = [
@@ -440,6 +445,7 @@
                     "Our Team",
                     "How We Work",
                 ];
+
                 const descriptions = {
                     "About Us": "We are a dynamic data driven team specializing in collecting, structuring, and interpreting information to help businesses make smarter, faster, and more confident decisions.<br><br>" +
                         "Whether it's identifying market trends, conducting due diligence, analyzing competitor strategies, mitigating business risks, or supporting company digitalization, our data warehouse turns raw information into actionable intelligence.<br><br>" +
@@ -729,10 +735,10 @@
 
                     ctx.shadowColor = 'rgba(116, 54, 187, 1)';
                     ctx.shadowBlur = 30;
-                    ctx.fillStyle = '#ffffff';
+                    ctx.fillStyle = '#000000';
                     ctx.fillText(text, 512, 128);
 
-                    ctx.shadowBlur = 0;
+                    ctx.shadowBlur = 25;
                     ctx.fillStyle = '#ffffff';
                     ctx.fillText(text, 512, 128);
 
@@ -896,4 +902,3 @@
 </body>
 
 </html>
-
