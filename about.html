@@ -364,81 +364,77 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <script>
-           // Detect mobile device
-            const isMobile =
-                /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent) ||
-                window.innerWidth < 768;
-            
-            // ===============================
-            // ULTRA FAST PARTICLE BACKGROUND
-            // ===============================
-            (function () {
-                const canvas = document.getElementById('particle-canvas');
-                const ctx = canvas.getContext('2d', { alpha: false });
-            
-                function resize() {
-                    canvas.width = window.innerWidth;
-                    canvas.height = window.innerHeight;
-                }
-                resize();
-                window.addEventListener('resize', resize);
-            
-                // ---- HARD SETTINGS ----
-                const PARTICLES = isMobile ? 25 : 120;
-                const FPS_LIMIT = isMobile ? 20 : 60;
-                const FRAME_SKIP = isMobile ? 3 : 1;
-            
-                const particles = [];
-                for (let i = 0; i < PARTICLES; i++) {
-                    particles.push({
-                        x: Math.random() * canvas.width,
-                        y: Math.random() * canvas.height,
-                        vx: (Math.random() - 0.5) * 0.3,
-                        vy: (Math.random() - 0.5) * 0.3,
-                        size: isMobile ? 1.2 : 2,
-                        alpha: Math.random() * 0.4 + 0.4
-                    });
-                }
-            
-                let lastTime = 0;
-                let frame = 0;
-            
-                function animate(time) {
-                    if (time - lastTime < 1000 / FPS_LIMIT) {
-                        requestAnimationFrame(animate);
-                        return;
+        // Detect mobile device
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+
+        // Particle Background - Optimized for mobile
+        (function() {
+            const canvas = document.getElementById('particle-canvas');
+            const ctx = canvas.getContext('2d');
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            const particles = [];
+            const particleCount = isMobile ? 10 : 50; // Reduced particles on mobile
+
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    size: Math.random() * 2 + 0.5,
+                    opacity: Math.random() * 0.5 + 0.2
+                });
+            }
+
+            function drawParticles() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                particles.forEach((p, i) => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(116, 54, 187, ${p.opacity})`;
+                    ctx.fill();
+
+                    // Draw connections - fewer on mobile
+                    if (!isMobile) {
+                        particles.slice(i + 1).forEach(p2 => {
+                            const dx = p2.x - p.x;
+                            const dy = p2.y - p.y;
+                            const dist = Math.sqrt(dx * dx + dy * dy);
+
+                            if (dist < 150) {
+                                ctx.beginPath();
+                                ctx.moveTo(p.x, p.y);
+                                ctx.lineTo(p2.x, p2.y);
+                                ctx.strokeStyle = `rgba(116, 54, 187, ${0.15 * (1 - dist / 150)})`;
+                                ctx.lineWidth = 0.5;
+                                ctx.stroke();
+                            }
+                        });
                     }
-                    lastTime = time;
-                    frame++;
-            
-                    // ---- FULL CLEAR (cheaper than fade on mobile) ----
-                    ctx.fillStyle = '#000';
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-                    for (let i = 0; i < particles.length; i++) {
-                        const p = particles[i];
-            
-                        // ---- Move only every N frames ----
-                        if (frame % FRAME_SKIP === 0) {
-                            p.x += p.vx;
-                            p.y += p.vy;
-                        }
-            
-                        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-            
-                        // ---- Draw particle ----
-                        ctx.beginPath();
-                        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                        ctx.fillStyle = `rgba(116,54,187,${p.alpha})`;
-                        ctx.fill();
-                    }
-            
-                    requestAnimationFrame(animate);
-                }
-            
+                });
+            }
+
+            function animate() {
                 requestAnimationFrame(animate);
-            })();
+                drawParticles();
+            }
+            animate();
+        })();
 
         // Main 3D Visualization - Heavily optimized for mobile
         (function() {
@@ -906,5 +902,3 @@
 </body>
 
 </html>
-
-
