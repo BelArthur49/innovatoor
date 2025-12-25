@@ -364,102 +364,81 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <script>
-        // Detect mobile device
-const isMobile =
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-    window.innerWidth < 768;
-
-// ===============================
-// Particle Background (Optimized)
-// ===============================
-(function () {
-    const canvas = document.getElementById('particle-canvas');
-    const ctx = canvas.getContext('2d', { alpha: true });
-
-    function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    resize();
-    window.addEventListener('resize', resize);
-
-    // ---- SETTINGS ----
-    const particleCount = isMobile ? 40 : 150;
-    const maxDist = 140;
-    const maxDistSq = maxDist * maxDist;
-    const particles = [];
-
-    for (let i = 0; i < particleCount; i++) {
-        particles.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            vx: (Math.random() - 0.5) * 0.4,
-            vy: (Math.random() - 0.5) * 0.4,
-            size: Math.random() * 2 + 0.5,
-            opacity: Math.random() * 0.4 + 0.2
-        });
-    }
-
-    let frame = 0;
-    let lastTime = 0;
-
-    function draw(time) {
-        // ---- FPS CAP (mobile ~30fps) ----
-        if (isMobile && time - lastTime < 33) {
-            requestAnimationFrame(draw);
-            return;
-        }
-        lastTime = time;
-        frame++;
-
-        // ---- Clear canvas less aggressively ----
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        for (let i = 0; i < particles.length; i++) {
-            const p = particles[i];
-
-            // ---- Move particles every other frame on mobile ----
-            if (!isMobile || frame % 2 === 0) {
-                p.x += p.vx;
-                p.y += p.vy;
-            }
-
-            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-            // ---- Draw particle ----
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(116, 54, 187, ${p.opacity})`;
-            ctx.fill();
-
-            // ---- Connection lines (desktop only / limited checks) ----
-            if (!isMobile) {
-                for (let j = i + 1; j < Math.min(i + 6, particles.length); j++) {
-                    const p2 = particles[j];
-                    const dx = p2.x - p.x;
-                    const dy = p2.y - p.y;
-                    const distSq = dx * dx + dy * dy;
-
-                    if (distSq < maxDistSq) {
-                        const alpha = 0.15 * (1 - distSq / maxDistSq);
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.strokeStyle = `rgba(116, 54, 187, ${alpha})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.stroke();
-                    }
+           // Detect mobile device
+            const isMobile =
+                /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent) ||
+                window.innerWidth < 768;
+            
+            // ===============================
+            // ULTRA FAST PARTICLE BACKGROUND
+            // ===============================
+            (function () {
+                const canvas = document.getElementById('particle-canvas');
+                const ctx = canvas.getContext('2d', { alpha: false });
+            
+                function resize() {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
                 }
-            }
-        }
-
-        requestAnimationFrame(draw);
-    }
-
-    requestAnimationFrame(draw);
-})();
+                resize();
+                window.addEventListener('resize', resize);
+            
+                // ---- HARD SETTINGS ----
+                const PARTICLES = isMobile ? 25 : 120;
+                const FPS_LIMIT = isMobile ? 20 : 60;
+                const FRAME_SKIP = isMobile ? 3 : 1;
+            
+                const particles = [];
+                for (let i = 0; i < PARTICLES; i++) {
+                    particles.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        vx: (Math.random() - 0.5) * 0.3,
+                        vy: (Math.random() - 0.5) * 0.3,
+                        size: isMobile ? 1.2 : 2,
+                        alpha: Math.random() * 0.4 + 0.4
+                    });
+                }
+            
+                let lastTime = 0;
+                let frame = 0;
+            
+                function animate(time) {
+                    if (time - lastTime < 1000 / FPS_LIMIT) {
+                        requestAnimationFrame(animate);
+                        return;
+                    }
+                    lastTime = time;
+                    frame++;
+            
+                    // ---- FULL CLEAR (cheaper than fade on mobile) ----
+                    ctx.fillStyle = '#000';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+                    for (let i = 0; i < particles.length; i++) {
+                        const p = particles[i];
+            
+                        // ---- Move only every N frames ----
+                        if (frame % FRAME_SKIP === 0) {
+                            p.x += p.vx;
+                            p.y += p.vy;
+                        }
+            
+                        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+            
+                        // ---- Draw particle ----
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(116,54,187,${p.alpha})`;
+                        ctx.fill();
+                    }
+            
+                    requestAnimationFrame(animate);
+                }
+            
+                requestAnimationFrame(animate);
+            })();
 
         // Main 3D Visualization - Heavily optimized for mobile
         (function() {
@@ -927,4 +906,5 @@ const isMobile =
 </body>
 
 </html>
+
 
