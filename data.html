@@ -10,7 +10,7 @@
         body {
             height: 100%;
             margin: 0;
-            background: #381a46;
+            background: #0e010f;
             font-family: 'Segoe UI', system-ui, Arial;
             overflow: hidden;
         }
@@ -45,14 +45,17 @@
         
         .sprite-hint {
             position: absolute;
-            left: 20px;
+            left: 50%;
             bottom: 20px;
+            transform: translateX(-50%);
             font-size: 13px;
             color: #ffffff;
             opacity: .9;
             z-index: 12;
             pointer-events: none;
             text-shadow: 0 2px 8px rgba(116, 54, 187, 0.5);
+            text-align: center;
+            padding: 0 10px;
         }
         
         .info-panel {
@@ -61,7 +64,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background: rgba(61, 15, 65, 0.95);
-            border: 2px solid #7436bb;
+            border: 2px solid #0e010f;
             border-radius: 16px;
             padding: 28px 32px;
             color: #fff;
@@ -73,6 +76,8 @@
             pointer-events: none;
             transition: opacity .3s, transform .3s;
             backdrop-filter: blur(12px);
+            max-height: 80vh;
+            overflow-y: auto;
         }
         
         .info-panel.visible {
@@ -156,14 +161,31 @@
         
         @media (max-width: 768px) {
             .innovatoor-center {
-                width: 150px;
-                height: 150px;
+                width: 120px;
+                height: 120px;
             }
             .innovatoor-title {
-                font-size: 14px;
+                font-size: 13px;
             }
             .innovatoor-services {
-                font-size: 9px;
+                font-size: 8px;
+            }
+            .sprite-hint {
+                font-size: 11px;
+                bottom: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .innovatoor-center {
+                width: 100px;
+                height: 100px;
+            }
+            .innovatoor-title {
+                font-size: 12px;
+            }
+            .innovatoor-services {
+                font-size: 7px;
             }
         }
         
@@ -174,6 +196,22 @@
             }
             .info-panel h2 {
                 font-size: 1.2rem;
+            }
+            .info-panel p {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media(max-width:480px) {
+            .info-panel {
+                padding: 16px;
+            }
+            .info-panel h2 {
+                font-size: 1.1rem;
+                margin-bottom: 10px;
+            }
+            .info-panel p {
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -190,7 +228,6 @@
                 <b>Services</b>
             </div>
         </div>
-
 
         <div class="sprite-hint">Click service labels to learn more</div>
 
@@ -276,11 +313,11 @@
                 ];
 
                 const descriptions = {
-                    "Data Warehouse": "The Innovatoor Data Warehouse is an intelligence-focused software platform designed to bring clarity to complex markets.<br> It centralizes large volumes of publicly available data into one structured and continuously updated system, removing the need for manual research, scattered spreadsheets, and fragmented information sources. <br>The platform automatically collects data from websites, news outlets, company directories, digital platforms, and other open sources, ensuring decision-makers always work with fresh and reliable intelligence.<br><br>For competitor analysis, the Innovatoor Data Warehouse enables organizations to clearly identify key market players and understand how competitors operate and evolve. It allows you to track competitors’ online visibility, media mentions, partnerships, business activities, and growth signals over time. <br>For example, a company planning to enter a new market can instantly see who is already active, which players are gaining influence, and where strategic gaps exist.<br><br>By combining advanced OSINT methodologies with automated data collection and structured storage, the Innovatoor Data Warehouse transforms raw public data into actionable insights. It supports faster decision-making, reduces strategic and operational risk, and helps organizations position themselves ahead of the competition with confidence.",
+                    "Data Warehouse": "The Innovatoor Data Warehouse is an intelligence-focused software platform designed to bring clarity to complex markets.<br> It centralizes large volumes of publicly available data into one structured and continuously updated system, removing the need for manual research, scattered spreadsheets, and fragmented information sources. <br>The platform automatically collects data from websites, news outlets, company directories, digital platforms, and other open sources, ensuring decision-makers always work with fresh and reliable intelligence.<br><br>For competitor analysis, the Innovatoor Data Warehouse enables organizations to clearly identify key market players and understand how competitors operate and evolve. It allows you to track competitors' online visibility, media mentions, partnerships, business activities, and growth signals over time. <br>For example, a company planning to enter a new market can instantly see who is already active, which players are gaining influence, and where strategic gaps exist.<br><br>By combining advanced OSINT methodologies with automated data collection and structured storage, the Innovatoor Data Warehouse transforms raw public data into actionable insights. It supports faster decision-making, reduces strategic and operational risk, and helps organizations position themselves ahead of the competition with confidence.",
 
                     "Market Research": " Understand your market before your competitors do. <br>Our market research and competitor analysis services provide a clear view of industry dynamics, customer behavior, pricing structures, and competitive positioning. <br>We combine data collection, OSINT techniques,and analytical insights to help you identify gaps, validate opportunities, reduce uncertainty, and build strategies grounded in evidence not assumptions.",
 
-                    "Competitor Analysis": "Innovatoor’s Competitor Analysis service helps organizations clearly understand their competitive landscape using data-driven intelligence rather than assumptions. <br><br>We identify who your real competitors are, how they position themselves, and how their strategies evolve over time.<br><br>Using OSINT techniques and automated data collection, we track competitors’ digital presence, media visibility, partnerships, and market activity. For example, a company planning to launch a new service can quickly see existing players, evaluate their strengths and weaknesses, and identify gaps in the market.<br><br>This approach transforms publicly available information into actionable insights, enabling smarter strategic decisions, reduced market risk, and stronger competitive positioning.",
+                    "Competitor Analysis": "Innovatoor's Competitor Analysis service helps organizations clearly understand their competitive landscape using data-driven intelligence rather than assumptions. <br><br>We identify who your real competitors are, how they position themselves, and how their strategies evolve over time.<br><br>Using OSINT techniques and automated data collection, we track competitors' digital presence, media visibility, partnerships, and market activity. For example, a company planning to launch a new service can quickly see existing players, evaluate their strengths and weaknesses, and identify gaps in the market.<br><br>This approach transforms publicly available information into actionable insights, enabling smarter strategic decisions, reduced market risk, and stronger competitive positioning.",
 
                     "OSINT": " Make smarter, safer decisions with intelligence that goes beyond surface-level information. <br>Our Open Source Intelligence (OSINT) services uncover hidden digital footprints, verify identities, expose risks, and reveal opportunities across people, companies, and markets. <br>Whether you are assessing partners, investigating fraud, monitoring reputational threats, or preparing strategic moves, we transform scattered public data into clear, actionable intelligence you can trust.",
 
@@ -293,8 +330,12 @@
 
                 const canvas = document.getElementById('data-canvas');
                 const scene = new THREE.Scene();
-                const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-                camera.position.set(0, 0, 30);
+
+                // Adjust camera FOV and position based on screen size
+                let isMobile = window.innerWidth < 768;
+                const fov = isMobile ? 90 : 75;
+                const camera = new THREE.PerspectiveCamera(fov, window.innerWidth / window.innerHeight, 0.1, 1000);
+                camera.position.set(0, 0, isMobile ? 35 : 30);
 
                 const renderer = new THREE.WebGLRenderer({
                     canvas,
@@ -490,7 +531,8 @@
                     material.depthTest = false;
                     const sprite = new THREE.Sprite(material);
                     const scale = 1 - (idx / labelAnchors.length) * 0.5;
-                    sprite.scale.set(6 * scale, 1.6 * scale, 1);
+                    const baseScale = isMobile ? 0.7 : 1; // Smaller on mobile
+                    sprite.scale.set(6 * scale * baseScale, 1.6 * scale * baseScale, 1);
                     sprite.renderOrder = 999;
                     scene.add(sprite);
                     labelEntries.push({
@@ -503,15 +545,18 @@
                     });
                 });
 
-                // Click interaction
+                // Click and touch interaction
                 const raycaster = new THREE.Raycaster();
                 const mouse = new THREE.Vector2();
 
                 function onClick(ev) {
                     try {
                         const rect = canvas.getBoundingClientRect();
-                        mouse.x = ((ev.clientX - rect.left) / rect.width) * 2 - 1;
-                        mouse.y = -((ev.clientY - rect.top) / rect.height) * 2 + 1;
+                        const clientX = ev.clientX || (ev.touches && ev.touches[0].clientX);
+                        const clientY = ev.clientY || (ev.touches && ev.touches[0].clientY);
+
+                        mouse.x = ((clientX - rect.left) / rect.width) * 2 - 1;
+                        mouse.y = -((clientY - rect.top) / rect.height) * 2 + 1;
                         raycaster.setFromCamera(mouse, camera);
                         const intersects = raycaster.intersectObjects(labelEntries.map(le => le.sprite), true);
                         if (intersects.length) {
@@ -524,6 +569,7 @@
                     }
                 }
                 canvas.addEventListener('click', onClick);
+                canvas.addEventListener('touchend', onClick);
 
                 function showPanel(title, text) {
                     const panel = document.getElementById('info-panel');
@@ -584,8 +630,10 @@
                         entry.anchor.getWorldPosition(world);
 
                         const angle = (idx / labelEntries.length) * Math.PI * 2 + time * 0.1;
-                        const maxX = 7; // horizontal screen limit
-                        const maxY = 3.5; // vertical screen limit
+
+                        // Adjust limits based on screen size
+                        const maxX = isMobile ? 5 : 7;
+                        const maxY = isMobile ? 2.5 : 3.5;
 
                         const x = Math.cos(angle) * maxX;
                         const y = Math.sin(angle) * maxY;
@@ -595,8 +643,6 @@
                             y,
                             camera.position.z - 6
                         );
-
-
 
                         entry.sprite.quaternion.copy(camera.quaternion);
                     });
@@ -613,9 +659,26 @@
                 animate();
 
                 window.addEventListener('resize', () => {
+                    const wasMobile = isMobile;
+                    isMobile = window.innerWidth < 768;
+
                     camera.aspect = window.innerWidth / window.innerHeight;
+
+                    // Update FOV and camera position on orientation/size change
+                    if (wasMobile !== isMobile) {
+                        camera.fov = isMobile ? 90 : 75;
+                        camera.position.z = isMobile ? 35 : 30;
+                    }
+
                     camera.updateProjectionMatrix();
                     renderer.setSize(window.innerWidth, window.innerHeight);
+
+                    // Update label scales
+                    labelEntries.forEach((entry, idx) => {
+                        const scale = 1 - (idx / labelEntries.length) * 0.5;
+                        const baseScale = isMobile ? 0.7 : 1;
+                        entry.sprite.scale.set(6 * scale * baseScale, 1.6 * scale * baseScale, 1);
+                    });
                 });
 
             } catch (err) {
