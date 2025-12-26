@@ -469,7 +469,8 @@
                     dataPackets.push({
                         mesh: packet,
                         progress: Math.random(),
-                        speed: 0.003 + Math.random() * 0.004,
+                        speed: (isMobile ? 0.006 : 0.003) + Math.random() * (isMobile ? 0.006 : 0.004),
+
                         streamIndex: streamIdx,
                         segmentOffset: Math.floor(Math.random() * 10)
                     });
@@ -629,11 +630,13 @@
                         const world = new THREE.Vector3();
                         entry.anchor.getWorldPosition(world);
 
-                        const angle = (idx / labelEntries.length) * Math.PI * 2 + time * 0.1;
+                        const speed = isMobile ? 0.25 : 0.1;
+                        const angle = (idx / labelEntries.length) * Math.PI * 2 + time * speed;
+
 
                         // Adjust limits based on screen size
-                        const maxX = isMobile ? 5 : 7;
-                        const maxY = isMobile ? 2.5 : 3.5;
+                        const maxX = isMobile ? 3.2 : 5;
+                        const maxY = isMobile ? 1.8 : 2.8;
 
                         const x = Math.cos(angle) * maxX;
                         const y = Math.sin(angle) * maxY;
@@ -676,7 +679,7 @@
                     // Update label scales
                     labelEntries.forEach((entry, idx) => {
                         const scale = 1 - (idx / labelEntries.length) * 0.5;
-                        const baseScale = isMobile ? 0.7 : 1;
+                        const baseScale = isMobile ? 0.85 : 1;
                         entry.sprite.scale.set(6 * scale * baseScale, 1.6 * scale * baseScale, 1);
                     });
                 });
