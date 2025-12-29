@@ -23,6 +23,23 @@
     />
 
     <style>
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999;
+            /* FORCE DARK BACKGROUND */
+            background: rgba(14, 1, 15, 0.92);
+            backdrop-filter: blur(12px);
+            /* Prevent transform bugs */
+            transform: translateZ(0);
+            isolation: isolate;
+            /* Smooth appearance */
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+        /* Prevent content hiding behind header */
+        
         .logoipsum {
             padding: 80px 0;
             background: #0e010f;
@@ -80,96 +97,616 @@
             transform: scale(1.5);
             /* adjust: 1.2 – 1.6 */
         }
+        /*Home*/
+        
+        .data-header {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        #binary-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        #data-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 2;
+        }
+        
+        .sprite-hint {
+            position: absolute;
+            left: 50%;
+            bottom: 20px;
+            transform: translateX(-50%);
+            font-size: 13px;
+            color: #ffffff;
+            opacity: .9;
+            z-index: 12;
+            pointer-events: none;
+            text-shadow: 0 2px 8px rgba(116, 54, 187, 0.5);
+            text-align: center;
+            padding: 0 10px;
+        }
+        
+        .info-panel {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(61, 15, 65, 0.95);
+            border: 2px solid #0e010f;
+            border-radius: 16px;
+            padding: 28px 32px;
+            color: #fff;
+            z-index: 60;
+            max-width: 820px;
+            width: calc(100% - 40px);
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.8), 0 0 30px rgba(116, 54, 187, 0.3);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s, transform .3s;
+            backdrop-filter: blur(12px);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .info-panel.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .info-panel h2 {
+            margin: 0 0 12px 0;
+            font-size: 1.6rem;
+            color: #fff;
+            font-weight: 600;
+        }
+        
+        .info-panel p {
+            margin: 0;
+            color: #e8e8e8;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .info-panel .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: rgba(116, 54, 187, 0.2);
+            border: 1px solid rgba(116, 54, 187, 0.5);
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        
+        .info-panel .close-btn:hover {
+            background: rgba(116, 54, 187, 0.4);
+            border-color: #7436bb;
+        }
+        /* ===== INNOVATOOR CENTER OVERLAY ===== */
+        
+        .innovatoor-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient( circle, rgba(116, 54, 187, 0.65), rgba(61, 15, 65, 0.95));
+            border: 2px solid #7436bb;
+            box-shadow: 0 0 60px rgba(116, 54, 187, 0.9), inset 0 0 35px rgba(0, 0, 0, 0.6);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            pointer-events: none;
+        }
+        
+        .innovatoor-title {
+            font-size: 18px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+        
+        .innovatoor-services {
+            margin-top: 8px;
+            font-size: 11px;
+            line-height: 1.4;
+            color: #e6d9ff;
+        }
+        /* ===== MOBILE ===== */
+        
+        @media (max-width: 768px) {
+            .innovatoor-center {
+                width: 120px;
+                height: 120px;
+            }
+            .innovatoor-title {
+                font-size: 13px;
+            }
+            .innovatoor-services {
+                font-size: 8px;
+            }
+            .sprite-hint {
+                font-size: 11px;
+                bottom: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .innovatoor-center {
+                width: 100px;
+                height: 100px;
+            }
+            .innovatoor-title {
+                font-size: 12px;
+            }
+            .innovatoor-services {
+                font-size: 7px;
+            }
+        }
+        
+        @media(max-width:768px) {
+            .info-panel {
+                max-width: 92%;
+                padding: 20px;
+            }
+            .info-panel h2 {
+                font-size: 1.2rem;
+            }
+            .info-panel p {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media(max-width:480px) {
+            .info-panel {
+                padding: 16px;
+            }
+            .info-panel h2 {
+                font-size: 1.1rem;
+                margin-bottom: 10px;
+            }
+            .info-panel p {
+                font-size: 0.85rem;
+            }
+        }
+        
+        .dataheader {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: radial-gradient(ellipse at center, #1a0a2e 0%, #000000 70%);
+        }
+        
+        #particle-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        #data-canva {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 2;
+        }
+        
+        .hud-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(116, 54, 187, 0.1);
+            border: 1px solid rgba(116, 54, 187, 0.5);
+            border-radius: 8px;
+            padding: 15px 20px;
+            color: #7436bb;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            z-index: 12;
+            backdrop-filter: blur(10px);
+        }
+        
+        .hud-item {
+            margin: 5px 0;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+        
+        .hud-label {
+            color: #ffffff;
+            opacity: 0.7;
+        }
+        
+        .hud-value {
+            color: #7436bb;
+            font-weight: bold;
+        }
+        
+        .sprite-hint {
+            position: absolute;
+            left: 150px;
+            bottom: 20px;
+            font-size: 12px;
+            color: #ffffff;
+            opacity: .8;
+            z-index: 12;
+            pointer-events: none;
+            text-shadow: 0 0 10px rgba(116, 54, 187, 0.8);
+            font-family: 'Courier New', monospace;
+        }
+        
+        .info-pane {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: linear-gradient(135deg, rgba(61, 15, 65, 0.98), rgba(26, 10, 46, 0.98));
+            border: 2px solid #7436bb;
+            border-radius: 20px;
+            padding: 35px 40px;
+            color: #fff;
+            z-index: 60;
+            max-width: 600px;
+            width: calc(100% - 40px);
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.9), 0 0 50px rgba(116, 54, 187, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .4s, transform .4s;
+            backdrop-filter: blur(20px);
+        }
+        
+        .info-pane.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .info-pane::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #7436bb, #3d0f41, #7436bb);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0.5;
+            filter: blur(10px);
+        }
+        
+        .info-pane h2 {
+            margin: 0 0 15px 0;
+            font-size: 1.8rem;
+            color: #ffffff;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(116, 54, 187, 0.8);
+        }
+        
+        .info-pane p {
+            margin: 0;
+            color: #e8e8e8;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+        
+        .info-pane .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, rgba(116, 54, 187, 0.3), rgba(61, 15, 65, 0.5));
+            border: 1px solid rgba(116, 54, 187, 0.6);
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .info-pane .close-btn:hover {
+            background: linear-gradient(135deg, rgba(116, 54, 187, 0.5), rgba(61, 15, 65, 0.7));
+            border-color: #7436bb;
+            box-shadow: 0 0 20px rgba(116, 54, 187, 0.6);
+            transform: rotate(90deg);
+        }
+        
+        .innovatoor-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 180px;
+            height: 120px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            pointer-events: none;
+        }
+        
+        .center-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid rgba(116, 54, 187, 0.6);
+            animation: rotate 20s linear infinite;
+        }
+        
+        .center-ring:nth-child(2) {
+            width: 85%;
+            height: 85%;
+            border-color: rgba(61, 15, 65, 0.4);
+            animation-duration: 15s;
+            animation-direction: reverse;
+        }
+        
+        .center-ring:nth-child(3) {
+            width: 70%;
+            height: 70%;
+            border-color: rgba(116, 54, 187, 0.3);
+            animation-duration: 10s;
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .center-core {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(116, 54, 187, 0.4), transparent 70%);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 60px rgba(116, 54, 187, 0.8), 0 0 120px rgba(116, 54, 187, 0.4), inset 0 0 40px rgba(116, 54, 187, 0.3);
+            animation: pulse 3s ease-in-out infinite;
+            z-index: 5;
+        }
+        
+        @keyframes pulse {
+            0%,
+            100% {
+                box-shadow: 0 0 60px rgba(116, 54, 187, 0.8), 0 0 120px rgba(116, 54, 187, 0.4), inset 0 0 40px rgba(116, 54, 187, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 80px rgba(116, 54, 187, 1), 0 0 160px rgba(116, 54, 187, 0.6), inset 0 0 60px rgba(116, 54, 187, 0.5);
+            }
+        }
+        
+        .innovatoor-title {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(116, 54, 187, 1);
+            margin-bottom: 8px;
+        }
+        
+        .innovatoor-services {
+            font-size: 14px;
+            color: #e6d9ff;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        @media (max-width: 768px) {
+            .innovatoor-center {
+                width: 160px;
+                height: 160px;
+            }
+            .center-core {
+                width: 120px;
+                height: 120px;
+            }
+            .innovatoor-title {
+                font-size: 18px;
+            }
+            .innovatoor-services {
+                font-size: 11px;
+            }
+            .info-pane {
+                padding: 25px 20px;
+                max-height: 80vh;
+                width: calc(100% - 30px);
+            }
+            .info-pane h2 {
+                font-size: 1.3rem;
+                margin-bottom: 12px;
+            }
+            .info-pane p {
+                font-size: 0.9rem;
+            }
+            .hud-overlay {
+                font-size: 10px;
+                padding: 10px 15px;
+                top: 10px;
+                right: 10px;
+            }
+            .sprite-hint {
+                font-size: 10px;
+                left: 10px;
+                bottom: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .info-pane {
+                padding: 20px 15px;
+                max-height: 75vh;
+                border-radius: 15px;
+            }
+            .info-pane h2 {
+                font-size: 1.1rem;
+            }
+            .info-pane p {
+                font-size: 0.85rem;
+            }
+            .info-pane .close-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 20px;
+                top: 10px;
+                right: 10px;
+            }
+        }
     </style>
 </head>
 
 <body>
     <!-- Start site wrapper -->
     <div class="site-wrapper">
-        <div class="header-index">
-            <!-- ====== 1.1. Header section ====== -->
-            <header>
-                <nav class="container navbar">
-                    <div class="container-nav flex">
-                        <!-- site logo -->
-                        <a class="navbar-logo" href="#HOME"><img src="Images/logo.png" alt="logo"></a>
-                        <button class="navbar-toggler" onclick="openNav()" type="button">
+
+        <!-- ====== 1.1. Header section ====== -->
+        <header>
+            <nav class="container navbar">
+                <div class="container-nav flex">
+                    <!-- site logo -->
+                    <a class="navbar-logo" href="#HOME"><img src="Images/logo.png" alt="logo"></a>
+                    <button class="navbar-toggler" onclick="openNav()" type="button">
                             <span class="fa-solid fa-bars"></span>
                         </button>
-                        <!-- menus -->
-                        <ul class="navbar-nav flex">
-                            <li><a class="nav-link active" href="#HOME">Home</a></li>
-                            <li><a class="nav-link" href="#aboutus">About</a></li>
-                            <li><a class="nav-link" href="#FOOTER">Contact</a></li>
-                            <li class="dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <!-- menus -->
+                    <ul class="navbar-nav flex">
+                        <li><a class="nav-link active" href="#HOME">Home</a></li>
+                        <li><a class="nav-link" href="#aboutus">About</a></li>
+                        <li><a class="nav-link" href="#FOOTER">Contact</a></li>
+                        <li class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Pages
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                                    <li><a class="dropdown-item" href="#data.html">Services</a></li>
-                                    <li><a class="dropdown-item" href="#PRICING">Pricing Plan</a></li>
-                                    <li><a class="dropdown-item" href="#aboutus">Team</a></li>
-                                    <li><a class="dropdown-item" href="#PORTFOLIO">Portfolio</a></li>
-                                    <li><a class="dropdown-item" href="#aboutus">FAQ</a></li>
-                                    <li><a class="dropdown-item" href="#BLOGS">Blog</a></li>
+                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                <li><a class="dropdown-item" href="#data.html">Services</a></li>
+                                <li><a class="dropdown-item" href="#PRICING">Pricing Plan</a></li>
+                                <li><a class="dropdown-item" href="#aboutus">Team</a></li>
+                                <li><a class="dropdown-item" href="#PORTFOLIO">Portfolio</a></li>
+                                <li><a class="dropdown-item" href="#aboutus">FAQ</a></li>
+                                <li><a class="dropdown-item" href="#BLOGS">Blog</a></li>
+
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="flex nav-right">
+                    <p>Call Us: <a href="tel:+250782010317" class="contact-link">+250782010317</a></p>
+
+                </div>
+            </nav>
+            <!-- Sidebar -->
+            <aside id="mySidepanel" class="sidepanel">
+                <div class="sidebar flex">
+                    <a href="#HERO"><img src="Images/logo.png" alt="logo"></a>
+                    <button class="closebtn btn_hover1" onclick="closeNav()"><i
+                                class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div>
+                    <!-- side menus -->
+                    <ul>
+                        <li><a class="nav-link active" href="#HOME">Home</a></li>
+                        <li><a class="nav-link" href="#aboutus">About</a></li>
+                        <li><a class="nav-link" href="#FOOTER">Contact</a></li>
+                        <li class="pages"><a href="#">More</a></li>
+                        <li class="collapse_btn">
+                            <a class="nav-link plus_collapse" data-bs-toggle="collapse" href="javascript:void(0);" onclick="toggleCollapse('pages')" aria-expanded="false" aria-controls="pages">
+                                <i class="fa-solid fa-plus"></i>
+                            </a>
+                            <div class="collapse" id="pages">
+                                <ul>
+                                    <li><a class="nav-link" href="data.html">Services</a></li>
+                                    <li><a class="nav-link" href="#PRICING">Pricing Plan</a></li>
+                                    <li><a class="nav-link" href="#PORTFOLIO">Portfolio</a></li>
+                                    <li><a class="nav-link" href="#aboutus">Team</a></li>
+                                    <li><a class="nav-link" href="#aboutus">FAQ</a></li>
+                                    <li><a class="nav-link" href="#BLOGS">Blog</a></li>
 
                                 </ul>
-                            </li>
-                        </ul>
-
-                    </div>
-
-                    <div class="flex nav-right">
-                        <p>Call Us: <a href="tel:+250782010317" class="contact-link">+250782010317</a></p>
-
-                    </div>
-                </nav>
-                <!-- Sidebar -->
-                <aside id="mySidepanel" class="sidepanel">
-                    <div class="sidebar flex">
-                        <a href="#HERO"><img src="Images/logo.png" alt="logo"></a>
-                        <button class="closebtn btn_hover1" onclick="closeNav()"><i
-                                class="fa-solid fa-xmark"></i></button>
-                    </div>
-                    <div>
-                        <!-- side menus -->
-                        <ul>
-                            <li><a class="nav-link active" href="#HOME">Home</a></li>
-                            <li><a class="nav-link" href="#aboutus">About</a></li>
-                            <li><a class="nav-link" href="#FOOTER">Contact</a></li>
-                            <li class="pages"><a href="#">More</a></li>
-                            <li class="collapse_btn">
-                                <a class="nav-link plus_collapse" data-bs-toggle="collapse" href="javascript:void(0);" onclick="toggleCollapse('pages')" aria-expanded="false" aria-controls="pages">
-                                    <i class="fa-solid fa-plus"></i>
-                                </a>
-                                <div class="collapse" id="pages">
-                                    <ul>
-                                        <li><a class="nav-link" href="data.html">Services</a></li>
-                                        <li><a class="nav-link" href="#PRICING">Pricing Plan</a></li>
-                                        <li><a class="nav-link" href="#PORTFOLIO">Portfolio</a></li>
-                                        <li><a class="nav-link" href="#aboutus">Team</a></li>
-                                        <li><a class="nav-link" href="#aboutus">FAQ</a></li>
-                                        <li><a class="nav-link" href="#BLOGS">Blog</a></li>
-
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </aside>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
 
 
+        </header>
+        <!-- ====== End of 1.1. Header section ====== -->
+        <!-- ====== 1.2. hero section ====== -->
+        <section id="HOME">
 
-                <iframe src="data.html" style="width:100%; height:100vh; border:none;" loading="lazy">
-                </iframe>
+            <div class="data-header" id="dataHeader">
+                <canvas id="binary-background"></canvas>
+                <canvas id="data-canvas" aria-label="Data flow visualization"></canvas>
 
+                <div class="innovatoor-center">
+                    <div class="innovatoor-title">Innovatoor<br>Services</div>
 
-            </header>
-            <!-- ====== End of 1.1. Header section ====== -->
-            <!-- ====== 1.2. hero section ====== -->
+                </div>
 
-            <!-- ====== End of 1.2. hero section ====== -->
-        </div>
+                <div class="sprite-hint">Click service labels to learn more</div>
+
+                <div class="info-panel" id="info-panel" role="dialog" aria-hidden="true">
+                    <button class="close-btn" onclick="closePanel()" aria-label="Close">×</button>
+                    <div id="info-content"></div>
+                </div>
+            </div>
+        </section>
+        <!-- ====== End of 1.2. hero section ====== -->
+
         <!-- ====== 1.3. card section ====== -->
 
         <!-- ====== End of 1.3. card section ====== -->
@@ -178,7 +715,7 @@
         <section class="logoipsum">
             <div class="container">
                 <div class="flex flex-col gap-2">
-                    
+
                     <h3 data-aos="zoom-in" class="mb-15">OUR CLIENTS</h3>
                 </div>
 
@@ -219,10 +756,45 @@
 
         <!-- ====== End of 1.4. logoipsum section ====== -->
         <!-- ====== 1.5. About us section ====== -->
-         <section id="aboutus">
+        <section id="aboutus">
 
-            <iframe src="about.html" style="width:100%; height:100vh; border:none;" loading="lazy">
-                </iframe>
+            <div class="dataheader" id="dataHeade">
+                <canvas id="particle-canvas"></canvas>
+                <canvas id="data-canva" aria-label="Data flow visualization"></canvas>
+
+                <div class="innovatoor-center">
+                    <div class="center-ring"></div>
+                    <div class="center-ring"></div>
+                    <div class="center-ring"></div>
+                    <div class="center-core">
+                        <div class="innovatoor-title">12+ Years</div>
+                        <div class="innovatoor-services"><b>of Experience</b></div>
+                    </div>
+                </div>
+
+                <div class="hud-overlay">
+                    <div class="hud-item">
+                        <span class="hud-label">STATUS:</span>
+                        <span class="hud-value">ACTIVE SINCE 2018</span>
+                    </div>
+                    <div class="hud-item">
+                        <span class="hud-label">STREAMS:</span>
+                        <span class="hud-value" id="stream-count">24</span>
+                    </div>
+                    <div class="hud-item">
+                        <span class="hud-label">DATA FLOW:</span>
+                        <span class="hud-value" id="data-flow">98.7%</span>
+                    </div>
+                </div>
+
+                <div class="sprite-hint">► CLICK NODES TO EXPLORE</div>
+
+                <div class="info-pane" id="info-pane" role="dialog" aria-hidden="true">
+                    <button class="close-btn" onclick="closePanel()" aria-label="Close">×</button>
+                    <div id="info-conten"></div>
+                </div>
+            </div>
+
         </section>
         <!-- ====== End of 1.5. About us section ====== -->
         <!-- ====== 1.6. gallary section ====== -->
@@ -402,7 +974,7 @@
             </div>
         </section>
         <!-- ====== End of 1.6. gallary section ====== -->
-      
+
         <!-- ====== End of 1.7. Services section ====== -->
         <!-- ====== 1.8. Experience section ====== -->
         <section id="SERVICES2" class="experience">
@@ -475,13 +1047,13 @@
             </div>
         </section>
         <!-- ====== End of 1.8. Experience section ====== -->
-       
+
         <!-- ====== End of 1.9. How we work section ====== -->
         <!-- ====== 1.10. team section ====== -->
-        
-                      
-                   
-                   
+
+
+
+
         <!-- ====== End of 1.10. team section ====== -->
         <!-- ====== 1.11. Pricing section ====== -->
         <section id="PRICING" class="pricing p-relative">
@@ -537,9 +1109,9 @@
         </section>
         <!-- ====== End of 1.11. Pricing section ====== -->
         <!-- ====== 1.12. FAQ section ====== -->
-          
-                          
-                                   
+
+
+
         <!-- ====== End of 1.12. FAQ section ====== -->
         <!-- ====== 1.13. Blogs section ====== -->
         <section id="BLOGS" class="blog">
@@ -699,8 +1271,7 @@
         });
     </script>
 
-    <!-- jquery js cdn -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- jquery min js cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
@@ -709,6 +1280,1014 @@
 
     <!-- custom js -->
     <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        // Binary Background Animation - Grid pattern
+        (function() {
+            const canvas = document.getElementById('binary-background');
+            const ctx = canvas.getContext('2d');
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            const fontSize = 14;
+            const columns = Math.floor(canvas.width / fontSize);
+            const rows = Math.floor(canvas.height / fontSize);
+
+            // Create grid of binary digits
+            const grid = [];
+            for (let i = 0; i < columns; i++) {
+                grid[i] = [];
+                for (let j = 0; j < rows; j++) {
+                    grid[i][j] = {
+                        value: Math.random() > 0.5 ? '1' : '0',
+                        opacity: Math.random() * 0.5 + 0.1,
+                        changeSpeed: Math.random() * 0.02
+                    };
+                }
+            }
+
+            function drawBinary() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.font = `${fontSize}px monospace`;
+
+                for (let i = 0; i < columns; i++) {
+                    for (let j = 0; j < rows; j++) {
+                        const cell = grid[i][j];
+
+                        // Randomly change some digits
+                        if (Math.random() < cell.changeSpeed) {
+                            cell.value = Math.random() > 0.5 ? '1' : '0';
+                            cell.opacity = Math.random() * 0.5 + 0.3;
+                        } else {
+                            cell.opacity *= 0.98;
+                            if (cell.opacity < 0.1) cell.opacity = 0.1;
+                        }
+
+                        // Purple gradient
+                        const alpha = cell.opacity;
+                        ctx.fillStyle = `rgba(116, 54, 187, ${alpha})`;
+                        ctx.fillText(cell.value, i * fontSize, j * fontSize);
+                    }
+                }
+            }
+
+            setInterval(drawBinary, 50);
+        })();
+
+        // Main 3D Visualization
+        (function() {
+            try {
+                const services = [
+                    "Data Warehouse",
+                    "Market Research",
+                    "Competitor Analysis",
+                    "OSINT",
+                    "Data Integration",
+                    "Due Diligence",
+                    "Data scraping"
+                ];
+
+                const descriptions = {
+                    "Data Warehouse": "The Innovatoor Data Warehouse is an intelligence-focused software platform designed to bring clarity to complex markets.<br> It centralizes large volumes of publicly available data into one structured and continuously updated system, removing the need for manual research, scattered spreadsheets, and fragmented information sources. <br>The platform automatically collects data from websites, news outlets, company directories, digital platforms, and other open sources, ensuring decision-makers always work with fresh and reliable intelligence.<br><br>For competitor analysis, the Innovatoor Data Warehouse enables organizations to clearly identify key market players and understand how competitors operate and evolve. It allows you to track competitors' online visibility, media mentions, partnerships, business activities, and growth signals over time. <br>For example, a company planning to enter a new market can instantly see who is already active, which players are gaining influence, and where strategic gaps exist.<br><br>By combining advanced OSINT methodologies with automated data collection and structured storage, the Innovatoor Data Warehouse transforms raw public data into actionable insights. It supports faster decision-making, reduces strategic and operational risk, and helps organizations position themselves ahead of the competition with confidence.",
+
+                    "Market Research": " Understand your market before your competitors do. <br>Our market research and competitor analysis services provide a clear view of industry dynamics, customer behavior, pricing structures, and competitive positioning. <br>We combine data collection, OSINT techniques,and analytical insights to help you identify gaps, validate opportunities, reduce uncertainty, and build strategies grounded in evidence not assumptions.",
+
+                    "Competitor Analysis": "Innovatoor's Competitor Analysis service helps organizations clearly understand their competitive landscape using data-driven intelligence rather than assumptions. <br><br>We identify who your real competitors are, how they position themselves, and how their strategies evolve over time.<br><br>Using OSINT techniques and automated data collection, we track competitors' digital presence, media visibility, partnerships, and market activity. For example, a company planning to launch a new service can quickly see existing players, evaluate their strengths and weaknesses, and identify gaps in the market.<br><br>This approach transforms publicly available information into actionable insights, enabling smarter strategic decisions, reduced market risk, and stronger competitive positioning.",
+
+                    "OSINT": " Make smarter, safer decisions with intelligence that goes beyond surface-level information. <br>Our Open Source Intelligence (OSINT) services uncover hidden digital footprints, verify identities, expose risks, and reveal opportunities across people, companies, and markets. <br>Whether you are assessing partners, investigating fraud, monitoring reputational threats, or preparing strategic moves, we transform scattered public data into clear, actionable intelligence you can trust.",
+
+                    "Data Integration": "The world is changing and unpredictable, sometimes you don't know where to invest how to invest or the return on the investment.<br><br> You don't know if you should start a business today, tomorrow or the following year, you don't know the taste of the people in your loacality.<br><br> If you are already an existing startup you don't know the trend of the market, you are confused either you should look for investors or an IPO.<br> At Innovatoor we offer you the answer to this, wherever your country is and whatever the nature of your business. With advanced softwares and analysis.<br> We offer: OSINT,Market research, Competitor analysis",
+
+                    "Due Diligence": " Reduce risk before it becomes costly. <br>Our due diligence services provide in-depth background checks and risk assessments on individuals, companies, and transactions.<br> <br>We analyze ownership structures, digital presence, reputational signals, operational history, and red flags using OSINT and data-driven methodologies. <br><br>This enables you to enter partnerships, investments, or acquisitions with confidence and clarity",
+
+                    "Data scraping": "Access the data that drives real business decisions automatically and at scale.<br> <br>We design and deploy advanced data scraping bots that collect structured, reliable information from multiple online sources, even where manual collection is impossible or time consuming.<br><br> From market prices, company records, and online listings to news, trends, and lead databases, we deliver clean, ready-to-use data that powers analysis, monitoring, and growth."
+                };
+
+                const canvas = document.getElementById('data-canvas');
+                const scene = new THREE.Scene();
+
+                // Adjust camera FOV and position based on screen size
+                let isMobile = window.innerWidth < 768;
+                const fov = isMobile ? 90 : 75;
+                const camera = new THREE.PerspectiveCamera(fov, window.innerWidth / window.innerHeight, 0.1, 1000);
+                camera.position.set(0, 0, isMobile ? 35 : 30);
+
+                const renderer = new THREE.WebGLRenderer({
+                    canvas,
+                    antialias: true,
+                    alpha: true
+                });
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setClearColor(0x000000, 0);
+
+                // Lighting
+                scene.add(new THREE.AmbientLight(0xffffff, 0.3));
+                const light1 = new THREE.PointLight(0x7436bb, 2, 100);
+                light1.position.set(20, 20, 20);
+                scene.add(light1);
+                const light2 = new THREE.PointLight(0x3d0f41, 1.5, 100);
+                light2.position.set(-20, -20, 20);
+                scene.add(light2);
+
+                const dataGroup = new THREE.Group();
+                scene.add(dataGroup);
+
+                // Create tunnel-like structure with data streams
+                const streamCount = 12;
+                const segmentsPerStream = 100;
+                const tunnelDepth = 60;
+                const baseRadius = 8;
+
+                const allNodes = [];
+                const connections = [];
+                const dataPackets = [];
+
+                // Create radiating streams
+                for (let s = 0; s < streamCount; s++) {
+                    const angle = (s / streamCount) * Math.PI * 2;
+                    const streamNodes = [];
+
+                    for (let i = 0; i < segmentsPerStream; i++) {
+                        const t = i / segmentsPerStream;
+                        const z = -tunnelDepth / 2 + t * tunnelDepth;
+
+                        // Perspective effect - wider at front, narrower at back
+                        const radiusMultiplier = 1 - t * 0.7;
+                        const radius = baseRadius * radiusMultiplier;
+
+                        // Add some wave motion
+                        const wave = Math.sin(t * Math.PI * 4) * 0.5;
+                        const x = Math.cos(angle) * (radius + wave);
+                        const y = Math.sin(angle) * (radius + wave);
+
+                        // Create node
+                        const nodeGeom = new THREE.SphereGeometry(0.08, 8, 8);
+                        const nodeMat = new THREE.MeshPhongMaterial({
+                            color: 0x7436bb,
+                            emissive: 0x3d0f41,
+                            emissiveIntensity: 0.4,
+                            transparent: true,
+                            opacity: 0.6
+                        });
+                        const node = new THREE.Mesh(nodeGeom, nodeMat);
+                        node.position.set(x, y, z);
+                        dataGroup.add(node);
+
+                        streamNodes.push({
+                            mesh: node,
+                            position: new THREE.Vector3(x, y, z)
+                        });
+                        allNodes.push({
+                            mesh: node,
+                            position: new THREE.Vector3(x, y, z)
+                        });
+
+                        // Connect to previous node in stream
+                        if (i > 0) {
+                            const prev = streamNodes[i - 1];
+                            const geometry = new THREE.BufferGeometry().setFromPoints([
+                                prev.position,
+                                new THREE.Vector3(x, y, z)
+                            ]);
+                            const material = new THREE.LineBasicMaterial({
+                                color: 0x7436bb,
+                                transparent: true,
+                                opacity: 0.3
+                            });
+                            const line = new THREE.Line(geometry, material);
+                            dataGroup.add(line);
+                            connections.push({
+                                line,
+                                start: prev.position,
+                                end: new THREE.Vector3(x, y, z)
+                            });
+                        }
+                    }
+
+                    // Connect streams to adjacent streams for interconnection
+                    if (s > 0) {
+                        const prevStream = allNodes.slice((s - 1) * segmentsPerStream, s * segmentsPerStream);
+                        for (let i = 0; i < Math.min(20, segmentsPerStream); i += 5) {
+                            const idx = Math.floor(i);
+                            if (streamNodes[idx] && prevStream[idx]) {
+                                const geometry = new THREE.BufferGeometry().setFromPoints([
+                                    streamNodes[idx].position,
+                                    prevStream[idx].position
+                                ]);
+                                const material = new THREE.LineBasicMaterial({
+                                    color: 0x3d0f41,
+                                    transparent: true,
+                                    opacity: 0.15
+                                });
+                                const line = new THREE.Line(geometry, material);
+                                dataGroup.add(line);
+                            }
+                        }
+                    }
+                }
+
+                // Create flowing data packets
+                for (let i = 0; i < 80; i++) {
+                    const geom = new THREE.SphereGeometry(0.15, 12, 12);
+                    const mat = new THREE.MeshPhongMaterial({
+                        color: 0xffffff,
+                        emissive: 0x7436bb,
+                        emissiveIntensity: 0.8,
+                        transparent: true,
+                        opacity: 0.95
+                    });
+                    const packet = new THREE.Mesh(geom, mat);
+                    dataGroup.add(packet);
+
+                    const streamIdx = Math.floor(Math.random() * streamCount);
+                    dataPackets.push({
+                        mesh: packet,
+                        progress: Math.random(),
+                        speed: (isMobile ? 0.006 : 0.003) + Math.random() * (isMobile ? 0.006 : 0.004),
+
+                        streamIndex: streamIdx,
+                        segmentOffset: Math.floor(Math.random() * 10)
+                    });
+                }
+
+                // Create service labels at different depths
+                const labelAnchors = [];
+                for (let i = 0; i < services.length; i++) {
+                    const t = (i + 1) / (services.length + 1);
+                    const z = -tunnelDepth / 2 + t * tunnelDepth;
+                    const radiusMultiplier = 1 - t * 0.7;
+                    const labelRadius = baseRadius * radiusMultiplier * 1.3;
+
+                    const anchor = new THREE.Object3D();
+                    anchor.position.set(0, 0, z);
+                    dataGroup.add(anchor);
+
+                    labelAnchors.push({
+                        anchor: anchor,
+                        service: services[i],
+                        description: descriptions[services[i]],
+                        z: z,
+                        radius: labelRadius
+                    });
+                }
+
+                // Create service labels
+                function makeLabelTexture(text) {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = 512;
+                    canvas.height = 128;
+                    const ctx = canvas.getContext('2d');
+                    ctx.clearRect(0, 0, 512, 128);
+                    ctx.font = 'bold 20px "Segoe UI", Arial, sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+
+                    ctx.shadowColor = 'rgba(116, 54, 187, 1)';
+                    ctx.shadowBlur = 15;
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillText(text, 256, 64);
+
+                    ctx.shadowBlur = 0;
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillText(text, 256, 64);
+
+                    const texture = new THREE.CanvasTexture(canvas);
+                    texture.needsUpdate = true;
+                    return texture;
+                }
+
+                const labelEntries = [];
+                labelAnchors.forEach((anchorData, idx) => {
+                    const texture = makeLabelTexture(anchorData.service);
+                    const material = new THREE.SpriteMaterial({
+                        map: texture,
+                        transparent: true
+                    });
+                    material.depthTest = false;
+                    const sprite = new THREE.Sprite(material);
+                    const scale = 1 - (idx / labelAnchors.length) * 0.5;
+                    const baseScale = isMobile ? 0.7 : 1; // Smaller on mobile
+                    sprite.scale.set(6 * scale * baseScale, 1.6 * scale * baseScale, 1);
+                    sprite.renderOrder = 999;
+                    scene.add(sprite);
+                    labelEntries.push({
+                        sprite: sprite,
+                        anchor: anchorData.anchor,
+                        service: anchorData.service,
+                        description: anchorData.description,
+                        index: idx,
+                        radius: anchorData.radius
+                    });
+                });
+
+                // Click and touch interaction
+                const raycaster = new THREE.Raycaster();
+                const mouse = new THREE.Vector2();
+
+                function onClick(ev) {
+                    try {
+                        const rect = canvas.getBoundingClientRect();
+                        const clientX = ev.clientX || (ev.touches && ev.touches[0].clientX);
+                        const clientY = ev.clientY || (ev.touches && ev.touches[0].clientY);
+
+                        mouse.x = ((clientX - rect.left) / rect.width) * 2 - 1;
+                        mouse.y = -((clientY - rect.top) / rect.height) * 2 + 1;
+                        raycaster.setFromCamera(mouse, camera);
+                        const intersects = raycaster.intersectObjects(labelEntries.map(le => le.sprite), true);
+                        if (intersects.length) {
+                            const obj = intersects[0].object;
+                            const entry = labelEntries.find(le => le.sprite === obj);
+                            if (entry) showPanel(entry.service, entry.description);
+                        }
+                    } catch (e) {
+                        console.error('Click handler error', e);
+                    }
+                }
+                canvas.addEventListener('click', onClick);
+                canvas.addEventListener('touchend', onClick);
+
+                function showPanel(title, text) {
+                    const panel = document.getElementById('info-panel');
+                    const content = document.getElementById('info-content');
+                    content.innerHTML = `<h2>${title}</h2><p>${text}</p>`;
+                    panel.classList.add('visible');
+                    panel.setAttribute('aria-hidden', 'false');
+                }
+
+                function closePanel() {
+                    const panel = document.getElementById('info-panel');
+                    panel.classList.remove('visible');
+                    panel.setAttribute('aria-hidden', 'true');
+                }
+                window.closePanel = closePanel;
+
+                // Animation loop
+                let time = 0;
+
+                function animate() {
+                    requestAnimationFrame(animate);
+                    time += 0.01;
+
+                    // Move camera forward through tunnel
+                    dataGroup.position.z = Math.sin(time * 0.3) * 3;
+
+                    // Animate data packets
+                    dataPackets.forEach(packet => {
+                        packet.progress += packet.speed;
+                        if (packet.progress >= 1) {
+                            packet.progress = 0;
+                            packet.streamIndex = Math.floor(Math.random() * streamCount);
+                        }
+
+                        const segmentStart = packet.streamIndex * segmentsPerStream + packet.segmentOffset;
+                        const idx1 = Math.floor(packet.progress * (segmentsPerStream - packet.segmentOffset - 1)) + segmentStart;
+                        const idx2 = Math.min(idx1 + 1, allNodes.length - 1);
+
+                        if (allNodes[idx1] && allNodes[idx2]) {
+                            const localProgress = (packet.progress * (segmentsPerStream - packet.segmentOffset - 1)) % 1;
+                            const pos = allNodes[idx1].position.clone().lerp(allNodes[idx2].position, localProgress);
+                            packet.mesh.position.copy(pos);
+
+                            const scale = 1 + Math.sin(time * 5 + packet.progress * 10) * 0.3;
+                            packet.mesh.scale.setScalar(scale);
+                        }
+                    });
+
+                    // Pulse nodes
+                    allNodes.forEach((node, idx) => {
+                        const pulse = 0.8 + Math.sin(time * 2 + idx * 0.1) * 0.2;
+                        node.mesh.scale.setScalar(pulse);
+                    });
+
+                    // Position labels in circular pattern around their depth
+                    labelEntries.forEach((entry, idx) => {
+                        const world = new THREE.Vector3();
+                        entry.anchor.getWorldPosition(world);
+
+                        const speed = isMobile ? 0.25 : 0.1;
+                        const angle = (idx / labelEntries.length) * Math.PI * 2 + time * speed;
+
+
+                        // Adjust limits based on screen size
+                        const maxX = isMobile ? 3.2 : 5;
+                        const maxY = isMobile ? 1.8 : 2.8;
+
+                        const x = Math.cos(angle) * maxX;
+                        const y = Math.sin(angle) * maxY;
+
+                        entry.sprite.position.set(
+                            x,
+                            y,
+                            camera.position.z - 6
+                        );
+
+                        entry.sprite.quaternion.copy(camera.quaternion);
+                    });
+
+                    // Animate lights
+                    light1.position.x = Math.cos(time * 0.4) * 20;
+                    light1.position.y = Math.sin(time * 0.4) * 20;
+
+                    light2.position.x = Math.cos(time * 0.3 + Math.PI) * 15;
+                    light2.position.y = Math.sin(time * 0.3 + Math.PI) * 15;
+
+                    renderer.render(scene, camera);
+                }
+                animate();
+
+                window.addEventListener('resize', () => {
+                    const wasMobile = isMobile;
+                    isMobile = window.innerWidth < 768;
+
+                    camera.aspect = window.innerWidth / window.innerHeight;
+
+                    // Update FOV and camera position on orientation/size change
+                    if (wasMobile !== isMobile) {
+                        camera.fov = isMobile ? 90 : 75;
+                        camera.position.z = isMobile ? 35 : 30;
+                    }
+
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+
+                    // Update label scales
+                    labelEntries.forEach((entry, idx) => {
+                        const scale = 1 - (idx / labelEntries.length) * 0.5;
+                        const baseScale = isMobile ? 0.85 : 1;
+                        entry.sprite.scale.set(6 * scale * baseScale, 1.6 * scale * baseScale, 1);
+                    });
+                });
+
+            } catch (err) {
+                console.error('Fatal error:', err);
+            }
+        })();
+    </script>
+
+
+
+    <script>
+        // Detect mobile device
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+
+        // Particle Background - Optimized for mobile
+        (function() {
+            const canvas = document.getElementById('particle-canvas');
+            const ctx = canvas.getContext('2d');
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            const particles = [];
+            const particleCount = isMobile ? 10 : 50; // Reduced particles on mobile
+
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    size: Math.random() * 2 + 0.5,
+                    opacity: Math.random() * 0.5 + 0.2
+                });
+            }
+
+            function drawParticles() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                particles.forEach((p, i) => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(116, 54, 187, ${p.opacity})`;
+                    ctx.fill();
+
+                    // Draw connections - fewer on mobile
+                    if (!isMobile) {
+                        particles.slice(i + 1).forEach(p2 => {
+                            const dx = p2.x - p.x;
+                            const dy = p2.y - p.y;
+                            const dist = Math.sqrt(dx * dx + dy * dy);
+
+                            if (dist < 150) {
+                                ctx.beginPath();
+                                ctx.moveTo(p.x, p.y);
+                                ctx.lineTo(p2.x, p2.y);
+                                ctx.strokeStyle = `rgba(116, 54, 187, ${0.15 * (1 - dist / 150)})`;
+                                ctx.lineWidth = 0.5;
+                                ctx.stroke();
+                            }
+                        });
+                    }
+                });
+            }
+
+            function animate() {
+                requestAnimationFrame(animate);
+                drawParticles();
+            }
+            animate();
+        })();
+
+        // Main 3D Visualization - Heavily optimized for mobile
+        (function() {
+            try {
+                const services = [
+                    "About Us",
+                    "Frequently Asked Questions",
+                    "Our Team",
+                    "How We Work",
+                ];
+
+                const descriptions = {
+                    "About Us": "We are a dynamic data driven team specializing in collecting, structuring, and interpreting information to help businesses make smarter, faster, and more confident decisions.<br><br>" +
+                        "Whether it's identifying market trends, conducting due diligence, analyzing competitor strategies, mitigating business risks, or supporting company digitalization, our data warehouse turns raw information into actionable intelligence.<br><br>" +
+                        "We leverage over 200 OSINT tools—including Maltego, Shodan, and more than 8 advanced search engines—combined with our own custom developed scraping bots. These cutting-edge methodologies allow us to collect high-value data at scale and deliver precise, reliable insights.<br><br>" +
+                        "Innovatoor delivers tailored data solutions that give your business a clear competitive advantage supporting sustainable growth, stronger decision-making, online safety, and secure business deals.",
+
+                    "Frequently Asked Questions": `
+                        <div style="max-height: 400px; overflow-y: auto; padding-right: 10px;">
+                            <details style="margin-bottom: 15px; border: 1px solid rgba(116, 54, 187, 0.3); border-radius: 8px; padding: 12px; background: rgba(116, 54, 187, 0.1);">
+                                <summary style="cursor: pointer; font-weight: bold; color: #ffffff; font-size: 0.95rem;">WHAT IS OSINT, AND HOW DOES INNOVATOOR USE IT?</summary>
+                                <p style="margin-top: 10px; color: #e8e8e8; line-height: 1.6;">OSINT (Open Source Intelligence) refers to the collection and analysis of publicly available data from various online sources. At Innovatoor, we use over 200 OSINT tools to gather and analyze valuable information, helping businesses with competitor analysis, market research, due diligence, and more.</p>
+                            </details>
+                            <details style="margin-bottom: 15px; border: 1px solid rgba(116, 54, 187, 0.3); border-radius: 8px; padding: 12px; background: rgba(116, 54, 187, 0.1);">
+                                <summary style="cursor: pointer; font-weight: bold; color: #ffffff; font-size: 0.95rem;">WHAT TYPES OF BUSINESSES BENEFIT FROM INNOVATOOR'S SERVICES?</summary>
+                                <p style="margin-top: 10px; color: #e8e8e8; line-height: 1.6;">Innovatoor's services are tailored to a wide range of industries, including startups, established businesses, financial institutions, and organizations seeking to enhance their decision-making with data-driven insights. Whether you're in need of market research, fraud prevention, or digital transformation, we have a solution for you.</p>
+                            </details>
+                            <details style="margin-bottom: 15px; border: 1px solid rgba(116, 54, 187, 0.3); border-radius: 8px; padding: 12px; background: rgba(116, 54, 187, 0.1);">
+                                <summary style="cursor: pointer; font-weight: bold; color: #ffffff; font-size: 0.95rem;">HOW DOES INNOVATOOR HELP WITH MARKET RESEARCH?</summary>
+                                <p style="margin-top: 10px; color: #e8e8e8; line-height: 1.6;">We use advanced data scraping tools, OSINT, and competitor analysis to gather insights on market trends, consumer behavior, and competitor activities. This information helps businesses make informed decisions and stay ahead in competitive markets.</p>
+                            </details>
+                            <details style="margin-bottom: 15px; border: 1px solid rgba(116, 54, 187, 0.3); border-radius: 8px; padding: 12px; background: rgba(116, 54, 187, 0.1);">
+                                <summary style="cursor: pointer; font-weight: bold; color: #ffffff; font-size: 0.95rem;">WHAT IS DUE DILIGENCE, AND WHY IS IT IMPORTANT?</summary>
+                                <p style="margin-top: 10px; color: #e8e8e8; line-height: 1.6;">Due diligence is the process of thoroughly investigating a business or individual before entering into a deal, partnership, or investment. We help businesses assess the risks and opportunities involved by providing accurate, actionable intelligence and background checks to ensure safe, informed decision-making.</p>
+                            </details>
+                            <details style="margin-bottom: 15px; border: 1px solid rgba(116, 54, 187, 0.3); border-radius: 8px; padding: 12px; background: rgba(116, 54, 187, 0.1);">
+                                <summary style="cursor: pointer; font-weight: bold; color: #ffffff; font-size: 0.95rem;">HOW DO YOU PREVENT SCAMS AND FRAUD?</summary>
+                                <p style="margin-top: 10px; color: #e8e8e8; line-height: 1.6;">We provide scammers identification services using OSINT tools to track fraudulent activities, identify potential threats, and protect your business from scams. Our team helps secure your online presence and business transactions, ensuring your operations remain safe and reliable.</p>
+                            </details>
+                            <details style="margin-bottom: 15px; border: 1px solid rgba(116, 54, 187, 0.3); border-radius: 8px; padding: 12px; background: rgba(116, 54, 187, 0.1);">
+                                <summary style="cursor: pointer; font-weight: bold; color: #ffffff; font-size: 0.95rem;">CAN INNOVATOOR HELP WITH LEAD GENERATION?</summary>
+                                <p style="margin-top: 10px; color: #e8e8e8; line-height: 1.6;">Yes, we specialize in lead generation by utilizing accurate data to identify potential clients and optimize outreach strategies. Our advanced tools assist businesses in gathering high-quality leads, leading to improved sales conversions and growth opportunities.</p>
+                            </details>
+                            <details style="margin-bottom: 15px; border: 1px solid rgba(116, 54, 187, 0.3); border-radius: 8px; padding: 12px; background: rgba(116, 54, 187, 0.1);">
+                                <summary style="cursor: pointer; font-weight: bold; color: #ffffff; font-size: 0.95rem;">WHAT IS DIGITALIZATION AND HOW CAN YOU ASSIST?</summary>
+                                <p style="margin-top: 10px; color: #e8e8e8; line-height: 1.6;">Digitalization is the integration of digital technologies into your business operations to improve efficiency and scalability. We help businesses streamline processes by offering customized solutions like website OSINT, social media intelligence, and automated scraping bots to enhance data collection and support smarter decision-making.</p>
+                            </details>
+                        </div>
+                    `,
+
+                    "Our Team": `
+                        <p style="margin-bottom: 15px;">The team at Innovatoor is a dynamic blend of expertise and innovation, bringing together professionals from diverse backgrounds to deliver exceptional results.</p>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 10px;">
+                            <div style="position: relative; border-radius: 12px; overflow: hidden; border: 2px solid rgba(116, 54, 187, 0.4); background: rgba(0, 0, 0, 0.3);">
+                                <img src="Images/slider/team-slider1.png" alt="MUGENZI Bel Arthur" style="width: 100%; height: 250px; object-fit: cover; object-position: center top; display: block;">
+                                <div style="padding: 15px; background: linear-gradient(to bottom, rgba(116, 54, 187, 0.2), rgba(61, 15, 65, 0.4));">
+                                    <h3 style="margin: 0 0 5px 0; font-size: 1rem; color: #ffffff;">MUGENZI Bel Arthur</h3>
+                                    <h4 style="margin: 0 0 10px 0; font-size: 0.85rem; color: #7436bb; font-weight: 600;">Founder</h4>
+                                    <div style="display: flex; gap: 10px;">
+                                        <a href="https://rw.linkedin.com/in/bel-arthur-mugenzi-998266189/" target="_blank" style="color: #ffffff; text-decoration: none; font-size: 1.2rem;">📱</a>
+                                        <a href="https://www.instagram.com/m_belarthur/" target="_blank" style="color: #ffffff; text-decoration: none; font-size: 1.2rem;">📷</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="position: relative; border-radius: 12px; overflow: hidden; border: 2px solid rgba(116, 54, 187, 0.4); background: rgba(0, 0, 0, 0.3);">
+                                <img src="Images/slider/team-slider2.png" alt="NDAYIRAGIJE Gael" style="width: 100%; height: 250px; object-fit: cover; object-position: center top; display: block;">
+                                <div style="padding: 15px; background: linear-gradient(to bottom, rgba(116, 54, 187, 0.2), rgba(61, 15, 65, 0.4));">
+                                    <h3 style="margin: 0; font-size: 1rem; color: #ffffff;">NDAYIRAGIJE Gael</h3>
+                                </div>
+                            </div>
+                            
+                            <div style="position: relative; border-radius: 12px; overflow: hidden; border: 2px solid rgba(116, 54, 187, 0.4); background: rgba(0, 0, 0, 0.3);">
+                                <img src="Images/slider/team-slider3.png" alt="NIYONKURU Odilon" style="width: 100%; height: 250px; object-fit: cover; object-position: center top; display: block;">
+                                <div style="padding: 15px; background: linear-gradient(to bottom, rgba(116, 54, 187, 0.2), rgba(61, 15, 65, 0.4));">
+                                    <h3 style="margin: 0 0 5px 0; font-size: 1rem; color: #ffffff;">NIYONKURU Odilon</h3>
+                                    <h4 style="margin: 0; font-size: 0.85rem; color: #7436bb; font-weight: 600;">Consultant</h4>
+                                </div>
+                            </div>
+                            
+                            <div style="position: relative; border-radius: 12px; overflow: hidden; border: 2px solid rgba(116, 54, 187, 0.4); background: rgba(0, 0, 0, 0.3);">
+                                <img src="Images/slider/team-slider4.png" alt="ISHIMWE David" style="width: 100%; height: 250px; object-fit: cover; object-position: center top; display: block;">
+                                <div style="padding: 15px; background: linear-gradient(to bottom, rgba(116, 54, 187, 0.2), rgba(61, 15, 65, 0.4));">
+                                    <h3 style="margin: 0 0 5px 0; font-size: 1rem; color: #ffffff;">ISHIMWE David</h3>
+                                    <h4 style="margin: 0; font-size: 0.85rem; color: #7436bb; font-weight: 600;">Designer</h4>
+                                </div>
+                            </div>
+                        </div>
+                    `,
+                    "How We Work": `
+                        <div style="position: relative; min-height: 400px; border-radius: 12px; overflow: hidden; background-image: url('Images/bg/work-bg.jpg'); background-size: center; background-position: center; padding: 30px;">
+                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(61, 15, 65, 0.0), rgba(26, 10, 46, 0.0)); backdrop-filter: blur(2px);"></div>
+                            
+                            <div style="position: relative; z-index: 2;">
+                                <h2 style="text-align: center; margin-bottom: 10px; font-size: 1.4rem; color: #ffffff; text-shadow: 0 0 20px rgba(116, 54, 187, 0.8);">HOW WE WORK</h2>
+                                <h3 style="text-align: center; margin-bottom: 15px; font-size: 1.6rem; color: #ffffff; font-weight: 700;">Our Process For Delivering Results</h3>
+                                <p style="text-align: center; margin-bottom: 30px; color: #e8e8e8; line-height: 1.6;">We turn data into Consultation and Insights delivering business success and safety in all your business deals.</p>
+                                
+                                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; max-width: 800px; margin: 0 auto;">
+                                    <div style="text-align: center;">
+                                        <div style="width: 120px; height: 120px; margin: 0 auto 15px; background: linear-gradient(135deg, rgba(147, 51, 234, 0.6), rgba(168, 85, 247, 0.6)); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(116, 54, 187, 0.5); border: 3px solid rgba(255, 255, 255, 0.2);">
+                                            <span style="font-size: 2rem; font-weight: 900; color: #ffffff; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);">01.</span>
+                                        </div>
+                                        <h4 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 8px; font-weight: 700;">Make An Appointment</h4>
+                                        <p style="color: #e8e8e8; font-size: 0.9rem; line-height: 1.5;">Schedule your consultation with our experts</p>
+                                    </div>
+                                    
+                                    <div style="text-align: center;">
+                                        <div style="width: 120px; height: 120px; margin: 0 auto 15px; background: linear-gradient(135deg, rgba(147, 51, 234, 0.6), rgba(168, 85, 247, 0.6)); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(116, 54, 187, 0.5); border: 3px solid rgba(255, 255, 255, 0.2);">
+                                            <span style="font-size: 2rem; font-weight: 900; color: #ffffff; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);">02.</span>
+                                        </div>
+                                        <h4 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 8px; font-weight: 700;">Meet Our Team</h4>
+                                        <p style="color: #e8e8e8; font-size: 0.9rem; line-height: 1.5;">Connect with our professional data specialists</p>
+                                    </div>
+                                    
+                                    <div style="text-align: center;">
+                                        <div style="width: 120px; height: 120px; margin: 0 auto 15px; background: linear-gradient(135deg, rgba(147, 51, 234, 0.6), rgba(168, 85, 247, 0.6)); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(116, 54, 187, 0.5); border: 3px solid rgba(255, 255, 255, 0.2);">
+                                            <span style="font-size: 2rem; font-weight: 900; color: #ffffff; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);">03.</span>
+                                        </div>
+                                        <h4 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 8px; font-weight: 700;">Get Consultation</h4>
+                                        <p style="color: #e8e8e8; font-size: 0.9rem; line-height: 1.5;">Receive expert insights and recommendations</p>
+                                    </div>
+                                    
+                                    <div style="text-align: center;">
+                                        <div style="width: 120px; height: 120px; margin: 0 auto 15px; background: linear-gradient(135deg, rgba(147, 51, 234, 0.6), rgba(168, 85, 247, 0.6)); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(116, 54, 187, 0.5); border: 3px solid rgba(255, 255, 255, 0.2);">
+                                            <span style="font-size: 2rem; font-weight: 900; color: #ffffff; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);">04.</span>
+                                        </div>
+                                        <h4 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 8px; font-weight: 700;">Start Project</h4>
+                                        <p style="color: #e8e8e8; font-size: 0.9rem; line-height: 1.5;">Begin your data-driven journey with us</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `,
+
+                };
+                const canvas = document.getElementById('data-canva');
+                const scene = new THREE.Scene();
+
+                const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                camera.position.set(0, 0, 40);
+
+                const renderer = new THREE.WebGLRenderer({
+                    canvas,
+                    antialias: true,
+                    alpha: true
+                });
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setClearColor(0x000000, 0);
+
+                // Lighting
+                scene.add(new THREE.AmbientLight(0x4a2a5a, 0.3));
+
+                const centerLight = new THREE.PointLight(0x7436bb, 4, 80);
+                centerLight.position.set(0, 0, 0);
+                scene.add(centerLight);
+
+                const light1 = new THREE.PointLight(0xffffff, 2, 100);
+                light1.position.set(30, 30, 30);
+                scene.add(light1);
+
+                const dataGroup = new THREE.Group();
+                scene.add(dataGroup);
+
+                // Create futuristic geometric structure
+                const layers = 5;
+                const nodesPerLayer = 8;
+                const allNodes = [];
+                const serviceNodes = [];
+
+                for (let layer = 0; layer < layers; layer++) {
+                    const z = (layer - layers / 2) * 15;
+                    const radius = 12 + layer * 2;
+
+                    for (let i = 0; i < nodesPerLayer; i++) {
+                        const angle = (i / nodesPerLayer) * Math.PI * 2;
+                        const x = Math.cos(angle) * radius;
+                        const y = Math.sin(angle) * radius;
+
+                        // Create node with geometric shape
+                        const geometry = new THREE.OctahedronGeometry(0.6, 0);
+                        const material = new THREE.MeshPhongMaterial({
+                            color: 0x7436bb,
+                            emissive: 0x7436bb,
+                            emissiveIntensity: 0.5,
+                            transparent: true,
+                            opacity: 0.8,
+                            shininess: 100,
+                            flatShading: true
+                        });
+                        const node = new THREE.Mesh(geometry, material);
+                        node.position.set(x, y, z);
+                        dataGroup.add(node);
+
+                        allNodes.push({
+                            mesh: node,
+                            position: new THREE.Vector3(x, y, z),
+                            layer: layer,
+                            index: i
+                        });
+
+                        // Wireframe overlay
+                        const wireframe = new THREE.LineSegments(
+                            new THREE.EdgesGeometry(geometry),
+                            new THREE.LineBasicMaterial({
+                                color: 0xffffff,
+                                transparent: true,
+                                opacity: 0.3
+                            })
+                        );
+                        node.add(wireframe);
+                    }
+                }
+
+                // Create connections between layers
+                allNodes.forEach((node, idx) => {
+                    // Connect to next layer
+                    const nextLayerNodes = allNodes.filter(n => n.layer === node.layer + 1);
+                    nextLayerNodes.forEach((nextNode, i) => {
+                        if (i <= 2) { // Connect to 3 nodes
+                            const points = [node.position, nextNode.position];
+                            const geometry = new THREE.BufferGeometry().setFromPoints(points);
+                            const material = new THREE.LineBasicMaterial({
+                                color: 0x7436bb,
+                                transparent: true,
+                                opacity: 0.2
+                            });
+                            const line = new THREE.Line(geometry, material);
+                            dataGroup.add(line);
+                        }
+                    });
+
+                    // Connect within layer
+                    const sameLayerNodes = allNodes.filter(n => n.layer === node.layer && n.index === (node.index + 1) % nodesPerLayer);
+                    sameLayerNodes.forEach(sameNode => {
+                        const points = [node.position, sameNode.position];
+                        const geometry = new THREE.BufferGeometry().setFromPoints(points);
+                        const material = new THREE.LineBasicMaterial({
+                            color: 0x3d0f41,
+                            transparent: true,
+                            opacity: 0.3
+                        });
+                        const line = new THREE.Line(geometry, material);
+                        dataGroup.add(line);
+                    });
+                });
+
+                // Create energy particles
+                const particles = [];
+                for (let i = 0; i < 200; i++) {
+                    const geometry = new THREE.SphereGeometry(0.15, 8, 8);
+                    const material = new THREE.MeshBasicMaterial({
+                        color: 0xffffff,
+                        transparent: true,
+                        opacity: 0.9
+                    });
+                    const particle = new THREE.Mesh(geometry, material);
+                    dataGroup.add(particle);
+
+                    particles.push({
+                        mesh: particle,
+                        startNode: Math.floor(Math.random() * allNodes.length),
+                        endNode: Math.floor(Math.random() * allNodes.length),
+                        progress: Math.random(),
+                        speed: 0.005 + Math.random() * 0.01
+                    });
+                }
+
+                // Create service label nodes
+                function makeLabelTexture(text) {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = 1024;
+                    canvas.height = 256;
+                    const ctx = canvas.getContext('2d');
+                    ctx.clearRect(0, 0, 1024, 256);
+
+                    // Hexagon background
+                    ctx.fillStyle = 'rgba(0, 0, 0, 0)';
+                    ctx.strokeStyle = 'rgba(116, 54, 187, 0.8)';
+                    ctx.lineWidth = 3;
+                    ctx.beginPath();
+                    for (let i = 0; i < 6; i++) {
+                        const angle = (i / 6) * Math.PI * 2;
+                        const x = 512 + Math.cos(angle) * 450;
+                        const y = 128 + Math.sin(angle) * 100;
+                        if (i === 0) ctx.moveTo(x, y);
+                        else ctx.lineTo(x, y);
+                    }
+                    ctx.closePath();
+                    ctx.fill();
+                    ctx.stroke();
+
+                    ctx.font = 'bold 48px "Segoe UI", Arial, sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+
+                    ctx.shadowColor = 'rgba(116, 54, 187, 1)';
+                    ctx.shadowBlur = 30;
+                    ctx.fillStyle = '#000000';
+                    ctx.fillText(text, 512, 128);
+
+                    ctx.shadowBlur = 25;
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillText(text, 512, 128);
+
+                    const texture = new THREE.CanvasTexture(canvas);
+                    texture.needsUpdate = true;
+                    return texture;
+                }
+
+                const labelEntries = [];
+                services.forEach((service, idx) => {
+                    const texture = makeLabelTexture(service);
+                    const material = new THREE.SpriteMaterial({
+                        map: texture,
+                        transparent: true
+                    });
+                    material.depthTest = false;
+                    const sprite = new THREE.Sprite(material);
+                    sprite.scale.set(12, 3, 1);
+                    sprite.renderOrder = 999;
+                    scene.add(sprite);
+
+                    // Associate with a node
+                    const nodeIdx = Math.floor((idx / services.length) * allNodes.length);
+                    const node = allNodes[nodeIdx];
+
+                    labelEntries.push({
+                        sprite: sprite,
+                        service: service,
+                        description: descriptions[service],
+                        node: node,
+                        index: idx
+                    });
+                });
+
+                // Click interaction
+                const raycaster = new THREE.Raycaster();
+                const mouse = new THREE.Vector2();
+
+                function onClick(ev) {
+                    try {
+                        const rect = canvas.getBoundingClientRect();
+                        mouse.x = ((ev.clientX - rect.left) / rect.width) * 2 - 1;
+                        mouse.y = -((ev.clientY - rect.top) / rect.height) * 2 + 1;
+                        raycaster.setFromCamera(mouse, camera);
+                        const intersects = raycaster.intersectObjects(labelEntries.map(le => le.sprite), true);
+                        if (intersects.length) {
+                            const obj = intersects[0].object;
+                            const entry = labelEntries.find(le => le.sprite === obj);
+                            if (entry) showPanel(entry.service, entry.description);
+                        }
+                    } catch (e) {
+                        console.error('Click handler error', e);
+                    }
+                }
+                canvas.addEventListener('click', onClick);
+
+                function showPanel(title, text) {
+                    const panel = document.getElementById('info-pane');
+                    const content = document.getElementById('info-conten');
+                    content.innerHTML = `<h2>${title}</h2><p>${text}</p>`;
+                    panel.classList.add('visible');
+                    panel.setAttribute('aria-hidden', 'false');
+                }
+
+                function closePanel() {
+                    const panel = document.getElementById('info-pane');
+                    panel.classList.remove('visible');
+                    panel.setAttribute('aria-hidden', 'true');
+                }
+                window.closePanel = closePanel;
+
+                // Animation
+                let time = 0;
+
+                function animate() {
+                    requestAnimationFrame(animate);
+                    time += 0.01;
+
+                    // Rotate entire structure
+                    dataGroup.rotation.y = time * 0.2;
+                    dataGroup.rotation.x = Math.sin(time * 0.3) * 0.1;
+
+                    // Animate particles
+                    particles.forEach(p => {
+                        p.progress += p.speed;
+                        if (p.progress >= 1) {
+                            p.progress = 0;
+                            p.startNode = Math.floor(Math.random() * allNodes.length);
+                            p.endNode = Math.floor(Math.random() * allNodes.length);
+                        }
+
+                        const start = allNodes[p.startNode].position;
+                        const end = allNodes[p.endNode].position;
+                        const pos = start.clone().lerp(end, p.progress);
+                        p.mesh.position.copy(pos);
+
+                        const scale = 1 + Math.sin(p.progress * Math.PI) * 0.5;
+                        p.mesh.scale.setScalar(scale);
+                    });
+
+                    // Pulse nodes
+                    allNodes.forEach((node, idx) => {
+                        node.mesh.rotation.x += 0.01;
+                        node.mesh.rotation.y += 0.01;
+                        const pulse = 0.8 + Math.sin(time * 2 + idx * 0.3) * 0.2;
+                        node.mesh.scale.setScalar(pulse);
+                    });
+
+                    // Position labels - organic floating within safe bounds
+                    labelEntries.forEach((entry, idx) => {
+                        // Each label has unique movement pattern
+                        const timeOffset = idx * 1.7;
+                        const speedX = 0.08 + (idx % 3) * 0.02;
+                        const speedY = 0.06 + (idx % 4) * 0.015;
+
+                        // Calculate safe bounds based on screen size
+                        const aspect = camera.aspect;
+                        const vFOV = camera.fov * Math.PI / 180;
+                        const distance = 15;
+                        const viewHeight = 2 * Math.tan(vFOV / 2) * distance;
+                        const viewWidth = viewHeight * aspect;
+
+                        // Keep labels within 70% of visible area for safety
+                        const safeWidth = viewWidth * 0.35;
+                        const safeHeight = viewHeight * 0.35;
+
+                        // Organic movement using different sine/cosine combinations
+                        const x = Math.sin(time * speedX + timeOffset) * safeWidth *
+                            Math.cos(time * speedY * 0.5 + timeOffset);
+                        const y = Math.cos(time * speedY + timeOffset) * safeHeight *
+                            Math.sin(time * speedX * 0.7 + timeOffset);
+                        const z = camera.position.z - distance;
+
+                        entry.sprite.position.set(x, y, z);
+                        entry.sprite.quaternion.copy(camera.quaternion);
+                    });
+
+                    // Animate lights
+                    light1.position.x = Math.cos(time * 0.5) * 40;
+                    light1.position.y = Math.sin(time * 0.5) * 40;
+                    centerLight.intensity = 3.5 + Math.sin(time * 3) * 0.5;
+
+                    // Update HUD
+                    document.getElementById('data-flow').textContent = (95 + Math.sin(time) * 3).toFixed(1) + '%';
+
+                    renderer.render(scene, camera);
+                }
+                animate();
+
+                window.addEventListener('resize', () => {
+                    camera.aspect = window.innerWidth / window.innerHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                });
+
+            } catch (err) {
+                console.error('Fatal error:', err);
+            }
+        })();
+    </script>
+    <script>
+        function closePanel() {
+            const panel1 = document.getElementById('info-panel');
+            const panel2 = document.getElementById('info-pane');
+
+            if (panel1) {
+                panel1.classList.remove('visible');
+                panel1.setAttribute('aria-hidden', 'true');
+            }
+
+            if (panel2) {
+                panel2.classList.remove('visible');
+                panel2.setAttribute('aria-hidden', 'true');
+            }
+        }
+    </script>
+
 
 </body>
 
