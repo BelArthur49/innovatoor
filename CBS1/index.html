@@ -52,6 +52,368 @@
 
 
     <style>
+        .slider-wrapper {
+            width: 100vw;
+            max-width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            height: 750px;
+            position: relative;
+        }
+        /* AUTO HEIGHT ON MOBILE */
+        
+        @media (max-width: 768px) {
+            .slider-wrapper,
+            .owl-carousel .item {
+                height: auto !important;
+                min-height: 650px;
+                /* increase for text */
+            }
+            .slide-content {
+                top: auto;
+                bottom: 40px;
+                transform: translateX(-50%);
+            }
+            .slide-title {
+                font-size: 1.8rem;
+            }
+            .slide-desc {
+                font-size: 1rem;
+            }
+        }
+        
+        .slide-content {
+            max-height: fit-content;
+        }
+        
+        .owl-carousel .item {
+            position: relative;
+            width: 100%;
+            height: 750px;
+            overflow: hidden;
+        }
+        /* SMOOTH KEN BURNS EFFECT */
+        
+        .slide-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            animation: kenburns 12s ease-in-out infinite;
+            transform-origin: center;
+        }
+        
+        @keyframes kenburns {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.12);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        /* GLOBAL OPACITY CONTROL */
+        
+         :root {
+            --slide-opacity: 0.5;
+            /* Change this value to control darkness */
+        }
+        
+        .slide-overlay {
+            background: rgba(0, 0, 0, var(--slide-opacity));
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            transition: background 0.4s ease;
+        }
+        /* TEXT OVERLAY */
+        
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            max-width: 720px;
+            padding: 20px;
+            color: #fff;
+            opacity: 0;
+            animation: fadeUp 1.2s ease forwards;
+        }
+        
+        .slide-title {
+            font-size: 1.5rem;
+            font-weight: 1000;
+            margin-bottom: 15px;
+            /* STRONG, multi-layered shadow */
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.9), 0 0 15px rgba(0, 0, 0, 0.8), 0 4px 20px rgba(0, 0, 0, 1);
+        }
+        
+        .slide-desc {
+            font-size: 1.2rem;
+            font-weight: 600;
+            line-height: 1.6;
+            /* STRONG, multi-layered shadow */
+            text-shadow: 0 0 6px rgba(0, 0, 0, 0.9), 0 0 12px rgba(0, 0, 0, 0.85), 0 3px 18px rgba(0, 0, 0, 0.95);
+        }
+        /*The shadow box*/
+        
+        .slide-content {
+            background: rgba(0, 0, 0, var(--content-opacity, 0.3));
+            backdrop-filter: blur(var(--content-blur, 6px));
+            padding: 20px 30px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        @media (max-width: 687px) {
+            .slide-title {
+                font-size: 2.2rem;
+            }
+            .slide-desc {
+                font-size: 1rem;
+            }
+        }
+        /* Fade-up animation */
+        
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -45%);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+        /* BUTTONS */
+        
+        .owl-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+            padding: 0 20px;
+        }
+        
+        .owl-nav button {
+            pointer-events: auto;
+            width: 55px;
+            height: 55px;
+            border-radius: 100px;
+            border: 2px solid rgb(255, 255, 255);
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff !important;
+            font-size: 14px !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.3s ease;
+        }
+        
+        .owl-nav button:hover {
+            background: #fff;
+            color: #ef8113 !important;
+        }
+        /*Socials*/
+        /* SOCIAL ICONS STYLING */
+        
+        .social-icons {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+        }
+        
+        .social-icons a {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid rgba(5, 81, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            color: #eea804;
+            transition: 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: #ef8113;
+            color: #003500;
+            transform: scale(1.12);
+        }
+        /*Vision and mission*/
+        
+        .flip-section {
+            position: relative;
+            padding: 120px 20px;
+            overflow: hidden;
+        }
+        
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 120%;
+            height: 140%;
+            pointer-events: none;
+            background: radial-gradient(circle, #ffe3d0a2 0%, #ffffff 70%);
+        }
+        
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .header-section h2 {
+            font-size: 48px;
+            font-weight: 700;
+            color: #000;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+        }
+        /* ---------------------------
+           REVEAL + STAGGER
+        ---------------------------*/
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .cards-grid .flip-card:nth-child(1) {
+            transition-delay: calc(1 * var(--delay-multiplier));
+        }
+        
+        .cards-grid .flip-card:nth-child(2) {
+            transition-delay: calc(2 * var(--delay-multiplier));
+        }
+        
+        .cards-grid .flip-card:nth-child(3) {
+            transition-delay: calc(3 * var(--delay-multiplier));
+        }
+        /* ---------------------------
+           GLASSMORPHISM + GLOW + iOS 17 SHADOW
+        ---------------------------*/
+        
+        .flip-card {
+            height: 350px;
+            perspective: 1200px;
+            border-radius: 20px;
+            transition: transform 0.25s ease-out, box-shadow 0.4s ease-out;
+            backdrop-filter: var(--glass-blur);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+        /* Glowing border effect */
+        
+        .flip-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(135deg, #ef8113, #003500);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.25;
+            transition: opacity 0.3s ease;
+        }
+        /* Hover: glow + iOS shadow bloom */
+        
+        .flip-card:hover {
+            box-shadow: var(--ios-shadow);
+        }
+        
+        .flip-card:hover::before {
+            opacity: 0.75;
+        }
+        
+        .flip-card:hover {
+            transform: scale(1.04);
+        }
+        /* ---------------------------
+           FLIP LOGIC
+        ---------------------------*/
+        
+        .flip-card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 0.5s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .flip-card-front {
+            background: transparent;
+            color: #fff;
+        }
+        
+        .flip-card-back {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(12px);
+            transform: rotateY(180deg);
+            padding: 30px;
+        }
+        
+        .card-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        
+        @media (max-width: 1000px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         .fullwidth-iframe {
             width: 100vw !important;
             /* Full browser width */
@@ -240,8 +602,111 @@
 
 
 
-            <iframe src="slider.html" style="display:block; width:100vw; margin-left:calc(-50vw + 50%); height:650px; border:0; overflow:hidden;" scrolling="no">
-</iframe>
+            <div class="slider-wrapper">
+                <div class="owl-carousel owl-theme">
+
+                    <!-- SLIDE 1 -->
+                    <div class="item">
+                        <div class="slide-bg" style="background-image: url('img/slider/1.jpeg');"></div>
+                        <div class="slide-overlay" style="--slide-opacity: 0.1;"></div>
+                        <!--The shadow box-->
+                        <div class="slide-content" style="--content-opacity: 0.1; --content-blur: 2px;"></div>
+
+                        <div class="slide-content">
+                            <h2 class="slide-title" style="color:#ef8113 !important">
+
+                                CBS Rwanda
+
+                            </h2>
+                            <p class="slide-desc" style="color: #fff;">
+
+
+                                The Center for Community-Based Sociotherapy Rwanda(CBS Rwanda) is a Rwandan non-governmental organization established in 2017, with the aim of promoting healing, resilience, unity and reconciliation for sustainable peace and development.
+
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- SLIDE 2 (CBS Rwanda Social Media) -->
+                    <div class="item">
+
+                        <div class="slide-bg" style="background-image: url('img/slider/2.jpeg');"></div>
+
+                        <!-- Opacity override (optional) -->
+                        <div class="slide-overlay" style="--slide-opacity: 0.1;"></div>
+                        <!--The shadow box-->
+                        <div class="slide-content" style="--content-opacity: 2; --content-blur: 8px;"></div>
+
+                        <div class="slide-content">
+                            <h2 class="slide-title" style="color: #ef8113;">Connect With CBS Rwanda</h2>
+
+                            <p class="slide-desc" style="color: #fff;">
+                                Follow us on social media to stay updated on our programs, stories, and impact.
+                            </p>
+
+                            <!-- SOCIAL ICONS -->
+                            <div class="social-icons">
+                                <a href="https://www.instagram.com/cbs__rwanda/" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+
+                                <a href="https://x.com/CBS__Rwanda" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-x"></i>
+                                </a>
+
+                                <a href="https://www.facebook.com/SociotherapyRwanda" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+
+                                <a href="https://www.linkedin.com/company/cbs-rwanda/" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+
+                                <a href="https://www.youtube.com/@communitybasedsociotherapy6330" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- SLIDE 3 -->
+                    <div class="item">
+                        <div class="slide-bg" style="background-image: url('img/slider/3.jpeg');"></div>
+                        <div class="slide-overlay" style="--slide-opacity: 0.1;"></div>
+
+                        <div class="slide-content">
+                            <h2 class="slide-title"></h2>
+                            <p class="slide-desc" style="color: #fff;">
+                                Sociotherapy groups help restore trust, rebuild relationships, and promote reconciliation in post-conflict communities.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="item">
+                        <div class="slide-bg" style="background-image: url('img/slider/4.jpeg');"></div>
+                        <div class="slide-overlay" style="--slide-opacity: 0.1;"></div>
+
+
+                    </div>
+
+
+                    <div class="item">
+                        <div class="slide-bg" style="background-image: url('img/slider/13.jpeg');"></div>
+                        <div class="slide-overlay" style="--slide-opacity: 0.1;"></div>
+
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+            </div>
 
 
 
@@ -262,8 +727,95 @@
 
 
             <!-- Who We Are -->
-            <iframe src="missionvision.html" class="fullwidth-iframe" style="height: 750px;">
-            </iframe>
+            <div class="flip-section">
+
+                <div class="parallax-bg layer1"></div>
+
+                <div class="container">
+
+                    <div class="header-section reveal">
+                        <h2>Our</h2>
+                        <p>
+
+                            Vision, Mission and Values
+
+
+                        </p>
+                    </div>
+
+                    <div class="cards-grid">
+
+                        <div class="flip-card reveal" data-speed="0.2">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <div class="card-icon">🎯</div>
+                                    <div class="card-cta" style="color: #000 !important;">
+
+                                        Mission
+
+                                    </div>
+                                </div>
+                                <div class="flip-card-back" style="color: #000;">
+
+
+                                    <b>CBS Rwanda is an organization whose mission is to contribute to the improvement of psychosocial wellbeing of people affected by the Genocide against Tutsi, a painful past and/or on-going daily stressors, restoring the social fabric, and promoting sustainable
+                                    peace</b>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flip-card reveal" data-speed="0.3">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <div class="card-icon"><i class="fa-solid fa-people-group"></i></div>
+                                    <div class="card-cta" style="color: #000 !important;">
+
+
+                                        Vision
+
+
+                                    </div>
+                                </div>
+                                <div class="flip-card-back" style="color: #000;">
+
+
+                                    <b>The vision of CBS Rwanda is to promote psychosocial wellbeing in Rwanda through interventions focusing on healing, reconciliation, social cohesion and economic empowerment.</b>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flip-card reveal" data-speed="0.4">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <div class="card-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                                    <div class="card-cta" style="color: #000 !important;">
+
+                                        Values
+
+                                    </div>
+                                </div>
+                                <div class="flip-card-back" style="color: #000;">
+
+
+                                    <b><ul>
+                                        <li>Integrity</li>
+                                        <li>Teamwork</li>
+                                        <li>Dignity</li>
+                                        <li>Excellence</li>
+                                        <li>Inclusion</li>
+                                    </ul></b>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
 
 
 
@@ -728,11 +1280,55 @@ Sociotherapists</span>
     <!-- Current Page Vendor and Views -->
     <script src="js/views/view.contact.js"></script>
 
+    <!-- JS LIBRARIES -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script>
+        $(".owl-carousel").owlCarousel({
+            items: 1,
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 8000,
+            autoplayHoverPause: false,
+            animateOut: "fadeOut",
+            animateIn: "fadeIn",
+            dots: false,
+            nav: true,
+            navText: ["<span>&#10094;</span>", "<span>&#10095;</span>"]
+        });
+    </script>
+
+    <script>
+        /* Scroll Reveal */
+        const reveals = document.querySelectorAll(".reveal");
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add("active");
+            });
+        }, {
+            threshold: 0.2
+        });
+        reveals.forEach(el => observer.observe(el));
+
+        /* Mouse Tilt */
+        document.querySelectorAll(".flip-card").forEach(card => {
+            card.addEventListener("mousemove", e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const rotateY = ((x / rect.width) - 0.5) * 20;
+                const rotateX = ((y / rect.height) - 0.5) * -20;
+                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            });
+
+            card.addEventListener("mouseleave", () => {
+                card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+            });
+        });
+    </script>
+
 </body>
 
 
 </html>
-
-
-
-
