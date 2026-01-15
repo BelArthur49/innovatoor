@@ -2032,7 +2032,7 @@
                             const points = [node.position, nextNode.position];
                             const geometry = new THREE.BufferGeometry().setFromPoints(points);
                             const material = new THREE.LineBasicMaterial({
-                                color: 0x7436bb,
+                                color: 0xffffff,
                                 transparent: true,
                                 opacity: 0.2
                             });
@@ -2058,7 +2058,7 @@
 
                 // Create energy particles
                 const particles = [];
-                for (let i = 0; i < 200; i++) {
+                for (let i = 0; i < 50; i++) {
                     const geometry = new THREE.SphereGeometry(0.15, 8, 8);
                     const material = new THREE.MeshBasicMaterial({
                         color: 0xffffff,
