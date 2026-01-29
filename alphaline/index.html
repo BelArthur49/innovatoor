@@ -1,0 +1,2194 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Alpha Line Construction</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+         :root {
+            --primary-red: #ff0000;
+            --dark-bg: #0a0a0a;
+            --darker-bg: #050505;
+            --light-text: #ffffff;
+            --gray-text: #999;
+        }
+        
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background: var(--dark-bg);
+            color: var(--light-text);
+            overflow-x: hidden;
+        }
+        /* ===== NAVBAR ===== */
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.4s;
+            background: transparent;
+        }
+        
+        .navbar.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 30px rgba(255, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 0, 0, 0.2);
+        }
+        
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, var(--primary-red), #fff, var(--primary-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+        
+        .nav-link {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 8px 0;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary-red);
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-red);
+        }
+        
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: var(--light-text);
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+        /* ===== PAGE STRUCTURE ===== */
+        
+        .page {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        
+        .page.active {
+            display: block;
+            opacity: 1;
+        }
+        /* ===== PARALLAX SECTIONS ===== */
+        
+        .parallax-section {
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+        
+        .parallax-bg {
+            position: absolute;
+            top: -20%;
+            left: 0;
+            width: 100%;
+            height: 140%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            will-change: transform;
+            z-index: 1;
+        }
+        
+        .parallax-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+        
+        .parallax-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 0, 0, 0.3);
+            border-radius: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            transform: translateY(0);
+            transition: transform 0.3s ease-out;
+        }
+        
+        .parallax-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* ===== HOME PAGE ===== */
+        
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        #tools-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 120px 40px 60px;
+        }
+        
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 900;
+            letter-spacing: 8px;
+            background: linear-gradient(135deg, var(--primary-red), #fff, var(--primary-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes glowPulse {
+            0%,
+            100% {
+                filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.4));
+            }
+            50% {
+                filter: drop-shadow(0 0 40px rgba(255, 0, 0, 0.8));
+            }
+        }
+        
+        .hero-tagline {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: var(--gray-text);
+            letter-spacing: 4px;
+            font-weight: 300;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+        
+        .hero-cta {
+            display: inline-block;
+            padding: 18px 50px;
+            background: transparent;
+            border: 2px solid var(--primary-red);
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-red);
+            transition: left 0.4s;
+            z-index: -1;
+        }
+        
+        .hero-cta:hover::before {
+            left: 0;
+        }
+        
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.5);
+        }
+        /* ===== FEATURES SECTION ===== */
+        
+        .features-section {
+            padding: 100px 40px;
+            background: var(--darker-bg);
+            position: relative;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.05), rgba(255, 255, 255, 0.02));
+            border: 2px solid rgba(255, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-red);
+            box-shadow: 0 20px 60px rgba(255, 0, 0, 0.3);
+        }
+        
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.5));
+        }
+        
+        .feature-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            color: var(--primary-red);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .feature-text {
+            color: var(--gray-text);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        /* ===== PARALLAX SHOWCASE ===== */
+        
+        .parallax-content h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--primary-red);
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+        
+        .parallax-content p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: var(--light-text);
+            line-height: 1.8;
+        }
+        /* ===== CAPABILITIES SECTION ===== */
+        
+        .capabilities-section {
+            padding: 100px 40px;
+            background: linear-gradient(180deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
+        }
+        
+        .capabilities-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .capability-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+            align-items: center;
+        }
+        
+        .capability-item:nth-child(even) {
+            direction: rtl;
+        }
+        
+        .capability-item:nth-child(even)>* {
+            direction: ltr;
+        }
+        
+        .capability-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 3px solid rgba(255, 0, 0, 0.3);
+            transition: all 0.4s;
+        }
+        
+        .capability-image:hover {
+            transform: scale(1.05);
+            border-color: var(--primary-red);
+            box-shadow: 0 20px 60px rgba(255, 0, 0, 0.4);
+        }
+        
+        .capability-content h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+        
+        .capability-content p {
+            color: var(--gray-text);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        .capability-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .capability-list li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            color: var(--light-text);
+            font-size: 1rem;
+        }
+        
+        .capability-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary-red);
+            font-size: 1.2rem;
+        }
+        /* ===== SERVICES SECTION ===== */
+        
+        .services-section {
+            padding: 100px 40px;
+            background: linear-gradient(180deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
+        }
+        
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 70px;
+            letter-spacing: 4px;
+            color: var(--primary-red);
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--primary-red);
+            margin: 20px auto 0;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .service-card {
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.05), rgba(255, 255, 255, 0.02));
+            border: 2px solid rgba(255, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 40px 30px;
+            cursor: pointer;
+            transition: all 0.4s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-red);
+            box-shadow: 0 20px 60px rgba(255, 0, 0, 0.4);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.6));
+        }
+        
+        .service-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary-red);
+        }
+        
+        .service-preview {
+            font-size: 1rem;
+            color: var(--gray-text);
+            line-height: 1.6;
+        }
+        /* ===== TESTIMONIALS SECTION ===== */
+        
+        .testimonials-section {
+            padding: 100px 40px;
+            background: var(--darker-bg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 30px;
+            padding: 20px 0;
+            scrollbar-width: none;
+        }
+        
+        .testimonial-slider::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .testimonial-card {
+            min-width: 350px;
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.05), rgba(255, 255, 255, 0.02));
+            border: 2px solid rgba(255, 0, 0, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            scroll-snap-align: start;
+            transition: all 0.4s;
+        }
+        
+        .testimonial-card:hover {
+            border-color: var(--primary-red);
+            transform: translateY(-5px);
+        }
+        
+        .testimonial-text {
+            color: var(--light-text);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-red);
+        }
+        
+        .testimonial-info h4 {
+            color: var(--primary-red);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .testimonial-info p {
+            color: var(--gray-text);
+            font-size: 0.9rem;
+        }
+        /* ===== ABOUT PAGE ===== */
+        
+        .about-hero {
+            position: relative;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+        
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 0, 0, 0.1) 50%, transparent 70%), radial-gradient(circle at 20% 50%, rgba(255, 0, 0, 0.2), transparent 60%);
+            animation: aboutGlow 8s ease-in-out infinite;
+        }
+        
+        @keyframes aboutGlow {
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+        
+        .about-hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .about-hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            font-weight: 900;
+            letter-spacing: 6px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary-red), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .about-hero p {
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            color: var(--gray-text);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .about-content {
+            padding: 100px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            margin-bottom: 100px;
+        }
+        
+        .about-card {
+            padding: 50px 40px;
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 255, 0.03));
+            border: 2px solid rgba(255, 0, 0, 0.2);
+            border-radius: 20px;
+            transition: all 0.4s;
+        }
+        
+        .about-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-red);
+            box-shadow: 0 20px 60px rgba(255, 0, 0, 0.3);
+        }
+        
+        .about-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+        }
+        
+        .about-card p {
+            color: var(--gray-text);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            padding: 60px 40px;
+            background: rgba(255, 0, 0, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--primary-red);
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--gray-text);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        /* ===== WORK PAGE ===== */
+        
+        .work-hero {
+            position: relative;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+        
+        .work-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient( 0deg, transparent, transparent 2px, rgba(255, 0, 0, 0.03) 2px, rgba(255, 0, 0, 0.03) 4px);
+            animation: scanlines 10s linear infinite;
+        }
+        
+        @keyframes scanlines {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(50px);
+            }
+        }
+        
+        .work-hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            font-weight: 900;
+            letter-spacing: 6px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-red), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .work-content {
+            padding: 80px 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 12px 30px;
+            background: transparent;
+            border: 2px solid rgba(255, 0, 0, 0.3);
+            color: var(--light-text);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            font-family: 'Exo 2', sans-serif;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-red);
+            border-color: var(--primary-red);
+            box-shadow: 0 5px 20px rgba(255, 0, 0, 0.4);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 40px;
+        }
+        
+        .project-card {
+            position: relative;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid rgba(255, 0, 0, 0.2);
+            transition: all 0.4s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-red);
+            box-shadow: 0 20px 60px rgba(255, 0, 0, 0.4);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.1);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+        }
+        
+        .project-category {
+            font-size: 0.85rem;
+            color: var(--primary-red);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .project-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--light-text);
+            margin-bottom: 10px;
+        }
+        
+        .project-description {
+            color: var(--gray-text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        /* ===== CONTACT PAGE ===== */
+        
+        .contact-section {
+            padding: 150px 40px 100px;
+            min-height: 100vh;
+        }
+        
+        .contact-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+        
+        .contact-info h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, var(--primary-red), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .contact-info p {
+            font-size: 1.1rem;
+            color: var(--gray-text);
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+        
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(255, 0, 0, 0.05);
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .contact-item:hover {
+            background: rgba(255, 0, 0, 0.1);
+            border-color: var(--primary-red);
+            transform: translateX(10px);
+        }
+        
+        .contact-item-icon {
+            font-size: 1.5rem;
+        }
+        
+        .contact-item-content h3 {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            margin-bottom: 5px;
+        }
+        
+        .contact-item-content p {
+            color: var(--gray-text);
+            margin: 0;
+            font-size: 1rem;
+        }
+        
+        .contact-form {
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 255, 0.03));
+            padding: 50px;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 0, 0, 0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 30px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--light-text);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 0, 0, 0.3);
+            color: var(--light-text);
+            font-size: 1rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-family: 'Exo 2', sans-serif;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-red);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: transparent;
+            border: 2px solid var(--primary-red);
+            color: var(--light-text);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-red);
+            transition: left 0.4s;
+            z-index: -1;
+        }
+        
+        .submit-btn:hover::before {
+            left: 0;
+        }
+        
+        .submit-btn:hover {
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.5);
+        }
+        /* ===== FOOTER ===== */
+        
+        .footer {
+            background: linear-gradient(180deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
+            border-top: 2px solid rgba(255, 0, 0, 0.3);
+            padding: 80px 40px 30px;
+            margin-top: 100px;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-section h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        .footer-section p {
+            color: var(--gray-text);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--gray-text);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-red);
+            padding-left: 10px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border: 2px solid rgba(255, 0, 0, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-text);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            background: rgba(255, 0, 0, 0.05);
+        }
+        
+        .social-link:hover {
+            background: var(--primary-red);
+            border-color: var(--primary-red);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.4);
+        }
+        
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        .footer-bottom p {
+            color: var(--gray-text);
+            font-size: 0.9rem;
+        }
+        
+        .footer-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, var(--primary-red), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+        /* ===== MODAL ===== */
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+            border: 3px solid var(--primary-red);
+            border-radius: 20px;
+            max-width: 1000px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 30px 90px rgba(255, 0, 0, 0.5);
+            animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .modal-header {
+            position: relative;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8));
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 0, 0, 0.3);
+            border: 2px solid var(--primary-red);
+            color: #fff;
+            font-size: 28px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        
+        .close-btn:hover {
+            background: var(--primary-red);
+            transform: rotate(90deg);
+        }
+        
+        .modal-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            z-index: 5;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+        }
+        
+        .modal-body {
+            padding: 40px;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+        
+        .modal-description {
+            color: #e0e0e0;
+            line-height: 1.8;
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+            border: 2px solid rgba(255, 0, 0, 0.3);
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            border-color: var(--primary-red);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        /* ===== SCROLLBAR ===== */
+        
+         ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+         ::-webkit-scrollbar-track {
+            background: var(--darker-bg);
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            background: var(--primary-red);
+            border-radius: 5px;
+        }
+        
+        .modal-body::-webkit-scrollbar {
+            width: 8px;
+        }
+        /* ===== RESPONSIVE ===== */
+        
+        @media (max-width: 1024px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            .capability-item {
+                grid-template-columns: 1fr;
+            }
+            .capability-item:nth-child(even) {
+                direction: ltr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                gap: 30px;
+                transition: right 0.4s;
+                border-left: 1px solid rgba(255, 0, 0, 0.2);
+            }
+            .nav-menu.active {
+                right: 0;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(8px, 8px);
+            }
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(8px, -8px);
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .project-card {
+                height: 400px;
+            }
+            .contact-form {
+                padding: 30px 20px;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            .testimonial-card {
+                min-width: 280px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo" onclick="showPage('home')">ALPHA LINE</div>
+            <ul class="nav-menu" id="navMenu">
+                <li><span class="nav-link active" onclick="showPage('home')">Home</span></li>
+                <li><span class="nav-link" onclick="showPage('about')">About</span></li>
+                <li><span class="nav-link" onclick="showPage('work')">Our Work</span></li>
+                <li><span class="nav-link" onclick="showPage('contact')">Contact</span></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <section class="hero-section">
+            <canvas id="tools-canvas"></canvas>
+            <div class="hero-content">
+                <h1 class="hero-title">ALPHA LINE</h1>
+                <p class="hero-tagline">Building Excellence</p>
+                <div class="hero-cta" onclick="showPage('contact')">Start Your Project</div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <h2 class="section-title">Why Choose Us</h2>
+            <div class="features-grid" id="featuresGrid">
+                <!-- Features will be loaded from JSON -->
+            </div>
+        </section>
+
+        <!-- Parallax Showcase 1 -->
+        <section class="parallax-showcase parallax-section">
+            <div class="parallax-bg" id="parallax1"></div>
+            <div class="parallax-content" id="parallaxContent1">
+                <!-- Content will be loaded from JSON -->
+            </div>
+        </section>
+
+        <!-- Capabilities Section -->
+        <section class="capabilities-section">
+            <h2 class="section-title">Our Capabilities</h2>
+            <div class="capabilities-container" id="capabilitiesContainer">
+                <!-- Capabilities will be loaded from JSON -->
+            </div>
+        </section>
+
+        <!-- Parallax Showcase 2 -->
+        <section class="parallax-showcase parallax-section">
+            <div class="parallax-bg" id="parallax2"></div>
+            <div class="parallax-content" id="parallaxContent2">
+                <!-- Content will be loaded from JSON -->
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-section">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid" id="servicesGrid">
+                <!-- Services will be loaded from JSON -->
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <div class="testimonials-container">
+                <div class="testimonial-slider" id="testimonialSlider">
+                    <!-- Testimonials will be loaded from JSON -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer for Home -->
+        <footer class="footer">
+            <div class="footer-content" id="footerContent">
+                <!-- Footer will be loaded from JSON -->
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Alpha Line Construction. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page">
+        <section class="about-hero">
+            <div class="about-hero-content">
+                <h1>Building the Future</h1>
+                <p>With over two decades of excellence in construction, Alpha Line stands as a beacon of innovation and quality.</p>
+            </div>
+        </section>
+
+        <section class="about-content">
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>Our Mission</h3>
+                    <p>To revolutionize the construction industry through cutting-edge technology, sustainable practices, and an unwavering commitment to excellence.</p>
+                </div>
+
+                <div class="about-card">
+                    <h3>Our Vision</h3>
+                    <p>To be recognized globally as the premier construction partner that transforms ambitious dreams into architectural masterpieces.</p>
+                </div>
+
+                <div class="about-card">
+                    <h3>Our Values</h3>
+                    <p>Integrity, innovation, and quality form the foundation of everything we do. We believe in transparent communication and sustainable building practices.</p>
+                </div>
+            </div>
+
+            <div class="stats-section">
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Projects Completed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">20+</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Expert Team</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label">Client Satisfaction</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer for About -->
+        <footer class="footer">
+            <div class="footer-content" id="footerContentAbout">
+                <!-- Footer will be loaded from JSON -->
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Alpha Line Construction. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Work Page -->
+    <div id="work" class="page">
+        <section class="work-hero">
+            <h1>Our Portfolio</h1>
+        </section>
+
+        <section class="work-content">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="residential">Residential</button>
+                <button class="filter-btn" data-filter="commercial">Commercial</button>
+                <button class="filter-btn" data-filter="renovation">Renovation</button>
+            </div>
+
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Projects will be loaded from JSON -->
+            </div>
+        </section>
+
+        <!-- Footer for Work -->
+        <footer class="footer">
+            <div class="footer-content" id="footerContentWork">
+                <!-- Footer will be loaded from JSON -->
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Alpha Line Construction. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page">
+        <section class="contact-section">
+            <div class="contact-container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h1>Let's Build Together</h1>
+                        <p>Ready to transform your vision into reality? Contact us today for a consultation.</p>
+
+                        <div class="contact-details" id="contactDetails">
+                            <!-- Contact details will be loaded from JSON -->
+                        </div>
+                    </div>
+
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="project">Project Type</label>
+                            <input type="text" id="project" name="project" placeholder="e.g., Residential, Commercial">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Tell Us About Your Project</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer for Contact -->
+        <footer class="footer">
+            <div class="footer-content" id="footerContentContact">
+                <!-- Footer will be loaded from JSON -->
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Alpha Line Construction. Developed by Innovatoor.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-header" id="modal-header">
+                <button class="close-btn" onclick="closeModal()">×</button>
+                <h2 class="modal-title" id="modal-title"></h2>
+            </div>
+            <div class="modal-body">
+                <div class="modal-description" id="modal-description"></div>
+                <h3 class="gallery-title">Project Gallery</h3>
+                <div class="gallery" id="gallery"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== LOAD CONTENT FROM JSON =====
+        let contentData = {};
+
+        async function loadContent() {
+            try {
+                const response = await fetch('content.json');
+                contentData = await response.json();
+                renderContent();
+            } catch (error) {
+                console.error('Error loading content:', error);
+                // Load default content if JSON fails
+                loadDefaultContent();
+            }
+        }
+
+        function loadDefaultContent() {
+            contentData = {
+                features: [{
+                    icon: "🏗️",
+                    title: "Expert Engineering",
+                    text: "State-of-the-art structural and civil engineering solutions"
+                }, {
+                    icon: "⚡",
+                    title: "Fast Delivery",
+                    text: "On-time project completion with zero compromises"
+                }, {
+                    icon: "🛡️",
+                    title: "Quality Assured",
+                    text: "Premium materials and rigorous quality control"
+                }, {
+                    icon: "🌍",
+                    title: "Sustainable Build",
+                    text: "Eco-friendly construction practices for a better tomorrow"
+                }],
+                parallax: [{
+                    title: "Precision Engineering",
+                    text: "Our team of certified engineers brings decades of experience in structural design, geotechnical analysis, and project optimization to ensure every build exceeds industry standards."
+                }, {
+                    title: "Advanced Technology",
+                    text: "Utilizing BIM modeling, drone surveying, and AI-powered project management to deliver construction excellence with unprecedented precision and efficiency."
+                }],
+                capabilities: [{
+                    title: "Structural Engineering",
+                    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=600&fit=crop",
+                    description: "Our structural engineering team designs safe, efficient, and innovative building systems that stand the test of time.",
+                    list: ["Steel & Concrete Design", "Foundation Engineering", "Seismic Analysis", "Load Calculations"]
+                }, {
+                    title: "MEP Systems",
+                    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop",
+                    description: "Comprehensive mechanical, electrical, and plumbing design services that integrate seamlessly with your building's architecture.",
+                    list: ["HVAC Design", "Electrical Systems", "Plumbing & Fire Protection", "Energy Optimization"]
+                }, {
+                    title: "Site Development",
+                    image: "https://images.unsplash.com/photo-1590496793907-4e9ed0e9c5f2?w=800&h=600&fit=crop",
+                    description: "Complete site preparation services including earthwork, grading, and utility installation for residential and commercial projects.",
+                    list: ["Land Clearing", "Excavation & Grading", "Utility Installation", "Erosion Control"]
+                }],
+                services: [{
+                    icon: "🏘️",
+                    title: "Residential Construction",
+                    preview: "Custom homes built to perfection",
+                    key: "residential"
+                }, {
+                    icon: "🏢",
+                    title: "Commercial Projects",
+                    preview: "Professional spaces for your business",
+                    key: "commercial"
+                }, {
+                    icon: "🔨",
+                    title: "Renovation & Remodeling",
+                    preview: "Transform your existing space",
+                    key: "renovation"
+                }, {
+                    icon: "📋",
+                    title: "Project Management",
+                    preview: "Expert coordination from start to finish",
+                    key: "management"
+                }, {
+                    icon: "⚙️",
+                    title: "Engineering Services",
+                    preview: "Technical excellence in design",
+                    key: "engineering"
+                }, {
+                    icon: "🚜",
+                    title: "Site Development",
+                    preview: "Complete land preparation solutions",
+                    key: "site"
+                }, {
+                    icon: "🌱",
+                    title: "Green Building",
+                    preview: "Sustainable construction for the future",
+                    key: "green"
+                }],
+                testimonials: [{
+                    text: "Alpha Line transformed our vision into reality. Their attention to detail and commitment to quality is unmatched in the industry.",
+                    author: "Sarah Johnson",
+                    position: "CEO, Tech Innovations",
+                    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop"
+                }, {
+                    text: "Working with Alpha Line was a game-changer for our development project. Professional, reliable, and exceptional results.",
+                    author: "Michael Chen",
+                    position: "Property Developer",
+                    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop"
+                }, {
+                    text: "The engineering expertise and innovative solutions provided by Alpha Line exceeded all our expectations. Highly recommended!",
+                    author: "Emily Rodriguez",
+                    position: "Architect",
+                    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop"
+                }],
+                projects: [{
+                    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop",
+                    category: "residential",
+                    title: "Skyline Modern Villa",
+                    description: "A stunning 5-bedroom contemporary masterpiece."
+                }, {
+                    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop",
+                    category: "commercial",
+                    title: "Apex Corporate Tower",
+                    description: "25-story office complex with LEED certification."
+                }, {
+                    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop",
+                    category: "residential",
+                    title: "Lakeside Estate",
+                    description: "Luxury waterfront property with panoramic views."
+                }, {
+                    image: "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=800&h=600&fit=crop",
+                    category: "renovation",
+                    title: "Historic Downtown Loft",
+                    description: "Complete transformation of a 1920s warehouse."
+                }, {
+                    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
+                    category: "commercial",
+                    title: "Metro Shopping Plaza",
+                    description: "Premium retail space with cutting-edge design."
+                }, {
+                    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",
+                    category: "residential",
+                    title: "Alpine Mountain Retreat",
+                    description: "Eco-friendly mountain home blending modern design."
+                }],
+                contact: [{
+                    icon: "📍",
+                    title: "Address",
+                    text: "1234 Construction Blvd, Building District, City 12345"
+                }, {
+                    icon: "📞",
+                    title: "Phone",
+                    text: "+1 (555) 123-4567"
+                }, {
+                    icon: "✉️",
+                    title: "Email",
+                    text: "info@alphaline.construction"
+                }, {
+                    icon: "🕐",
+                    title: "Business Hours",
+                    text: "Mon - Fri: 8:00 AM - 6:00 PM"
+                }],
+                footer: {
+                    description: "Building excellence through innovation and quality since 2003.",
+                    quickLinks: ["Home", "About Us", "Our Work", "Contact"],
+                    services: ["Residential Construction", "Commercial Projects", "Renovation", "Green Building"],
+                    contact: {
+                        address: "1234 Construction Blvd<br>Building District, City 12345",
+                        phone: "+1 (555) 123-4567",
+                        email: "info@alphaline.construction"
+                    }
+                }
+            };
+            renderContent();
+        }
+
+        function renderContent() {
+            // Render Features
+            const featuresGrid = document.getElementById('featuresGrid');
+            featuresGrid.innerHTML = contentData.features.map(feature => `
+                <div class="feature-card">
+                    <div class="feature-icon">${feature.icon}</div>
+                    <h3 class="feature-title">${feature.title}</h3>
+                    <p class="feature-text">${feature.text}</p>
+                </div>
+            `).join('');
+
+            // Render Parallax Content
+            document.getElementById('parallax1').style.backgroundImage = `url(${contentData.parallax[0].backgroundImage})`;
+            document.getElementById('parallaxContent1').innerHTML = `
+                <h2>${contentData.parallax[0].title}</h2>
+                <p>${contentData.parallax[0].text}</p>
+            `;
+            document.getElementById('parallax2').style.backgroundImage = `url(${contentData.parallax[1].backgroundImage})`;
+            document.getElementById('parallaxContent2').innerHTML = `
+                <h2>${contentData.parallax[1].title}</h2>
+                <p>${contentData.parallax[1].text}</p>
+            `;
+
+            // Render Capabilities
+            const capabilitiesContainer = document.getElementById('capabilitiesContainer');
+            capabilitiesContainer.innerHTML = contentData.capabilities.map(cap => `
+                <div class="capability-item">
+                    <img src="${cap.image}" alt="${cap.title}" class="capability-image">
+                    <div class="capability-content">
+                        <h3>${cap.title}</h3>
+                        <p>${cap.description}</p>
+                        <ul class="capability-list">
+                            ${cap.list.map(item => `<li>${item}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `).join('');
+
+            // Render Services
+            const servicesGrid = document.getElementById('servicesGrid');
+            servicesGrid.innerHTML = contentData.services.map(service => `
+                <div class="service-card" onclick="openModal('${service.key}')">
+                    <div class="service-icon">${service.icon}</div>
+                    <h3 class="service-title">${service.title}</h3>
+                    <p class="service-preview">${service.preview}</p>
+                </div>
+            `).join('');
+
+            // Render Testimonials
+            const testimonialSlider = document.getElementById('testimonialSlider');
+            testimonialSlider.innerHTML = contentData.testimonials.map(test => `
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"${test.text}"</p>
+                    <div class="testimonial-author">
+                        <img src="${test.avatar}" alt="${test.author}" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>${test.author}</h4>
+                            <p>${test.position}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Render Projects
+            const projectsGrid = document.getElementById('projectsGrid');
+            projectsGrid.innerHTML = contentData.projects.map(project => `
+                <div class="project-card" data-category="${project.category}">
+                    <img src="${project.image}" alt="${project.title}" class="project-image">
+                    <div class="project-overlay">
+                        <div class="project-category">${project.category}</div>
+                        <h3 class="project-title">${project.title}</h3>
+                        <p class="project-description">${project.description}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            // Render Contact Details
+            const contactDetails = document.getElementById('contactDetails');
+            contactDetails.innerHTML = contentData.contact.map(detail => `
+                <div class="contact-item">
+                    <div class="contact-item-icon">${detail.icon}</div>
+                    <div class="contact-item-content">
+                        <h3>${detail.title}</h3>
+                        <p>${detail.text}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            // Render Footer (multiple instances)
+            const footerHTML = `
+                <div class="footer-section">
+                    <div class="footer-logo">ALPHA LINE</div>
+                    <p>${contentData.footer.description}</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">💼</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        ${contentData.footer.quickLinks.map(link => `
+                            <li><a href="#" onclick="showPage('${link.toLowerCase().replace(' ', '')}'); return false;">${link}</a></li>
+                        `).join('')}
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        ${contentData.footer.services.map(service => `<li><a href="#">${service}</a></li>`).join('')}
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>📍 ${contentData.footer.contact.address}</p>
+                    <p>📞 ${contentData.footer.contact.phone}</p>
+                    <p>✉️ ${contentData.footer.contact.email}</p>
+                </div>
+            `;
+
+            document.getElementById('footerContent').innerHTML = footerHTML;
+            document.getElementById('footerContentAbout').innerHTML = footerHTML;
+            document.getElementById('footerContentWork').innerHTML = footerHTML;
+            document.getElementById('footerContentContact').innerHTML = footerHTML;
+        }
+
+        // Load content on page load
+        loadContent();
+
+        // ===== NAVIGATION =====
+        const navbar = document.getElementById('navbar');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        function showPage(pageName) {
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+
+            document.getElementById(pageName).classList.add('active');
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.textContent.toLowerCase().includes(pageName) ||
+                    (pageName === 'home' && link.textContent.toLowerCase() === 'home')) {
+                    link.classList.add('active');
+                }
+            });
+
+            window.scrollTo(0, 0);
+            navMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
+        }
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        // ===== PARALLAX EFFECT =====
+        function updateParallax() {
+            const parallaxSections = document.querySelectorAll('.parallax-section');
+            
+            parallaxSections.forEach(section => {
+                const parallaxBg = section.querySelector('.parallax-bg');
+                if (!parallaxBg) return;
+                
+                const rect = section.getBoundingClientRect();
+                const scrolled = window.pageYOffset;
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                
+                // Only apply parallax when section is in viewport
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    // Calculate parallax based on scroll position relative to section
+                    const parallaxAmount = (scrolled - sectionTop) * 0.5;
+                    parallaxBg.style.transform = `translate3d(0, ${parallaxAmount}px, 0)`;
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateParallax);
+        window.addEventListener('resize', updateParallax);
+        // Initial call
+        updateParallax();
+
+        // ===== CANVAS ANIMATION =====
+        const canvas = document.getElementById('tools-canvas');
+        const ctx = canvas.getContext('2d');
+        let tools = [];
+
+        const toolSymbols = ['🔨', '⚒️', '🪛', '⛏️', '🪚', '📐', '📏', '🏗️', '🔧', '🪓', '⚙️', '🔩', '🛠️', '🧰', '🗜️', '🪜', '🧱', '🚧'];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Tool {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 1.5;
+                this.vy = (Math.random() - 0.5) * 1.5;
+                this.symbol = toolSymbols[Math.floor(Math.random() * toolSymbols.length)];
+                this.size = 25 + Math.random() * 20;
+                this.opacity = 0.5 + Math.random() * 0.5;
+                this.rotation = Math.random() * Math.PI * 2;
+                this.rotationSpeed = (Math.random() - 0.5) * 0.02;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.rotation += this.rotationSpeed;
+
+                if (this.x < -100) this.x = canvas.width + 100;
+                if (this.x > canvas.width + 100) this.x = -100;
+                if (this.y < -100) this.y = canvas.height + 100;
+                if (this.y > canvas.height + 100) this.y = -100;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation);
+                ctx.globalAlpha = this.opacity;
+                ctx.font = `${this.size}px Arial`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillStyle = '#ff0000';
+                ctx.shadowBlur = 20;
+                ctx.shadowColor = 'rgba(255, 0, 0, 0.6)';
+                ctx.fillText(this.symbol, 0, 0);
+                ctx.restore();
+            }
+        }
+
+        function drawConnections() {
+            for (let i = 0; i < tools.length; i++) {
+                for (let j = i + 1; j < tools.length; j++) {
+                    const dx = tools[i].x - tools[j].x;
+                    const dy = tools[i].y - tools[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 180) {
+                        const opacity = (1 - dist / 180) * 0.25;
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
+                        ctx.lineWidth = 1.5;
+                        ctx.beginPath();
+                        ctx.moveTo(tools[i].x, tools[i].y);
+                        ctx.lineTo(tools[j].x, tools[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function initTools() {
+            tools = [];
+            for (let i = 0; i < 50; i++) {
+                tools.push(new Tool());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            tools.forEach(tool => tool.update());
+            drawConnections();
+            tools.forEach(tool => tool.draw());
+            requestAnimationFrame(animate);
+        }
+
+        resize();
+        window.addEventListener('resize', resize);
+        initTools();
+        animate();
+
+        // ===== SERVICE DATA =====
+        const serviceData = {
+            residential: {
+                title: "Residential Construction",
+                background: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=400&fit=crop",
+                description: "Alpha Line specializes in building dream homes from the ground up. Our residential construction services include custom home building, townhouses, and multi-family developments.<br><br>We work closely with homeowners and architects to bring visions to life, ensuring every detail meets the highest standards of quality and craftsmanship.",
+                gallery: [
+                    "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=300&fit=crop",
+                    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=300&fit=crop",
+                    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&h=300&fit=crop",
+                    "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=400&h=300&fit=crop"
+                ]
+            },
+            commercial: {
+                title: "Commercial Projects",
+                background: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=400&fit=crop",
+                description: "We deliver exceptional commercial construction solutions for businesses of all sizes. From office buildings and retail spaces to industrial facilities, Alpha Line has the expertise to handle complex commercial projects.<br><br>Our team understands the unique challenges of commercial construction, including tight deadlines and budget constraints.",
+                gallery: [
+                    "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop",
+                    "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=400&h=300&fit=crop",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=400&h=300&fit=crop",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=400&h=300&fit=crop"
+                ]
+            },
+            renovation: {
+                title: "Renovation & Remodeling",
+                background: "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=1200&h=400&fit=crop",
+                description: "Transform your existing space with Alpha Line's expert renovation and remodeling services. Whether you're updating a single room or undertaking a complete property transformation, we bring fresh ideas and skilled craftsmanship to every project.",
+                gallery: [
+                    "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=400&h=300&fit=crop",
+                    "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop",
+                    "https://images.unsplash.com/photo-1556912167-f556f1f39faa?w=400&h=300&fit=crop",
+                    "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=400&h=300&fit=crop"
+                ]
+            },
+            management: {
+                title: "Project Management",
+                background: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=400&fit=crop",
+                description: "Alpha Line's comprehensive project management services ensure your construction project runs smoothly from start to finish. Our experienced project managers coordinate all aspects of construction.",
+                gallery: [
+                    "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=400&h=300&fit=crop",
+                    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop",
+                    "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=400&h=300&fit=crop",
+                    "https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=400&h=300&fit=crop"
+                ]
+            },
+            engineering: {
+                title: "Engineering Services",
+                background: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&h=400&fit=crop",
+                description: "Our in-house engineering team provides comprehensive technical expertise for all types of construction projects. From structural engineering to MEP design, we offer complete engineering solutions.",
+                gallery: [
+                    "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=400&h=300&fit=crop",
+                    "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=400&h=300&fit=crop",
+                    "https://images.unsplash.com/photo-1581092918484-8313e1f7e8a6?w=400&h=300&fit=crop",
+                    "https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=400&h=300&fit=crop"
+                ]
+            },
+            site: {
+                title: "Site Development",
+                background: "https://images.unsplash.com/photo-1590496793907-4e9ed0e9c5f2?w=1200&h=400&fit=crop",
+                description: "Alpha Line provides full-service site development solutions that prepare your land for construction. Our site development services include land clearing, grading, excavation, and utility installation.",
+                gallery: [
+                    "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?w=400&h=300&fit=crop",
+                    "https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?w=400&h=300&fit=crop",
+                    "https://images.unsplash.com/photo-1581093458791-9d42e1f6b470?w=400&h=300&fit=crop",
+                    "https://images.unsplash.com/photo-1581093804475-577d72e38aa0?w=400&h=300&fit=crop"
+                ]
+            },
+            green: {
+                title: "Green Building",
+                background: "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=1200&h=400&fit=crop",
+                description: "Alpha Line is committed to sustainable construction practices that benefit both our clients and the environment. Our green building services focus on creating energy-efficient, environmentally responsible structures.",
+                gallery: [
+                    "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400&h=300&fit=crop",
+                    "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=400&h=300&fit=crop",
+                    "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=400&h=300&fit=crop",
+                    "https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=400&h=300&fit=crop"
+                ]
+            }
+        };
+
+        // ===== MODAL =====
+        const modal = document.getElementById('modal');
+
+        function openModal(service) {
+            const data = serviceData[service];
+            document.getElementById('modal-header').style.backgroundImage = `url(${data.background})`;
+            document.getElementById('modal-title').textContent = data.title;
+            document.getElementById('modal-description').innerHTML = data.description;
+
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = '';
+            data.gallery.forEach(img => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.innerHTML = `<img src="${img}" alt="Project">`;
+                gallery.appendChild(item);
+            });
+
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // ===== WORK FILTER =====
+        const filterButtons = document.querySelectorAll('.filter-btn');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const projectCards = document.querySelectorAll('.project-card');
+                projectCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    if (filter === 'all' || category === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // ===== FORM =====
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you! We will get back to you soon.');
+            e.target.reset();
+        });
+    </script>
+</body>
+
+</html>

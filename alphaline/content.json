@@ -1,0 +1,231 @@
+{
+    "features": [{
+            "icon": "🏗️",
+            "title": "Expert Engineering",
+            "text": "State-of-the-art structural and civil engineering solutions"
+        },
+        {
+            "icon": "⚡",
+            "title": "Fast Delivery",
+            "text": "On-time project completion with zero compromises"
+        },
+        {
+            "icon": "🛡️",
+            "title": "Quality Assured",
+            "text": "Premium materials and rigorous quality control"
+        },
+        {
+            "icon": "🌍",
+            "title": "Sustainable Build",
+            "text": "Eco-friendly construction practices for a better tomorrow"
+        },
+        {
+            "icon": "💼",
+            "title": "Project Transparency",
+            "text": "Real-time updates and complete visibility into every phase"
+        },
+        {
+            "icon": "🎯",
+            "title": "Custom Solutions",
+            "text": "Tailored designs that match your unique vision and needs"
+        }
+    ],
+
+    "parallax": [{
+            "backgroundImage": "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&h=1080&fit=crop",
+            "title": "Precision Engineering",
+            "text": "Our team of certified engineers brings decades of experience in structural design, geotechnical analysis, and project optimization to ensure every build exceeds industry standards."
+        },
+        {
+            "backgroundImage": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&h=1080&fit=crop",
+            "title": "Advanced Technology",
+            "text": "Utilizing BIM modeling, drone surveying, and AI-powered project management to deliver construction excellence with unprecedented precision and efficiency."
+        }
+    ],
+
+    "capabilities": [{
+            "title": "Structural Engineering",
+            "image": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=600&fit=crop",
+            "description": "Our structural engineering team designs safe, efficient, and innovative building systems that stand the test of time.",
+            "list": [
+                "Steel & Concrete Design",
+                "Foundation Engineering",
+                "Seismic Analysis",
+                "Load Calculations"
+            ]
+        },
+        {
+            "title": "MEP Systems",
+            "image": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop",
+            "description": "Comprehensive mechanical, electrical, and plumbing design services that integrate seamlessly with your building's architecture.",
+            "list": [
+                "HVAC Design",
+                "Electrical Systems",
+                "Plumbing & Fire Protection",
+                "Energy Optimization"
+            ]
+        },
+        {
+            "title": "Site Development",
+            "image": "https://images.unsplash.com/photo-1590496793907-4e9ed0e9c5f2?w=800&h=600&fit=crop",
+            "description": "Complete site preparation services including earthwork, grading, and utility installation for residential and commercial projects.",
+            "list": [
+                "Land Clearing",
+                "Excavation & Grading",
+                "Utility Installation",
+                "Erosion Control"
+            ]
+        },
+        {
+            "title": "BIM & 3D Modeling",
+            "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop",
+            "description": "Advanced Building Information Modeling (BIM) technology for accurate visualization and coordination before construction begins.",
+            "list": [
+                "3D Design Visualization",
+                "Clash Detection",
+                "Cost Estimation",
+                "Schedule Optimization"
+            ]
+        }
+    ],
+
+    "services": [{
+            "icon": "🏘️",
+            "title": "Residential Construction",
+            "preview": "Custom homes built to perfection",
+            "key": "residential"
+        },
+        {
+            "icon": "🏢",
+            "title": "Commercial Projects",
+            "preview": "Professional spaces for your business",
+            "key": "commercial"
+        },
+        {
+            "icon": "🔨",
+            "title": "Renovation & Remodeling",
+            "preview": "Transform your existing space",
+            "key": "renovation"
+        },
+        {
+            "icon": "📋",
+            "title": "Project Management",
+            "preview": "Expert coordination from start to finish",
+            "key": "management"
+        },
+        {
+            "icon": "⚙️",
+            "title": "Engineering Services",
+            "preview": "Technical excellence in design",
+            "key": "engineering"
+        },
+        {
+            "icon": "🚜",
+            "title": "Site Development",
+            "preview": "Complete land preparation solutions",
+            "key": "site"
+        },
+        {
+            "icon": "🌱",
+            "title": "Green Building",
+            "preview": "Sustainable construction for the future",
+            "key": "green"
+        }
+    ],
+
+    "testimonials": [{
+            "text": "Alpha Line transformed our vision into reality. Their attention to detail and commitment to quality is unmatched in the industry.",
+            "author": "Sarah Johnson",
+            "position": "CEO, Tech Innovations",
+            "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop"
+        },
+        {
+            "text": "Working with Alpha Line was a game-changer for our development project. Professional, reliable, and exceptional results.",
+            "author": "Michael Chen",
+            "position": "Property Developer",
+            "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop"
+        },
+        {
+            "text": "The engineering expertise and innovative solutions provided by Alpha Line exceeded all our expectations. Highly recommended!",
+            "author": "Emily Rodriguez",
+            "position": "Architect",
+            "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop"
+        }
+    ],
+
+    "projects": [{
+            "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop",
+            "category": "residential",
+            "title": "Skyline Modern Villa",
+            "description": "A stunning 5-bedroom contemporary masterpiece."
+        },
+        {
+            "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop",
+            "category": "commercial",
+            "title": "Apex Corporate Tower",
+            "description": "25-story office complex with LEED certification."
+        },
+        {
+            "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop",
+            "category": "residential",
+            "title": "Lakeside Estate",
+            "description": "Luxury waterfront property with panoramic views."
+        },
+        {
+            "image": "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=800&h=600&fit=crop",
+            "category": "renovation",
+            "title": "Historic Downtown Loft",
+            "description": "Complete transformation of a 1920s warehouse."
+        },
+        {
+            "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
+            "category": "commercial",
+            "title": "Metro Shopping Plaza",
+            "description": "Premium retail space with cutting-edge design."
+        },
+        {
+            "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",
+            "category": "residential",
+            "title": "Alpine Mountain Retreat",
+            "description": "Eco-friendly mountain home blending modern design."
+        }
+    ],
+
+    "contact": [{
+            "icon": "📍",
+            "title": "Address",
+            "text": "1234 Construction Blvd, Building District, City 12345"
+        },
+        {
+            "icon": "📞",
+            "title": "Phone",
+            "text": "+1 (555) 123-4567"
+        },
+        {
+            "icon": "✉️",
+            "title": "Email",
+            "text": "info@alphaline.construction"
+        },
+        {
+            "icon": "🕐",
+            "title": "Business Hours",
+            "text": "Mon - Fri: 8:00 AM - 6:00 PM"
+        }
+    ],
+
+    "footer": {
+        "description": "Building excellence through innovation and quality since 2003.",
+        "quickLinks": ["Home", "About Us", "Our Work", "Contact"],
+        "services": [
+            "Residential Construction",
+            "Commercial Projects",
+            "Renovation",
+            "Green Building"
+        ],
+        "contact": {
+            "address": "1234 Construction Blvd<br>Building District, City 12345",
+            "phone": "+1 (555) 123-4567",
+            "email": "info@alphaline.construction"
+        }
+    }
+}
