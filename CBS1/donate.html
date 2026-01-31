@@ -164,10 +164,7 @@
 
                                                     <li><a href="researchescopy.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Research</a></li>
 
-                                                    <li><a href="economicsupport.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Economic Support</a></li>
-
-                                                    <li><a href="victimoffendermediation.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Victim Offender Mediation</a></li>
-
+                                                    .
                                                     <li><a href="ourwork.html#ourcommunity" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Our Community</a></li>
 
 
@@ -248,26 +245,57 @@
             </p>
 
             <div class="paypal-area">
-                <!-- ⭐ PAYPAL DONATE BUTTON ⭐ -->
-                <script async src="https://www.paypal.com/donate?hosted_button_id=YOUR_BUTTON_ID">
-                </script>
-                <form action="https://www.paypal.com/donate" method="post" target="_blank">
-                    <input type="hidden" name="hosted_button_id" value="YOUR_BUTTON_ID" />
-                    <input type="submit" value="Donate with PayPal" style="
-                        background:#ffc439;
-                        padding:15px 30px;
-                        border:none;
-                        border-radius:8px;
-                        font-size:1.2rem;
-                        font-weight:600;
-                        cursor:pointer;
-                    ">
-                </form>
+                <button id="donateBtn" style="
+        background: #ef8113;
+        color:white;
+        padding:15px 35px;
+        border:none;
+        border-radius:8px;
+        font-size:1.2rem;
+        font-weight:600;
+        cursor:pointer;
+    ">
+        Donate Securely
+    </button>
+
+                <div id="donationDetails" style="
+    display:none;
+    margin-top:40px;
+    text-align:left;
+    background:#ffffff;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+">
+
+                    <h3 style="color: #ef8113">📱 Mobile Money (Rwanda)</h3>
+                    <p><strong>MTN MoMo:</strong> +250 XXX XXX XXX</p>
+                    <p><strong>Airtel Money:</strong> +250 XXX XXX XXX</p>
+                    <p><strong>Reference:</strong> Donation – CBS Rwanda</p>
+
+                    <hr>
+
+                    <h3 style="color: #ef8113;">🏦 Bank Transfer</h3>
+                    <p><strong>Bank:</strong> XXXX Bank</p>
+                    <p><strong>Account Name:</strong> Community Based Sociotherapy (CBS Rwanda)</p>
+                    <p><strong>Account Number:</strong> XXXXXXXXX</p>
+                    <p><strong>SWIFT:</strong> XXXXXXXX</p>
+
+                    <hr>
+
+                    <p style="font-size:14px;color:#666;">
+                        🔒 CBS Rwanda does not collect or store payment information online. Donations are made directly through official financial channels.
+                    </p>
+                </div>
+
+
+                <p class="secure-note">
+                    Secure donations via Mobile Money & Bank Transfer
+                </p>
             </div>
 
-            <p class="secure-note">
-                🔒 Secure & encrypted payment by PayPal • Tax-deductible donation (if applicable)
-            </p>
+
+
         </div>
 
 
@@ -329,10 +357,15 @@
 
 
     </div>
-    <script src="https://www.paypal.com/donate?hosted_button_id=YOUR_BUTTON_ID"></script>
+    <script>
+        document.getElementById("donateBtn").addEventListener("click", function() {
+            const box = document.getElementById("donationDetails");
+            box.style.display = box.style.display === "none" ? "block" : "none";
+        });
+    </script>
+
 
 </body>
 
 
 </html>
-
