@@ -1,1 +1,2283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>CBS</title>
+
+    <meta name="keywords" content="WebSite Template" />
+    <meta name="description" content="CBS is rwandan Based NGO">
+
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link id="googleFonts" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="vendor/animate/animate.compat.css">
+    <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.min.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/theme-elements.css">
+    <link rel="stylesheet" href="css/theme-blog.css">
+    <link rel="stylesheet" href="css/theme-shop.css">
+
+    <!-- Demo CSS -->
+    <link rel="stylesheet" href="css/demos/demo-cbs.css">
+
+    <!-- Skin CSS -->
+    <link id="skinCSS" rel="stylesheet" href="css/skins/skin-cbs.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+
+
+
+
+    <style>
+        /*Partners*/
+        
+        .partners-section {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+        
+        .section-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: #003500;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #FF8C00, #003500);
+            border-radius: 2px;
+            animation: expandWidth 1s ease-out 0.3s backwards;
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-top: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 20px;
+        }
+        
+        .partner-card {
+            background: white;
+            border: 2px solid #f0f0f0;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+        
+        .partner-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        
+        .partner-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .partner-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+        
+        .partner-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+        
+        .partner-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+        
+        .partner-card:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+        
+        .partner-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 140, 0, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .partner-card:hover::before {
+            left: 100%;
+        }
+        
+        .partner-card:hover {
+            transform: translateY(-10px);
+            border-color: #FF8C00;
+            box-shadow: 0 20px 40px rgba(255, 140, 0, 0.2);
+        }
+        
+        .partner-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px;
+            background: white;
+            border: 3px solid #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.4s ease;
+            overflow: hidden;
+            padding: 15px;
+        }
+        
+        .partner-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+        }
+        
+        .partner-card:hover .partner-logo {
+            transform: scale(1.1);
+            border-color: #FF8C00;
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.4);
+        }
+        
+        .partner-card:hover .partner-logo img {
+            transform: scale(1.05);
+        }
+        
+        .partner-logo::after {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            border: 2px solid #FF8C00;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .partner-card:hover .partner-logo::after {
+            opacity: 1;
+            animation: rotate 3s linear infinite;
+        }
+        
+        .partner-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #003500;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .partner-card:hover .partner-name {
+            color: #FF8C00;
+        }
+        
+        .partner-description {
+            font-size: 12px;
+            color: #668;
+            line-height: 1.6;
+        }
+        
+        .accent-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #FF8C00;
+            border-radius: 50%;
+            margin: 0 3px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .accent-dot:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+        
+        .accent-dot:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes expandWidth {
+            from {
+                width: 0;
+            }
+            to {
+                width: 80px;
+            }
+        }
+        
+        @keyframes pulse {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.3);
+                opacity: 0.6;
+            }
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 36px;
+            }
+            .partners-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 25px;
+            }
+        }
+        /*publications*/
+        /* Color setup */
+        /* Theme Colors */
+        /* ===================== */
+        /*   PUBLICATIONS CARDS  */
+        /* ===================== */
+        
+        .publications-section {
+            background-color: #003500 !important;
+            overflow: hidden;
+        }
+        /* Flip Card Base */
+        
+        .flip-card {
+            background: transparent;
+            width: 100%;
+            height: 380px;
+            perspective: 1200px;
+            position: relative;
+            border-radius: 25px;
+            overflow: hidden;
+            z-index: 1;
+            animation: softPulse 4s ease-in-out infinite;
+        }
+        /* --- Smooth heartbeat with subtle orange glow --- */
+        
+        @keyframes softPulse {
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 10px rgba(255, 140, 0, 0.15), 0 0 25px rgba(255, 140, 0, 0.1), inset 0 0 10px rgba(255, 140, 0, 0.15);
+            }
+            50% {
+                transform: scale(1.015);
+                box-shadow: 0 0 25px rgba(255, 140, 0, 0.4), 0 0 50px rgba(255, 140, 0, 0.25), inset 0 0 25px rgba(255, 140, 0, 0.3);
+            }
+        }
+        /* Orange energy wave around card */
+        
+        .flip-card::before {
+            content: "";
+            position: absolute;
+            inset: -3px;
+            border-radius: 25px;
+            background: linear-gradient(60deg, #FF8C00, transparent, #FF8C00, transparent);
+            background-size: 300% 300%;
+            z-index: 0;
+            animation: orangeFlow 6s ease-in-out infinite;
+            opacity: 0.25;
+            filter: blur(2px);
+        }
+        
+        @keyframes orangeFlow {
+            0% {
+                background-position: 0% 50%;
+                opacity: 0.25;
+            }
+            50% {
+                background-position: 100% 50%;
+                opacity: 0.45;
+            }
+            100% {
+                background-position: 0% 50%;
+                opacity: 0.25;
+            }
+        }
+        /* Hover Effects: lift, glow, flip */
+        
+        .flip-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(255, 140, 0, 0.5);
+        }
+        /* Inner rotation container */
+        
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transform-style: preserve-3d;
+            transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
+        }
+        /* Flip animation */
+        
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        /* Front and Back Common Styles */
+        
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 25px;
+            backface-visibility: hidden;
+            transition: all 0.5s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+        /* Front Side */
+        
+        .flip-card-front {
+            background: black;
+            color: #003500;
+            transform: rotateY(0deg);
+            box-shadow: inset 0 0 20px rgba(255, 140, 0, 0.05);
+        }
+        
+        .flip-card-front h4 {
+            color: #FF8C00;
+            font-weight: 700;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .flip-card-front p {
+            color: white;
+            font-size: 15px;
+            opacity: 0.9;
+        }
+        /* Back Side */
+        
+        .flip-card-back {
+            background-size: cover;
+            background-position: center;
+            transform: rotateY(180deg);
+            position: relative;
+            z-index: 1;
+        }
+        /* Zoom animation on hover */
+        
+        .flip-card:hover .flip-card-back {
+            animation: bgZoom 2s ease-in-out forwards;
+        }
+        
+        @keyframes bgZoom {
+            from {
+                background-size: 100%;
+            }
+            to {
+                background-size: 200%;
+            }
+        }
+        /* Dark overlay on back side */
+        
+        .flip-card-back .overlay {
+            background: rgba(0, 53, 0, 0.85);
+            border-radius: 25px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* "View More" Button */
+        
+        .view-more-btn {
+            background: #FF8C00;
+            color: white;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 14px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4);
+        }
+        
+        .view-more-btn:hover {
+            background: white;
+            color: #003500;
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+        }
+        
+        .view-more-btn i {
+            transition: transform 0.3s ease;
+        }
+        
+        .view-more-btn:hover i {
+            transform: translateX(6px);
+        }
+        /* Carousel spacing fix */
+        
+        .owl-carousel .flip-card {
+            margin: 10px;
+        }
+        /* Ensure all 4 cards align perfectly on large screens */
+        
+        @media (min-width: 1200px) {
+            .owl-carousel .flip-card {
+                flex: 1 1 23%;
+                max-width: 100%;
+                margin: 1%;
+            }
+        }
+        
+        .owl-carousel .owl-nav {
+            display: block !important;
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+        
+        .owl-carousel .owl-nav button.owl-prev,
+        .owl-carousel .owl-nav button.owl-next {
+            pointer-events: all;
+            position: absolute;
+            background: rgba(255, 140, 0, 0.8);
+            color: white !important;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            transition: all 0.3s ease;
+        }
+        
+        .owl-carousel .owl-nav button.owl-prev {
+            left: -20px;
+        }
+        
+        .owl-carousel .owl-nav button.owl-next {
+            right: -20px;
+        }
+        
+        .owl-carousel .owl-nav button:hover {
+            background: #FF8C00;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 140, 0, 0.6);
+        }
+    </style>
+
+</head>
+
+
+
+
+
+
+<body>
+
+    <div class="body">
+
+
+        <!--Header-->
+        <header id="header" data-plugin-options="{'stickyScrollUp': true, 'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': false, 'stickyChangeLogo': false, 'stickyStartAt': 100, 'stickyHeaderContainerHeight': 100}">
+            <div class="header-body border-top-0 h-auto box-shadow-none">
+                <div class="container-fluid px-3 px-lg-5 p-static">
+                    <div class="row align-items-center py-3">
+                        <div class="col-auto col-lg-2 col-xxl-3 me-auto me-lg-0">
+                            <div class="header-logo" data-clone-element-to="#offCanvasLogo">
+                                <a href="index.html">
+                                    <img alt="CBS" width="131" height="27" src="img/demos/cbs/logo.png">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-auto col-lg-8 col-xxl-6 justify-content-lg-center">
+                            <div class="header-nav header-nav-links justify-content-lg-center">
+                                <div class="header-nav-main header-nav-main-text-capitalize header-nav-main-arrows header-nav-main-effect-2">
+                                    <nav class="collapse">
+                                        <ul class="nav nav-pills" id="mainNav">
+                                            <li>
+                                                <a href="index.html" class="nav-link active">
+														Home
+													</a>
+                                            </li>
+
+
+                                            <li class="dropdown">
+                                                <a href="infographicandresearch.html" class="nav-link dropdown-toggle">Publications</a>
+                                                <ul class="dropdown-menu">
+
+
+
+                                                    <li><a href="infographicandresearch.html#researches" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Researches</a></li>
+
+                                                    <li><a href="infographicandresearch.html#infographic" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Infographic</a></li>
+                                                    <li><a href="storiesofchange.html" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Stories of changes</a></li>
+
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link" href="about.html">
+														About Us
+													</a>
+
+                                            </li>
+
+
+                                            <li class="dropdown">
+                                                <a class="nav-link" href="ourwork.html">
+														Our Work
+													</a>
+                                                <ul class="dropdown-menu">
+                                                    <li class="dropdown">
+                                                        <a class="nav-link" href="ourwork.html">
+                                                          CBS Approach </a>
+                                                        <ul class="dropdown-menu">
+                                                            <!-- LINK MODIFIED TO INCLUDE THE PAGE AND THE SECTION ID -->
+                                                            <li><a href="ourwork.html#cbs-approach" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">CBS Approach</a></li>
+                                                        </ul>
+                                                    </li>
+
+
+                                                    <li><a href="ourwork.html#community" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Community</a></li>
+
+                                                    <li><a href="ourwork.html#projects" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Projects</a></li>
+                                                    <li><a href="ourwork.html#themes" class="dropdown-item anim-hover-translate-right-5px transition-3ms bg-transparent text-color-hover-primary text-lg-2 py-lg-2">Themes</a></li>
+
+                                                </ul>
+
+                                            </li>
+
+                                            <li>
+                                                <a class="nav-link" href="news.html">
+														News
+													</a>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link" href="contact.html">
+														Contact
+													</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-auto col-lg-2 col-xxl-3">
+                            <div class="d-flex justify-content-end align-items-center">
+                                <div class="d-none d-sm-flex d-lg-none d-xxl-flex">
+                                    <img src="img/icons/phone-2.svg" width="24" height="24" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-secondary pe-1'}" />
+                                    <a href="tel:+(250)788 483 210" class="text-decoration-none font-secondary text-4 font-weight-semibold text-color-dark text-color-hover-primary transition-2ms negative-ls-05 ws-nowrap">+(250)788 483 210</a>
+                                </div>
+                                <a href="contact.html" class="btn btn-rounded btn-dark box-shadow-7 font-weight-medium px-3 py-2 text-2-5 btn-swap-1 ms-3 d-none d-md-flex" data-clone-element="1">
+                                    <span>    Donate <i class="fa-solid fa-arrow-right ms-2"></i></span>
+                                </a>
+                                <button class="btn header-btn-collapse-nav rounded-pill" data-bs-toggle="offcanvas" href="#offcanvasMain" role="button" aria-controls="offcanvasMain">
+										<i class="fas fa-bars"></i>
+									</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!--End Of Header-->
+
+
+
+
+
+
+
+        <!--Main slider Under The navbar-->
+
+        <div role="main" class="main px-3 px-lg-5">
+
+            <!-- Main Slider -->
+            <style>
+                .owl-carousel-fullwidth {
+                    width: 100vw !important;
+                    max-width: 100vw !important;
+                    margin-left: calc(-50vw + 50%) !important;
+                    margin-right: calc(-50vw + 50%) !important;
+                }
+                
+                .owl-carousel-fullwidth .bg-primary,
+                .owl-carousel-fullwidth .owl-item>div {
+                    border-radius: 0 !important;
+                }
+                
+                @media (max-width: 991px) {
+                    .carousel-image-wrapper {
+                        max-width: 400px !important;
+                        margin: 0 auto !important;
+                    }
+                }
+                
+                @media (max-width: 767px) {
+                    .carousel-image-wrapper {
+                        max-width: 320px !important;
+                    }
+                }
+                /* Ken Burns style effect */
+                
+                @keyframes kenburns {
+                    0% {
+                        transform: scale(1) translate(0, 0);
+                    }
+                    50% {
+                        transform: scale(1.1) translate(-2%, -2%);
+                    }
+                    100% {
+                        transform: scale(1) translate(0, 0);
+                    }
+                }
+                
+                .carousel-image-wrapper img {
+                    animation: kenburns 12s ease-in-out infinite alternate;
+                    transition: transform 1s ease;
+                }
+                
+                .slideshow-img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    opacity: 0;
+                    transform: scale(1);
+                    animation: slideshow 2s infinite;
+                }
+                /* Apply delays so they play one after another */
+                
+                .slideshow-img:nth-child(1) {
+                    animation-delay: 0s;
+                }
+                
+                .slideshow-img:nth-child(2) {
+                    animation-delay: 1s;
+                }
+                
+                .slideshow-img:nth-child(3) {
+                    animation-delay: 12s;
+                }
+                /* The fade + zoom effect */
+                
+                @keyframes slideshow {
+                    0% {
+                        opacity: 0;
+                        transform: scale(1);
+                    }
+                    5% {
+                        opacity: 1;
+                    }
+                    33% {
+                        opacity: 1;
+                        transform: scale(1.1);
+                    }
+                    38% {
+                        opacity: 0;
+                    }
+                    100% {
+                        opacity: 0;
+                        transform: scale(1);
+                    }
+                }
+            </style>
+
+            <div class="owl-carousel owl-carousel-fullwidth owl-carousel-light owl-carousel-light-init-fadeIn owl-theme manual nav-style-1 nav-arrows-thin nav-inside nav-inside-plus nav-dark nav-lg nav-font-size-lg rounded-nav nav-borders show-nav-hover mb-0" data-plugin-options="{'autoplay': true, 'autoplayTimeout': 4000}"
+                data-dynamic-height="['750px','750px','750px','750px','750px']" style="height: 750px; ">
+                <div class="owl-stage-outer">
+                    <div class="owl-stage">
+
+
+
+                        <!-- Carousel Slide 1 -->
+                        <div class="owl-item p-relative overflow-hidden">
+                            <div class="bg-primary border-radius-2 p-relative z-index-1 overflow-hidden">
+                                <div class="custom-el-2 custom-pos-1">
+                                    <img class="img-fluid opacity-2 opacity-hover-2" src="img/demos/cbs/svg/waves.svg" alt="">
+                                </div>
+
+                                <div class="container-fluid px-0">
+                                    <div class="row justify-content-center align-items-center mh-750px py-5 mx-0">
+                                        <div class="col-lg-5 text-center text-lg-start px-4 px-lg-5">
+                                            <h4 class="text-5 text-lg-6 font-weight-medium mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="0" style="color:white !important">
+                                                <img width="29" height="29" src="img/demos/cbs/icons/icon-4.svg" class="w-auto d-inline-flex p-relative bottom-2" alt=""> CBS Rwanda
+
+
+                                            </h4>
+                                            <h1 class="text-10 text-lg-12 font-weight-semibold line-height-1 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200" style="color:white !important">
+
+
+                                                Community Based Social Therapy.
+
+
+                                            </h1>
+                                            <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
+                                                <p class="text-4 text-lg-5 pe-lg-5 line-height-5 text-dark opacity-7 mb-2 mb-lg-4" style="color:white !important">
+
+                                                    Community-based sociotherapy is an approach used to support people in constructively dealing with the psychosocial consequences of war, genocide, violence and other forms of human suffering.
+
+
+
+                                                </p>
+                                            </div>
+                                            <div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="600">
+                                                <a href="ourwork.html" data-hash data-hash-offset="0" data-hash-offset-lg="0" class="btn btn-light btn-effect-2 transition-3ms border-0 btn-rounded btn-xl text-3 py-4 btn-with-arrow-solid mt-3">
+                                                    <strong class="d-inline-flex text-dark font-weight-medium text-3-5 text-lg-4 me-3 px-3">
+
+                                                        Get Started
+                                                    
+                                                    </strong>
+                                                    <span class="bg-transparent box-shadow-6"><i class="fa-solid fa-arrow-right text-dark"></i></span>
+                                                </a>
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="col-8 col-lg-6 mt-3 px-md-5 ps-xl-5 pe-xxl-5 mt-lg-0">
+                                            <div class="p-relative carousel-image-wrapper" style="max-width: 600px; margin: 0 auto;">
+                                                <div class="custom-mask-img custom-mask-img-1">
+                                                    <img class="img-fluid" src="img/demos/cbs/generic/generic-1.jpg" loading="lazy" alt="">
+                                                    <img src="img/demos/cbs/generic/generic-2.jpg" class="slideshow-img" alt="">
+                                                    <img src="img/demos/cbs/generic/generic-3.jpg" class="slideshow-img" alt="">
+                                                </div>
+                                             <!--   <video autoplay muted loop playsinline class="w-100 h-100" style="object-fit:cover;">
+    <source src="video/Ubuhamya bwa Mvura Nkuvure 2021 - Community Based Sociotherapy (1080p, h264, youtube).mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>-->
+
+                                                <div class="p-absolute bg-dark custom-stamp-1 appear-animation" data-appear-animation="blurIn" data-appear-animation-delay="800">
+                                                    <!-- Curved Text Generator: https://suncatcherstudio.com/curved-text-generator/ -->
+                                                    <div class="rotate-animation">
+                                                        <svg viewbox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+																<path id="curvedText1" fill="none" stroke="none" 
+																d="M 32.550491,148.48008 A -108.15144,-108.15144 0 0 1 140.70194,40.328644 -108.15144,-108.15144 0 0 1 248.85338,148.48008 -108.15144,-108.15144 0 0 1 140.70194,256.63153 -108.15144,-108.15144 0 0 1 32.550491,148.48008 Z" />  
+																<text font-size="20" fill="#FFF" letter-spacing="0" font-family="Poppins, Arial, sans-serif" font-weight="semibold">
+																<textpath xlink:href="#curvedText1">
+                                                                    
+                                                                    community - based - Social therapy - cbs rwanda - Mvura nkuvure
+                                                                
+                                                                
+                                                                </textpath></text>
+															</svg>
+                                                    </div>
+                                                    <div class="p-absolute transform3dxy-n50 left-50pct top-50pct">
+                                                        <img width="58" height="58" src="img/demos/cbs/icons/icon-shape-1.svg" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary p-relative bottom-2 right-3'}" />
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Carousel Slide 2 -->
+
+                        <div class="owl-item p-relative border-radius-2 overflow-hidden">
+                            <div class="background-image-wrapper p-absolute z-index-1 top-0 left-0 right-0 bottom-0 overlay overlay-color-dark overlay-show overlay-op-6" data-appear-animation="kenBurnsToLeft" data-appear-animation-duration="30s" data-carousel-onchange-show style="background-image: url(img/demos/cbs/slides/slide-2.jpg); background-size: cover; background-position: center;"></div>
+                            <div class="container-fluid px-0 text-color-light p-relative z-index-2">
+                                <div class="row justify-content-center align-items-center mh-750px py-5 mx-0">
+                                    <div class="col-lg-6 text-center px-4">
+                                        <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
+                                            <div class="rotate-animation">
+                                                <img width="90" height="90" src="img/demos/cbs/icons/icon-shape-1.svg" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary mb-4'}" />
+                                            </div>
+                                        </div>
+                                        <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
+                                            <h4 class="text-6 text-lg-7 text-color-light font-weight-regular mb-4"><span class="d-inline-flex p-relative top-7"><img width="34" height="34" src="img/demos/cbs/icons/icon-6.svg"  data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-light d-inline-flex'}" alt=""></span>                                                Outstanding Outcomes
+
+                                            </h4>
+                                        </div>
+                                        <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
+                                            <h2 class="text-10 text-lg-12 font-weight-semibold text-color-light line-height-1">
+
+
+                                                The approach uses the group as a therapeutic medium.
+
+
+                                            </h2>
+                                        </div>
+                                        <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800">
+                                            <a href="ourwork.html" data-hash data-hash-offset="0" data-hash-offset-lg="0" class="btn btn-light btn-effect-2 transition-3ms border-0 btn-rounded btn-xl text-3 py-4 btn-with-arrow-solid mt-3">
+                                                <strong class="d-inline-flex text-dark font-weight-medium text-3-5 text-lg-4 me-3 px-3">
+                                                    
+                                                    Get Started
+                                                
+                                                </strong>
+                                                <span class="bg-transparent box-shadow-6"><i class="fa-solid fa-arrow-right text-dark"></i></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!--End Of Slide 2-->
+
+
+
+
+
+                        <!--Slide 3-->
+
+                        <div class="owl-item p-relative border-radius-2 overflow-hidden">
+                            <div class="background-image-wrapper p-absolute z-index-1 top-0 left-0 right-0 bottom-0 overlay overlay-color-dark overlay-show overlay-op-6" data-appear-animation="kenBurnsToLeft" data-appear-animation-duration="30s" data-carousel-onchange-show style="background-image: url(img/demos/cbs/slides/slide-3.jpeg); background-size: cover; background-position: center;"></div>
+                            <div class="container-fluid px-0 text-color-light p-relative z-index-2">
+                                <div class="row justify-content-center align-items-center mh-750px py-5 mx-0">
+                                    <div class="col-lg-6 text-center px-4">
+                                        <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
+                                            <div class="rotate-animation">
+                                                <img width="90" height="90" src="img/demos/cbs/icons/icon-5.svg" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary mb-4'}" />
+                                            </div>
+                                        </div>
+                                        <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
+                                            <h4 class="text-6 text-lg-7 text-color-light font-weight-regular mb-4"><span class="d-inline-flex p-relative top-7"><img width="34" height="34" src="img/icons/cbs.svg"  data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-light d-inline-flex'}" alt=""></span>                                                Improved Mental Well-being
+
+                                            </h4>
+                                        </div>
+                                        <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
+                                            <h2 class="text-10 text-lg-12 font-weight-semibold text-color-light line-height-1">
+
+
+                                                A significant reduction in symptoms associated with mental distress, trauma, and depression.
+
+
+                                            </h2>
+                                        </div>
+                                        <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800">
+                                            <a href="ourwork.html" data-hash data-hash-offset="0" data-hash-offset-lg="0" class="btn btn-light btn-effect-2 transition-3ms border-0 btn-rounded btn-xl text-3 py-4 btn-with-arrow-solid mt-3">
+                                                <strong class="d-inline-flex text-dark font-weight-medium text-3-5 text-lg-4 me-3 px-3">
+                                                    
+                                                    Get Started
+                                                
+                                                </strong>
+                                                <span class="bg-transparent box-shadow-6"><i class="fa-solid fa-arrow-right text-dark"></i></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!--End of Slide 3-->
+
+
+
+                        <!--Slide 4-->
+
+                        <div class="owl-item p-relative border-radius-2 overflow-hidden">
+                            <div class="background-image-wrapper p-absolute z-index-1 top-0 left-0 right-0 bottom-0 overlay overlay-color-dark overlay-show overlay-op-6" data-appear-animation="kenBurnsToLeft" data-appear-animation-duration="30s" data-carousel-onchange-show style="background-image: url(img/demos/cbs/slides/slide-4.jpeg); background-size: cover; background-position: center;"></div>
+                            <div class="container-fluid px-0 text-color-light p-relative z-index-2">
+                                <div class="row justify-content-center align-items-center mh-750px py-5 mx-0">
+                                    <div class="col-lg-6 text-center px-4">
+                                        <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
+                                            <div class="rotate-animation">
+                                                <img width="90" height="90" src="img/demos/cbs/icons/icon-1.svg" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary mb-4'}" />
+                                            </div>
+                                        </div>
+                                        <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
+                                            <h4 class="text-6 text-lg-7 text-color-light font-weight-regular mb-4"><span class="d-inline-flex p-relative top-7"><img width="34" height="34" src="img/demos/cbs/icons/icon-1.svg"  data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-light d-inline-flex'}" alt=""></span>                                                Enhanced Social Cohesion
+
+                                            </h4>
+                                        </div>
+                                        <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
+                                            <h2 class="text-10 text-lg-12 font-weight-semibold text-color-light line-height-1">
+
+
+                                                The groups facilitate reconciliation and the restoration of trust .
+
+
+                                            </h2>
+                                        </div>
+                                        <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800">
+                                            <a href="ourwork.html" data-hash data-hash-offset="0" data-hash-offset-lg="0" class="btn btn-light btn-effect-2 transition-3ms border-0 btn-rounded btn-xl text-3 py-4 btn-with-arrow-solid mt-3">
+                                                <strong class="d-inline-flex text-dark font-weight-medium text-3-5 text-lg-4 me-3 px-3">
+                                                    
+                                                    Get Started
+                                                
+                                                </strong>
+                                                <span class="bg-transparent box-shadow-6"><i class="fa-solid fa-arrow-right text-dark"></i></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!--End of Slide 4-->
+
+
+
+
+
+                    </div>
+                </div>
+                <div class="owl-nav">
+                    <button type="button" role="presentation" class="owl-prev" aria-label="Previous"></button>
+                    <button type="button" role="presentation" class="owl-next" aria-label="Next"></button>
+                </div>
+            </div>
+
+
+
+            <!--End of Carousel-->
+
+
+
+
+
+
+
+
+
+
+            <!-- Icons -->
+            <div class="border-bottom border-bottom-color-grey-100">
+                <div class="container">
+                    <div class="row py-5">
+                        <div class="col-lg-4 mb-4 mb-sm-5 mb-lg-0">
+                            <div class="feature-box appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="0">
+                                <div class="feature-box-icon bg-transparent w-auto h-auto p-0 top-0 align-items-start">
+                                    <div class="p-absolute opacity-2 rotate-l-10">
+                                        <img width="80" src="img/icons/abstract-bg-1.svg" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary'}" />
+                                    </div>
+                                    <img src="img/demos/cbs/icons/icon-1.svg" width="55" height="55" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'p-relative top-10'}" />
+                                </div>
+                                <div class="feature-box-info w-100 ps-4 ms-1">
+                                    <h4 class="mb-1">
+
+                                        Reconciliation
+
+                                    </h4>
+                                    <p class="mb-0 pt-1 line-height-6">
+
+                                        Restore the fractured social fabric through shared group experiences.
+
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4 mb-sm-5 mb-lg-0">
+                            <div class="feature-box appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">
+                                <div class="feature-box-icon bg-transparent w-auto h-auto p-0 top-0 align-items-start">
+                                    <div class="p-absolute opacity-2 rotate-l-45">
+                                        <img width="80" src="img/icons/abstract-bg-1.svg" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary'}" />
+                                    </div>
+                                    <img src="img/demos/cbs/icons/icon-2.svg" width="55" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'p-relative top-10'}" />
+                                </div>
+                                <div class="feature-box-info w-100 ps-4 ms-1">
+                                    <h4 class="mb-1">
+                                        Donate
+
+                                    </h4>
+                                    <p class="mb-0 pt-1 line-height-6">
+
+
+                                        Donation supports community psychosocial recovery efforts
+
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="feature-box appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
+                                <div class="feature-box-icon bg-transparent w-auto h-auto p-0 top-0 align-items-start">
+                                    <div class="p-absolute opacity-2 rotate-l-30">
+                                        <img width="80" src="img/icons/abstract-bg-1.svg" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary'}" />
+                                    </div>
+                                    <img src="img/demos/cbs/icons/icon-3.svg" width="55" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'p-relative top-10'}" />
+                                </div>
+                                <div class="feature-box-info w-100 ps-4 ms-1">
+                                    <h4 class="mb-1">
+
+                                        Program
+
+                                    </h4>
+                                    <p class="mb-0 pt-1 line-height-6">
+
+
+                                        Implement Mvura Nkuvure's 15 week structured healing programs.
+
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end of Icons-->
+
+
+
+
+
+
+
+
+
+
+            <!-- Who We Are -->
+            <div class="container" id="intro">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mb-5 mt-5 mt-lg-0 py-lg-5">
+                        <div class="appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="0">
+                            <span class="badge bg-gradient-light-primary-rgba-20 text-secondary rounded-pill text-uppercase font-weight-semibold text-2-5 px-3 py-2 px-4 mb-4"><span class="d-inline-flex py-1 px-2">Who We Are</span></span>
+                        </div>
+                        <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                            <h2 class="text-9 text-lg-12 font-weight-semibold line-height-1 mb-4">
+
+                                Your Trusted Psychosocial Healers and Peacebuilders
+
+                            </h2>
+                        </div>
+                        <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
+                            <p class="pe-lg-5">
+
+                                We provide comprehensive sociotherapy and healing publications tailored to meet the needs of communities and individuals alike. We are here to help you navigate the complexities of the social world.
+
+
+                            </p>
+                        </div>
+
+                        <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
+                            <div class="d-flex align-items-center pt-2 pb-4">
+                                <p class="d-inline-block mb-0 font-weight-bold line-height-1"><mark class="text-dark mark mark-pos-2 mark-height-50 mark-color bg-color-before-primary-rgba-30 font-secondary text-15 mark-height-30 n-ls-5 p-0">15+</mark></p>
+                                <span class="custom-font-tertiary text-6 text-dark n-ls-1 fst-italic ps-2">Weeks of Dialogue</span>
+                            </div>
+                        </div>
+
+                        <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800">
+                            <div class="d-flex flex-column flex-lg-row pt-3 align-items-lg-center">
+                                <div>
+                                    <a href="about.html" class="btn btn-rounded btn-dark box-shadow-7 font-weight-medium btn-swap-1" data-clone-element="1">
+                                        <span>Learn More <i class="fa-solid fa-arrow-right ms-2 p-relative left-10"></i></span>
+                                    </a>
+                                </div>
+                                <div class="text-4 px-3 d-none d-lg-block">-</div>
+                                <div class="pt-4 pt-lg-0">
+                                    <div class="feature-box feature-box-secondary align-items-center">
+                                        <div class="feature-box-icon feature-box-icon-lg p-static box-shadow-7">
+                                            <img src="img/icons/phone-2.svg" width="30" height="30" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-light'}" />
+                                        </div>
+                                        <div class="feature-box-info ps-2">
+                                            <strong class="d-block text-uppercase text-color-secondary p-relative top-2">Call Us</strong>
+                                            <a href="tel:+(250)788 483 210" class="text-decoration-none font-secondary text-5 font-weight-semibold text-color-dark text-color-hover-primary transition-2ms negative-ls-05 ws-nowrap p-relative bottom-2">+(250)788 483 210</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-center p-relative py-5">
+                        <div class="opacity-2 p-absolute w-100">
+                            <img src="img/icons/abstract-bg-1.svg" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary w-100'}" />
+                        </div>
+                        <div class="cascading-images-wrapper custom-cascading-images-wrapper-1">
+                            <div class="cascading-images p-relative">
+                                <div class="custom-mask-img custom-mask-img-2">
+                                    <img class="img-fluid" src="img/demos/cbs/generic/generic-2.jpg" loading="lazy" alt="">
+                                </div>
+                                <div class="p-absolute w-100 custom-mask-img custom-mask-img-3" style="top: 21%; left: -30%;">
+                                    <img src="img/demos/cbs/generic/generic-3.jpg" loading="lazy" class="img-fluid" alt="" />
+                                </div>
+                                <div class="p-absolute bg-color-light border-radius-2 p-3 text-3-5 n-ls-05 text-dark box-shadow-7 d-flex align-items-center" style="bottom: 0%; left: -45%;">
+                                    <img src="img/demos/cbs/icons/icon-4.svg" width="26" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-secondary me-1'}" /> <strong class="custom-font-secondary pe-2">Join Us</strong>                                    | 1922+ social groups!
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!--End of who we are-->
+
+
+
+
+
+
+
+            <!-- Our publications -->
+
+        </div>
+        <div class="publications-section bg-green text-light px-3 px-xl-0 border-radius-2 p-relative overflow-hidden">
+            <div class="custom-el-3 custom-pos-2 opacity-1">
+                <img class="img-fluid opacity-5" src="img/demos/cbs/svg/waves-2.svg" alt="">
+            </div>
+            <div class="container p-relative z-index-1">
+                <div class="row align-items-center py-5">
+                    <div class="col py-4">
+                        <div class="appear-animation" data-appear-animation="fadeInRightShorter">
+                            <span class="badge bg-orange text-light rounded-pill text-uppercase font-weight-semibold text-2-5 px-3 py-2 mb-4 d-inline-flex" style="color:#FF8C00 !important">
+                        Our Publications
+                    </span>
+                        </div>
+
+                        <h2 class="text-9 font-weight-semibold mb-2 text-white appear-animation" data-appear-animation="fadeInUpShorter">
+                            CBS Publications
+                        </h2>
+
+                        <p class="pe-lg-5 text-light opacity-7 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                            News, Research, Infographics, and Stories of Change.
+                        </p>
+
+                        <div class="pt-4 pb-4">
+                            <div class="carousel-half-full-width-wrapper">
+                                <div class="owl-carousel owl-theme" data-plugin-options="{'loop': true, 'nav': true, 'dots': false, 'margin': 20, 'responsive': {'0': {'items': 1}, '768': {'items': 2}, '992': {'items': 3}, '1200': {'items': 4}}}">
+
+                                    <!-- Flip Card 1 -->
+                                    <div class="flip-card">
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front">
+                                                <h4>News</h4>
+                                                <p>Ongoing journey of healing and reconciliation, highlighting the practical, grassroots success of our model.</p>
+                                            </div>
+                                            <div class="flip-card-back" style="background-image:url('img/demos/cbs/publications/publications-1.jpg')">
+                                                <div class="overlay">
+                                                    <a href="news.html" class="view-more-btn">View More <i class="fa-solid fa-arrow-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Flip Card 2 -->
+                                    <div class="flip-card">
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front">
+                                                <h4>Research</h4>
+                                                <p>We partner with academic institutions to conduct rigorous research on the sociotherapy model.</p>
+                                            </div>
+                                            <div class="flip-card-back" style="background-image:url('img/demos/cbs/publications/publications-2.jpg')">
+                                                <div class="overlay">
+                                                    <a href="infographicandresearch.html#researches" class="view-more-btn">View More <i class="fa-solid fa-arrow-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Flip Card 3 -->
+                                    <div class="flip-card">
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front">
+                                                <h4>Infographics</h4>
+                                                <p>Visual stories and data-driven insights to advocate and raise awareness.</p>
+                                            </div>
+                                            <div class="flip-card-back" style="background-image:url('img/demos/cbs/publications/publications-3.jpg')">
+                                                <div class="overlay">
+                                                    <a href="infographicandresearch.html#infographic" class="view-more-btn">View More <i class="fa-solid fa-arrow-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Flip Card 4 -->
+                                    <div class="flip-card">
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front">
+                                                <h4>Stories of Change</h4>
+                                                <p>Personal testimonies of healing and restored community trust from participants.</p>
+                                            </div>
+                                            <div class="flip-card-back" style="background-image:url('img/demos/cbs/publications/publications-4.jpg')">
+                                                <div class="overlay">
+                                                    <a href="storiesofchange.html" class="view-more-btn">View More <i class="fa-solid fa-arrow-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end carousel -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--End Of Publications-->
+
+
+
+
+
+
+
+
+
+
+
+        <!-- PARTNER WITH US -->
+
+
+        <div class="container pt-4 pb-5 pt-lg-5">
+            <div class="row align-items-center py-5">
+                <div class="col-lg-6 mb-5 mb-lg-0 pe-lg-5">
+                    <div class="appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="0">
+                        <span class="badge bg-gradient-light-primary-rgba-20 text-secondary rounded-pill text-uppercase font-weight-semibold text-2-5 px-3 py-2 px-4 mb-4"><span class="d-inline-flex py-1 px-2">
+                            
+                            
+                            
+                            CBS phases
+                        
+                        
+                        </span></span>
+                    </div>
+                    <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                        <h2 class="text-9 text-lg-12 font-weight-semibold line-height-1 mb-4">
+
+
+                            CBS methodology
+
+
+                        </h2>
+                    </div>
+                    <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
+                        <p>
+
+
+                            Sociotherapy is conducted in groups of ten to fifteen people.<br> CBS group serves as a therapeutic medium and groups are facilitated by skilled facilitators who are members of the community. <br>These groups meet weekly for
+                            about three hours over fifteen weeks in a safe and familiar environment, which can range from schools and churches to private homes or outdoor spaces. Two trained sociotherapy facilitators guide the groups through the phases
+                            of “safety, trust, care, respect, new life orientations, and memories of emotions.” <br>The process is governed by seven principles: “interest, equality, democracy, participation, responsibility, learning-by-doing, and here-and-now.”
+
+
+                        </p>
+
+
+
+                    </div>
+                    <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
+                        <div class="d-flex pt-3 align-items-center">
+                            <a href="contact.html" class="btn btn-rounded btn-dark box-shadow-7 font-weight-medium btn-swap-1" data-clone-element="1">
+                                <span>
+                                    
+                                    Contact Us 
+                                    
+                                    <i class="fa-solid fa-arrow-right ms-2 p-relative left-10"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 p-relative">
+                    <div class="accordion accordion-modern-status accordion-modern-status-arrow accordion-modern-status-arrow-dark" id="accordionWhyChooseUs">
+                        <div class="card card-default box-shadow-8 border-radius-2 bg-light">
+                            <div class="card-header bg-transparent" id="collapseWhyChooseUsHeadingOne">
+                                <h4 class="card-title m-0">
+                                    <a class="accordion-toggle bg-transparent text-3-5 text-color-dark font-weight-semi-bold collapsed" data-bs-toggle="collapse" data-bs-target="#collapseWhyChooseUsOne" aria-expanded="false" aria-controls="collapseWhyChooseUsOne">
+
+
+												Safety
+
+
+											</a>
+                                </h4>
+                            </div>
+                            <div id="collapseWhyChooseUsOne" class="collapse" aria-labelledby="collapseWhyChooseUsHeadingOne" data-bs-parent="#accordionWhyChooseUs">
+                                <div class="card-body pt-0">
+                                    <p class="mb-0">
+
+
+
+                                        Due to the feelings of unsafety that many war-afflicted sociotherapy participants report, sociotherapy facilitators must first of all create safety. This is done by providing structure, using social activities in the group, but also discussing the meaning
+                                        of safety to the participants and their social environment.
+
+
+
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+                        <div class="card card-default box-shadow-8 border-radius-2 bg-light">
+                            <div class="card-header bg-transparent" id="collapseWhyChooseUsHeadingTwo">
+                                <h4 class="card-title m-0">
+                                    <a class="accordion-toggle bg-transparent text-3-5 text-color-dark font-weight-semi-bold collapsed" data-bs-toggle="collapse" data-bs-target="#collapseWhyChooseUsTwo" aria-expanded="false" aria-controls="collapseWhyChooseUsTwo">
+
+
+
+												Trust
+
+
+
+											</a>
+                                </h4>
+                            </div>
+                            <div id="collapseWhyChooseUsTwo" class="collapse" aria-labelledby="collapseWhyChooseUsHeadingTwo" data-bs-parent="#accordionWhyChooseUs">
+                                <div class="card-body pt-0">
+                                    <p class="mb-0">
+
+
+
+                                        The second phase, “trust,” presents itself when safety is increased in the sociotherapy group. The aim of the second phase is for participants to regain their ability to trust, which is especially important for those who have experienced trauma. A vital
+                                        precondition for creating a supportive and healing group environment.
+
+
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="card card-default box-shadow-8 border-radius-2 bg-light">
+                            <div class="card-header bg-transparent" id="collapseWhyChooseUsHeadingThree">
+                                <h4 class="card-title m-0">
+                                    <a class="accordion-toggle bg-transparent text-3-5 text-color-dark font-weight-semi-bold collapsed" data-bs-toggle="collapse" data-bs-target="#collapseWhyChooseUsThree" aria-expanded="false" aria-controls="collapseWhyChooseUsThree">
+
+
+												 Care
+
+
+											</a>
+                                </h4>
+                            </div>
+                            <div id="collapseWhyChooseUsThree" class="collapse" aria-labelledby="collapseWhyChooseUsHeadingThree" data-bs-parent="#accordionWhyChooseUs">
+                                <div class="card-body pt-0">
+                                    <p class="mb-0">
+
+
+
+                                        The focus in this phase is on helping those who have had difficult experiences and struggle to take care of themselves or others. The hardship people have gone through are expressed in various ways. Distinctive expressions of care involve reflection and
+                                        increased caring behaviour in the sense of looking after each other and forms of self-care.
+
+
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="card card-default box-shadow-8 border-radius-2 bg-light">
+                            <div class="card-header bg-transparent" id="collapseWhyChooseUsHeadingFour">
+                                <h4 class="card-title m-0">
+                                    <a class="accordion-toggle bg-transparent text-3-5 text-color-dark font-weight-semi-bold collapsed" data-bs-toggle="collapse" data-bs-target="#collapseWhyChooseUsFour" aria-expanded="false" aria-controls="collapseWhyChooseUsThree">
+
+
+												   Respect
+
+
+
+
+
+											</a>
+                                </h4>
+                            </div>
+                            <div id="collapseWhyChooseUsFour" class="collapse" aria-labelledby="collapseWhyChooseUsHeadingFour" data-bs-parent="#accordionWhyChooseUs">
+                                <div class="card-body pt-0">
+                                    <p class="mb-0">
+
+
+
+
+                                        Increasingly felt certainty to safety, trust and care, allows the expression of tensions that have arisen over cultural differences regarding respect. While maintaining the support structure and trust in the group, the facilitators bring the subject respect
+                                        to the group, allowing people to express their desire specific forms of respect, related to present-day reality.
+
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="card card-default box-shadow-8 border-radius-2 bg-light">
+                            <div class="card-header bg-transparent" id="collapseWhyChooseUsHeadingTen">
+                                <h4 class="card-title m-0">
+                                    <a class="accordion-toggle bg-transparent text-3-5 text-color-dark font-weight-semi-bold collapsed" data-bs-toggle="collapse" data-bs-target="#collapseWhyChooseUsTen" aria-expanded="false" aria-controls="collapseWhyChooseUsTen">
+
+
+												    New life orientation
+
+
+
+
+
+											</a>
+                                </h4>
+                            </div>
+                            <div id="collapseWhyChooseUsTen" class="collapse" aria-labelledby="collapseWhyChooseUsHeadingFour" data-bs-parent="#accordionWhyChooseUs">
+                                <div class="card-body pt-0">
+                                    <p class="mb-0">
+
+
+
+
+                                        During the fifth phase, there is room for future-oriented discussions. Often this includes the wish of participants to have a say in the rules of the institutions that govern the basic structure of the participants communal life. By emphasizing the variation
+                                        of rules (for instance in games), the sociotherapy facilitators enable participants to reflect on effective ways of exercising control.
+
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="card card-default box-shadow-8 border-radius-2 bg-light">
+                            <div class="card-header bg-transparent" id="collapseWhyChooseUsHeadingSeven">
+                                <h4 class="card-title m-0">
+                                    <a class="accordion-toggle bg-transparent text-3-5 text-color-dark font-weight-semi-bold collapsed" data-bs-toggle="collapse" data-bs-target="#collapseWhyChooseUsSeven" aria-expanded="false" aria-controls="collapseWhyChooseUsSeven">
+
+
+												    Memories
+
+
+
+
+
+											</a>
+                                </h4>
+                            </div>
+                            <div id="collapseWhyChooseUsSeven" class="collapse" aria-labelledby="collapseWhyChooseUsHeadingFour" data-bs-parent="#accordionWhyChooseUs">
+                                <div class="card-body pt-0">
+                                    <p class="mb-0">
+
+
+
+
+                                        In the last phase participants are clear about the reliability of the sociotherapy group and therefore favourable conditions arise for deciding whether or not to proceed to a more in-depth manner of processing traumatic emotions. By discussing both good
+                                        and bad memories, participants find new ways to understand their past experiences. From here, one can be decide whether help from a specialist is desired.
+
+
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--End of Partner with us-->
+
+
+
+
+
+
+        <!-- Delivering Excellence -->
+
+
+        <div class="bg-quaternary border-radius-2 p-relative overflow-hidden">
+            <div class="container p-relative z-index-1">
+                <div class="row px-3 px-xl-0 align-items-center py-5">
+                    <div class="col-lg-8 pb-0 pb-lg-5 pt-5">
+                        <div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="0">
+                            <h2 class="text-9 text-lg-12 font-weight-semibold line-height-1 mb-4"><span class="p-relative z-index-1">
+                                
+                                Delivering Impact Through 
+                            
+                            </span> <mark class="text-dark mark mark-color mark-color-primary mark-pos-2 mark-height-100 p-0 appear-animation" data-appear-animation data-appear-animation-delay="0">
+                                
+                                Proven Methodology
+                            
+                            </mark> and
+
+                                <mark class="text-dark mark mark-color mark-color-primary mark-pos-2 mark-height-100 p-0 appear-animation" data-appear-animation data-appear-animation-delay="1500">
+                                
+                                Dedication
+                            
+                            
+                            </mark></h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-5 mb-4 mb-lg-0">
+                                <div class="appear-animation" data-appear-animation="blurIn" data-appear-animation-delay="300">
+                                    <div class="d-flex align-items-center pt-4">
+                                        <strong class="d-inline-flex text-15 text-dark n-ls-5">
+                                            
+                                            90%
+                                        
+                                        </strong>
+                                        <div class="p-2 ps-3">
+                                            <img src="img/demos/cbs/icons/icon-6.svg" width="48" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary'}" />
+                                        </div>
+                                    </div>
+                                    <span class="custom-font-tertiary text-7 text-dark n-ls-1 fst-italic">
+                                        
+                                        Reduction in Social Distress
+                                    
+                                    </span>
+                                    <p class="mb-0 pt-2 text-3-5 line-height-7">
+
+
+                                        Through structured group sessions.
+
+
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-5">
+                                <div class="appear-animation" data-appear-animation="blurIn" data-appear-animation-delay="600">
+                                    <div class="d-flex align-items-center pt-4">
+                                        <strong class="d-inline-flex text-15 text-dark n-ls-5">
+                                            70%
+                                        
+                                        </strong>
+                                        <div class="p-2 ps-3">
+                                            <img src="img/demos/cbs/icons/icon-6.svg" width="48" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary'}" />
+                                        </div>
+                                    </div>
+                                    <span class="custom-font-tertiary text-7 text-dark n-ls-1 fst-italic">
+                                        
+                                        Increase in Social Cohesion and Trust
+                                    
+                                    
+                                    </span>
+                                    <p class="mb-0 pt-2 text-3-5 line-height-7">
+
+                                        Our model effectively rebuilds fractured social relationships.
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="800">
+                            <img src="img/demos/cbs/svg/graph.svg" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'w-100 custom-el-4'}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-secondary rounded-bottom p-relative overflow-hidden">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col px-0 text-center text-color-light">
+                            <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-lg-center">
+                                <div class="me-lg-4 flex-grow-1 flex-lg-grow-0">
+                                    <span class="d-inline-block text-3 py-4 px-5 text-uppercase font-weight-medium custom-bg-gradient-1 w-100 rounded-pill">Explore Further:</span>
+                                </div>
+                                <div class="me-3 ps-3 p-relative bottom-1 pt-3 pt-lg-0">
+                                    <a href="ourwork.html" class="btn btn-arrow-effect-1 bg-transparent text-light border-0 text-lg-3-5 py-2 py-lg-0">Learn About Our ourwork <i class="fas fa-arrow-right ms-2"></i></a>
+                                </div>
+                                <div class="py-3 py-lg-0 p-relative bottom-1 border-start border-color-light-rgba-20">
+                                    <a href="contact.html" class="btn btn-arrow-effect-1 bg-transparent text-light border-0 text-lg-3-5 py-2 py-lg-0">Contact <i class="fas fa-arrow-right ms-2"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--End Of Excellence-->
+
+
+
+
+
+
+
+
+        <!-- Voices of Impact: What Our Partners and Communities Say -->
+        <div class="container pb-5">
+            <div class="row">
+                <div class="col-lg-6 mb-5 mb-lg-0 p-relative z-index-1">
+                    <div class="sticky-container h-100">
+                        <div data-plugin-sticky data-plugin-options="{'minWidth': 0, 'containerSelector': '.sticky-container', 'padding': {'top': 0, 'bottom': 0}}">
+                            <div class="appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="0">
+                                <span class="badge bg-gradient-light-primary-rgba-20 text-secondary rounded-pill text-uppercase font-weight-semibold text-2-5 px-3 py-2 px-4 mb-4 mt-4"><span class="d-inline-flex py-1 px-2">
+                                    
+                                   CBS principles
+                                    
+                                    <i class="fa-solid fa-heart ms-2 custom-text-color-1"></i></span></span>
+                            </div>
+                            <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                                <h2 class="text-9 text-lg-12 font-weight-semibold line-height-1 mb-4">
+
+                                    CBS is based on 7 principles
+
+
+                                </h2>
+                            </div>
+                            <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
+                                <p>
+
+
+                                    As the groups move through the development phases, the sociotherapy principles are applied to each and every phase. The principles are fundamental guiding concepts for structuring the sociotherapy groups.
+
+
+                                </p>
+                            </div>
+
+                            <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
+                                <div class="py-2 d-flex text-4-5 n-ls-1 text-dark">
+                                    <img src="img/demos/cbs/icons/icon-4.svg" width="28" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-secondary me-2'}" /> <strong class="custom-font-secondary pe-2">
+                                        
+                                        Join Us
+                                    
+                                    </strong> | Thousands of lives transformed through CBS since 2005
+
+
+                                </div>
+                            </div>
+
+                            <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800">
+                                <div class="d-flex pt-4 align-items-center">
+                                    <a href="contact.html" class="btn btn-rounded btn-dark box-shadow-7 font-weight-medium btn-swap-1" data-clone-element="1">
+                                        <span>Contact us <i class="fa-solid fa-arrow-right ms-2 p-relative left-10"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--What they say-->
+
+                <div class="col-lg-6">
+                    <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                        <div class="card border-radius-2 bg-color-light border-0 box-shadow-9 mb-5">
+                            <div class="card-body py-3 px-2">
+
+                                <!--Principles-->
+                                <div class="testimonial testimonial-style-4 border-0 box-shadow-none m-0 p-0">
+                                    <div class="testimonial-author pb-3">
+                                        <div class="testimonial-author-thumbnail">
+                                            <img src="img/clients/client-1.jpg" loading="lazy" class="img-fluid rounded-circle" alt="">
+                                        </div>
+                                        <p><strong class="font-weight-bold">
+                                            
+                                            
+                                             Equality
+
+
+                                        </strong></p>
+                                    </div>
+                                    <div class="px-4 mx-2 pt-2 pb-3">
+                                        <p>
+
+
+                                            Participants in the sociotherapy groups are treated as equals. Despite any formal or informal roles or status in daily life, the members in the group will be treated as equals, including the sociotherapy facilitators.
+
+
+                                        </p>
+
+                                    </div>
+                                </div>
+
+                                <div class="testimonial testimonial-style-4 border-0 box-shadow-none m-0 p-0">
+                                    <div class="testimonial-author pb-3">
+                                        <div class="testimonial-author-thumbnail">
+                                            <img src="img/clients/client-1.jpg" loading="lazy" class="img-fluid rounded-circle" alt="">
+                                        </div>
+                                        <p><strong class="font-weight-bold">
+                                            
+                                            
+                                            Democracy
+
+
+                                        </strong></p>
+                                    </div>
+                                    <div class="px-4 mx-2 pt-2 pb-3">
+                                        <p>
+
+
+
+                                            Democracy in the context of sociotherapy means participation in open communication. Group decisions are reached in a transparent way and as a rule become the decision of the group.
+
+
+                                        </p>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="testimonial testimonial-style-4 border-0 box-shadow-none m-0 p-0">
+                                    <div class="testimonial-author pb-3">
+                                        <div class="testimonial-author-thumbnail">
+                                            <img src="img/clients/client-1.jpg" loading="lazy" class="img-fluid rounded-circle" alt="">
+                                        </div>
+                                        <p><strong class="font-weight-bold">
+                                            
+                                            
+                                           Participation
+
+
+                                        </strong></p>
+                                    </div>
+                                    <div class="px-4 mx-2 pt-2 pb-3">
+                                        <p>
+
+
+
+                                            Participation means involvement, joining in and taking part. Participation refers to verbal and non-verbal communication and may have an active or passive character and is a condition for the democratic principle.
+
+
+                                        </p>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="testimonial testimonial-style-4 border-0 box-shadow-none m-0 p-0">
+                                    <div class="testimonial-author pb-3">
+                                        <div class="testimonial-author-thumbnail">
+                                            <img src="img/clients/client-1.jpg" loading="lazy" class="img-fluid rounded-circle" alt="">
+                                        </div>
+                                        <p><strong class="font-weight-bold">
+                                            
+                                            
+                                           Responsibility
+
+                                        </strong></p>
+                                    </div>
+                                    <div class="px-4 mx-2 pt-2 pb-3">
+                                        <p>
+
+
+
+                                            In the context of sociotherapy, participants are taking responsibility for participation in open communication with the aim of creating a pleasant group atmosphere and solving problems together. This is another condition for the democratic principle.
+
+
+                                        </p>
+
+                                    </div>
+                                </div>
+
+
+
+                                <div class="testimonial testimonial-style-4 border-0 box-shadow-none m-0 p-0">
+                                    <div class="testimonial-author pb-3">
+                                        <div class="testimonial-author-thumbnail">
+                                            <img src="img/clients/client-1.jpg" loading="lazy" class="img-fluid rounded-circle" alt="">
+                                        </div>
+                                        <p><strong class="font-weight-bold">
+                                            
+                                            
+                                           Here and now
+
+
+                                        </strong></p>
+                                    </div>
+                                    <div class="px-4 mx-2 pt-2 pb-3">
+                                        <p>
+
+
+
+                                            This principle refers to the focus of discussions in the group and their sphere of influence. The facilitators methodically manage the corrective influence the participants of the sociotherapy group have.
+
+
+                                        </p>
+
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="testimonial testimonial-style-4 border-0 box-shadow-none m-0 p-0">
+                                    <div class="testimonial-author pb-3">
+                                        <div class="testimonial-author-thumbnail">
+                                            <img src="img/clients/client-1.jpg" loading="lazy" class="img-fluid rounded-circle" alt="">
+                                        </div>
+                                        <p><strong class="font-weight-bold">
+                                            
+                                            
+                                            Learning by doing
+
+
+                                        </strong></p>
+                                    </div>
+                                    <div class="px-4 mx-2 pt-2 pb-3">
+                                        <p>
+
+
+
+                                            Through this principle, the participants learn in practice, in and with the sociotherapy group, how recurring problems in their own social systems can be understood, handled differently and if necessary be reduced.
+
+
+                                        </p>
+
+                                    </div>
+                                </div>
+
+
+
+                                <div class="testimonial testimonial-style-4 border-0 box-shadow-none m-0 p-0">
+                                    <div class="testimonial-author pb-3">
+                                        <div class="testimonial-author-thumbnail">
+                                            <img src="img/clients/client-1.jpg" loading="lazy" class="img-fluid rounded-circle" alt="">
+                                        </div>
+                                        <p><strong class="font-weight-bold">
+                                            
+                                            
+                                             Inter-est
+
+
+                                        </strong></p>
+                                    </div>
+                                    <div class="px-4 mx-2 pt-2 pb-3">
+                                        <p>
+
+
+
+                                            Inter-est is described as “something that lies between people and therefore can relate and bind them together”. In community-based sociotherapy this means to determine how the space between people is used and what attitude is adopted with respect to the
+                                            other.
+
+
+                                        </p>
+
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!--End of Voices Impact and what people says-->
+
+
+
+
+
+
+    <!-- Parallax -->
+    <!--Where there is video-->
+
+    <div class="bg-quaternary border-radius-2 p-relative overflow-hidden mt-5">
+        <section class="section position-relative overflow-hidden border-0 overlay overlay-color-tertiary overlay-show overlay-op-6 m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'parallaxHeight': '120%', 'fadeIn': true}" data-image-src="img/demos/cbs/bg/bg-1.jpg"
+            loading="lazy">
+            <div class="container py-3">
+                <div class="row align-items-center justify-content-center mh-500px">
+                    <div class="col-lg-6 text-light text-center">
+                        <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="0">
+                            <h4 class="text-6 text-lg-7 text-color-light font-weight-regular mb-4"><span class="d-inline-flex p-relative top-7"><img width="34" height="34" src="img/demos/cbs/icons/icon-6.svg"  data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-light d-inline-flex'}" alt=""></span>                                Outstanding Outcomes</h4>
+                        </div>
+                        <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                            <h2 class="text-10 text-lg-12 font-weight-semibold text-color-light line-height-1">We Transform Shared Pain into Lasting Social Cohesion</h2>
+                        </div>
+                        <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
+                            <a class="text-decoration-none lightbox" href="https://www.youtube.com/watch?v=angCVp4DnvI" data-plugin-options="{'type':'iframe'}">
+                                <i class="fas fa-play featured-icon featured-icon-style-2 featured-icon-hover-effect-1 pulseAnim pulseAnimAnimated animation-infinite bg-primary right-4 top-0 m-0"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!--End of Where Video is-->
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Partners -->
+    <br><br>
+    <section class="partners-section">
+        <div class="section-header">
+            <h2 class="section-title">Our Partners</h2>
+            <div style="margin: 20px 0;">
+                <span class="accent-dot"></span>
+                <span class="accent-dot"></span>
+                <span class="accent-dot"></span>
+            </div>
+            <p class="section-subtitle"> Collaborators</p>
+        </div>
+
+        <div class="partners-grid">
+            <div class="partner-card">
+                <div class="partner-logo">
+                    <img src="img/logos/logo-1.png" alt="Minibumwe">
+                </div>
+                <h3 class="partner-name">MINUBUMWE</h3>
+                <p class="partner-description">The mission of MINUBUMWE is to preserve historical memory, to reinforce national unity, and to promote citizenship education and culture..</p>
+            </div>
+
+            <div class="partner-card">
+                <div class="partner-logo">
+                    <img src="img/logos/logo-2.svg" alt="RCS">
+                </div>
+                <h3 class="partner-name">RCS</h3>
+                <p class="partner-description">Rwanda Correctional Service (RCS) is an essential component of Rwanda’s Justice, Rule of Law and Order Sector (JRLOS).</p>
+            </div>
+
+            <div class="partner-card">
+                <div class="partner-logo">
+                    <img src="img/logos/logo-3.png" alt="ICBS">
+                </div>
+                <h3 class="partner-name">ICBS</h3>
+                <p class="partner-description">Community-Based Sociotherapy helps people transforming social relationships, individual beliefs and attitudes, rebuilding trust, processing traumatic memories and restoring social dignity to shape a better future.</p>
+            </div>
+
+            <div class="partner-card">
+                <div class="partner-logo">
+                    <img src="img/logos/logo-4.svg" alt="Embassy">
+                </div>
+                <h3 class="partner-name">NETHERLAND EMBASSY</h3>
+                <p class="partner-description">Kingdom of the Netherland Embassy in Kigali</p>
+            </div>
+
+            <div class="partner-card">
+                <div class="partner-logo">
+                    <img src="img/logos/logo-5.jpg" alt="Echo Partners Logo">
+                </div>
+                <h3 class="partner-name">EU</h3>
+                <p class="partner-description">A political and economic union of 27 member states primarily located in Europe. It is a unique supranational entity that combines characteristics of a federation and a confederation..</p>
+            </div>
+
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+    <!--Footer-->
+    <div>
+        <footer id="footer" class="border-0 bg-light px-3 px-lg-5 pt-0 text-3">
+
+
+
+
+
+            <div class="container pb-lg-4 pt-5">
+                <div class="row pt-3">
+                    <div class="col-lg-4">
+                        <div class="col-auto col-lg-2 col-xxl-3 me-auto me-lg-0">
+                            <div class="header-logo" data-clone-element-to="#offCanvasLogo">
+                                <a href="index.html">
+                                    <img alt="CBS" width="131" height="27" src="img/demos/cbs/logo.png">
+                                </a>
+                            </div>
+                        </div>
+
+                        <p class="text-3-5 text-color-grey">
+
+
+                            <br> NGO dedicated to psychosocial healing, particularly in the aftermath of the 1994 Genocide against the Tutsi and subsequent social conflict.
+
+                        </p>
+
+                        <div class="d-flex align-items-center pt-2 pb-4">
+                            <p class="d-inline-block mb-0 font-weight-bold line-height-1"><mark class="text-dark mark mark-pos-2 mark-height-50 mark-color bg-color-before-primary-rgba-30 font-secondary text-8 mark-height-30 n-ls-5 p-0">21+</mark></p>
+                            <span class="custom-font-tertiary text-5 text-dark n-ls-1 fst-italic ps-2">Years of Experience</span>
+                        </div>
+
+
+                    </div>
+                    <div class="col-sm-6 col-lg-2 pt-4 pt-lg-0">
+                        <h4 class="text-color-dark font-weight-bold mb-3">About</h4>
+                        <ul class="list list-unstyled">
+                            <li>
+                                <a href="index.html" class="text-color-grey text-color-hover-primary">
+										Home
+									</a>
+                            </li>
+
+                            <li>
+                                <a class="text-color-grey text-color-hover-primary" href="about.html">
+										About
+									</a>
+                            </li>
+                            <li>
+                                <a class="text-color-grey text-color-hover-primary" href="ourwork.html">
+										Our Work
+									</a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+
+
+
+                    <div class="col-sm-6 col-lg-3 pt-4 pt-lg-0">
+                        <h4 class="text-color-dark font-weight-bold mb-3">Publications</h4>
+                        <ul class="list list-unstyled">
+
+
+
+
+                            <li>
+                                <a class="text-color-grey text-color-hover-primary" target="_blank" href="news.html">
+										News
+									</a>
+                            </li>
+                            <li>
+                                <a class="text-color-grey text-color-hover-primary" href="storiesofchange.html">
+										Stories of Change
+									</a>
+                            </li>
+
+                            <li>
+                                <a href="infographicandresearch.html" class="text-color-grey text-color-hover-primary">Researches</a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 pt-4 pt-lg-0">
+                        <h4 class="text-color-dark font-weight-bold mb-3">CBS RWANDA</h4>
+
+
+
+                        <ul class="list list-unstyled">
+
+
+
+                            <li>
+                                <a class="text-color-grey text-color-hover-primary" href="tel:+(250)788 483 210">
+        Call us +(250)788 483 210
+    </a>
+                            </li>
+                            <li>
+                                <a class="text-color-grey text-color-hover-primary" href="mailto:info@cbsrwanda.org">
+        Write to us (info@cbsrwanda.org)
+    </a>
+                            </li>
+                            <li>
+                                <a class="text-color-grey text-color-hover-primary" target="_blank" href="https://login.microsoftonline.com/">
+        Staff Email 
+    </a>
+                            </li>
+
+
+                        </ul>
+
+                        <ul class="social-icons social-icons-clean social-icons-medium">
+                            <li class="social-icons-instagram">
+                                <a href="http://www.instagram.com/" target="_blank" title="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li class="social-icons-x">
+                                <a href="http://www.x.com/" target="_blank" title="X">
+                                    <i class="fab fa-x-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="social-icons-facebook">
+                                <a href="http://www.facebook.com/" target="_blank" title="Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+            <!--copyright-->
+            <div class="footer-copyright bg-transparent pb-2">
+                <div class="container">
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-6 text-center text-lg-start py-3">
+                            <p class="text-3 mb-0 opacity-6">© 2025 By <a href="https://innovatoor.com" target="_blank" class="text-decoration-underline text-color-secondary text-color-hover-primary">Innovatoor</a></p>
+                        </div>
+                        <div class="col-lg-6 py-3 text-center text-lg-end">
+                            <a href="#" class="text-color-grey text-color-hover-primary">Privacy Policy</a>
+                            <a href="#" class="text-color-grey text-color-hover-primary ms-3">Terms of Use</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </footer>
+    </div>
+
+
+
+
+
+
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasMain" aria-labelledby="offcanvasMain">
+        <div class="offcanvas-header">
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="mb-4" id="offCanvasLogo"></div>
+            <nav class="offcanvas-nav w-100" id="offCanvasNav"></nav>
+        </div>
+    </div>
+
+    <!-- Vendor -->
+    <script src="vendor/plugins/js/plugins.min.js"></script>
+
+    <!-- Theme Base, Components and Settings -->
+    <script src="js/theme.js"></script>
+
+    <!-- Demo -->
+    <script src="js/demos/demo-cbs.js"></script>
+
+    <!-- Theme Custom -->
+    <script src="js/custom.js"></script>
+
+    <!-- Theme Initialization Files -->
+    <script src="js/theme.init.js"></script>
+
+    <!-- Current Page Vendor and Views -->
+    <script src="js/views/view.contact.js"></script>
+
+</body>
+
+
+</html>
+
+
+
+
 
