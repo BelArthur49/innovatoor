@@ -849,8 +849,8 @@ if (articlesGrid && contentData.articles) {
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 1.5;
-                this.vy = (Math.random() - 0.5) * 1.5;
+                this.vx = (Math.random() - 0.5) * 3;//speed of the emoji
+                this.vy = (Math.random() - 0.5) * 3;//speed of the emoji
                 this.symbol = toolSymbols[Math.floor(Math.random() * toolSymbols.length)];
                 this.size = 25 + Math.random() * 20;
                 this.opacity = 0.5 + Math.random() * 0.5;
