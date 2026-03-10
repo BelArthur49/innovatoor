@@ -179,7 +179,8 @@
                 <!-- Footer will be loaded from JSON -->
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Alpha Line Construction. All rights reserved.</p>
+                <p>&copy; 2026 Alpha Line Construction. All rights reserved. | Developed by
+                    <a href="https://innovatoor.com" target="_blank" style="color:  rgba(56, 145, 248, 0.949) !important;">Innovatoor</a></p>
             </div>
         </footer>
     </div>
@@ -263,7 +264,8 @@
                 <!-- Footer will be loaded from JSON -->
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Alpha Line Construction. All rights reserved.</p>
+                <p>&copy; 2026 Alpha Line Construction. All rights reserved. | Developed by
+                    <a href="https://innovatoor.com" target="_blank" style="color:  rgba(56, 145, 248, 0.949) !important;">Innovatoor</a></p>
             </div>
         </footer>
     </div>
@@ -290,7 +292,8 @@
             <div class="footer-content" id="footerContentServices">
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Alpha Line Construction. All rights reserved.</p>
+                <p>&copy; 2026 Alpha Line Construction. All rights reserved. | Developed by
+                    <a href="https://innovatoor.com" target="_blank" style="color:  rgba(56, 145, 248, 0.949) !important;">Innovatoor</a></p>
             </div>
         </footer>
 
@@ -321,7 +324,8 @@
                 <!-- Footer will be loaded from JSON -->
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Alpha Line Construction. All rights reserved.</p>
+                <p>&copy; 2026 Alpha Line Construction. All rights reserved. | Developed by
+                    <a href="https://innovatoor.com" target="_blank" style="color:  rgba(56, 145, 248, 0.949) !important;">Innovatoor</a></p>
             </div>
         </footer>
     </div>
@@ -389,7 +393,8 @@
                 <!-- Footer will be loaded from JSON -->
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Alpha Line Construction. Developed by Innovatoor.</p>
+                <p>&copy; 2026 Alpha Line Construction. All rights reserved. | Developed by
+                    <a href="https://innovatoor.com" target="_blank" style="color:  rgba(56, 145, 248, 0.949) !important;">Innovatoor</a></p>
             </div>
         </footer>
     </div>
@@ -722,35 +727,35 @@
 
             // ===== Render Articles =====
 
-const articlesGrid = document.getElementById('articlesGrid');
+            const articlesGrid = document.getElementById('articlesGrid');
 
-if (articlesGrid && contentData.articles) {
+            if (articlesGrid && contentData.articles) {
 
-    let html = '';
+                let html = '';
 
-    contentData.articles.forEach(article => {
+                contentData.articles.forEach(article => {
 
-        html += `
-       <div class="article-card" onclick="openArticle('${article.title}')">
+                    html += `
+                <div class="article-card" onclick="openArticle('${article.title}')">
 
-            <div class="article-image">
-                <img src="${article.image}" alt="${article.title}">
-            </div>
+                        <div class="article-image">
+                            <img src="${article.image}" alt="${article.title}">
+                        </div>
 
-            <div class="article-content">
-                <span class="article-category">${article.category}</span>
-                <h3>${article.title}</h3>
-                <p>${article.excerpt}</p>
-            </div>
+                        <div class="article-content">
+                            <span class="article-category">${article.category}</span>
+                            <h3>${article.title}</h3>
+                            <p>${article.excerpt}</p>
+                        </div>
 
-        </div>
-        `;
+                    </div>
+                    `;
 
-    });
+                });
 
-    articlesGrid.innerHTML = html;
-}
-        }
+                articlesGrid.innerHTML = html;
+            }
+                    }
 
         // Load content on page load
         loadContent();
