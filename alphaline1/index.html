@@ -796,29 +796,46 @@
         }
 
         function scrollToInvestor(){
-            showPage('home');
 
-            setTimeout(()=>{
+            if(!document.getElementById('home').classList.contains('active')){
+                showPage('home');
+
+                setTimeout(()=>{
+                    document.querySelector('.investor-section').scrollIntoView({
+                        behavior:'smooth'
+                    });
+                },50);
+
+            } else {
+
                 document.querySelector('.investor-section').scrollIntoView({
                     behavior:'smooth'
                 });
-            },200);
+
+            }
+
         }
 
         function scrollToInsights(){
 
-            showPage('home');
+            if(!document.getElementById('home').classList.contains('active')){
+                showPage('home');
 
-            setTimeout(()=>{
+                setTimeout(()=>{
+                    document.querySelector('.articles-section').scrollIntoView({
+                        behavior:'smooth'
+                    });
+                },50);
+
+            } else {
 
                 document.querySelector('.articles-section').scrollIntoView({
                     behavior:'smooth'
                 });
 
-            },200);
+            }
 
         }
-
         
 
         menuToggle.addEventListener('click', () => {
