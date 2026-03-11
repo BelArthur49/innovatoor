@@ -81,7 +81,7 @@ body {
 /* when scrolling */
 
 .navbar.scrolled .logo-img {
-    height: 50px;
+    height: 60px;
 }
 
 .navbar.scrolled .logo-text {
@@ -119,7 +119,7 @@ body {
 }
 
 .navbar.scrolled .nav-container {
-    padding: 25px 40px;
+    padding: 10px 40px;
 }
 
 .nav-logo {
