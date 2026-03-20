@@ -1,0 +1,1927 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIRNE — Passion to Serve</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ── RESET & ROOT ── */
+        
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+        
+        html {
+            scroll-behavior: smooth
+        }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #0A0A0F;
+            color: #E8E4D9;
+            overflow-x: hidden
+        }
+        
+        img {
+            max-width: 100%;
+            display: block
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+        
+        ul {
+            list-style: none
+        }
+        
+         :root {
+            --gold: #036cdc;
+            --gold-light: #7ab7e8;
+            --gold-dark: #1b007c;
+            --deep: #0A0A0F;
+            --dark: #111118;
+            --dark-mid: #1A1A24;
+            --dark-soft: #22222E;
+            --text: #E8E4D9;
+            --muted: #9A9585;
+            --dim: #5A5650;
+            --white: #FDFBF5;
+            --border: rgba(47, 3, 179, 0.15);
+            --border-soft: rgba(84, 76, 201, 0.08);
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        /* ── SCROLLBAR ── */
+        
+         ::-webkit-scrollbar {
+            width: 3px
+        }
+        
+         ::-webkit-scrollbar-track {
+            background: var(--deep)
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            background: var(--gold-dark);
+            border-radius: 2px
+        }
+        /* ── GRAIN ── */
+        
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: .25;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+        }
+        /* ── PRELOADER ── */
+        
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: var(--deep);
+            z-index: 8000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            transition: opacity .8s, visibility .8s;
+        }
+        
+        #preloader.out {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none
+        }
+        
+        .pre-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--gold);
+            letter-spacing: .4em;
+            animation: blink 1.5s ease-in-out infinite
+        }
+        
+        .pre-bar {
+            width: 180px;
+            height: 1px;
+            background: var(--border);
+            overflow: hidden;
+            position: relative
+        }
+        
+        .pre-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gold);
+            animation: barFill 1.4s var(--ease) forwards
+        }
+        
+        @keyframes blink {
+            0%,
+            100% {
+                opacity: 1
+            }
+            50% {
+                opacity: .3
+            }
+        }
+        
+        @keyframes barFill {
+            to {
+                left: 100%
+            }
+        }
+        /* ── SCROLL TO TOP ── */
+        
+        #stb {
+            position: fixed;
+            bottom: 36px;
+            right: 36px;
+            z-index: 400;
+            width: 42px;
+            height: 42px;
+            background: var(--gold);
+            color: var(--deep);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 700;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .3s, visibility .3s, transform .3s;
+            cursor: pointer;
+            transform: translateY(10px);
+        }
+        
+        #stb.on {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0)
+        }
+        
+        #stb:hover {
+            transform: translateY(-4px)
+        }
+        /* ── NAVBAR ── */
+        
+        #nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 76px;
+            z-index: 600;
+            transition: background .4s, box-shadow .4s, height .3s;
+        }
+        
+        #nav.scrolled {
+            background: rgba(10, 10, 15, .93);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 1px 0 var(--border);
+            height: 62px;
+        }
+        
+        .nav-in {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: .08em;
+            display: flex;
+            flex-direction: row;
+            line-height: 1.1;
+        }
+        
+        .nav-logo small {
+            font-family: 'Outfit', sans-serif;
+            font-size: .6rem;
+            color: var(--muted);
+            letter-spacing: .15em;
+            font-weight: 300
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center
+        }
+        
+        .nav-links a {
+            font-size: .75rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--muted);
+            position: relative;
+            transition: color .3s;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform .3s var(--ease);
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.act {
+            color: var(--gold)
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.act::after {
+            transform: scaleX(1);
+            transform-origin: left
+        }
+        
+        .nav-cta-btn {
+            padding: 9px 22px!important;
+            border: 1px solid var(--gold)!important;
+            transition: background .3s, color .3s!important;
+        }
+        
+        .nav-cta-btn:hover {
+            background: var(--gold)!important;
+            color: var(--deep)!important
+        }
+        
+        .nav-cta-btn::after {
+            display: none!important
+        }
+        
+        .burger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            width: 26px
+        }
+        
+        .burger span {
+            height: 1px;
+            background: var(--gold);
+            transition: transform .3s, opacity .3s
+        }
+        
+        .burger.x span:nth-child(1) {
+            transform: translateY(6px) rotate(45deg)
+        }
+        
+        .burger.x span:nth-child(2) {
+            opacity: 0
+        }
+        
+        .burger.x span:nth-child(3) {
+            transform: translateY(-6px) rotate(-45deg)
+        }
+        /* ── MOBILE MENU ── */
+        
+        #mob {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 10, 15, .97);
+            backdrop-filter: blur(30px);
+            z-index: 590;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .4s, visibility .4s;
+        }
+        
+        #mob.on {
+            opacity: 1;
+            visibility: visible
+        }
+        
+        .mob-links {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            text-align: center
+        }
+        
+        .mob-links a {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.6rem;
+            font-weight: 300;
+            color: var(--muted);
+            transition: color .3s, transform .4s var(--ease), opacity .4s var(--ease);
+            transform: translateY(16px);
+            opacity: 0;
+        }
+        
+        #mob.on .mob-links a {
+            transform: translateY(0);
+            opacity: 1
+        }
+        
+        #mob.on .mob-links a:nth-child(1) {
+            transition-delay: .04s
+        }
+        
+        #mob.on .mob-links a:nth-child(2) {
+            transition-delay: .08s
+        }
+        
+        #mob.on .mob-links a:nth-child(3) {
+            transition-delay: .12s
+        }
+        
+        #mob.on .mob-links a:nth-child(4) {
+            transition-delay: .16s
+        }
+        
+        #mob.on .mob-links a:nth-child(5) {
+            transition-delay: .20s
+        }
+        
+        #mob.on .mob-links a:nth-child(6) {
+            transition-delay: .24s
+        }
+        
+        #mob.on .mob-links a:nth-child(7) {
+            transition-delay: .28s
+        }
+        
+        #mob.on .mob-links a:nth-child(8) {
+            transition-delay: .32s
+        }
+        
+        .mob-links a:hover {
+            color: var(--gold)
+        }
+        /* ── SCROLL REVEAL ── */
+        
+        .rv {
+            opacity: 0;
+            transform: translateY(44px);
+            transition: opacity .9s var(--ease), transform .9s var(--ease)
+        }
+        
+        .rv.in {
+            opacity: 1;
+            transform: translateY(0)
+        }
+        
+        .rl {
+            opacity: 0;
+            transform: translateX(-48px);
+            transition: opacity .9s var(--ease), transform .9s var(--ease)
+        }
+        
+        .rl.in {
+            opacity: 1;
+            transform: translateX(0)
+        }
+        
+        .rr {
+            opacity: 0;
+            transform: translateX(48px);
+            transition: opacity .9s var(--ease), transform .9s var(--ease)
+        }
+        
+        .rr.in {
+            opacity: 1;
+            transform: translateX(0)
+        }
+        
+        .rs {
+            opacity: 0;
+            transform: scale(.92);
+            transition: opacity .9s var(--ease), transform .9s var(--ease)
+        }
+        
+        .rs.in {
+            opacity: 1;
+            transform: scale(1)
+        }
+        
+        .d1 {
+            transition-delay: .1s
+        }
+        
+        .d2 {
+            transition-delay: .2s
+        }
+        
+        .d3 {
+            transition-delay: .3s
+        }
+        
+        .d4 {
+            transition-delay: .4s
+        }
+        
+        .d5 {
+            transition-delay: .5s
+        }
+        
+        .d6 {
+            transition-delay: .6s
+        }
+        /* ── CONTAINER ── */
+        
+        .wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px
+        }
+        /* ── SECTION BASICS ── */
+        
+        .lbl {
+            font-size: .68rem;
+            letter-spacing: .35em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        
+        .lbl::before {
+            content: '';
+            width: 28px;
+            height: 1px;
+            background: var(--gold);
+            flex-shrink: 0
+        }
+        
+        .lbl.c {
+            justify-content: center
+        }
+        
+        .lbl.c::before {
+            display: none
+        }
+        
+        .ttl {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 300;
+            line-height: 1.12;
+            color: var(--white);
+        }
+        
+        .ttl em {
+            font-style: italic;
+            color: var(--gold-light)
+        }
+        
+        section {
+            padding: 108px 0
+        }
+        /* ── BUTTONS ── */
+        
+        .btn-g {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 30px;
+            background: var(--gold);
+            color: var(--deep);
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            transition: transform .3s, box-shadow .3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-g::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, .2);
+            transition: left .4s var(--ease)
+        }
+        
+        .btn-g:hover::before {
+            left: 100%
+        }
+        
+        .btn-g:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(201, 168, 76, .3)
+        }
+        
+        .btn-o {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 29px;
+            border: 1px solid rgba(201, 168, 76, .35);
+            color: var(--text);
+            font-size: .78rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            transition: border-color .3s, color .3s, transform .3s;
+        }
+        
+        .btn-o:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-2px)
+        }
+        /* ══ HERO ══ */
+        
+        #home {
+            height: 100vh;
+            min-height: 650px;
+            position: relative;
+            overflow: hidden;
+            padding: 0;
+        }
+        
+        .slides {
+            position: absolute;
+            inset: 0
+        }
+        
+        .slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.3s var(--ease);
+        }
+        
+        .slide.on {
+            opacity: 1
+        }
+        
+        .slide::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(105deg, rgba(10, 10, 15, .88) 0%, rgba(10, 10, 15, .5) 55%, rgba(10, 10, 15, .0) 100%);
+        }
+        
+        .hc {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 76px;
+        }
+        
+        .hc .wrap {
+            max-width: 760px
+        }
+        
+        .h-lbl {
+            font-size: .68rem;
+            letter-spacing: .32em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 18px;
+            opacity: 0;
+            transform: translateY(18px);
+            animation: hIn .7s .2s var(--ease) forwards;
+        }
+        
+        .h-ttl {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.8rem, 6vw, 5.6rem);
+            font-weight: 300;
+            line-height: 1.08;
+            color: var(--white);
+            margin-bottom: 22px;
+            opacity: 0;
+            transform: translateY(28px);
+            animation: hIn .85s .4s var(--ease) forwards;
+        }
+        
+        .h-ttl em {
+            font-style: italic;
+            color: var(--gold-light)
+        }
+        
+        .h-sub {
+            font-size: 1rem;
+            line-height: 1.72;
+            color: rgba(232, 228, 217, .72);
+            max-width: 500px;
+            margin-bottom: 36px;
+            opacity: 0;
+            transform: translateY(18px);
+            animation: hIn .7s .6s var(--ease) forwards;
+        }
+        
+        .h-btns {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(18px);
+            animation: hIn .7s .8s var(--ease) forwards;
+        }
+        
+        @keyframes hIn {
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+        
+        .h-dots {
+            position: absolute;
+            bottom: 38px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+        
+        .h-dot {
+            width: 22px;
+            height: 2px;
+            background: rgba(201, 168, 76, .25);
+            cursor: pointer;
+            transition: width .3s, background .3s
+        }
+        
+        .h-dot.on {
+            width: 46px;
+            background: var(--gold)
+        }
+        
+        .h-arr {
+            position: absolute;
+            top: 50%;
+            z-index: 3;
+            transform: translateY(-50%);
+            width: 46px;
+            height: 46px;
+            border: 1px solid var(--border);
+            background: rgba(201, 168, 76, .07);
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background .3s;
+        }
+        
+        .h-arr:hover {
+            background: rgba(201, 168, 76, .18)
+        }
+        
+        .h-arr.pv {
+            left: 36px
+        }
+        
+        .h-arr.nx {
+            right: 36px
+        }
+        
+        .scroll-hint {
+            position: absolute;
+            bottom: 48px;
+            right: 48px;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .scroll-hint span {
+            font-size: .62rem;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: var(--dim);
+            writing-mode: vertical-rl;
+        }
+        
+        .s-line {
+            width: 1px;
+            height: 56px;
+            background: var(--border);
+            position: relative;
+            overflow: hidden
+        }
+        
+        .s-line::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: var(--gold);
+            animation: sLine 2.2s ease-in-out infinite;
+        }
+        
+        @keyframes sLine {
+            to {
+                top: 200%
+            }
+        }
+        /* ══ VISION ══ */
+        
+        #vision {
+            background: var(--deep)
+        }
+        
+        .vis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center
+        }
+        
+        .vis-body p {
+            font-size: 1.1rem;
+            line-height: 1.78;
+            color: rgba(232, 228, 217, .72);
+            margin: 22px 0 28px
+        }
+        
+        .vis-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--gold-light);
+            border-left: 2px solid var(--gold);
+            padding-left: 22px;
+            line-height: 1.5;
+        }
+        
+        .vis-img {
+            position: relative;
+            padding: 20px
+        }
+        
+        .vis-img::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid var(--border);
+            transform: translate(14px, 14px);
+            transition: transform .5s var(--ease);
+        }
+        
+        .vis-img:hover::before {
+            transform: translate(7px, 7px)
+        }
+        
+        .vis-img img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            filter: brightness(.82) saturate(.9);
+            transition: filter .5s
+        }
+        
+        .vis-img:hover img {
+            filter: brightness(.95) saturate(1)
+        }
+        
+        .vis-badge {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: var(--gold);
+            color: var(--deep);
+            padding: 22px 28px;
+        }
+        
+        .vis-badge strong {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 1
+        }
+        
+        .vis-badge span {
+            font-size: .7rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            font-weight: 500
+        }
+        /* ══ MISSION ══ */
+        
+        #mission {
+            background: var(--dark)
+        }
+        
+        .mis-hd {
+            text-align: center;
+            margin-bottom: 64px
+        }
+        
+        .mis-hd p {
+            margin-top: 18px;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.7;
+            max-width: 560px;
+            margin-left: auto;
+            margin-right: auto
+        }
+        
+        .mis-lbl {
+            justify-content: center
+        }
+        
+        .mis-lbl::before {
+            display: none
+        }
+        
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background: var(--border-soft)
+        }
+        
+        .pillar {
+            background: var(--dark-mid);
+            padding: 52px 38px;
+            position: relative;
+            overflow: hidden;
+            transition: background .4s;
+        }
+        
+        .pillar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .5s var(--ease);
+        }
+        
+        .pillar:hover::before {
+            transform: scaleX(1)
+        }
+        
+        .pillar:hover {
+            background: var(--dark-soft)
+        }
+        
+        .p-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.8rem;
+            font-weight: 700;
+            color: rgba(201, 168, 76, .08);
+            margin-bottom: 22px;
+            line-height: 1;
+            transition: color .3s;
+        }
+        
+        .pillar:hover .p-num {
+            color: rgba(201, 168, 76, .15)
+        }
+        
+        .pillar h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.55rem;
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 14px
+        }
+        
+        .pillar p {
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: .93rem
+        }
+        /* ══ OBJECTIVES ══ */
+        
+        #objectives {
+            background: var(--deep)
+        }
+        
+        .obj-hd {
+            margin-bottom: 60px
+        }
+        
+        .obj-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px
+        }
+        
+        .obj-card {
+            padding: 46px 34px;
+            border: 1px solid var(--border-soft);
+            position: relative;
+            overflow: hidden;
+            transition: border-color .4s, transform .4s;
+        }
+        
+        .obj-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 0;
+            background: linear-gradient(to top, rgba(201, 168, 76, .05), transparent);
+            transition: height .4s;
+        }
+        
+        .obj-card:hover {
+            border-color: rgba(201, 168, 76, .3);
+            transform: translateY(-6px)
+        }
+        
+        .obj-card:hover::after {
+            height: 100%
+        }
+        
+        .obj-icon {
+            font-size: 2.2rem;
+            margin-bottom: 26px;
+            display: block
+        }
+        
+        .obj-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 14px
+        }
+        
+        .obj-card p {
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: .93rem
+        }
+        /* ══ VALUES ══ */
+        
+        #values {
+            background: var(--dark-mid)
+        }
+        
+        .val-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 80px;
+            align-items: start
+        }
+        
+        .val-sticky {
+            position: sticky;
+            top: 110px
+        }
+        
+        .val-sticky p {
+            margin-top: 18px;
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: .95rem
+        }
+        
+        .val-list {
+            display: flex;
+            flex-direction: column
+        }
+        
+        .vi {
+            display: flex;
+            align-items: flex-start;
+            gap: 22px;
+            padding: 26px 0;
+            border-bottom: 1px solid var(--border-soft);
+            transition: padding-left .3s var(--ease);
+            cursor: default;
+        }
+        
+        .vi:hover {
+            padding-left: 10px
+        }
+        
+        .vi-n {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: .9rem;
+            color: var(--gold);
+            flex-shrink: 0;
+            padding-top: 2px
+        }
+        
+        .vi-t {
+            font-size: .97rem;
+            color: var(--muted);
+            line-height: 1.6;
+            transition: color .3s
+        }
+        
+        .vi:hover .vi-t {
+            color: var(--text)
+        }
+        /* ══ WORKS ══ */
+        
+        #works {
+            background: var(--deep)
+        }
+        
+        .works-hd {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 56px;
+            flex-wrap: wrap;
+            gap: 20px
+        }
+        
+        .w-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto;
+            gap: 3px;
+            background: rgba(201, 168, 76, .04);
+        }
+        
+        .wc {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            background: var(--dark-mid)
+        }
+        
+        .wc:nth-child(1) {
+            grid-row: span 2
+        }
+        
+        .wc img {
+            width: 100%;
+            height: 100%;
+            min-height: 260px;
+            object-fit: cover;
+            transition: transform .8s var(--ease), filter .5s;
+            filter: brightness(.68) saturate(.8);
+        }
+        
+        .wc:hover img {
+            transform: scale(1.06);
+            filter: brightness(.9) saturate(1)
+        }
+        
+        .w-ov {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 10, 15, .92) 0%, transparent 55%);
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        
+        .w-cat {
+            font-size: .62rem;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 7px
+        }
+        
+        .w-ttl {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            color: var(--white);
+            font-weight: 400
+        }
+        
+        .w-yr {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: .82rem;
+            color: rgba(255, 255, 255, .4)
+        }
+        /* ══ BOARD ══ */
+        
+        #board {
+            background: var(--dark);
+            text-align: center
+        }
+        
+        #board .lbl {
+            justify-content: center
+        }
+        
+        #board .lbl::before {
+            display: none
+        }
+        
+        #board .ttl {
+            margin-bottom: 44px
+        }
+        
+        .board-wrap {
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .board-wrap::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(135deg, var(--gold), transparent 50%, var(--gold));
+            z-index: -1;
+        }
+        
+        .board-wrap img {
+            width: 100%
+        }
+        /* ══ CONTACT ══ */
+        
+        #contact {
+            background: var(--deep);
+            position: relative;
+            overflow: hidden
+        }
+        
+        #contact::before {
+            content: '';
+            position: absolute;
+            left: -200px;
+            bottom: -200px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(201, 168, 76, .05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .ct-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center
+        }
+        
+        .ct-l p {
+            margin: 22px 0 36px;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.7
+        }
+        
+        .ct-details {
+            display: flex;
+            flex-direction: column;
+            gap: 18px
+        }
+        
+        .ct-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px
+        }
+        
+        .ct-ico {
+            width: 38px;
+            height: 38px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: .95rem;
+        }
+        
+        .ct-info strong {
+            display: block;
+            font-size: .65rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 3px
+        }
+        
+        .ct-info a,
+        .ct-info span {
+            color: var(--text);
+            font-size: .93rem;
+            transition: color .3s
+        }
+        
+        .ct-info a:hover {
+            color: var(--gold)
+        }
+        
+        .ct-card {
+            background: var(--dark-mid);
+            border: 1px solid var(--border-soft);
+            padding: 52px 44px;
+            position: relative;
+        }
+        
+        .ct-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold)
+        }
+        
+        .ct-motto {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.1rem;
+            font-style: italic;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        
+        .ct-motto em {
+            color: var(--gold-light)
+        }
+        
+        .ct-card>p {
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 32px;
+            font-size: .95rem
+        }
+        
+        .ct-phone {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            color: var(--gold);
+            margin-bottom: 26px;
+        }
+        /* ══ FOOTER ══ */
+        
+        footer {
+            background: var(--deep);
+            border-top: 1px solid var(--border-soft);
+            padding: 60px 0 28px
+        }
+        
+        .ft-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 44px;
+            margin-bottom: 44px
+        }
+        
+        .ft-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 14px
+        }
+        
+        .ft-brand p {
+            color: var(--dim);
+            font-size: .88rem;
+            line-height: 1.6;
+            max-width: 250px
+        }
+        
+        .ft-col h4 {
+            font-size: .65rem;
+            letter-spacing: .28em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 18px
+        }
+        
+        .ft-col a,
+        .ft-col li {
+            color: var(--dim);
+            font-size: .88rem;
+            display: block;
+            margin-bottom: 10px;
+            transition: color .3s
+        }
+        
+        .ft-col a:hover {
+            color: var(--text)
+        }
+        
+        .ft-bot {
+            border-top: 1px solid var(--border-soft);
+            padding-top: 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px
+        }
+        
+        .ft-copy {
+            font-size: .76rem;
+            color: var(--dim)
+        }
+        /* ══ RESPONSIVE ══ */
+        
+        @media(max-width:1024px) {
+            .vis-grid {
+                grid-template-columns: 1fr;
+                gap: 44px
+            }
+            .pillars {
+                grid-template-columns: 1fr
+            }
+            .obj-grid {
+                grid-template-columns: 1fr 1fr
+            }
+            .val-grid {
+                grid-template-columns: 1fr;
+                gap: 32px
+            }
+            .val-sticky {
+                position: static
+            }
+            .w-grid {
+                grid-template-columns: 1fr 1fr
+            }
+            .wc:nth-child(1) {
+                grid-row: span 1
+            }
+            .ct-grid {
+                grid-template-columns: 1fr
+            }
+            .ft-grid {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+        
+        @media(max-width:768px) {
+            section {
+                padding: 68px 0
+            }
+            .wrap {
+                padding: 0 22px
+            }
+            .nav-links {
+                display: none
+            }
+            .burger {
+                display: flex
+            }
+            .obj-grid {
+                grid-template-columns: 1fr
+            }
+            .w-grid {
+                grid-template-columns: 1fr
+            }
+            .wc:nth-child(1) {
+                grid-row: span 1
+            }
+            .ct-card {
+                padding: 32px 24px
+            }
+            .ft-grid {
+                grid-template-columns: 1fr;
+                gap: 28px
+            }
+            .h-arr,
+            .scroll-hint {
+                display: none
+            }
+            .works-hd {
+                flex-direction: column;
+                align-items: flex-start
+            }
+            .ct-grid {
+                gap: 44px
+            }
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            /* THIS is the key fix */
+            gap: 10px;
+        }
+        
+        .logo-img {
+            height: 45px;
+            /* reduce size */
+            width: auto;
+            display: block;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .logo-text span {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .logo-text small {
+            font-size: 11px;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PRELOADER -->
+    <div id="preloader"><img src="assets/img/mirnelogo.png" alt="MIRNE Logo">
+        <div class="pre-logo">MIRNE</div>
+        <div class="pre-bar"></div>
+    </div>
+
+    <!-- SCROLL TOP -->
+    <div id="stb" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+    <!-- NAVBAR -->
+    <header id="nav">
+        <div class="nav-in">
+
+            <a href="#home" class="nav-logo">
+                <img src="assets/img/mirnelogo.png" alt="MIRNE Logo" class="logo-img">
+
+                <div class="logo-text">
+                    <span>MIRNE</span>
+                    <small>Passion to serve, driven by love</small>
+                </div>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#home" data-s>Home</a>
+                <a href="#vision" data-s>Vision</a>
+                <a href="#mission" data-s>Mission</a>
+                <a href="#objectives" data-s>Objectives</a>
+                <a href="#values" data-s>Values</a>
+                <a href="#works" data-s>Works</a>
+                <a href="#board" data-s>Board</a>
+                <a href="haan.html">Haan</a>
+                <a href="#contact" class="nav-cta-btn" data-s>Contact</a>
+            </nav>
+
+            <div class="burger" id="bur">
+                <span></span><span></span><span></span>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div id="mob">
+        <nav class="mob-links">
+            <a href="#home">Home</a>
+            <a href="#vision">Vision</a>
+            <a href="#mission">Mission</a>
+            <a href="#objectives">Objectives</a>
+            <a href="#values">Values</a>
+            <a href="#works">Works</a>
+            <a href="#board">Board</a>
+            <a href="haan.html">Haan</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+
+    <!-- ══ HERO ══ -->
+    <section id="home">
+        <div class="slides">
+            <div class="slide on" style="background-image:url('assets/img/2017MassEvangelismKigali.png')">
+                <div class="hc">
+                    <div class="wrap">
+                        <p class="h-lbl">MIRNE — Passion to serve, driven by love</p>
+                        <h1 class="h-ttl">Restoring <em>Nations</em><br>Through the <em>Gospel</em></h1>
+                        <p class="h-sub">A holistic mission serving the whole person, through whole churches, with the whole Gospel.</p>
+                        <div class="h-btns">
+                            <a href="#works" class="btn-g">Explore Our Work</a>
+                            <a href="#vision" class="btn-o">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide" style="background-image:url('assets/img/home1.png')">
+                <div class="hc">
+                    <div class="wrap">
+                        <p class="h-lbl">MIRNE — Passion to serve, driven by love</p>
+                        <h1 class="h-ttl">Serving <em>Nations</em>,<br>Empowering Leaders</h1>
+                        <p class="h-sub">Pooling the anointings, callings, and competencies of God's servants from every part of the body of Christ.</p>
+                        <div class="h-btns">
+                            <a href="#mission" class="btn-g">Our Mission</a>
+                            <a href="#works" class="btn-o">See Works</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide" style="background-image:url('assets/img/2017social.png')">
+                <div class="hc">
+                    <div class="wrap">
+                        <p class="h-lbl">MIRNE — Passion to serve, driven by love</p>
+                        <h1 class="h-ttl">Social Ministry &amp;<br><em>Spiritual</em> Ministry</h1>
+                        <p class="h-sub">Because true Gospel reaches body, soul, family, community and nation alike.</p>
+                        <div class="h-btns">
+                            <a href="#works" class="btn-g">See Our Impact</a>
+                            <a href="#contact" class="btn-o">Get In Touch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="h-arr pv" id="hp">&#10094;</button>
+        <button class="h-arr nx" id="hn">&#10095;</button>
+        <div class="h-dots" id="hd"></div>
+        <div class="scroll-hint"><span>Scroll</span>
+            <div class="s-line"></div>
+        </div>
+    </section>
+
+    <!-- ══ VISION ══ -->
+    <section id="vision">
+        <div class="wrap">
+            <div class="vis-grid">
+                <div>
+                    <p class="lbl rv">Our Vision</p>
+                    <h2 class="ttl rv d1">The <em>Bride</em><br>Made Ready</h2>
+                    <p class="rv d2" style="font-size:1.1rem;line-height:1.78;color:rgba(232,228,217,.72);margin:22px 0 28px">
+                        To prepare the Bride of Christ for His imminent return and to evangelize the world in obedience to the Great Commission found in Matthew 28:18–20.
+                    </p>
+                    <blockquote class="vis-quote rv d3">
+                        "Go therefore and make disciples of all nations..." — Matthew 28:19
+                    </blockquote>
+                    <a href="#mission" class="btn-g rv d4" style="margin-top:32px">Our Holistic Mission</a>
+                </div>
+                <div class="rr">
+                    <div class="vis-img">
+                        <img src="assets/img/about.png" alt="MIRNE Vision" loading="lazy">
+                        <div class="vis-badge">
+                            <strong>10+</strong>
+                            <span>Years of Mission</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ MISSION ══ -->
+    <section id="mission">
+        <div class="wrap">
+            <div class="mis-hd">
+                <p class="lbl mis-lbl rv">Our Mission</p>
+                <h2 class="ttl rv d1">Holistic <em>Ministry</em></h2>
+                <p class="rv d2">MIRNE sees Social Ministry and Spiritual Ministry as both being part of God's call — reaching your community with the whole gospel, for the whole person, through whole churches.</p>
+            </div>
+            <div class="pillars">
+                <div class="pillar rv d1">
+                    <div class="p-num">01</div>
+                    <h3>The Whole Gospel</h3>
+                    <p>Salvation in its fullest sense: forgiveness of sins, inner conversion, physical and emotional healing, transformation of social and economic relationships, and the ultimate triumph of Christ over evil.</p>
+                </div>
+                <div class="pillar rv d2">
+                    <div class="p-num">02</div>
+                    <h3>The Whole Person</h3>
+                    <p>Ministry to every dimension of human need — individuals, families, communities, nations, and the global human family. Every person valued as a unique and marvelous creation, destined for eternity.</p>
+                </div>
+                <div class="pillar rv d3">
+                    <div class="p-num">03</div>
+                    <h3>Whole Churches</h3>
+                    <p>Holistic congregations where disciples live out their salvation in loving fellowship — serving as the hands and feet of Christ, welcoming those served, and equipping new believers for mission.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ OBJECTIVES ══ -->
+    <section id="objectives">
+        <div class="wrap">
+            <div class="obj-hd">
+                <p class="lbl rv">What We Do</p>
+                <h2 class="ttl rv d1">Our <em>Objectives</em></h2>
+            </div>
+            <div class="obj-grid">
+                <div class="obj-card rv d1">
+                    <span class="obj-icon">🌐</span>
+                    <h3>Create</h3>
+                    <p>To create a platform that fosters dynamic exchange among various ministries, encouraging greater mutual knowledge and recognition.</p>
+                </div>
+                <div class="obj-card rv d2">
+                    <span class="obj-icon">🔥</span>
+                    <h3>Promote &amp; Serve</h3>
+                    <p>To promote the convergence of the torches of the Gospel and serve as a catalyst supporting all evangelistic efforts aimed at hastening the coming of the Lord.</p>
+                </div>
+                <div class="obj-card rv d3">
+                    <span class="obj-icon">📖</span>
+                    <h3>Train</h3>
+                    <p>To train and equip every Christian to develop a missionary mindset and be effective in their sphere of influence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ VALUES ══ -->
+    <section id="values">
+        <div class="wrap">
+            <div class="val-grid">
+                <div class="val-sticky">
+                    <p class="lbl rv">What We Stand For</p>
+                    <h2 class="ttl rv d1">Core <em>Values</em></h2>
+                    <p class="rv d2">These values shape every ministry, every outreach, and every relationship within MIRNE.</p>
+                </div>
+                <div class="val-list">
+                    <div class="vi rv"><span class="vi-n">01</span><span class="vi-t">Church planting and growth through evangelism and teaching.</span></div>
+                    <div class="vi rv d1"><span class="vi-n">02</span><span class="vi-t">A supernatural anointing for the acts of the Holy Spirit.</span></div>
+                    <div class="vi rv d2"><span class="vi-n">03</span><span class="vi-t">A deep awareness of impactful mission in society.</span></div>
+                    <div class="vi rv d3"><span class="vi-n">04</span><span class="vi-t">A passion for the advancement of God's Kingdom.</span></div>
+                    <div class="vi rv d4"><span class="vi-n">05</span><span class="vi-t">Social initiatives that embody the life of the Kingdom of God.</span></div>
+                    <div class="vi rv d5"><span class="vi-n">06</span><span class="vi-t">A broad vision of the Church that transcends denominational and national boundaries.</span></div>
+                    <div class="vi rv d6"><span class="vi-n">07</span><span class="vi-t">Character development of God's servants for maturity.</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ WORKS ══ -->
+    <section id="works">
+        <div class="wrap">
+            <div class="works-hd">
+                <div>
+                    <p class="lbl rv">Impact Gallery</p>
+                    <h2 class="ttl rv d1">Evangelism, Social Works<br>&amp; <em>Outreaches</em></h2>
+                </div>
+                <a href="#contact" class="btn-o rv d2">Partner With Us</a>
+            </div>
+            <div class="w-grid">
+                <div class="wc rv d1">
+                    <img src="assets/img/2019 MIRNE Leadership Summit 2.png" alt="2019 MIRNE Leadership Summit" loading="lazy">
+                    <div class="w-ov"><span class="w-cat">Leadership</span>
+                        <h3 class="w-ttl">MIRNE Leadership Summit</h3>
+                    </div>
+                    <span class="w-yr">2019</span>
+                </div>
+                <div class="wc rv d2">
+                    <img src="assets/img/2017social.png" alt="Social Work 2017" loading="lazy">
+                    <div class="w-ov"><span class="w-cat">Social Ministry</span>
+                        <h3 class="w-ttl">Social Work</h3>
+                    </div>
+                    <span class="w-yr">2017</span>
+                </div>
+                <div class="wc rv d3">
+                    <img src="assets/img/2015outreach2.JPG" alt="Outreach 2015" loading="lazy">
+                    <div class="w-ov"><span class="w-cat">Outreach</span>
+                        <h3 class="w-ttl">Outreach Programme</h3>
+                    </div>
+                    <span class="w-yr">2015</span>
+                </div>
+                <div class="wc rv d3">
+                    <img src="assets/img/2014MassEvangelismNyamata.png" alt="Mass Evangelism Nyamata 2014" loading="lazy">
+                    <div class="w-ov"><span class="w-cat">Evangelism</span>
+                        <h3 class="w-ttl">Mass Evangelism — Nyamata</h3>
+                    </div>
+                    <span class="w-yr">2014</span>
+                </div>
+                <div class="wc rv d4">
+                    <img src="assets/img/2016MassEvangelismKigali.png" alt="Mass Evangelism Kigali 2016" loading="lazy">
+                    <div class="w-ov"><span class="w-cat">Evangelism</span>
+                        <h3 class="w-ttl">Mass Evangelism — Kigali</h3>
+                    </div>
+                    <span class="w-yr">2016</span>
+                </div>
+                <div class="wc rv d5">
+                    <img src="assets/img/2017MassEvangelismKigali.png" alt="Mass Evangelism Kigali 2017" loading="lazy">
+                    <div class="w-ov"><span class="w-cat">Evangelism</span>
+                        <h3 class="w-ttl">Mass Evangelism — Kigali</h3>
+                    </div>
+                    <span class="w-yr">2017</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ BOARD ══ -->
+    <section id="board">
+        <div class="wrap">
+            <p class="lbl c rv">Leadership</p>
+            <h2 class="ttl rv d1" style="text-align:center;margin-bottom:44px">Board <em>Members</em></h2>
+            <div class="board-wrap rs d2">
+                <img src="assets/img/BOARD MEMBERS.pdf.png" alt="MIRNE Board Members" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ CONTACT ══ -->
+    <section id="contact">
+        <div class="wrap">
+            <div class="ct-grid">
+                <div class="ct-l">
+                    <p class="lbl rv">Get In Touch</p>
+                    <h2 class="ttl rv d1">Let's <em>Talk</em></h2>
+                    <p class="rv d2">MIRNE is a member of the Rwanda Evangelical Alliance (AER). We'd love to hear from you.</p>
+                    <div class="ct-details rv d3">
+                        <div class="ct-row">
+                            <div class="ct-ico">📞</div>
+                            <div class="ct-info"><strong>Phone</strong><a href="tel:+250784261800">+250 784 261 800</a></div>
+                        </div>
+                        <div class="ct-row">
+                            <div class="ct-ico">✉</div>
+                            <div class="ct-info"><strong>Email</strong><a href="mailto:mirneministries@gmail.com">mirneministries@gmail.com</a></div>
+                        </div>
+                        <div class="ct-row">
+                            <div class="ct-ico">📍</div>
+                            <div class="ct-info"><strong>Location</strong><span>Nyamata – Town, Bugesera District, Rwanda</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rr d2">
+                    <div class="ct-card">
+                        <div class="ct-motto">"Passion to serve,<br>driven by <em>love</em>"</div>
+                        <p>As God's incarnate in Christ appealed to all to receive the Good News, our work and witness offers an invitation: Come, turn to God and be made whole.</p>
+                        <a class="ct-phone" href="tel:+250784261800">+250 784 261 800</a>
+                        <a href="tel:+250784261800" class="btn-g">Contact Us Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ FOOTER ══ -->
+    <footer>
+        <div class="wrap">
+            <div class="ft-grid">
+                <div class="ft-brand">
+                    <a href="#home" class="ft-logo">MIRNE Ministries</a>
+                    <p>Mission Internationale pour la Restauration des Nations par l'Evangile.</p>
+                    <p style="margin-top:10px">Member of the Rwanda Evangelical Alliance (AER).</p>
+                </div>
+                <div class="ft-col">
+                    <h4>Navigate</h4>
+                    <a href="#home">Home</a>
+                    <a href="#vision">Vision</a>
+                    <a href="#mission">Mission</a>
+                    <a href="#objectives">Objectives</a>
+                    <a href="#values">Values</a>
+                </div>
+                <div class="ft-col">
+                    <h4>Ministry</h4>
+                    <a href="#works">Works</a>
+                    <a href="#board">Board</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="ft-col">
+                    <h4>Contact</h4>
+                    <a href="tel:+250784261800">+250 784 261 800</a>
+                    <a href="mailto:mirneministries@gmail.com">mirneministries@gmail.com</a>
+                    <li>Nyamata, Bugesera, Rwanda</li>
+                </div>
+            </div>
+            <div class="ft-bot">
+                <p class="ft-copy">© 2025 MIRNE Ministries. All rights reserved.</p>
+                <p style="font-size:.74rem;color:var(--dim)">Passion to serve, driven by love.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ── PRELOADER
+        window.addEventListener('load', () => {
+            setTimeout(() => document.getElementById('preloader').classList.add('out'), 600)
+        });
+
+        // ── SCROLL TOP
+        window.addEventListener('scroll', () => {
+            document.getElementById('stb').classList.toggle('on', scrollY > 500);
+            // navbar
+            document.getElementById('nav').classList.toggle('scrolled', scrollY > 60);
+            // active nav
+            let cur = '';
+            document.querySelectorAll('section[id]').forEach(s => {
+                if (scrollY >= s.offsetTop - 130) cur = s.id
+            });
+            document.querySelectorAll('[data-s]').forEach(a => a.classList.toggle('act', a.getAttribute('href') === '#' + cur));
+        }, {
+            passive: true
+        });
+
+        // ── SMOOTH LINKS
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const id = a.getAttribute('href').slice(1);
+                const t = document.getElementById(id);
+                if (t) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: t.offsetTop - 70,
+                        behavior: 'smooth'
+                    })
+                }
+            });
+        });
+
+        // ── BURGER
+        const bur = document.getElementById('bur'),
+            mob = document.getElementById('mob');
+        bur.addEventListener('click', () => {
+            bur.classList.toggle('x');
+            mob.classList.toggle('on');
+            document.body.style.overflow = mob.classList.contains('on') ? 'hidden' : '';
+        });
+        mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            bur.classList.remove('x');
+            mob.classList.remove('on');
+            document.body.style.overflow = '';
+        }));
+
+        // ── HERO SLIDER
+        (function() {
+            const slides = document.querySelectorAll('.slide');
+            const dotsWrap = document.getElementById('hd');
+            let cur = 0,
+                timer;
+            // build dots
+            slides.forEach((_, i) => {
+                const d = document.createElement('div');
+                d.className = 'h-dot' + (i === 0 ? ' on' : '');
+                d.addEventListener('click', () => go(i));
+                dotsWrap.appendChild(d);
+            });
+
+            function go(i) {
+                slides[cur].classList.remove('on');
+                dotsWrap.children[cur].classList.remove('on');
+                cur = (i + slides.length) % slides.length;
+                slides[cur].classList.add('on');
+                dotsWrap.children[cur].classList.add('on');
+                clearTimeout(timer);
+                timer = setTimeout(() => go(cur + 1), 6000);
+            }
+            document.getElementById('hp').addEventListener('click', () => go(cur - 1));
+            document.getElementById('hn').addEventListener('click', () => go(cur + 1));
+            timer = setTimeout(() => go(1), 6000);
+        })();
+
+        // ── SCROLL REVEAL
+        (function() {
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('in');
+                        obs.unobserve(e.target)
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            document.querySelectorAll('.rv,.rl,.rr,.rs').forEach(el => obs.observe(el));
+        })();
+    </script>
+</body>
+
+</html>

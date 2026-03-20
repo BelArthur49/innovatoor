@@ -1,0 +1,147 @@
+{
+    "site": {
+        "name": "MIRNE",
+        "fullName": "Mission Internationale pour la Restauration des Nations par l'Evangile",
+        "tagline": "International Mission for the Restoration of Nations by the Gospel",
+        "motto": "Passion to serve, driven by love",
+        "phone": "+250 784 261 800",
+        "email": "mirneministries@gmail.com",
+        "location": "Nyamata – Town, Bugesera District, Rwanda",
+        "alliance": "MIRNE is a member of the Rwanda Evangelical Alliance (AER)"
+    },
+    "nav": [
+        { "label": "Home", "href": "#home" },
+        { "label": "Vision", "href": "#vision" },
+        { "label": "Mission", "href": "#mission" },
+        { "label": "Objectives", "href": "#objectives" },
+        { "label": "Values", "href": "#values" },
+        { "label": "Works", "href": "#works" },
+        { "label": "Board", "href": "#board" },
+        { "label": "Haan", "href": "haan.html" },
+        { "label": "Contact", "href": "#contact" }
+    ],
+    "hero": {
+        "slides": [{
+                "image": "assets/img/2017MassEvangelismKigali.png",
+                "title": "Restoring Nations Through the Gospel",
+                "subtitle": "A holistic mission serving the whole person, through whole churches, with the whole Gospel.",
+                "cta": "Explore Our Work",
+                "ctaHref": "#works"
+            },
+            {
+                "image": "assets/img/home1.png",
+                "title": "Serving Nations, Empowering Leaders",
+                "subtitle": "Pooling the anointings, callings, and competencies of God's servants from every part of the body of Christ.",
+                "cta": "Our Mission",
+                "ctaHref": "#mission"
+            },
+            {
+                "image": "assets/img/2017social.png",
+                "title": "Social Ministry & Spiritual Ministry",
+                "subtitle": "Because true Gospel reaches body, soul, family, community and nation alike.",
+                "cta": "See Our Impact",
+                "ctaHref": "#works"
+            }
+        ]
+    },
+    "vision": {
+        "subtitle": "Our Vision",
+        "title": "The Bride Made Ready",
+        "text": "To prepare the Bride of Christ for His imminent return and to evangelize the world in obedience to the Great Commission found in Matthew 28:18–20.",
+        "verse": "\"Go therefore and make disciples of all nations...\" — Matthew 28:19"
+    },
+    "mission": {
+        "subtitle": "Our Mission",
+        "title": "Holistic Ministry",
+        "intro": "MIRNE is engaged in a Holistic mission — seeing Social Ministry and Spiritual Ministry as both being part of God's call to Christian service.",
+        "pillars": [{
+                "number": "01",
+                "title": "The Whole Gospel",
+                "text": "Salvation in its fullest sense: forgiveness of sins, inner conversion, physical and emotional healing, transformation of social and economic relationships, and the ultimate triumph of Christ over evil."
+            },
+            {
+                "number": "02",
+                "title": "The Whole Person",
+                "text": "Ministry to every dimension of human need — individuals, families, communities, nations, and the global human family. Every person valued as a unique and marvelous creation, destined for eternity."
+            },
+            {
+                "number": "03",
+                "title": "Whole Churches",
+                "text": "Holistic congregations where disciples live out their salvation in loving fellowship — serving as the hands and feet of Christ, welcoming those served, and equipping new believers for mission."
+            }
+        ]
+    },
+    "objectives": [{
+            "icon": "🌐",
+            "title": "Create",
+            "text": "To create a platform that fosters dynamic exchange among various ministries and their works, encouraging greater mutual knowledge and recognition."
+        },
+        {
+            "icon": "🔥",
+            "title": "Promote & Serve",
+            "text": "To promote the convergence of the torches of the Gospel and serve as a catalyst supporting all evangelistic efforts aimed at hastening the coming of the Lord."
+        },
+        {
+            "icon": "📖",
+            "title": "Train",
+            "text": "To train and equip every Christian to develop a missionary mindset and be effective in their sphere of influence."
+        }
+    ],
+    "values": [
+        "Church planting and growth through evangelism and teaching.",
+        "A supernatural anointing for the acts of the Holy Spirit.",
+        "A deep awareness of impactful mission in society.",
+        "A passion for the advancement of God's Kingdom.",
+        "Social initiatives that embody the life of the Kingdom of God.",
+        "A broad vision of the Church that transcends denominational and national boundaries.",
+        "Character development of God's servants for maturity."
+    ],
+    "works": [{
+            "image": "assets/img/2019 MIRNE Leadership Summit 2.png",
+            "year": "2019",
+            "title": "MIRNE Leadership Summit",
+            "category": "Leadership"
+        },
+        {
+            "image": "assets/img/2017social.png",
+            "year": "2017",
+            "title": "Social Work",
+            "category": "Social Ministry"
+        },
+        {
+            "image": "assets/img/2015outreach2.JPG",
+            "year": "2015",
+            "title": "Outreach Programme",
+            "category": "Outreach"
+        },
+        {
+            "image": "assets/img/2014MassEvangelismNyamata.png",
+            "year": "2014",
+            "title": "Mass Evangelism — Nyamata",
+            "category": "Evangelism"
+        },
+        {
+            "image": "assets/img/2016MassEvangelismKigali.png",
+            "year": "2016",
+            "title": "Mass Evangelism — Kigali",
+            "category": "Evangelism"
+        },
+        {
+            "image": "assets/img/2017MassEvangelismKigali.png",
+            "year": "2017",
+            "title": "Mass Evangelism — Kigali",
+            "category": "Evangelism"
+        }
+    ],
+    "contact": {
+        "subtitle": "Get In Touch",
+        "title": "Let's Talk",
+        "description": "MIRNE is a member of the Rwanda Evangelical Alliance (AER). We'd love to hear from you.",
+        "phone": "+250 784 261 800",
+        "email": "mirneministries@gmail.com",
+        "location": "Nyamata – Town, Bugesera District, Rwanda"
+    },
+    "footer": {
+        "copyright": "© 2025 MIRNE Ministries. All rights reserved."
+    }
+}
