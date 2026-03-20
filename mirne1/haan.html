@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIRNE — Vision Bearer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ── RESET & ROOT ── */
+        
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+        
+        html {
+            scroll-behavior: smooth
+        }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #0A0A0F;
+            color: #E8E4D9;
+            overflow-x: hidden
+        }
+        
+        img {
+            max-width: 100%;
+            display: block
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+        
+        ul {
+            list-style: none
+        }
+        
+         :root {
+            --gold: #036cdc;
+            --gold-light: #7ab7e8;
+            --gold-dark: #1b007c;
+            --deep: #0A0A0F;
+            --dark: #111118;
+            --dark-mid: #1A1A24;
+            --dark-soft: #22222E;
+            --text: #E8E4D9;
+            --muted: #9A9585;
+            --dim: #5A5650;
+            --white: #FDFBF5;
+            --border: rgba(47, 3, 179, 0.15);
+            --border-soft: rgba(84, 76, 201, 0.08);
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+         ::-webkit-scrollbar {
+            width: 3px
+        }
+        
+         ::-webkit-scrollbar-track {
+            background: var(--deep)
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            background: var(--gold-dark);
+            border-radius: 2px
+        }
+        /* grain */
+        
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: .25;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+        }
+        /* ── PRELOADER ── */
+        
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: var(--deep);
+            z-index: 8000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            transition: opacity .8s, visibility .8s;
+        }
+        
+        #preloader.out {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none
+        }
+        
+        .pre-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--gold);
+            letter-spacing: .4em;
+            animation: blink 1.5s ease-in-out infinite
+        }
+        
+        .pre-bar {
+            width: 180px;
+            height: 1px;
+            background: var(--border);
+            overflow: hidden;
+            position: relative
+        }
+        
+        .pre-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gold);
+            animation: barFill 1.4s var(--ease) forwards
+        }
+        
+        @keyframes blink {
+            0%,
+            100% {
+                opacity: 1
+            }
+            50% {
+                opacity: .3
+            }
+        }
+        
+        @keyframes barFill {
+            to {
+                left: 100%
+            }
+        }
+        /* ── SCROLL TOP ── */
+        
+        #stb {
+            position: fixed;
+            bottom: 36px;
+            right: 36px;
+            z-index: 400;
+            width: 42px;
+            height: 42px;
+            background: var(--gold);
+            color: var(--deep);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 700;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .3s, visibility .3s, transform .3s;
+            cursor: pointer;
+            transform: translateY(10px);
+        }
+        
+        #stb.on {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0)
+        }
+        
+        #stb:hover {
+            transform: translateY(-4px)
+        }
+        /* ── NAVBAR ── */
+        
+        #nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 76px;
+            z-index: 600;
+            transition: background .4s, box-shadow .4s, height .3s;
+        }
+        
+        #nav.scrolled {
+            background: rgba(10, 10, 15, .93);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 1px 0 var(--border);
+            height: 62px;
+        }
+        
+        .nav-in {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: .08em;
+            display: flex;
+            flex-direction: row;
+            line-height: 1.1;
+        }
+        
+        .nav-logo small {
+            font-family: 'Outfit', sans-serif;
+            font-size: .6rem;
+            color: var(--muted);
+            letter-spacing: .15em;
+            font-weight: 300
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center
+        }
+        
+        .nav-links a {
+            font-size: .75rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--muted);
+            position: relative;
+            transition: color .3s;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform .3s var(--ease);
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.act {
+            color: var(--gold)
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.act::after {
+            transform: scaleX(1);
+            transform-origin: left
+        }
+        
+        .nav-cta-btn {
+            padding: 9px 22px!important;
+            border: 1px solid var(--gold)!important;
+            transition: background .3s, color .3s!important;
+        }
+        
+        .nav-cta-btn:hover {
+            background: var(--gold)!important;
+            color: var(--deep)!important
+        }
+        
+        .nav-cta-btn::after {
+            display: none!important
+        }
+        
+        .burger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            width: 26px
+        }
+        
+        .burger span {
+            height: 1px;
+            background: var(--gold);
+            transition: transform .3s, opacity .3s
+        }
+        
+        .burger.x span:nth-child(1) {
+            transform: translateY(6px) rotate(45deg)
+        }
+        
+        .burger.x span:nth-child(2) {
+            opacity: 0
+        }
+        
+        .burger.x span:nth-child(3) {
+            transform: translateY(-6px) rotate(-45deg)
+        }
+        /* ── MOBILE MENU ── */
+        
+        #mob {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 10, 15, .97);
+            backdrop-filter: blur(30px);
+            z-index: 590;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .4s, visibility .4s;
+        }
+        
+        #mob.on {
+            opacity: 1;
+            visibility: visible
+        }
+        
+        .mob-links {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            text-align: center
+        }
+        
+        .mob-links a {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.6rem;
+            font-weight: 300;
+            color: var(--muted);
+            transition: color .3s, transform .4s var(--ease), opacity .4s var(--ease);
+            transform: translateY(16px);
+            opacity: 0;
+        }
+        
+        #mob.on .mob-links a {
+            transform: translateY(0);
+            opacity: 1
+        }
+        
+        #mob.on .mob-links a:nth-child(1) {
+            transition-delay: .05s
+        }
+        
+        #mob.on .mob-links a:nth-child(2) {
+            transition-delay: .1s
+        }
+        
+        #mob.on .mob-links a:nth-child(3) {
+            transition-delay: .15s
+        }
+        
+        #mob.on .mob-links a:nth-child(4) {
+            transition-delay: .2s
+        }
+        
+        .mob-links a:hover {
+            color: var(--gold)
+        }
+        /* ── SCROLL REVEAL ── */
+        
+        .rv {
+            opacity: 0;
+            transform: translateY(44px);
+            transition: opacity .9s var(--ease), transform .9s var(--ease)
+        }
+        
+        .rv.in {
+            opacity: 1;
+            transform: translateY(0)
+        }
+        
+        .rl {
+            opacity: 0;
+            transform: translateX(-48px);
+            transition: opacity .9s var(--ease), transform .9s var(--ease)
+        }
+        
+        .rl.in {
+            opacity: 1;
+            transform: translateX(0)
+        }
+        
+        .rr {
+            opacity: 0;
+            transform: translateX(48px);
+            transition: opacity .9s var(--ease), transform .9s var(--ease)
+        }
+        
+        .rr.in {
+            opacity: 1;
+            transform: translateX(0)
+        }
+        
+        .rs {
+            opacity: 0;
+            transform: scale(.92);
+            transition: opacity .9s var(--ease), transform .9s var(--ease)
+        }
+        
+        .rs.in {
+            opacity: 1;
+            transform: scale(1)
+        }
+        
+        .d1 {
+            transition-delay: .1s
+        }
+        
+        .d2 {
+            transition-delay: .2s
+        }
+        
+        .d3 {
+            transition-delay: .3s
+        }
+        
+        .d4 {
+            transition-delay: .4s
+        }
+        
+        .d5 {
+            transition-delay: .5s
+        }
+        
+        .d6 {
+            transition-delay: .6s
+        }
+        /* ── CONTAINER ── */
+        
+        .wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px
+        }
+        /* ── BUTTONS ── */
+        
+        .btn-g {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 30px;
+            background: var(--gold);
+            color: var(--deep);
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            transition: transform .3s, box-shadow .3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-g::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, .2);
+            transition: left .4s var(--ease)
+        }
+        
+        .btn-g:hover::before {
+            left: 100%
+        }
+        
+        .btn-g:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(201, 168, 76, .3)
+        }
+        
+        .btn-o {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 29px;
+            border: 1px solid rgba(201, 168, 76, .35);
+            color: var(--text);
+            font-size: .78rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            transition: border-color .3s, color .3s, transform .3s;
+        }
+        
+        .btn-o:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-2px)
+        }
+        /* ── SECTION LABEL ── */
+        
+        .lbl {
+            font-size: .68rem;
+            letter-spacing: .35em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        
+        .lbl::before {
+            content: '';
+            width: 28px;
+            height: 1px;
+            background: var(--gold);
+            flex-shrink: 0
+        }
+        
+        .lbl.c {
+            justify-content: center
+        }
+        
+        .lbl.c::before {
+            display: none
+        }
+        
+        .ttl {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 300;
+            line-height: 1.12;
+            color: var(--white)
+        }
+        
+        .ttl em {
+            font-style: italic;
+            color: var(--gold-light)
+        }
+        /* ════════════════════════════════════
+   HERO — APOSTLE BANNER
+════════════════════════════════════ */
+        
+        #hero-haan {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #0A0A0F 0%, #111118 100%);
+            padding-top: 76px;
+        }
+        /* animated background cross/glow */
+        
+        #hero-haan::before {
+            content: '';
+            position: absolute;
+            right: -100px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(ellipse, rgba(201, 168, 76, .07) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        
+        #hero-haan::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+        
+        .haan-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            padding: 80px 0;
+        }
+        /* text side */
+        
+        .haan-text {}
+        
+        .haan-eyebrow {
+            font-size: .68rem;
+            letter-spacing: .35em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        
+        .haan-eyebrow::before {
+            content: '';
+            width: 28px;
+            height: 1px;
+            background: var(--gold);
+            flex-shrink: 0
+        }
+        
+        .haan-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.4rem, 5vw, 4.5rem);
+            font-weight: 300;
+            line-height: 1.06;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+        
+        .haan-name em {
+            font-style: italic;
+            color: var(--gold-light)
+        }
+        
+        .haan-role {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--muted);
+            margin-bottom: 36px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border-soft);
+        }
+        
+        .haan-body {
+            font-size: .97rem;
+            line-height: 1.82;
+            color: rgba(232, 228, 217, .72);
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-bottom: 40px;
+        }
+        
+        .haan-body p {}
+        
+        .haan-stats {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .hstat {
+            border-left: 1px solid var(--gold);
+            padding-left: 18px
+        }
+        
+        .hstat strong {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--gold);
+            line-height: 1;
+        }
+        
+        .hstat span {
+            font-size: .72rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--muted)
+        }
+        
+        .haan-btns {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap
+        }
+        /* image side */
+        
+        .haan-img-wrap {
+            position: relative;
+            padding: 24px
+        }
+        
+        .haan-img-wrap::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid var(--border);
+            transform: translate(16px, 16px);
+            transition: transform .5s var(--ease);
+        }
+        
+        .haan-img-wrap:hover::before {
+            transform: translate(8px, 8px)
+        }
+        
+        .haan-img-wrap img {
+            width: 100%;
+            height: 580px;
+            object-fit: cover;
+            object-position: top;
+            filter: brightness(.85) saturate(.9);
+            transition: filter .5s;
+        }
+        
+        .haan-img-wrap:hover img {
+            filter: brightness(.95) saturate(1)
+        }
+        /* gold corner accent */
+        
+        .haan-img-wrap::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60px;
+            height: 60px;
+            border-top: 2px solid var(--gold);
+            border-right: 2px solid var(--gold);
+        }
+        /* floating badge */
+        
+        .haan-badge {
+            position: absolute;
+            bottom: 10px;
+            right: -10px;
+            background: var(--gold);
+            color: var(--deep);
+            padding: 20px 26px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .haan-badge strong {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1
+        }
+        
+        .haan-badge span {
+            font-size: .65rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            font-weight: 500
+        }
+        /* ════════════════════════════════════
+   BISHOP SECTION
+════════════════════════════════════ */
+        
+        #bishop {
+            padding: 108px 0;
+            background: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #bishop::before {
+            content: '';
+            position: absolute;
+            left: -200px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 168, 76, .05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .bishop-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .bishop-img-wrap {
+            position: relative;
+            padding: 24px
+        }
+        
+        .bishop-img-wrap::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid var(--border);
+            transform: translate(-14px, 14px);
+            transition: transform .5s var(--ease);
+        }
+        
+        .bishop-img-wrap:hover::before {
+            transform: translate(-7px, 7px)
+        }
+        
+        .bishop-img-wrap img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            object-position: top;
+            filter: brightness(.82) saturate(.9);
+            transition: filter .5s;
+        }
+        
+        .bishop-img-wrap:hover img {
+            filter: brightness(.95) saturate(1)
+        }
+        
+        .bishop-img-wrap::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 60px;
+            border-bottom: 2px solid var(--gold);
+            border-left: 2px solid var(--gold);
+        }
+        
+        .bishop-text {}
+        
+        .bishop-text .bishop-body {
+            font-size: 1rem;
+            line-height: 1.82;
+            color: rgba(232, 228, 217, .72);
+            margin: 22px 0 32px;
+        }
+        
+        .bishop-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--gold-light);
+            border-left: 2px solid var(--gold);
+            padding: 16px 0 16px 24px;
+            line-height: 1.5;
+            margin-bottom: 36px;
+        }
+        /* ════════════════════════════════════
+   TIMELINE / JOURNEY
+════════════════════════════════════ */
+        
+        #journey {
+            padding: 108px 0;
+            background: var(--dark-mid);
+        }
+        
+        .journey-hd {
+            text-align: center;
+            margin-bottom: 72px
+        }
+        
+        .journey-hd .lbl {
+            justify-content: center
+        }
+        
+        .journey-hd .lbl::before {
+            display: none
+        }
+        
+        .journey-hd p {
+            margin-top: 18px;
+            color: var(--muted);
+            font-size: 1rem;
+            max-width: 540px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7
+        }
+        
+        .timeline {
+            max-width: 760px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: white;
+        }
+        
+        .tl-item {
+            display: flex;
+            gap: 40px;
+            padding: 0 0 52px 0;
+            position: relative;
+        }
+        
+        .tl-dot {
+            flex-shrink: 0;
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--border);
+            background: var(--dark-mid);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            font-size: .8rem;
+            color: var(--gold);
+            transition: background .3s, border-color .3s;
+        }
+        
+        .tl-item:hover .tl-dot {
+            background: var(--gold);
+            color: var(--deep);
+            border-color: var(--gold)
+        }
+        
+        .tl-content {
+            flex: 1;
+            padding-top: 8px
+        }
+        
+        .tl-year {
+            font-size: .68rem;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+        
+        .tl-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+        
+        .tl-content p {
+            font-size: .92rem;
+            color: var(--muted);
+            line-height: 1.7
+        }
+        /* ════════════════════════════════════
+   CONTACT STRIP
+════════════════════════════════════ */
+        
+        #contact-haan {
+            padding: 108px 0;
+            background: var(--deep);
+        }
+        
+        .ct-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center
+        }
+        
+        .ct-l p {
+            margin: 22px 0 36px;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.7
+        }
+        
+        .ct-details {
+            display: flex;
+            flex-direction: column;
+            gap: 18px
+        }
+        
+        .ct-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px
+        }
+        
+        .ct-ico {
+            width: 38px;
+            height: 38px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: .95rem
+        }
+        
+        .ct-info strong {
+            display: block;
+            font-size: .65rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 3px
+        }
+        
+        .ct-info a,
+        .ct-info span {
+            color: var(--text);
+            font-size: .93rem;
+            transition: color .3s
+        }
+        
+        .ct-info a:hover {
+            color: var(--gold)
+        }
+        
+        .ct-card {
+            background: var(--dark-mid);
+            border: 1px solid var(--border-soft);
+            padding: 52px 44px;
+            position: relative
+        }
+        
+        .ct-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold)
+        }
+        
+        .ct-motto {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.1rem;
+            font-style: italic;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 20px
+        }
+        
+        .ct-motto em {
+            color: var(--gold-light)
+        }
+        
+        .ct-card>p {
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 32px;
+            font-size: .95rem
+        }
+        
+        .ct-phone {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            color: var(--gold);
+            margin-bottom: 26px
+        }
+        /* ── FOOTER ── */
+        
+        footer {
+            background: var(--deep);
+            border-top: 1px solid var(--border-soft);
+            padding: 60px 0 28px
+        }
+        
+        .ft-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 44px;
+            margin-bottom: 44px
+        }
+        
+        .ft-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 14px
+        }
+        
+        .ft-brand p {
+            color: var(--dim);
+            font-size: .88rem;
+            line-height: 1.6;
+            max-width: 250px
+        }
+        
+        .ft-col h4 {
+            font-size: .65rem;
+            letter-spacing: .28em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 18px
+        }
+        
+        .ft-col a,
+        .ft-col li {
+            color: var(--dim);
+            font-size: .88rem;
+            display: block;
+            margin-bottom: 10px;
+            transition: color .3s
+        }
+        
+        .ft-col a:hover {
+            color: var(--text)
+        }
+        
+        .ft-bot {
+            border-top: 1px solid var(--border-soft);
+            padding-top: 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px
+        }
+        
+        .ft-copy {
+            font-size: .76rem;
+            color: var(--dim)
+        }
+        /* ── BACK TO HOME BANNER ── */
+        
+        .back-banner {
+            background: var(--dark-mid);
+            border-bottom: 1px solid var(--border-soft);
+            padding: 14px 0;
+            text-align: center;
+        }
+        
+        .back-banner a {
+            font-size: .72rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            transition: color .3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .back-banner a::before {
+            content: '←';
+            font-size: .9rem
+        }
+        
+        .back-banner a:hover {
+            color: var(--gold)
+        }
+        /* ── RESPONSIVE ── */
+        
+        @media(max-width:1024px) {
+            .haan-grid {
+                grid-template-columns: 1fr;
+                gap: 56px;
+                padding: 60px 0
+            }
+            .haan-img-wrap {
+                order: -1
+            }
+            .bishop-grid {
+                grid-template-columns: 1fr;
+                gap: 44px
+            }
+            .ct-grid {
+                grid-template-columns: 1fr
+            }
+            .ft-grid {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+        
+        @media(max-width:768px) {
+            .wrap {
+                padding: 0 22px
+            }
+            .haan-grid,
+            .bishop-grid,
+            .ct-grid {
+                gap: 36px
+            }
+            .haan-img-wrap img {
+                height: 420px
+            }
+            .bishop-img-wrap img {
+                height: 380px
+            }
+            .haan-stats {
+                gap: 24px
+            }
+            .burger {
+                display: flex
+            }
+            .nav-links {
+                display: none
+            }
+            .ct-card {
+                padding: 32px 24px
+            }
+            .ft-grid {
+                grid-template-columns: 1fr;
+                gap: 28px
+            }
+            #hero-haan {
+                padding-top: 76px
+            }
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            /* THIS is the key fix */
+            gap: 10px;
+        }
+        
+        .logo-img {
+            height: 45px;
+            /* reduce size */
+            width: auto;
+            display: block;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .logo-text span {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .logo-text small {
+            font-size: 11px;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="pre-logo">MIRNE</div>
+        <div class="pre-bar"></div>
+    </div>
+
+    <!-- SCROLL TOP -->
+    <div id="stb" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+    <!-- NAVBAR -->
+    <header id="nav">
+        <div class="nav-in">
+            <a href="#home" class="nav-logo">
+                <img src="assets/img/mirnelogo.png" alt="MIRNE Logo" class="logo-img">
+
+                <div class="logo-text">
+                    <span>MIRNE</span>
+                    <small>Passion to serve, driven by love</small>
+                </div>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#hero-haan" class="act">Vision Bearer</a>
+                <a href="#bishop">Bishop</a>
+                <a href="#journey">Journey</a>
+                <a href="#contact-haan" class="nav-cta-btn">Contact</a>
+            </nav>
+            <div class="burger" id="bur"><span></span><span></span><span></span></div>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div id="mob">
+        <nav class="mob-links">
+            <a href="index.html">← Home</a>
+            <a href="#hero-haan">Vision Bearer</a>
+            <a href="#bishop">Bishop</a>
+            <a href="#journey">Journey</a>
+            <a href="#contact-haan">Contact</a>
+        </nav>
+    </div>
+
+    <!-- ══ HERO ══ -->
+    <section id="hero-haan">
+        <div class="wrap">
+            <div class="haan-grid">
+
+                <!-- Text -->
+                <div class="haan-text">
+                    <p class="haan-eyebrow rv">Harvest Africa Apostolic Network</p>
+                    <h1 class="haan-name rv d1">Apostle<br><em>François</em><br>Nkurunziza</h1>
+                    <p class="haan-role rv d2">Vision Bearer &amp; Presiding Apostle</p>
+                    <div class="haan-body rv d3">
+                        <p>Apostle François Nkurunziza is the Vision Bearer and the Presiding Apostle of Harvest Africa Apostolic Network — a vision that primarily covers the African continent and the rest of the world.</p>
+                        <p>He is the founder of MIRNE, a ministry born in the context of the aftermath of the 1994 Genocide against Tutsi in Rwanda, and the founder of the Community of Bethel Churches found in Rwanda and abroad.</p>
+                    </div>
+                    <div class="haan-stats rv d4">
+                        <div class="hstat">
+                            <strong>40+</strong>
+                            <span>Years in Ministry</span>
+                        </div>
+                        <div class="hstat">
+                            <strong>1983</strong>
+                            <span>Year of Conversion</span>
+                        </div>
+                        <div class="hstat">
+                            <strong>4</strong>
+                            <span>Children</span>
+                        </div>
+                    </div>
+                    <div class="haan-btns rv d5">
+                        <a href="#journey" class="btn-g">His Journey</a>
+                        <a href="#bishop" class="btn-o">Meet Bishop Thérèse</a>
+                    </div>
+                </div>
+
+                <!-- Image -->
+                <div class="rr d2">
+                    <div class="haan-img-wrap">
+                        <img src="assets/img/aposlte.png" alt="Apostle François Nkurunziza" loading="lazy">
+                        <div class="haan-badge">
+                            <strong>HAAN</strong>
+                            <span>Vision Bearer</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ BISHOP THÉRÈSE ══ -->
+    <section id="bishop">
+        <div class="wrap">
+            <div class="bishop-grid">
+
+                <!-- Image left -->
+                <div class="rl">
+                    <div class="bishop-img-wrap">
+                        <img src="assets/img/about.png" alt="Bishop Thérèse Umigraneza" loading="lazy">
+                    </div>
+                </div>
+
+                <!-- Text right -->
+                <div>
+                    <p class="lbl rv">In Ministry Together</p>
+                    <h2 class="ttl rv d1">Bishop<br><em>Thérèse</em> Umigraneza</h2>
+                    <p class="bishop-body rv d2">
+                        Apostle Nkurunziza and his wife Bishop Thérèse Umigraneza have been serving the Lord together for over thirty years. Their partnership in the Gospel has been a cornerstone of everything MIRNE and the Community of Bethel Churches stands for. Together,
+                        they have four children and three grandchildren — a family built on faith, service, and love.
+                    </p>
+                    <blockquote class="bishop-quote rv d3">
+                        "As Christ is making us whole, God's Spirit works through us to bring wholeness to others."
+                    </blockquote>
+                    <a href="#contact-haan" class="btn-g rv d4">Get In Touch</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ JOURNEY TIMELINE ══ -->
+    <section id="journey">
+        <div class="wrap">
+            <div class="journey-hd">
+                <p class="lbl rv">A Life of Service</p>
+                <h2 class="ttl rv d1">The <em>Journey</em></h2>
+                <p class="rv d2">From the monastery to the nations — a remarkable walk of faith spanning more than four decades.</p>
+            </div>
+            <div class="timeline">
+
+                <div class="tl-item rv">
+                    <div class="tl-dot">✦</div>
+                    <div class="tl-content">
+                        <p class="tl-year">Early Life</p>
+                        <h3>The Monastery</h3>
+                        <p>Apostle Nkurunziza entered the Monastery in one of the Roman Catholic monastic orders, a formative period that shaped his deep spirituality and love for God's Word — which he left before his final vows.</p>
+                    </div>
+                </div>
+
+                <div class="tl-item rv d1">
+                    <div class="tl-dot">✦</div>
+                    <div class="tl-content">
+                        <p class="tl-year">1983</p>
+                        <h3>Dramatic Conversion</h3>
+                        <p>He experienced a dramatic conversion and was called to full-time ministry shortly after. He became one of the pioneers of the revival that swept through Burundi and other nations during the 1980s and 90s.</p>
+                    </div>
+                </div>
+
+                <div class="tl-item rv d2">
+                    <div class="tl-dot">✦</div>
+                    <div class="tl-content">
+                        <p class="tl-year">Training</p>
+                        <h3>Formation &amp; Education</h3>
+                        <p>Trained for ministry at Ecole Missionaire Francophone in France. He also holds a Bachelor of Arts in Law, combining a deep theological grounding with academic rigour.</p>
+                    </div>
+                </div>
+
+                <div class="tl-item rv d3">
+                    <div class="tl-dot">✦</div>
+                    <div class="tl-content">
+                        <p class="tl-year">Post-1994</p>
+                        <h3>Founding of MIRNE</h3>
+                        <p>Born in the aftermath of the 1994 Genocide against Tutsi in Rwanda, MIRNE became a vessel of restoration, reconciliation, and hope — the Gospel touching the deepest wounds of a nation.</p>
+                    </div>
+                </div>
+
+                <div class="tl-item rv d4">
+                    <div class="tl-dot">✦</div>
+                    <div class="tl-content">
+                        <p class="tl-year">Ongoing</p>
+                        <h3>Harvest Africa Apostolic Network</h3>
+                        <p>As Presiding Apostle of HAAN, he provides a wide space for corporate anointing and converged efforts, skills, and competencies of diverse ministers from all walks of life across Africa and the world.</p>
+                    </div>
+                </div>
+
+                <div class="tl-item rv d5">
+                    <div class="tl-dot">✦</div>
+                    <div class="tl-content">
+                        <p class="tl-year">Teaching</p>
+                        <h3>Signs of the Times</h3>
+                        <p>Renowned as an orator especially on Biblical Prophecies, he has compiled the pertinent teaching series "The Signs of the Times" — equipping the Body of Christ for the days ahead.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ CONTACT ══ -->
+    <section id="contact-haan">
+        <div class="wrap">
+            <div class="ct-grid">
+                <div class="ct-l">
+                    <p class="lbl rv">Get In Touch</p>
+                    <h2 class="ttl rv d1">Let's <em>Talk</em></h2>
+                    <p class="rv d2">MIRNE is a member of the Rwanda Evangelical Alliance (AER). We'd love to hear from you.</p>
+                    <div class="ct-details rv d3">
+                        <div class="ct-row">
+                            <div class="ct-ico">📞</div>
+                            <div class="ct-info"><strong>Phone</strong><a href="tel:+250784261800">+250 784 261 800</a></div>
+                        </div>
+                        <div class="ct-row">
+                            <div class="ct-ico">✉</div>
+                            <div class="ct-info"><strong>Email</strong><a href="mailto:mirneministries@gmail.com">mirneministries@gmail.com</a></div>
+                        </div>
+                        <div class="ct-row">
+                            <div class="ct-ico">📍</div>
+                            <div class="ct-info"><strong>Location</strong><span>Nyamata – Town, Bugesera District, Rwanda</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rr d2">
+                    <div class="ct-card">
+                        <div class="ct-motto">"Passion to serve,<br>driven by <em>love</em>"</div>
+                        <p>As God's incarnate in Christ appealed to all to receive the Good News, our work and witness offers an invitation: Come, turn to God and be made whole.</p>
+                        <a class="ct-phone" href="tel:+250784261800">+250 784 261 800</a>
+                        <a href="mailto:mirneministries@gmail.com" class="btn-g">Send Us a Message</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ FOOTER ══ -->
+    <footer>
+        <div class="wrap">
+            <div class="ft-grid">
+                <div class="ft-brand">
+                    <a href="index.html" class="ft-logo">MIRNE Ministries</a>
+                    <p>Mission Internationale pour la Restauration des Nations par l'Evangile.</p>
+                    <p style="margin-top:10px">Member of the Rwanda Evangelical Alliance (AER).</p>
+                </div>
+                <div class="ft-col">
+                    <h4>This Page</h4>
+                    <a href="#hero-haan">Vision Bearer</a>
+                    <a href="#bishop">Bishop Thérèse</a>
+                    <a href="#journey">The Journey</a>
+                    <a href="#contact-haan">Contact</a>
+                </div>
+                <div class="ft-col">
+                    <h4>Main Site</h4>
+                    <a href="index.html">Home</a>
+                    <a href="index.html#vision">Vision</a>
+                    <a href="index.html#mission">Mission</a>
+                    <a href="index.html#works">Works</a>
+                </div>
+                <div class="ft-col">
+                    <h4>Contact</h4>
+                    <a href="tel:+250784261800">+250 784 261 800</a>
+                    <a href="mailto:mirneministries@gmail.com">mirneministries@gmail.com</a>
+                    <li>Nyamata, Bugesera, Rwanda</li>
+                </div>
+            </div>
+            <div class="ft-bot">
+                <p class="ft-copy">© 2026 MIRNE Ministries. All rights reserved.</p>
+                <p style="font-size:.74rem;color:var(--dim)">Passion to serve, driven by love.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => document.getElementById('preloader').classList.add('out'), 600)
+        });
+
+        // scroll
+        window.addEventListener('scroll', () => {
+            document.getElementById('stb').classList.toggle('on', scrollY > 500);
+            document.getElementById('nav').classList.toggle('scrolled', scrollY > 60);
+            let cur = '';
+            document.querySelectorAll('section[id]').forEach(s => {
+                if (scrollY >= s.offsetTop - 130) cur = s.id
+            });
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('act', a.getAttribute('href') === '#' + cur));
+        }, {
+            passive: true
+        });
+
+        // smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const id = a.getAttribute('href').slice(1);
+                const t = document.getElementById(id);
+                if (t) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: t.offsetTop - 70,
+                        behavior: 'smooth'
+                    })
+                }
+            });
+        });
+
+        // burger
+        const bur = document.getElementById('bur'),
+            mob = document.getElementById('mob');
+        bur.addEventListener('click', () => {
+            bur.classList.toggle('x');
+            mob.classList.toggle('on');
+            document.body.style.overflow = mob.classList.contains('on') ? 'hidden' : '';
+        });
+        mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            bur.classList.remove('x');
+            mob.classList.remove('on');
+            document.body.style.overflow = '';
+        }));
+
+        // scroll reveal
+        (function() {
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('in');
+                        obs.unobserve(e.target)
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            document.querySelectorAll('.rv,.rl,.rr,.rs').forEach(el => obs.observe(el));
+        })();
+    </script>
+</body>
+
+</html>
