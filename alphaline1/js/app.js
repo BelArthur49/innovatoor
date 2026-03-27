@@ -261,23 +261,27 @@ function renderContent() {
 
 
             // INSIGHTS page
-            function renderInsightsPage() {
-            const insightsGrid = document.getElementById('insightsGrid');
+            function renderInsightsPage() { const insightsGrid = document.getElementById('insightsGrid');
             if (!insightsGrid || !contentData.articles) return;
+
             insightsGrid.innerHTML = contentData.articles.map(article => `
                 <div class="insight-card" onclick="openArticle('${article.title}')">
-                    <img class="insight-image" src="${article.image}" loading="lazy" alt="${article.title}">
+                    <img 
+                        class="insight-image" 
+                        src="${article.image}?w=600&q=60&fit=crop" 
+                        loading="lazy"
+                        decoding="async"
+                        alt="${article.title}"
+                    >
                     <div class="insight-body">
                         <span class="insight-category">${article.category}</span>
                         <h3>${article.title}</h3>
                         <p>${article.excerpt}</p>
-                        <div class="insight-meta">✍️ ${article.author || 'Alpha Line Team'}</div>
+                        <div class="insight-meta">✍️ ${article.author || 'Alpha Line Team'} · ${article.readingTime || '3 min read'}</div>
                         <span class="insight-read-more">Read Article →</span>
                     </div>
                 </div>
-            `).join('');
-        
-        }
+            `).join('');}
 
 
             // Render Contact Details
