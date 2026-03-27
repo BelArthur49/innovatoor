@@ -2033,3 +2033,39 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* ===== INSIGHTS PERFORMANCE ===== */
+.insight-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    will-change: auto;
+    transform: translateZ(0);
+}
+
+.insight-card {
+    contain: content;
+}
+
+@media (max-width: 768px) {
+    .insight-image {
+        height: 180px;
+    }
+
+    .insights-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .insight-card {
+        will-change: auto;
+        transform: none !important;
+        transition: box-shadow 0.2s ease !important;
+    }
+
+    /* Disable hover lift animation on mobile — it causes jank */
+    .insight-card:hover {
+        transform: none !important;
+    }
+}
