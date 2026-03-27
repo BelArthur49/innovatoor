@@ -456,7 +456,10 @@ function renderContent() {
             });
         }
 
-        window.addEventListener('scroll', updateParallax);
+        if (!isMobile()) {
+            window.addEventListener('scroll', updateParallax);
+            window.addEventListener('resize', updateParallax);
+        }
         window.addEventListener('resize', updateParallax);
         // Initial call
         updateParallax();
@@ -548,10 +551,20 @@ function renderContent() {
             requestAnimationFrame(animate);
         }
 
-        resize();
-        window.addEventListener('resize', resize);
-        initTools();
-        animate();
+        function isMobile() {
+        return window.innerWidth < 768;
+        }
+
+        if (!isMobile()) {
+            resize();
+            window.addEventListener('resize', resize);
+            initTools();
+            animate();
+        } else {
+            // disable canvas on mobile
+            const canvas = document.getElementById('tools-canvas');
+            if (canvas) canvas.style.display = "none";
+        }
 
         // ===== SERVICE DATA =====
         const serviceData = {
