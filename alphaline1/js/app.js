@@ -196,7 +196,7 @@ function renderContent() {
     const capabilitiesContainer = document.getElementById('capabilitiesContainer');
     capabilitiesContainer.innerHTML = contentData.capabilities.map(cap => `
                 <div class="capability-item">
-                    <img src="${cap.image}" alt="${cap.title}" class="capability-image">
+                    <img src="${cap.image}" loading="lazy" alt="${cap.title}" class="capability-image">
                     <div class="capability-content">
                         <h3>${cap.title}</h3>
                         <p>${cap.description}</p>
@@ -243,7 +243,7 @@ function renderContent() {
 
             projectsGrid.innerHTML = contentData.projects.map(project => `
             <div class="project-card" data-category="${project.category}">
-            <img src="${project.image}" class="project-image">
+            <img src="${project.image}" loading="lazy" class="project-image">
 
             <div class="project-overlay">
             <div class="project-category">${project.category}</div>
@@ -330,7 +330,7 @@ function renderContent() {
                 <div class="article-card" onclick="openArticle('${article.title}')">
 
                         <div class="article-image">
-                            <img src="${article.image}" alt="${article.title}">
+                            <img src="${article.image}" loading="lazy" alt="${article.title}">
                         </div>
 
                         <div class="article-content">
@@ -436,33 +436,32 @@ function renderContent() {
 
         // ===== PARALLAX EFFECT =====
         function updateParallax() {
-            const parallaxSections = document.querySelectorAll('.parallax-section');
-            
-            parallaxSections.forEach(section => {
-                const parallaxBg = section.querySelector('.parallax-bg');
-                if (!parallaxBg) return;
-                
-                const rect = section.getBoundingClientRect();
-                const scrolled = window.pageYOffset;
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
-                
-                // Only apply parallax when section is in viewport
-                if (rect.top < window.innerHeight && rect.bottom > 0) {
-                    // Calculate parallax based on scroll position relative to section
-                    const parallaxAmount = (scrolled - sectionTop) * 0.5;
-                    parallaxBg.style.transform = `translate3d(0, ${parallaxAmount}px, 0)`;
-                }
-            });
-        }
+    const parallaxSections = document.querySelectorAll('.parallax-section');
 
-        if (!isMobile()) {
-            window.addEventListener('scroll', updateParallax);
-            window.addEventListener('resize', updateParallax);
+    parallaxSections.forEach(section => {
+        const parallaxBg = section.querySelector('.parallax-bg');
+        if (!parallaxBg) return;
+
+        const rect = section.getBoundingClientRect();
+
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            const scrolled = window.pageYOffset;
+            const sectionTop = section.offsetTop;
+
+            const speed = isMobile() ? 0.2 : 0.5; // slower on mobile
+            const parallaxAmount = (scrolled - sectionTop) * speed;
+
+            parallaxBg.style.transform = `translate3d(0, ${parallaxAmount}px, 0)`;
         }
-        window.addEventListener('resize', updateParallax);
-        // Initial call
-        updateParallax();
+    });
+}
+
+// Apply events
+window.addEventListener('scroll', updateParallax);
+window.addEventListener('resize', updateParallax);
+
+// Initial call
+updateParallax();
 
         // ===== CANVAS ANIMATION =====
         const canvas = document.getElementById('tools-canvas');
@@ -555,16 +554,37 @@ function renderContent() {
         return window.innerWidth < 768;
         }
 
-        if (!isMobile()) {
-            resize();
-            window.addEventListener('resize', resize);
-            initTools();
-            animate();
-        } else {
-            // disable canvas on mobile
-            const canvas = document.getElementById('tools-canvas');
-            if (canvas) canvas.style.display = "none";
+        function startCanvas() {
+    resize();
+
+    if (!isMobile()) {
+        // DESKTOP (full animation)
+        window.addEventListener('resize', resize);
+        initTools();
+        animate();
+    } else {
+        // MOBILE (light version instead of disabling)
+        tools = [];
+
+        for (let i = 0; i < 12; i++) {
+            tools.push(new Tool());
         }
+
+        function animateMobile() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            tools.forEach(tool => tool.update());
+            tools.forEach(tool => tool.draw());
+
+            requestAnimationFrame(animateMobile);
+        }
+
+        animateMobile();
+    }
+}
+
+// START IT
+startCanvas();
 
         // ===== SERVICE DATA =====
         const serviceData = {
@@ -708,7 +728,7 @@ cost: {
             data.gallery.forEach(img => {
                 const item = document.createElement('div');
                 item.className = 'gallery-item';
-                item.innerHTML = `<img src="${img}" alt="Project">`;
+                item.innerHTML = `<img src="${img}" loading="lazy" alt="Project">`;
                 gallery.appendChild(item);
             });
 
