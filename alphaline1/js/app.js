@@ -196,7 +196,7 @@ function renderContent() {
     const capabilitiesContainer = document.getElementById('capabilitiesContainer');
     capabilitiesContainer.innerHTML = contentData.capabilities.map(cap => `
                 <div class="capability-item">
-                    <img src="${cap.image}" loading="lazy" alt="${cap.title}" class="capability-image">
+                    <img src="${cap.image}" alt="${cap.title}" class="capability-image">
                     <div class="capability-content">
                         <h3>${cap.title}</h3>
                         <p>${cap.description}</p>
@@ -243,7 +243,7 @@ function renderContent() {
 
             projectsGrid.innerHTML = contentData.projects.map(project => `
             <div class="project-card" data-category="${project.category}">
-            <img src="${project.image}" loading="lazy" class="project-image">
+            <img src="${project.image}"  class="project-image">
 
             <div class="project-overlay">
             <div class="project-category">${project.category}</div>
@@ -330,7 +330,7 @@ function renderContent() {
                 <div class="article-card" onclick="openArticle('${article.title}')">
 
                         <div class="article-image">
-                            <img src="${article.image}" loading="lazy" alt="${article.title}">
+                            <img src="${article.image}" alt="${article.title}">
                         </div>
 
                         <div class="article-content">
@@ -728,7 +728,7 @@ cost: {
             data.gallery.forEach(img => {
                 const item = document.createElement('div');
                 item.className = 'gallery-item';
-                item.innerHTML = `<img src="${img}" loading="lazy" alt="Project">`;
+                item.innerHTML = `<img src="${img}" alt="Project">`;
                 gallery.appendChild(item);
             });
 
