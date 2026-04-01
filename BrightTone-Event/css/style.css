@@ -502,7 +502,25 @@ textarea {
         transform: translateX(-50%) translateY(-8px)
     }
 }
+/* Make hero title smaller and adjust spacing on mobile/smaller screens */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: clamp(2rem, 8vw, 4rem); /* smaller font for phones/tablets */
+        line-height: 1.1;                   /* prevent overlap */
+        margin-bottom: 16px;                /* reduce spacing */
+    }
 
+    .hero-title .ac {
+        font-size: 1em;                     /* make accent smaller if needed */
+    }
+
+    .hero {
+        padding-top: calc(var(--navh) + 24px); /* reduce top padding so title stays below navbar */
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-bottom: 40px;
+    }
+}
 
 /* ── STATS ── */
 
