@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Contact — BrightTone Event</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="noise"></div>
+    <div id="loader">
+        <div class="loader-ring"></div>
+        <div class="loader-txt">Loading</div>
+    </div>
+
+    <nav class="nav scrolled">
+        <a href="index.html" class="nav-logo"></a>
+        <div class="nav-links"></div>
+        <a href="contact.html" class="nav-cta desktop" data-nav-cta></a>
+        <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+    <div class="nav-drawer"></div>
+
+    <div class="page-hero">
+        <canvas id="page-canvas"></canvas>
+        <div class="hero-grid"></div>
+        <div class="hero-vignette"></div>
+        <div class="page-hero-inner">
+            <span class="lbl">Contact Us</span>
+
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="contact-wrap">
+                <div>
+                    <span class="lbl">Reach Out</span>
+                    <h2 class="sec-title" style="font-size:clamp(1.6rem,3.5vw,2.5rem)">We'd Love to Hear From You</h2>
+                    <p class="sec-body" style="font-size:.9rem">Fill out the form or reach us directly. We respond within 24 hours.</p>
+                    <div class="contact-info" id="contact-info"></div>
+                </div>
+
+                <div class="contact-form reveal">
+                    <form id="contact-form" novalidate>
+                        <div class="frow">
+                            <div><label class="flbl" for="f-name">Full Name</label><input class="finput" id="f-name" type="text" placeholder="Your full name" required autocomplete="name"></div>
+                            <div><label class="flbl" for="f-email">Email</label><input class="finput" id="f-email" type="email" placeholder="your@email.com" required autocomplete="email"></div>
+                        </div>
+                        <div class="frow">
+                            <div><label class="flbl" for="f-phone">Phone</label><input class="finput" id="f-phone" type="tel" placeholder="+250 700 000 000" autocomplete="tel"></div>
+                            <div><label class="flbl" for="form-event">Event Type</label><select class="fselect" id="form-event" required></select></div>
+                        </div>
+                        <div class="fgroup">
+                            <label class="flbl" for="f-msg">Message</label>
+                            <textarea class="ftextarea" id="f-msg" placeholder="Tell us about your event — date, venue, expected audience size, and any special requirements..." required></textarea>
+                        </div>
+                        <button type="submit" class="fsubmit btn-primary" id="form-submit">Send Message</button>
+                    </form>
+                    <div class="fsuccess" id="form-success">
+                        <div class="fsuccess-icon">✅</div>
+                        <div class="fsuccess-title">Message Sent!</div>
+                        <p class="fsuccess-body"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div>
+                <div class="footer-brand-name"></div>
+                <p class="footer-tagline"></p>
+                <div class="footer-social"></div>
+            </div>
+            <div>
+                <div class="fcol-title">Pages</div>
+                <div class="flinks"></div>
+            </div>
+            <div>
+                <div class="fcol-title">Find Us</div>
+                <div style="font-size:.85rem;color:var(--text2);line-height:2">Kigali, Rwanda<br>
+                    <a href="https://www.instagram.com/brighttone_event/" target="_blank" class="footer-ig"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom"><span class="footer-copy"></span><a href="https://www.instagram.com/brighttone_event/" target="_blank" rel="noopener" style="font-size:.72rem;color:var(--primary2)">@brighttone_event</a></div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

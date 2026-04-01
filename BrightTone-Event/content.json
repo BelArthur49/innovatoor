@@ -1,0 +1,284 @@
+{
+    "brand": {
+        "name": "BrightTone",
+        "tagline": "Event"
+    },
+    "nav": {
+        "links": [{
+                "label": "Home",
+                "href": "index.html"
+            },
+            {
+                "label": "Services",
+                "href": "services.html"
+            },
+            {
+                "label": "Portfolio",
+                "href": "portfolio.html"
+            },
+            {
+                "label": "About",
+                "href": "about.html"
+            },
+            {
+                "label": "Contact",
+                "href": "contact.html"
+            }
+        ],
+        "cta": {
+            "label": "Book Now",
+            "href": "contact.html"
+        }
+    },
+    "home": {
+        "hero": {
+
+            "headline": "Sound That",
+            "headline_accent": "Moves Crowds.",
+            "subheadline": "We design, install, and operate world-class audio experiences for concerts, weddings, and corporate events across Rwanda and beyond.",
+            "cta_primary": {
+                "label": "Explore Services",
+                "href": "services.html"
+            },
+            "cta_secondary": {
+                "label": "See Our Work",
+                "href": "portfolio.html"
+            }
+        },
+        "stats": [{
+                "value": "...",
+                "label": "Events Delivered"
+            },
+
+            {
+                "value": "100%",
+                "label": "Client Satisfaction"
+            },
+
+            {
+                "value": "...",
+                "label": "Experience"
+            }, {
+                "value": "24/7",
+                "label": "Support Available"
+            }
+        ],
+        "service_cards": [{
+                "icon": "concert",
+                "image": "img/1.jpeg",
+                "title": "Concerts & Festivals",
+                "body": "Line arrays, subwoofer stacks, monitor systems, and full stage management for live music at any scale.",
+                "href": "services.html#concerts"
+            },
+            {
+                "icon": "wedding",
+                "image": "img/2.jpeg",
+                "title": "Weddings & Celebrations",
+                "body": "Crystal-clear ceremony audio, elegant background music, and powerful dance-floor systems for your perfect day.",
+                "href": "services.html#weddings"
+            },
+            {
+                "icon": "corporate",
+                "image": "img/5.jpeg",
+                "title": "Corporate Events",
+                "body": "Conference PA systems, lavalier microphones, presentation audio, and broadcast-grade reliability.",
+                "href": "services.html#corporate"
+            }
+        ],
+        "testimonials": [{
+                "quote": "BrightTone transformed our outdoor concert. The sound reached every corner of the venue with zero distortion.",
+                "name": "Amina Uwase",
+                "role": "Event Director, Kigali Live Festival"
+            },
+            {
+                "quote": "Our wedding audio was flawless. Guests at the back heard every vow perfectly.",
+                "name": "Jean-Pierre Habimana",
+                "role": "Groom, Kigali Garden Wedding"
+            },
+            {
+                "quote": "For our annual summit we needed crystal clear audio for 800 delegates.",
+                "name": "Claire Nkurunziza",
+                "role": "Head of Operations, Rwanda Tech Summit"
+            }
+        ],
+        "cta_band": {
+            "title": "Ready to Elevate Your Event?",
+            "body": "Tell us about your vision and we'll design the perfect sound system for it.",
+            "cta": {
+                "label": "Get a Free Quote",
+                "href": "contact.html"
+            }
+        }
+    },
+    "services": {
+        "hero": {
+            "label": "Our Services"
+        },
+        "items": [{
+                "id": "concerts",
+                "icon": "concert",
+                "image": "img/3.jpeg",
+                "title": "Concerts & Festivals",
+                "body": "We deploy professional line-array systems, high-output subwoofers, stage monitors, and front-of-house mixing desks.",
+                "features": [
+                    "Line-array speaker systems",
+                    "Subwoofer bass stacks",
+                    "Stage monitor wedges & IEM",
+                    "Delay towers for large venues",
+                    "Professional mixing console",
+                    "On-site audio engineering"
+                ]
+            },
+            {
+                "id": "weddings",
+                "icon": "wedding",
+                "image": "img/6.jpeg",
+                "title": "Weddings & Celebrations",
+                "body": "Elegant, unobtrusive systems that sound spectacular without dominating your décor.",
+                "features": [
+                    "Wireless lapel & handheld mics",
+                    "Ceremony & reception zones",
+                    "Background music systems",
+                    "DJ booth integration",
+                    "Ambient lighting sync",
+                    "Dedicated on-site technician"
+                ]
+            },
+            {
+                "id": "corporate",
+                "icon": "corporate",
+                "image": "img/5.jpeg",
+                "title": "Corporate Events",
+                "body": "Broadcast-grade reliability with lavalier mics, panel systems, and live-stream integration.",
+                "features": [
+                    "Conference PA systems",
+                    "Lavalier & podium microphones",
+                    "Panel discussion setups",
+                    "Live-stream audio integration",
+                    "Hearing loop systems",
+                    "Technical rehearsal support"
+                ]
+            }
+        ],
+        "equipment_brands": [
+            "d&b audiotechnik",
+            "L-Acoustics",
+            "Shure",
+            "Sennheiser",
+            "Allen & Heath",
+            "DiGiCo",
+            "Crown",
+            "QSC"
+        ]
+    },
+    "portfolio": {
+        "items": [{
+                "title": "Kigali Jazz Festival",
+                "category": "Concerts",
+                "desc": "Full outdoor line-array deployment for 3,000 attendees.",
+                "image": "img/1.jpeg",
+                "year": "2024"
+            },
+            {
+                "title": "Amira & David Wedding",
+                "category": "Weddings",
+                "desc": "Elegant ceremony with ambient sound zones.",
+                "image": "img/2.jpeg",
+                "year": "2024"
+            },
+            {
+                "title": "Rwanda Tech Summit",
+                "category": "Corporate",
+                "desc": "800-delegate conference with live-stream integration.",
+                "image": "img/5.jpeg",
+                "year": "2024"
+            },
+            {
+                "title": "Nyamata Music Night",
+                "category": "Concerts",
+                "desc": "Intimate open-air concert featuring local artists.",
+                "image": "img/3.jpeg",
+                "year": "2023"
+            },
+            {
+                "title": "EcoBank Annual Gala",
+                "category": "Corporate",
+                "desc": "Award ceremony with wireless mic system.",
+                "image": "img/5.jpeg",
+                "year": "2023"
+            },
+            {
+                "title": "Sophie & Eric Wedding",
+                "category": "Weddings",
+                "desc": "Church ceremony to hotel ballroom — seamless audio transition.",
+                "image": "img/6.jpeg",
+                "year": "2023"
+            }
+        ]
+    },
+    "about": {
+        "story": [
+            "BrightTone Event was born from a simple belief: every event deserves sound that moves people. Founded by audio engineers with years of experience in live events and studio production.",
+            "Today, BrightTone is trusted by festival organizers, wedding planners, and corporate event managers across Rwanda and East Africa.",
+            "We don't just rent equipment — we partner with you from planning to performance."
+        ],
+        "values": [{
+                "icon": "target",
+                "title": "Precision",
+                "body": "Every decibel matters. We tune systems meticulously for each venue's unique acoustics."
+            },
+            {
+                "icon": "shield",
+                "title": "Reliability",
+                "body": "Backup systems, redundant signal paths, and 24/7 support mean your event never stops."
+            },
+            {
+                "icon": "zap",
+                "title": "Passion",
+                "body": "We love live sound. That energy shows in everything we deliver."
+            },
+            {
+                "icon": "cpu",
+                "title": "Innovation",
+                "body": "We continuously invest in cutting-edge equipment and stay ahead of industry trends."
+            }
+        ],
+        "team": [{
+                "name": "Eric Munyana",
+                "role": "Founder & Lead Audio Engineer",
+                "bio": "10+ years in live sound and studio engineering. Has mixed for international artists across Africa."
+            },
+            {
+                "name": "Grace Ingabire",
+                "role": "Operations Manager",
+                "bio": "Coordinates logistics and client relations, ensuring every event runs like clockwork."
+            },
+            {
+                "name": "Patrick Nziza",
+                "role": "Systems Technician",
+                "bio": "Specialist in rigging, cabling, and signal routing. Passionate about clean installs."
+            }
+        ]
+    },
+    "contact": {
+        "phone": "+250 788 000 000",
+        "email": "hello@brighttone.rw",
+        "location": "Kigali, Rwanda",
+        "instagram": "https://www.instagram.com/brighttone_event/",
+        "whatsapp": "https://wa.me/250788000000",
+        "event_types": [
+            "Concert / Festival",
+            "Wedding / Celebration",
+            "Corporate Event",
+            "Other"
+        ],
+        "success_message": "Thank you! We'll be in touch within 24 hours."
+    },
+    "footer": {
+        "tagline": "Professional sound systems for every occasion.",
+        "copyright": "© 2026 BrightTone Event. All rights reserved. Developed by Innovatoor.",
+        "instagram": "https://www.instagram.com/brighttone_event/"
+
+
+    }
+}
