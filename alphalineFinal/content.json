@@ -1,0 +1,331 @@
+{
+    "features": [{
+            "icon": "🏗️",
+            "title": "Expert Engineering",
+            "text": "State-of-the-art structural and civil engineering solutions"
+        },
+        {
+            "icon": "⏳",
+            "title": "Fast Delivery",
+            "text": "On-time project completion with zero compromises"
+        },
+        {
+            "icon": "✅️",
+            "title": "Quality Assured",
+            "text": "Premium materials and rigorous quality control"
+        },
+        {
+            "icon": "♻️",
+            "title": "Sustainable Build",
+            "text": "Eco-friendly construction practices for a better tomorrow"
+        },
+        {
+            "icon": "🔎",
+            "title": "Project Transparency",
+            "text": "Real-time updates and complete visibility into every phase"
+        },
+        {
+            "icon": "img/Jigsaw.svg.png",
+            "title": "Custom Solutions",
+            "text": "Tailored designs that match your unique vision and needs"
+        },
+        {
+            "icon": "img/inoti.webp",
+            "title": "Investment Perspective",
+            "text": "We understand that construction is capital allocation."
+        }
+    ],
+    "parallax": [{
+            "backgroundImage": "img/precisioneng.jpeg",
+            "title": "Precision Engineering",
+            "text": "Our team of certified engineers brings decades of experience in structural design, geotechnical analysis, and project optimization to ensure every build exceeds industry standards."
+        },
+        {
+            "backgroundImage": "img/BIM.jpg",
+            "title": "Advanced Technology",
+            "text": "Utilizing BIM modeling, drone surveying, and AI-powered project management to deliver construction excellence with unprecedented precision and efficiency."
+        }
+    ],
+    "capabilities": [{
+            "title": "Turnkey Design & Build Delivery",
+            "image": "img/turnkey.jpeg",
+            "description": "We provide fully integrated project delivery, assuming total responsibility from initial design coordination to final handover.",
+            "list": [
+                "Architectural & Engineering Coordination",
+                "Structural & MEP Integration",
+                "Procurement & Material Optimization",
+                "Full Construction Execution",
+                "Quality Control & Final Commissioning"
+            ]
+        },
+        {
+            "title": "Structural Engineering & Concrete Systems",
+            "image": "img/Structural.jpeg",
+            "description": "Engineering-led structural execution built for durability, safety, and long-term cost efficiency.",
+            "list": [
+                "Reinforced Concrete & Steel Frameworks",
+                "Foundation Engineering & Soil-Based Design",
+                "Load Optimization & Material Efficiency",
+                "Reinforcement Oversight & Structural Quality Control"
+            ]
+        },
+        {
+            "title": "Integrated Building Systems (MEP Coordination)",
+            "image": "img/mep.jpg",
+            "description": "Mechanical, electrical, and plumbing systems engineered and coordinated as a unified infrastructure.",
+            "list": [
+                "Electrical Load Planning & Distribution",
+                "Plumbing & Fire Protection Infrastructure",
+                "Mechanical & Ventilation Integration",
+                "Energy-Conscious System Design"
+            ]
+        },
+        {
+            "title": "Site Engineering & Infrastructure Preparation",
+            "image": "img/sitepreparation.jpeg",
+            "description": "We transform land into structurally stable and construction-ready platforms for residential and commercial development.",
+            "list": [
+                "Engineered Earthworks & Excavation",
+                "Precision Grading & Compaction",
+                "Underground Utility Installation",
+                "Drainage & Erosion Management"
+            ]
+        },
+        {
+            "title": "Digital Construction & Project Intelligence",
+            "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop",
+            "description": "Structured digital planning and coordination systems that reduce risk and optimize project execution.",
+            "list": [
+                "3D Modeling Visualization & Client walkthrough",
+                "Clash Detection & Design Coordination",
+                "Cost Forecasting & BOQ Optimization",
+                "Schedule Planning & Execution Control"
+            ]
+        }
+    ],
+    "services": [{
+            "icon": "img/turnkey.svg",
+            "title": "Turnkey Design & Build",
+            "preview": "Complete project delivery from foundation to handover with full architectural, engineering, and construction coordination.",
+            "key": "turnkey"
+        },
+        {
+            "icon": "🏘",
+            "title": "Residential & Commercial Construction",
+            "preview": "Engineered homes, villas, apartments, offices, and commercial spaces designed for durability and long-term value.",
+            "key": "construction"
+        },
+        {
+            "icon": "🏢",
+            "title": "Real Estate Development",
+            "preview": "Development of apartments, rental properties, affordable housing, and land investment feasibility projects.",
+            "key": "realestate"
+        },
+        {
+            "icon": "🧮",
+            "title": "Cost Optimization & Construction Intelligence",
+            "preview": "BOQ preparation, value engineering, cost benchmarking, and financial feasibility modeling before construction begins.",
+            "key": "cost"
+        },
+        {
+            "icon": "🏗️",
+            "title": "Structural & Engineering Services",
+            "preview": "Foundation engineering, reinforced concrete structures, structural strengthening, and MEP coordination.",
+            "key": "engineering"
+        },
+        {
+            "icon": "🔨",
+            "title": "Renovation & Modernization",
+            "preview": "Structural rehabilitation, interior remodeling, exterior upgrades, and full building modernization projects.",
+            "key": "renovation"
+        },
+        {
+            "icon": "img/exavator.png",
+            "title": "Site Development & Infrastructure",
+            "preview": "Earthworks, grading, excavation, drainage systems, and utility installation for stable developments.",
+            "key": "site"
+        },
+        {
+            "icon": "📊",
+            "title": "Project Management & Consultancy",
+            "preview": "Professional project supervision, contractor coordination, quality assurance, and structured reporting.",
+            "key": "management"
+        },
+        {
+            "icon": "🌱",
+            "title": "Sustainable & Green Building Solutions",
+            "preview": "Energy-efficient systems, material optimization, and climate-responsive construction strategies.",
+            "key": "green"
+        }
+    ],
+    "testimonials": [{
+            "text": "Alpha Line transformed our vision into reality. Their attention to detail and commitment to quality is unmatched in the industry.",
+            "author": "Sarah Johnson",
+            "position": "CEO, Tech Innovations",
+            "avatar": "img/icons.png"
+        },
+        {
+            "text": "Working with Alpha Line was a game-changer for our development project. Professional, reliable, and exceptional results.",
+            "author": "Michael Chen",
+            "position": "Property Developer",
+            "avatar": "img/icon.webp"
+        },
+        {
+            "text": "The engineering expertise and innovative solutions provided by Alpha Line exceeded all our expectations. Highly recommended!",
+            "author": "Emily Rodriguez",
+            "position": "Architect",
+            "avatar": "img/icon.png"
+        }
+    ],
+    "articles": [{
+            "title": "Engineering-Led Construction: Why It Matters",
+            "category": "Construction Strategy",
+            "image": "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
+            "excerpt": "Engineering discipline is the difference between projects that survive and projects that fail financially.",
+            "content": "Engineering-led construction ensures that every decision during the building process is driven by structural logic, financial efficiency, and long-term durability. Instead of improvisation during execution, projects are engineered from the start.\n\nThis approach reduces costly design errors, eliminates unnecessary material waste, and ensures buildings remain structurally efficient over decades. Developers who adopt engineering-first methodologies consistently achieve stronger financial returns because project risks are minimized before construction begins.",
+            "author": "Alpha Line Team",
+            "readingTime": "3 min read"
+        },
+        {
+            "title": "Cost Optimization in Real Estate Development",
+            "category": "Investment",
+            "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
+            "excerpt": "Before construction begins, financial structure determines whether a project becomes an asset or a liability.",
+            "content": "Cost optimization is one of the most critical elements in successful real estate development. It does not mean cutting corners or lowering quality. Instead, it means designing the project with financial intelligence.\n\nThrough value engineering, material optimization, and detailed BOQ preparation, developers can eliminate unnecessary costs before construction begins. This process allows projects to maintain quality while protecting investor capital and maximizing long-term profitability.",
+            "author": "Alpha Line Team",
+            "readingTime": "4 min read"
+        },
+        {
+            "title": "Designing Buildings for Long-Term Rental Income",
+            "category": "Real Estate",
+            "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab",
+            "excerpt": "Rental performance is determined during design, not after construction.",
+            "content": "Rental income properties must be designed with efficiency and tenant demand in mind. Layout optimization, structural durability, and infrastructure planning directly influence long-term profitability.\n\nBuildings that are engineered for maintenance efficiency and functional living spaces attract stable tenants and maintain higher occupancy rates. Investors who prioritize design strategy during the planning stage consistently outperform those who treat design as a purely aesthetic exercise.",
+            "author": "Alpha Line Team",
+            "readingTime": "3 min read"
+        }
+    ],
+
+
+
+
+    "projects": [{
+            "image": "img/precisioneng.jpeg",
+            "category": "residential",
+            "title": "Skyline Modern Villa",
+            "description": "A stunning 5-bedroom contemporary masterpiece featuring smart home integration and sustainable design.",
+            "gallery": [
+                "img/sitepreparation.jpeg",
+                "img/Structural.jpeg",
+                "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&h=400&fit=crop"
+            ]
+        },
+        {
+            "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop",
+            "category": "commercial",
+            "title": "Apex Corporate Tower",
+            "description": "25-story state-of-the-art office complex with LEED Platinum certification.",
+            "gallery": [
+                "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=600&h=400&fit=crop"
+            ]
+        },
+        {
+            "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop",
+            "category": "residential",
+            "title": "Lakeside Estate",
+            "description": "Luxury waterfront property with panoramic views and custom architectural details.",
+            "gallery": [
+                "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&h=400&fit=crop"
+            ]
+        },
+        {
+            "image": "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=800&h=600&fit=crop",
+            "category": "renovation",
+            "title": "Historic Downtown Loft",
+            "description": "Complete transformation of a 1920s warehouse into modern luxury living spaces.",
+            "gallery": [
+                "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=600&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=600&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1556912167-f556f1f39faa?w=600&h=400&fit=crop"
+            ]
+        },
+        {
+            "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
+            "category": "commercial",
+            "title": "Metro Shopping Plaza",
+            "description": "Premium retail space featuring cutting-edge design and customer experience.",
+            "gallery": [
+                "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=600&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&h=400&fit=crop"
+            ]
+        },
+        {
+            "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",
+            "category": "residential",
+            "title": "Alpine Mountain Retreat",
+            "description": "Eco-friendly mountain home blending modern design with natural surroundings.",
+            "gallery": [
+                "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=600&h=400&fit=crop",
+                "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&h=400&fit=crop"
+            ]
+        }
+    ],
+    "contact": [{
+            "icon": "📍",
+            "title": "Address",
+            "text": "KK 621 St, Kigali, Rwanda"
+        },
+        {
+            "icon": "📞",
+            "title": "Phone",
+            "text": "+250 783 458 808"
+        },
+        {
+            "icon": "✉️",
+            "title": "Email",
+            "text": "info@alphalinegroup.com"
+        },
+        {
+            "icon": "🕐",
+            "title": "Business Hours",
+            "text": "Mon - Fri: 8:00 AM - 6:00 PM"
+        }
+    ],
+    "footer": {
+        "description": "Start Your Project with Structure. Whether you are building your home, investing in property, or seeking cost-optimized execution, Alpha Line Group is ready to engineer your vision.",
+        "quickLinks": [
+            "Home",
+            "About Us",
+            "Contact"
+        ],
+        "services": [
+            "Residential Construction",
+            "Commercial Projects",
+            "Renovation",
+            "Green Building"
+        ],
+        "contact": {
+            "address": "KK 621 St, Kigali",
+            "phone": "+250 783 458 808",
+            "email": "info@alphalinegroup.com"
+        },
+        "social": {
+            "facebook": "#",
+            "instagram": "#",
+            "twitter": "#",
+            "linkedin": "#"
+        }
+    }
+}

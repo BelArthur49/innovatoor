@@ -1,0 +1,325 @@
+<!Doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Alpha Line Construction</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo" onclick="showPage('home')">
+                <img src="img/logo.png" class="logo-img" alt="Alpha Line Logo">
+                <span class="logo-text">ALPHA LINE GROUP</span>
+            </div>
+            <!-- FIX: Added data-page attributes to all nav links for reliable active state -->
+            <ul class="nav-menu" id="navMenu">
+                <li><span class="nav-link active" data-page="home" onclick="showPage('home')">Home</span></li>
+                <li><span class="nav-link" data-page="about" onclick="showPage('about')">About</span></li>
+                <li><span class="nav-link" data-page="services" onclick="showPage('services')">Services</span></li>
+                <li><span class="nav-link" data-page="work" onclick="showPage('work')">Our Work</span></li>
+                <li><span class="nav-link" data-page="investors" onclick="scrollToInvestor()">Investors</span></li>
+                <li><span class="nav-link" data-page="insights" onclick="showPage('insights')">News & Insights</span></li>
+                <li><span class="nav-link" data-page="contact" onclick="showPage('contact')">Contact</span></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <section class="hero-section">
+            <canvas id="tools-canvas"></canvas>
+            <div class="hero-content">
+                <!-- FIX: Removed inline styles with !important — handled in CSS now -->
+                <h1 class="hero-title">ALPHA LINE GROUP</h1>
+                <p class="hero-tagline">Engineering-Led Construction &amp; Real Estate Development Firm</p>
+                <div class="hero-cta" onclick="showPage('contact')">Start Your Project</div>
+            </div>
+        </section>
+
+        <!-- Stats Section with Counting Animation -->
+        <section class="stats-section-home">
+            <div class="stat-item" data-target="15">
+                <span class="stat-number">0</span><span class="stat-plus">+</span>
+                <span class="stat-label">PROJECTS COMPLETED</span>
+            </div>
+            <div class="stat-item" data-target="20">
+                <span class="stat-number">0</span><span class="stat-plus">+</span>
+                <span class="stat-label">EXPERT TEAM</span>
+            </div>
+            <div class="stat-item" data-target="98">
+                <span class="stat-number">0</span><span class="stat-suffix">%</span>
+                <span class="stat-label">CLIENT SATISFACTION</span>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section reveal">
+            <h2 class="section-title">Why Choose Us</h2>
+            <div class="features-grid" id="featuresGrid"></div>
+        </section>
+
+        <!-- Parallax Showcase 1 -->
+        <section class="parallax-showcase parallax-section">
+            <div class="parallax-bg" id="parallax1"></div>
+            <div class="parallax-content" id="parallaxContent1"></div>
+        </section>
+
+        <!-- Capabilities Section -->
+        <section class="capabilities-section reveal">
+            <h2 class="section-title">Our Capabilities</h2>
+            <div class="capabilities-container" id="capabilitiesContainer"></div>
+        </section>
+
+        <!-- Parallax Showcase 2 -->
+        <section class="parallax-showcase parallax-section reveal">
+            <div class="parallax-bg" id="parallax2"></div>
+            <div class="parallax-content" id="parallaxContent2"></div>
+        </section>
+
+        <!-- Investor Section -->
+        <section class="investor-section reveal">
+            <div class="investor-container">
+                <div class="investor-grid">
+                    <!-- LEFT SIDE -->
+                    <div class="investor-left">
+                        <h2 class="investor-title">Investor Partnerships</h2>
+                        <h3 class="investor-headline">
+                            Build Assets.<br> Not Just Structures.
+                        </h3>
+                        <p class="investor-description">
+                            Alpha Line Group positions itself as a strategic development partner for investors seeking durable, income-generating real estate assets.
+                        </p>
+                        <p class="investor-description">
+                            Our approach combines engineering discipline, structured financial feasibility, and market-aligned development strategies.
+                        </p>
+                        <div class="investor-button" onclick="showPage('contact')">
+                            Discuss Investment Opportunities
+                        </div>
+                    </div>
+
+                    <!-- RIGHT SIDE -->
+                    <div class="investor-right">
+                        <div class="investor-card">
+                            <h4>Financial Feasibility</h4>
+                            <p>Detailed financial modeling and structured feasibility studies before project execution begins.</p>
+                        </div>
+                        <div class="investor-card">
+                            <h4>Cost-Optimized Construction</h4>
+                            <p>Engineering-driven construction strategies designed to maximize capital efficiency.</p>
+                        </div>
+                        <div class="investor-card">
+                            <h4>Rental Performance</h4>
+                            <p>Developments structured for long-term rental income and durable asset value.</p>
+                        </div>
+                        <div class="investor-card">
+                            <h4>Market-Aligned Development</h4>
+                            <p>Projects designed around real demand, ensuring strong occupancy and investment sustainability.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section reveal-left">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <div class="testimonials-container">
+                <div class="testimonial-slider" id="testimonialSlider"></div>
+            </div>
+        </section>
+
+        <!-- Footer for Home -->
+        <footer class="footer">
+            <div class="footer-content" id="footerContent"></div>
+            <div class="footer-bottom">
+                <p></p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page">
+        <section class="about-hero">
+            <div class="about-hero-content">
+                <h1>Building the Future</h1>
+                <p>Alpha Line Group was founded on a simple principle: construction must be precise, accountable, and financially intelligent.</p>
+            </div>
+        </section>
+
+        <section class="about-content">
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>Our Mission</h3>
+                    <p>To build durable, investment-grade structures through disciplined engineering, intelligent cost control, and structured execution.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Our Vision</h3>
+                    <p>To become a trusted regional leader in engineering-led construction and real estate development.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Our Values</h3>
+                    <p>Integrity, discipline, and engineering precision guide every project we deliver, ensuring transparency, cost efficiency, and long-term structural quality.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-content" id="footerContentAbout"></div>
+            <div class="footer-bottom"><p></p></div>
+        </footer>
+    </div>
+
+    <!-- Services Page -->
+    <div id="services" class="page">
+        <section class="work-hero">
+            <h1>Our Services</h1>
+        </section>
+        <section class="services-section">
+            <div class="services-grid" id="servicesGrid"></div>
+        </section>
+        <footer class="footer">
+            <div class="footer-content" id="footerContentServices"></div>
+            <div class="footer-bottom"><p></p></div>
+        </footer>
+    </div>
+
+    <!-- Work Page -->
+    <div id="work" class="page">
+        <section class="work-hero">
+            <h1>Our Portfolio</h1>
+        </section>
+        <section class="work-content">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="residential">Residential</button>
+                <button class="filter-btn" data-filter="commercial">Commercial</button>
+                <button class="filter-btn" data-filter="renovation">Renovation</button>
+            </div>
+            <div class="projects-grid" id="projectsGrid"></div>
+        </section>
+        <footer class="footer">
+            <div class="footer-content" id="footerContentWork"></div>
+            <div class="footer-bottom"><p></p></div>
+        </footer>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page">
+        <section class="contact-section">
+            <div class="contact-container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h1>Let's Build Together</h1>
+                        <p>Ready to transform your vision into reality? Contact us today for a consultation.</p>
+                        <div class="contact-details" id="contactDetails"></div>
+                    </div>
+
+                    <!-- FIX: Action email matches content.json contact email -->
+                    <form id="contactForm" class="contact-form" action="https://formsubmit.co/info@alphalinegroup.com" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject" value="New Alpha Line Website Message">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_next" value="https://alphaline.construction">
+                        <input type="text" name="_honey" style="display:none">
+
+                        <div class="form-group">
+                            <label>Your Name</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label>Project Type</label>
+                            <input type="text" name="project">
+                        </div>
+                        <div class="form-group">
+                            <label>Tell Us About Your Project</label>
+                            <textarea name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="footer-content" id="footerContentContact"></div>
+            <div class="footer-bottom"><p></p></div>
+        </footer>
+    </div>
+
+    <!-- Insights Page -->
+    <div id="insights" class="page">
+        <section class="work-hero">
+            <h1>News &amp; Insights</h1>
+            <p style="color: rgba(255,255,255,0.75); margin-top: 1rem; font-size: 1.1rem;">
+                Engineering perspective, construction strategy, and real estate intelligence.
+            </p>
+        </section>
+        <section class="insights-section">
+            <div class="insights-grid" id="insightsGrid"></div>
+        </section>
+        <footer class="footer">
+            <div class="footer-content" id="footerContentInsights"></div>
+            <div class="footer-bottom"><p></p></div>
+        </footer>
+    </div>
+
+    <!-- Project Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-header" id="modal-header">
+                <button class="close-btn" onclick="closeModal()">×</button>
+                <h2 class="modal-title" id="modal-title"></h2>
+            </div>
+            <div class="modal-body">
+                <div class="modal-description" id="modal-description"></div>
+                <h3 class="gallery-title">Project Gallery</h3>
+                <div class="gallery" id="gallery"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article Modal -->
+    <div class="article-modal" id="articleModal">
+        <div class="article-container">
+            <button class="close-btn" onclick="closeArticle()">×</button>
+            <img id="articleImage" class="article-hero" alt="">
+            <div class="article-body">
+                <h1 id="articleTitle"></h1>
+                <div class="article-meta">
+                    <span id="articleAuthor"></span>
+                    <span id="articleTime"></span>
+                </div>
+                <div id="articleText" class="article-text"></div>
+                <div class="article-share">
+                    <a id="linkedinShare" target="_blank" rel="noopener">
+                        <i class="fab fa-linkedin"></i> Share on LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
