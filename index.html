@@ -16,7 +16,7 @@
             padding: 0
         }
         
-        :root {
+         :root {
             --black: #060006;
             --deep: #0e010f;
             --card: #140418;
@@ -84,6 +84,8 @@
         /* NAV */
         
         nav {
+            opacity: 100 !important;
+            transform: none !important;
             position: fixed;
             top: 0;
             left: 0;
@@ -94,7 +96,11 @@
             align-items: center;
             justify-content: space-between;
             gap: 1rem;
-            transition: all .3s
+            transition: background .3s;
+            background: rgba(6, 0, 6, .75);
+            /* ADD THIS */
+            backdrop-filter: blur(10px);
+            /* ADD THIS */
         }
         
         nav.sc {
@@ -154,8 +160,9 @@
         
         .nph {
             font-family: var(--fm);
-            font-size: .65rem;
+            font-size: .68rem;
             color: var(--muted);
+            letter-spacing: 1px;
             white-space: nowrap
         }
         
@@ -165,6 +172,7 @@
         }
         
         .ncta {
+            background: transparent;
             border: 1px solid var(--border2);
             color: var(--accent);
             padding: 8px 18px;
@@ -198,7 +206,8 @@
             display: block;
             width: 22px;
             height: 1.5px;
-            background: var(--text)
+            background: var(--text);
+            transition: all .3s
         }
         /* MOB MENU */
         
@@ -715,12 +724,12 @@
         }
         
         .cli-item img {
-            height: 38px;
+            height: 68px;
             width: auto;
             max-width: 120px;
             object-fit: contain;
-            filter: grayscale(100%) brightness(1.8);
-            transition: filter .35s
+            filter: grayscale(0%) brightness(100);
+            transition: filter .02s
         }
         
         .cli-item:hover img {
@@ -1453,7 +1462,7 @@
             font-size: 3.5rem;
             font-weight: 800;
             color: transparent;
-            -webkit-text-stroke: 1px rgba(116, 54, 187, .22);
+            -webkit-text-stroke: 1px rgba(232, 217, 249, 0.933);
             line-height: 1;
             margin-bottom: 18px;
             transition: all .3s
@@ -2100,7 +2109,7 @@
         <canvas id="bcanvas"></canvas>
         <canvas id="pcanvas"></canvas>
         <div class="hc">
-            <div class="heye">Intelligence-Driven <span class="edot"></span> Est. 2018 <span class="edot"></span> Kigali</div>
+            <div class="heye">Data-Driven <span class="edot"></span> Est. 2018 <span class="edot"></span> Kigali</div>
             <h1 class="hh1">
                 <span class="l1">DATA IS</span>
                 <span class="l2">THE WEAPON</span>
@@ -2122,7 +2131,7 @@
             <div class="sln"></div><span class="stxt">Scroll</span></div>
     </section>
 
-    <!-- DATA TICKER -->
+    <!-- DATA TICKER
     <div class="tkb">
         <div class="tkr">
             <div class="tki"><span class="tlb">OSINT_TOOLS</span><span class="tup">200+</span></div>
@@ -2140,7 +2149,7 @@
             <div class="tki"><span class="tlb">DEAL_FAILURES</span><span class="tdn">60%</span></div>
             <div class="tki"><span class="tlb">EAST_AFRICA</span><span class="tup">PIONEER</span></div>
         </div>
-    </div>
+    </div>-->
 
     <!-- CLIENTS — true seamless loop -->
     <div id="clients">
@@ -2156,17 +2165,40 @@
                     <div class="cli-item"><img src="Images/exnihilo.png" alt="Ex Nihilo"></div>
                     <div class="cli-item"><img src="Images/govarwa.png" alt="GoVarwa"></div>
                     <div class="cli-item"><img src="Images/thecedar.png" alt="The Cedar"></div>
+                    <div class="cli-item"><img src="Images/main logo 2.png" alt="The Cedar"></div>
+                    <div class="cli-item"><img src="Images/brighttone.jpg" alt="The Cedar"></div>
                 </div>
                 <!-- SET 2 — exact duplicate for seamless loop -->
-                <div class="cli-set" aria-hidden="true">
-                    <div class="cli-item"><img src="Images/sveero.png" alt=""></div>
-                    <div class="cli-item"><img src="Images/bondedpaths.png" alt=""></div>
-                    <div class="cli-item"><img src="Images/cbs.png" alt=""></div>
-                    <div class="cli-item"><img src="Images/kommzhub.png" alt=""></div>
-                    <div class="cli-item"><img src="Images/exnihilo.png" alt=""></div>
-                    <div class="cli-item"><img src="Images/govarwa.png" alt=""></div>
-                    <div class="cli-item"><img src="Images/thecedar.png" alt=""></div>
+                <div class="cli-set">
+                    <div class="cli-item"><img src="Images/sveero.png" alt="Sveero"></div>
+                    <div class="cli-item"><img src="Images/bondedpaths.png" alt="Bonded Paths"></div>
+                    <div class="cli-item"><img src="Images/cbs.png" alt="CBS"></div>
+                    <div class="cli-item"><img src="Images/kommzhub.png" alt="KommzHub"></div>
+                    <div class="cli-item"><img src="Images/exnihilo.png" alt="Ex Nihilo"></div>
+                    <div class="cli-item"><img src="Images/govarwa.png" alt="GoVarwa"></div>
+                    <div class="cli-item"><img src="Images/thecedar.png" alt="The Cedar"></div>
+                    <div class="cli-item"><img src="Images/main logo 2.png" alt="The Cedar"></div>
+                    <div class="cli-item"><img src="Images/brighttone.jpg" alt="The Cedar"></div>
                 </div>
+
+                <!-- SET 3 — exact duplicate for seamless loop -->
+                <div class="cli-set">
+                    <div class="cli-item"><img src="Images/sveero.png" alt="Sveero"></div>
+                    <div class="cli-item"><img src="Images/bondedpaths.png" alt="Bonded Paths"></div>
+                    <div class="cli-item"><img src="Images/cbs.png" alt="CBS"></div>
+                    <div class="cli-item"><img src="Images/kommzhub.png" alt="KommzHub"></div>
+                    <div class="cli-item"><img src="Images/exnihilo.png" alt="Ex Nihilo"></div>
+                    <div class="cli-item"><img src="Images/govarwa.png" alt="GoVarwa"></div>
+                    <div class="cli-item"><img src="Images/thecedar.png" alt="The Cedar"></div>
+                    <div class="cli-item"><img src="Images/main logo 2.png" alt="The Cedar"></div>
+                    <div class="cli-item"><img src="Images/brighttone.jpg" alt="The Cedar"></div>
+                </div>
+
+
+
+
+
+
             </div>
         </div>
     </div>
@@ -2436,7 +2468,7 @@
             <div class="sc rv d3" onclick="toggleSvc(this)">
                 <div class="sc-top"><span class="sn">08</span></div>
                 <div class="si"><svg viewBox="0 0 48 48" fill="none" stroke="var(--accent)" stroke-width="1.5"><rect x="8" y="14" width="32" height="22" rx="2"/><path d="M16 10h16M20 36l-2 6M28 36l2 6M14 42h20"/></svg></div>
-                <h3>Digitalization</h3>
+                <h3>Digitalization and development</h3>
                 <p class="sdesc">SEO, website intelligence, social media monitoring, and digital presence optimization for your business.</p>
                 <button class="sc-toggle">Explore <span class="arr"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 1v8M1 5h8"/></svg></span></button>
                 <div class="sc-detail">
@@ -2444,6 +2476,7 @@
                         <h4>Digital transformation services</h4>
                         <ul>
                             <li>Full SEO audit and optimization — technical, on-page, and backlink intelligence</li>
+                            <li>Website and App development</li>
                             <li>Social media OSINT monitoring — brand mentions, sentiment, and competitor share of voice</li>
                             <li>Digital presence benchmarking against top 5 industry competitors</li>
                             <li>Website reconnaissance reports — traffic, tech stack, ad spend, and performance</li>
@@ -2943,8 +2976,6 @@
         });
 
         // NAV
-        const navb = document.getElementById('navb');
-        window.addEventListener('scroll', () => navb.classList.toggle('sc', scrollY > 50));
 
         // MOBILE MENU
         function om() {
@@ -3248,7 +3279,7 @@
             // Hub nodes (larger, brighter)
             const hubs = new Set([0, 12, 24, 36, 48, 60, 72, 84, 96, 108]);
             // Hub labels
-            const hubLabels = ['OSINT', 'DATA', 'INTEL', 'MARKET', 'FRAUD', 'LEADS', 'DUE DIL.', 'SCRAPE', 'SEO', 'NETWORK'];
+            const hubLabels = ['OSINT', 'DATA', 'INTEL', 'MARKET RESEARCH', 'FRAUD', 'LEADS', 'DUE DILIGENCE', 'SCRAPE', 'SEO', 'NETWORK'];
 
             function rotY(p, a) {
                 return {
@@ -3312,7 +3343,7 @@
                     ctx.moveTo(pi.sx, pi.sy);
                     ctx.lineTo(pj.sx, pj.sy);
                     ctx.strokeStyle = isHubEdge ? `rgba(154,89,208,${alpha*1.8})` : `rgba(116,54,187,${alpha})`;
-                    ctx.lineWidth = isHubEdge ? .8 : .4;
+                    ctx.lineWidth = isHubEdge ? 5 : 10;
                     ctx.stroke();
                 });
 
@@ -3383,7 +3414,7 @@
                 ctx.beginPath();
                 ctx.ellipse(cx, cy, r, r * .08, 0, 0, Math.PI * 2);
                 ctx.strokeStyle = 'rgba(116,54,187,.12)';
-                ctx.lineWidth = .8;
+                ctx.lineWidth = 8;
                 ctx.stroke();
 
                 // Pulse rings
@@ -3404,110 +3435,210 @@
         })();
 
         // ===== INTEL CANVAS =====
+
+
+
         (function() {
             const c = document.getElementById('icanv');
             if (!c) return;
             const ctx = c.getContext('2d');
-            const W = 560,
-                H = 440;
-            c.width = W;
-            c.height = H;
-            let t = 0;
-            const N = 28,
+
+            let W, H, dpr, nodes, edges, pkts, animId;
+            const N = 22;
+            const LABS = ['OSINT', 'MARKET RESEARCH', 'DUE DILIGENCE', 'COMPETITOR ANALYSIS', 'LEAD GEN', 'SCRAPING'];
+
+            function setup() {
+                dpr = Math.min(window.devicePixelRatio || 1, 2);
+                const rect = c.parentElement.getBoundingClientRect();
+                W = rect.width || 560;
+                H = Math.round(W * 0.72);
+                c.width = W * dpr;
+                c.height = H * dpr;
+                c.style.width = W + 'px';
+                c.style.height = H + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
                 nodes = Array.from({
                     length: N
-                }, () => ({
-                    x: 45 + Math.random() * (W - 90),
-                    y: 45 + Math.random() * (H - 90),
-                    r: 2.3 + Math.random() * 3.8,
-                    type: Math.random() > .7 ? 'hub' : 'node',
-                    p: Math.random() * Math.PI * 2,
-                    vx: (Math.random() - .5) * .2,
-                    vy: (Math.random() - .5) * .2
-                }));
-            const edges = [];
-            for (let i = 0; i < N; i++)
-                for (let j = i + 1; j < N; j++) {
-                    const dx = nodes[j].x - nodes[i].x,
-                        dy = nodes[j].y - nodes[i].y;
-                    if (Math.sqrt(dx * dx + dy * dy) < 115) edges.push([i, j])
+                }, () => {
+                    const type = Math.random() > 0.68 ? 'hub' : 'node';
+                    return {
+                        x: 50 + Math.random() * (W - 100),
+                        y: 50 + Math.random() * (H - 100),
+                        r: type === 'hub' ? 3.8 : 2.2,
+                        type,
+                        phase: Math.random() * Math.PI * 2,
+                        vx: (Math.random() - 0.5) * 0.28,
+                        vy: (Math.random() - 0.5) * 0.28,
+                        label: null
+                    };
+                });
+
+                const hubs = nodes.filter(n => n.type === 'hub').slice(0, 6);
+                hubs.forEach((n, i) => {
+                    n.label = LABS[i] || null;
+                });
+
+                const DIST = Math.min(W, H) * 0.28;
+                edges = [];
+                for (let i = 0; i < N; i++) {
+                    for (let j = i + 1; j < N; j++) {
+                        const dx = nodes[j].x - nodes[i].x;
+                        const dy = nodes[j].y - nodes[i].y;
+                        if (Math.sqrt(dx * dx + dy * dy) < DIST) edges.push([i, j]);
+                    }
                 }
-            const pkts = Array.from({
-                length: 14
-            }, () => ({
-                e: Math.floor(Math.random() * Math.max(1, edges.length)),
-                prog: Math.random(),
-                spd: .004 + Math.random() * .007
-            }));
-            const labs = ['OSINT', 'MARKET DATA', 'DUE DILIGENCE', 'COMPETITOR', 'LEAD GEN', 'SCRAPING'];
+
+                pkts = Array.from({
+                    length: 12
+                }, () => ({
+                    e: Math.floor(Math.random() * Math.max(1, edges.length)),
+                    prog: Math.random(),
+                    spd: 0.005 + Math.random() * 0.006
+                }));
+            }
+
+            let t = 0;
 
             function draw() {
+                animId = requestAnimationFrame(draw);
                 ctx.clearRect(0, 0, W, H);
-                t += .01;
+                t += 0.012;
+
                 nodes.forEach(n => {
                     n.x += n.vx;
                     n.y += n.vy;
-                    if (n.x < 22 || n.x > W - 22) n.vx *= -1;
-                    if (n.y < 22 || n.y > H - 22) n.vy *= -1;
-                    n.p += .013
+                    if (n.x < 30 || n.x > W - 30) n.vx *= -1;
+                    if (n.y < 30 || n.y > H - 30) n.vy *= -1;
+                    n.phase += 0.011;
                 });
+
+                // Edges
                 edges.forEach(([i, j]) => {
-                    const dx = nodes[j].x - nodes[i].x,
-                        dy = nodes[j].y - nodes[i].y,
-                        d = Math.sqrt(dx * dx + dy * dy);
+                    const dx = nodes[j].x - nodes[i].x;
+                    const dy = nodes[j].y - nodes[i].y;
+                    const d = Math.sqrt(dx * dx + dy * dy);
+                    const DIST = Math.min(W, H) * 0.28;
+                    const raw = 1 - d / DIST;
+                    const alpha = 0.08 + raw * 0.32;
                     ctx.beginPath();
                     ctx.moveTo(nodes[i].x, nodes[i].y);
                     ctx.lineTo(nodes[j].x, nodes[j].y);
-                    ctx.strokeStyle = `rgba(116,54,187,${Math.max(0,(1-d/115)*.18)})`;
-                    ctx.lineWidth = .75;
-                    ctx.stroke()
+                    ctx.strokeStyle = `rgba(180,150,255,${alpha})`;
+                    ctx.lineWidth = 0.7;
+                    ctx.stroke();
                 });
+
+                // Packets
                 pkts.forEach(p => {
                     p.prog += p.spd;
                     if (p.prog >= 1) {
                         p.prog = 0;
-                        p.e = Math.floor(Math.random() * Math.max(1, edges.length))
+                        p.e = Math.floor(Math.random() * Math.max(1, edges.length));
                     }
                     if (!edges[p.e]) return;
                     const [i, j] = edges[p.e];
-                    const x = nodes[i].x + (nodes[j].x - nodes[i].x) * p.prog,
-                        y = nodes[i].y + (nodes[j].y - nodes[i].y) * p.prog;
-                    const g = ctx.createRadialGradient(x, y, 0, x, y, 7);
-                    g.addColorStop(0, 'rgba(220,170,255,.9)');
-                    g.addColorStop(1, 'rgba(116,54,187,0)');
+                    const x = nodes[i].x + (nodes[j].x - nodes[i].x) * p.prog;
+                    const y = nodes[i].y + (nodes[j].y - nodes[i].y) * p.prog;
+
+                    const g = ctx.createRadialGradient(x, y, 0, x, y, 6);
+                    g.addColorStop(0, 'rgba(210,180,255,0.9)');
+                    g.addColorStop(1, 'rgba(210,180,255,0)');
                     ctx.beginPath();
-                    ctx.arc(x, y, 7, 0, Math.PI * 2);
+                    ctx.arc(x, y, 6, 0, Math.PI * 2);
                     ctx.fillStyle = g;
                     ctx.fill();
+
                     ctx.beginPath();
-                    ctx.arc(x, y, 2.5, 0, Math.PI * 2);
-                    ctx.fillStyle = 'rgba(240,200,255,.95)';
-                    ctx.fill()
+                    ctx.arc(x, y, 1.8, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(255,245,255,0.95)';
+                    ctx.fill();
                 });
-                nodes.forEach((n) => {
-                    const a = .25 + Math.sin(n.p) * .13;
-                    const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r * (n.type === 'hub' ? 5 : 3));
-                    g.addColorStop(0, `rgba(${n.type==='hub'?'116,54,187':'176,108,224'},${a})`);
-                    g.addColorStop(1, 'rgba(0,0,0,0)');
+
+                // Nodes
+                nodes.forEach(n => {
+                    const pulse = 0.5 + Math.sin(n.phase) * 0.18;
+                    const isHub = n.type === 'hub';
+                    const glowR = n.r * (isHub ? 7 : 4.5);
+
+                    const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, glowR);
+                    if (isHub) {
+                        g.addColorStop(0, `rgba(140,80,220,${0.28 * pulse})`);
+                        g.addColorStop(0.4, `rgba(100,50,180,${0.14 * pulse})`);
+                        g.addColorStop(1, 'rgba(0,0,0,0)');
+                    } else {
+                        g.addColorStop(0, `rgba(190,140,255,${0.22 * pulse})`);
+                        g.addColorStop(1, 'rgba(0,0,0,0)');
+                    }
                     ctx.beginPath();
-                    ctx.arc(n.x, n.y, n.r * (n.type === 'hub' ? 5 : 3), 0, Math.PI * 2);
+                    ctx.arc(n.x, n.y, glowR, 0, Math.PI * 2);
                     ctx.fillStyle = g;
                     ctx.fill();
+
                     ctx.beginPath();
                     ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-                    ctx.fillStyle = n.type === 'hub' ? 'rgba(116,54,187,.9)' : 'rgba(176,108,224,.8)';
-                    ctx.fill()
+                    ctx.fillStyle = isHub ? 'rgba(175,120,255,0.95)' : 'rgba(200,165,255,0.8)';
+                    ctx.fill();
+
+                    if (isHub) {
+                        ctx.beginPath();
+                        ctx.arc(n.x, n.y, n.r + 2.5, 0, Math.PI * 2);
+                        ctx.strokeStyle = 'rgba(200,160,255,0.35)';
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+                    }
                 });
-                ctx.font = '9px "Space Mono",monospace';
-                ctx.fillStyle = 'rgba(176,108,224,.45)';
-                nodes.filter(n => n.type === 'hub').slice(0, 6).forEach((n, i) => {
-                    if (labs[i]) ctx.fillText(labs[i], n.x + 9, n.y - 9)
+
+                // Labels
+                const fontSize = Math.max(9, Math.min(13, W / 48));
+                ctx.font = `${fontSize}px "Space Mono", "Courier New", monospace`;
+                nodes.filter(n => n.label).forEach(n => {
+                    const lbl = n.label;
+                    const tw = ctx.measureText(lbl).width;
+                    const px = 8,
+                        py = 5;
+                    const bx = n.x + 10;
+                    const by = n.y - 22;
+                    ctx.fillStyle = 'rgba(20,10,35,0.72)';
+                    roundRect(ctx, bx - px, by - fontSize - py + 2, tw + px * 2, fontSize + py * 2, 4);
+                    ctx.fill();
+                    ctx.fillStyle = 'rgba(225,200,255,0.96)';
+                    ctx.fillText(lbl, bx, by);
                 });
-                requestAnimationFrame(draw);
             }
+
+            function roundRect(ctx, x, y, w, h, r) {
+                ctx.beginPath();
+                ctx.moveTo(x + r, y);
+                ctx.lineTo(x + w - r, y);
+                ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+                ctx.lineTo(x + w, y + h - r);
+                ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+                ctx.lineTo(x + r, y + h);
+                ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+                ctx.lineTo(x, y + r);
+                ctx.quadraticCurveTo(x, y, x + r, y);
+                ctx.closePath();
+            }
+
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    cancelAnimationFrame(animId);
+                    setup();
+                    t = 0;
+                    draw();
+                }, 120);
+            });
+
+            setup();
             draw();
         })();
     </script>
+
+
+
 </body>
 
 </html>
