@@ -1,5 +1,0 @@
-(($ => {
-
-
-
-})).apply(this, [jQuery]);
