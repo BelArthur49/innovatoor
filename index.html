@@ -3050,12 +3050,13 @@
         });
 
         // HERO PARALLAX
-        window.addEventListener('scroll', () => {
+         window.addEventListener('scroll', () => {
+            if (window.innerWidth < 768) return;// disable on mobile
             if (scrollY < innerHeight * .8) {
                 const hc = document.querySelector('.hc');
                 if (hc) {
-                    hc.style.transform = `translateY(${scrollY*.15}px)`;
-                    hc.style.opacity = Math.max(0, 1 - scrollY / (innerHeight * .65))
+                    hc.style.transform = `translateY(${scrollY*.08}px)`;
+                    hc.style.opacity = Math.max(0, 1 - scrollY / (innerHeight * 2.5))
                 }
             }
         });
