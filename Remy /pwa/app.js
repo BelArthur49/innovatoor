@@ -77,7 +77,7 @@ const PhoneValidator = {
     if (!/^\d+$/.test(p)) return { valid: false, error: 'Phone number must contain only digits.' };
     if (p.length !== 10)   return { valid: false, error: 'Rwanda numbers must be 10 digits (e.g. 0781234567).' };
     if (!p.startsWith('07')) return { valid: false, error: 'Rwanda numbers must start with 07.' };
-    if (!this.isValid(p))   return { valid: false, error: 'Invalid prefix. Valid: 072/073 (Airtel), 075/076 (Orange), 078/079 (MTN).' };
+    if (!this.isValid(p))   return { valid: false, error: 'Invalid prefix. Valid: 072/073 (Airtel), 078/079 (MTN).' };
     return { valid: true, cleaned: p, provider: this.detectProvider(p) };
   },
 };
