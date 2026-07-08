@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
 <body>
@@ -45,15 +46,22 @@
             <div id="tab-register" class="tab-content">
                 <label>Full Name<input type="text" id="reg-name" placeholder="Jane Doe" /></label>
                 <label>Phone Number<input type="tel" id="reg-phone" placeholder="+250 7XX XXX XXX" /></label>
+                <label>District<input type="tel" id="reg-district" placeholder="Eastern, Kigali City, Northren, Southern, Western" /></label>
+                <label>City<input type="tel" id="reg-city" placeholder="Kigali City" /></label>
+                <label>Sector<input type="tel" id="reg-sector" placeholder="Sector's Name" /></label>
+                <label>Cell<input type="tel" id="reg-cell" placeholder="Cell's name" /></label>
                 <label>Create PIN<input type="password" id="reg-pin" placeholder="4–6 digits" maxlength="6" /></label>
+
                 <label>Mobile Money Provider
-          <select id="reg-provider">
-            <option value="MTN">MTN Mobile Money</option>
-            <option value="Airtel">Airtel Money</option>
-            <option value="Orange">Orange Money</option>
-            <option value="M-Pesa">M-Pesa</option>
-          </select>
-        </label>
+                    
+                <select id="reg-provider">
+                    <option value="MTN">MTN Mobile Money</option>
+                    <option value="Airtel">Airtel Money</option>
+                    <option value="Orange">Orange Money</option>
+                    <option value="M-Pesa">M-Pesa</option>
+                </select>
+
+                </label>
                 <button class="btn-primary full-width" onclick="Auth.register()">Create Account</button>
             </div>
         </div>
@@ -80,8 +88,19 @@
                 </div>
                 <div class="balance-card">
                     <p class="balance-label">Wallet Balance</p>
-                    <p class="balance-amount" id="dash-balance">0 <span>RWF</span></p>
+
+                    <div class="balance-display">
+                        <p class="balance-amount" id="dash-balance">
+                            0 <span>RWF</span>
+                        </p>
+
+                        <button class="balance-toggle" onclick="toggleBalance()">
+                            <i id="balance-eye" class="fa-regular fa-eye"></i>
+                        </button>
+                    </div>
+
                     <p class="balance-provider" id="dash-provider">—</p>
+
                     <div class="balance-actions">
                         <button class="bal-btn" onclick="Nav.go('send')">↑ Send</button>
                         <button class="bal-btn" onclick="Nav.go('loan')">⊕ Loan</button>
