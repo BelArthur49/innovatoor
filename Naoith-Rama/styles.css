@@ -6,14 +6,15 @@
    ============================================================ */
 
 :root {
+    color-scheme: light;
     --ink: #0A2540;
     --deep: #123A5C;
     --mid: #1F6FA6;
     --bright: #4FA8D8;
     --bright-2: #8FCBEA;
     --pale: #EAF4FB;
-    --white: #adaff3;
-    --white-warm: #9ab5ea;
+    --white: #FFFFFF;
+    --white-warm: #175394;
     --text-on-dark: rgba(255, 255, 255, .92);
     --text-on-dark-soft: rgba(255, 255, 255, 0.95);
     --text-ink: #0A2540;
@@ -96,7 +97,7 @@ button {
     font-weight: 600;
     letter-spacing: .16em;
     text-transform: uppercase;
-    color: var(--mid);
+    color: rgb(181, 208, 249);
 }
 
 .eyebrow::before {
@@ -359,7 +360,7 @@ section {
 
 .ripple-ring {
     fill: none;
-    stroke: rgba(41, 57, 64, 0.577);
+    stroke: rgba(143, 203, 234, .35);
     stroke-width: 1;
     transform-origin: center;
     animation: ripple-out 7s var(--ease) infinite;
@@ -390,7 +391,7 @@ section {
 .hero-grain {
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(rgba(255, 255, 255, .05) 1px);
+    background-image: radial-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px);
     background-size: 3px 3px;
     opacity: .5;
     mix-blend-mode: overlay;
@@ -546,7 +547,7 @@ section {
 }
 
 .about-copy p {
-    color: var(--text-soft);
+    color: white;
     font-size: 16.5px;
     line-height: 1.75;
     margin: 0 0 18px;
@@ -578,7 +579,7 @@ section {
 }
 
 .feature p {
-    color: var(--text-soft);
+    color: white;
     font-size: 14.5px;
     margin-top: 6px;
     line-height: 1.55;
