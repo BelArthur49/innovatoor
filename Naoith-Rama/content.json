@@ -1,0 +1,144 @@
+{
+    "_instructions": "EDIT ME, NOT THE HTML. Change any text between quotes below and save the file. Do not delete commas or quotation marks. To add a new item to a list (like a testimonial or gallery photo), copy an existing block between { and }, paste it before or after, and edit the text inside it. Images are referenced by URL - replace the 'image' values with a link to your own photo (upload photos to your website's /images folder or use a link from Google Drive/Dropbox set to 'anyone with link can view').",
+
+    "site": {
+        "name": "Naioth Ramah Centre",
+        "shortName": "Naioth Ramah",
+        "tagline": "A place of gathering, in Nyamata",
+        "phone": "+250 788 000 000",
+        "email": "hello@naiothramah.rw",
+        "whatsapp": "+250 788 000 000"
+    },
+
+    "nav": {
+        "links": [
+            { "label": "About", "href": "#about" },
+            { "label": "Spaces", "href": "#spaces" },
+            { "label": "Events", "href": "#events" },
+            { "label": "Gallery", "href": "#gallery" },
+            { "label": "Testimonials", "href": "#testimonials" },
+            { "label": "Contact", "href": "#contact" }
+        ],
+        "ctaLabel": "Book a visit"
+    },
+
+    "hero": {
+        "eyebrow": "Nyamata \u00b7 Bugesera \u00b7 Rwanda",
+        "headline": "Still waters, gathered people.",
+        "subheadline": "Naioth Ramah Centre is a serene lakeside-inspired venue in Nyamata, built for weddings, conferences, retreats and every celebration that deserves room to breathe.",
+        "ctaPrimary": { "label": "Plan your event", "href": "#contact" },
+        "ctaSecondary": { "label": "Explore the spaces", "href": "#spaces" },
+        "stats": [
+            { "value": "1,200", "suffix": "+", "label": "Guests hosted yearly" },
+            { "value": "5", "suffix": "", "label": "Distinct event spaces" },
+            { "value": "3", "suffix": " acres", "label": "Of gardens & grounds" },
+            { "value": "1", "suffix": " yrs", "label": "Serving Nyamata & beyond" }
+        ]
+    },
+
+    "about": {
+        "eyebrow": "About the Centre",
+        "title": "A quiet centre with room for big occasions",
+        "paragraphs": [
+            "Naioth Ramah Centre sits just outside Nyamata town in Bugesera, a district known for its wetlands and calm. We built the Centre around that same stillness \u2014 open lawns, covered pavilions and light-filled halls that hold anywhere from an intimate ceremony to a thousand-guest celebration.",
+            "Whether it's a wedding, a church convocation, a corporate retreat or a family milestone, our grounds and our team are set up to carry the day from first arrival to final toast, without you having to manage the details yourself."
+        ],
+        "features": [
+            { "title": "Flexible capacity", "text": "From 50 guests in our garden pavilion to 1,000+ in the main hall." },
+            { "title": "Full-service catering", "text": "In-house kitchen serving local and international menus." },
+            { "title": "On-site parking", "text": "Secure parking for over 200 vehicles, with dedicated staff." },
+            { "title": "Sound, light & stage", "text": "Professional AV equipment included with every hall booking." }
+        ]
+    },
+
+    "spaces": {
+        "eyebrow": "Our Spaces",
+        "title": "Five settings, one calm centre",
+        "subtitle": "Every space opens onto the gardens, so guests are never far from open air.",
+        "items": [{
+                "name": "The Main Hall",
+                "capacity": "Up to 1,000 guests",
+                "description": "Our largest indoor hall, ideal for weddings, conferences and large church gatherings, with a raised stage and full AV setup.",
+                "image": "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1600&auto=format&fit=crop"
+            },
+            {
+                "name": "The Garden Pavilion",
+                "capacity": "Up to 300 guests",
+                "description": "A covered, open-air pavilion set among the lawns \u2014 the favourite choice for outdoor weddings and receptions.",
+                "image": "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop"
+            },
+            {
+                "name": "The Lakeview Terrace",
+                "capacity": "Up to 120 guests",
+                "description": "An intimate terrace for ceremonies, cocktail hours and smaller receptions, named for its view over the water gardens.",
+                "image": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?q=80&w=1600&auto=format&fit=crop"
+            },
+            {
+                "name": "The Conference Room",
+                "capacity": "Up to 150 guests",
+                "description": "A quieter, air-conditioned room for board meetings, seminars and workshops, with high-speed internet included.",
+                "image": "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1600&auto=format&fit=crop"
+            },
+            {
+                "name": "The Chapel Lawn",
+                "capacity": "Up to 500 guests",
+                "description": "An open lawn beneath mature trees, set up for outdoor services, ordinations and open-air celebrations.",
+                "image": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?q=80&w=1600&auto=format&fit=crop"
+            }
+        ]
+    },
+
+    "events": {
+        "eyebrow": "What we host",
+        "title": "Built for every kind of gathering",
+        "items": [
+            { "title": "Weddings", "text": "Ceremony, reception and everything between, on grounds designed to photograph beautifully at any hour." },
+            { "title": "Church events", "text": "Conventions, convocations and crusades, with capacity and sound built for large congregations." },
+            { "title": "Corporate & conferences", "text": "Meetings, seminars and retreats, with reliable power, internet and quiet working spaces." },
+            { "title": "Family celebrations", "text": "Introductions, birthdays, anniversaries and memorials, hosted with the same care as any wedding." }
+        ]
+    },
+
+    "gallery": {
+        "eyebrow": "Gallery",
+        "title": "A look around the grounds",
+        "images": [
+            { "image": "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1200&auto=format&fit=crop", "caption": "The Main Hall, set for a wedding reception" },
+            { "image": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1200&auto=format&fit=crop", "caption": "Evening light over the Garden Pavilion" },
+            { "image": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?q=80&w=1200&auto=format&fit=crop", "caption": "The water gardens near the Lakeview Terrace" },
+            { "image": "https://images.unsplash.com/photo-1478146059778-26028b07395a?q=80&w=1200&auto=format&fit=crop", "caption": "Guests gathered on the Chapel Lawn" },
+            { "image": "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1200&auto=format&fit=crop", "caption": "The Conference Room, set for a seminar" },
+            { "image": "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1200&auto=format&fit=crop", "caption": "Tables set for a private celebration" }
+        ]
+    },
+
+    "testimonials": {
+        "eyebrow": "Kind words",
+        "title": "From families we've hosted",
+        "items": [
+            { "quote": "Our wedding at the Garden Pavilion felt effortless. The team handled everything and the grounds photographed beautifully at golden hour.", "name": "Aline & Eric", "event": "Wedding, March 2026" },
+            { "quote": "We ran a three-day church convention in the Main Hall and never once worried about sound or seating. The staff anticipated everything.", "name": "Pastor Jean de Dieu", "event": "Church Convention" },
+            { "quote": "Quiet, professional and close enough to Kigali for our whole team to attend. The Conference Room made our retreat easy to run.", "name": "Grace M.", "event": "Corporate Retreat" }
+        ]
+    },
+
+    "contact": {
+        "eyebrow": "Plan your event",
+        "title": "Let's talk about your date",
+        "subtitle": "Tell us the occasion, the guest count and the date you have in mind, and our events team will reply within one business day.",
+        "address": "Naioth Ramah Centre, Nyamata, Bugesera District, Eastern Province, Rwanda",
+        "hours": "Open daily, 8:00 \u2013 18:00 \u2014 visits by appointment",
+        "mapEmbedUrl": "https://www.google.com/maps?q=Nyamata,Rwanda&output=embed",
+        "formNote": "This form opens your email app with the details pre-filled \u2014 no data is stored on this website."
+    },
+
+    "footer": {
+        "note": "Naioth Ramah Centre \u2014 a serene space for all kinds of events and celebrations.",
+        "socials": [
+            { "name": "Instagram", "url": "https://instagram.com" },
+            { "name": "Facebook", "url": "https://facebook.com" },
+            { "name": "WhatsApp", "url": "https://wa.me/250788000000" }
+        ],
+        "copyright": "\u00a9 2026 Naioth Ramah Centre. All rights reserved."
+    }
+}
