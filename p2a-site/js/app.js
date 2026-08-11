@@ -27,7 +27,7 @@
       <div class="wrap">
         <a class="brand" href="index.html">
   <span class="brand-mark"><img src="assets/logo.png" alt="Ports 2 Arms logo"></span>
-  <span class="brand-word">Ports 2 Arms<small>African Alliance</small></span>
+  <!--<span class="brand-word">Ports 2 Arms<small>African Alliance</small></span>-->
 </a>
         <nav class="main-nav">
           ${links.map(l => `<a href="${l.href}" class="${l.href === activePage ? "active" : ""}">${l.label}</a>`).join("")}
