@@ -1,0 +1,348 @@
+{
+    "_howToEditThisFile": "This file holds all the WORDS and NUMBERS on the site. You do not need to touch any .html, .css or .js file to update content — just edit the text between the quotes below, save, and refresh the page in your browser. Keep the quotes and commas exactly as they are. Every field also has a short comment above it (the _note fields) explaining what it controls — those _note fields are ignored by the site, they're just for you. Country keys are now two-letter map codes (\"cd\" = DR Congo, \"za\" = South Africa, \"ug\" = Uganda) so they line up with the clickable Africa map on the home page — when adding a new country, use its two-letter code as the key (e.g. \"mw\" for Malawi).",
+    "site": {
+        "title": "Ports 2 Arms",
+        "tagline": "Tracking the pathway from vaccine ports to arms across Africa",
+        "orgName": "African Alliance",
+        "address": "21 Wherry Rd, Muizenberg, Cape Town, 7945, South Africa",
+        "email": "info@mysite.com",
+        "footerNote": "©2021 by Ports 2 Arms."
+    },
+    "mapCountryNames": {
+        "dz": "Algeria",
+        "ao": "Angola",
+        "bj": "Benin",
+        "bw": "Botswana",
+        "bf": "Burkina Faso",
+        "bi": "Burundi",
+        "cv": "Cabo Verde",
+        "cm": "Cameroon",
+        "cf": "Central African Republic",
+        "td": "Chad",
+        "km": "Comoros",
+        "cg": "Republic of the Congo",
+        "cd": "D.R. Congo",
+        "ci": "Ivory Coast",
+        "dj": "Djibouti",
+        "eg": "Egypt",
+        "gq": "Equatorial Guinea",
+        "er": "Eritrea",
+        "sz": "Eswatini",
+        "et": "Ethiopia",
+        "ga": "Gabon",
+        "gm": "Gambia",
+        "gh": "Ghana",
+        "gn": "Guinea",
+        "gw": "Guinea-Bissau",
+        "ke": "Kenya",
+        "ls": "Lesotho",
+        "lr": "Liberia",
+        "ly": "Libya",
+        "mg": "Madagascar",
+        "mw": "Malawi",
+        "ml": "Mali",
+        "mr": "Mauritania",
+        "mu": "Mauritius",
+        "ma": "Morocco",
+        "mz": "Mozambique",
+        "na": "Namibia",
+        "ne": "Niger",
+        "ng": "Nigeria",
+        "rw": "Rwanda",
+        "st": "Sao Tome and Principe",
+        "sn": "Senegal",
+        "sc": "Seychelles",
+        "sl": "Sierra Leone",
+        "so": "Somalia",
+        "za": "South Africa",
+        "ss": "South Sudan",
+        "sd": "Sudan",
+        "tz": "Tanzania",
+        "tg": "Togo",
+        "tn": "Tunisia",
+        "ug": "Uganda",
+        "zm": "Zambia",
+        "zw": "Zimbabwe",
+        "eh": "Western Sahara"
+    },
+    "countries": {
+        "cd": {
+            "_note": "This is the fully completed example country — Democratic Republic of Congo. Use it as the template for filling in the other countries below.",
+            "id": "cd",
+            "name": "D.R. Congo",
+            "shortName": "DRC",
+            "flagEmoji": "🄨🄨",
+            "monitorLocation": "Goma, DRC",
+            "vaccinatedPct": 0.89,
+            "vaccinatedPctNote": "% of population with at least one dose",
+            "progressLevel": "poor",
+            "progressLabel": "Poor progress",
+            "intro": "The Democratic Republic of the Congo (DRC), situated in Central Africa, is the largest country in sub-Saharan Africa (SSA). The DRC currently has over 8 million vaccines on hand however less than 10% of these have been administered. Currently, 0.3% of the population is fully vaccinated. This can be attributed to barriers to vaccine access, logistical issues, and decreased demand for COVID-19 vaccines.",
+            "reportIntro": "Currently with one of the lowest vaccination rates in Africa, the DRC faces many barriers along the ports-to-arms pathway. The natural geography of the large, landlocked country makes it especially difficult to transport vaccines to vaccination sites, and competing priorities make it difficult for many people to access vaccines when available. Alongside this are also issues of misinformation, poor infrastructure, and regional conflicts, among many others. Details of these barriers as well as strategies that have been employed by the government, international organizations, and other partners to address them can be found below.",
+            "stats": {
+                "population": "89,600,000",
+                "totalSupply": "8,133,616",
+                "supplyCoveragePct": "4.54%",
+                "administeredTotal": "797,572",
+                "administeredPctOfSupply": "9.81%",
+                "partiallyVaccinatedPct": "0.57%",
+                "completelyVaccinatedPct": "0.32%",
+                "sourceLabel": "Data adapted from Africa CDC Vaccine Dashboard (Last Updated: 02/16/2022)",
+                "sourceUrl": "https://africacdc.org/covid-19-vaccination/"
+            },
+            "monitor": {
+                "name": "Suzan Tshibanda",
+                "orgLine": "National Lead Organisation: Congolese Association for Vaccine Equity",
+                "location": "Goma, DRC",
+                "quote": "I have seen members of my own family be taken by COVID-19, vaccine access is more than just a programme to me, it is a matter of my life, my families health and my communities right to live free from disease. Monitoring access to health products is not my job it is my passion!",
+                "photo": "assets/monitors/WhatsApp Image 2022-02-20 at 7_55_39 PM.jpeg.avif"
+            },
+            "highlightedBarrierIds": [
+                "hesitancy",
+                "logistics"
+            ],
+            "facilitatorsIntro": "The following partners and programmes are helping move vaccines further along the ports-to-arms pathway in the DRC.",
+            "facilitators": [{
+                    "id": "eu-malteser",
+                    "text": "The European Union is assisting Malteser International to aid COVID-19 rollout using community based strategies.",
+                    "citation": "",
+                    "url": "",
+                    "photo": ""
+                },
+                {
+                    "id": "unicef-pev",
+                    "text": "UNICEF is aiding the Programme Elargi de Vaccination (PEV) to deliver vaccines to 15 priority areas: Equateur, Haut-Katanga, Haut Uele, Ituri, Kasai, Kasai-Oriental, Kinshasa, Kongo-Central, Kwilu, Lualaba, Maniema, North Kivu, South Kivu, South Ubangi and Tshopo.",
+                    "citation": "Obibi, Miriam & and Chavanel, Sophie. “COVID-19 vaccine matchmaking: In the Democratic Republic of Congo, UNICEF is using SMS to connect people with available vaccines.” UNICEF. November 24, 2021.",
+                    "url": "https://www.unicef.org/coronavirus/covid-19-vaccine-matchmaking",
+                    "photo": ""
+                },
+                {
+                    "id": "medair",
+                    "text": "Medair partnered with the Congolese Ministry of Health to increase vaccination in North Kivu Province. Goal: set up vaccination sites as well as engage in mobile vaccination to reach remote communities; counter the spread of vaccine-related misinformation.",
+                    "citation": "Medair. “DR Congo: Medair joins efforts to step up COVID-19 vaccinations.” News and Press Release. November 24, 2021.",
+                    "url": "https://reliefweb.int/report/democratic-republic-congo/dr-congo-medair-joins-efforts-step-covid-19-vaccinations",
+                    "photo": ""
+                },
+                {
+                    "id": "vaccines-arrive",
+                    "text": "More than 1.7 million COVID-19 vaccines arrive in the Democratic Republic of Congo.",
+                    "citation": "Multiple. More than 1.7 million COVID-19 vaccines arrive in the Democratic Republic of Congo. Mar 3, 2021.",
+                    "url": "https://reliefweb.int/report/democratic-republic-congo/more-17-million-covid-19-vaccines-arrive-democratic-republic-congo",
+                    "photo": ""
+                }
+            ],
+            "barriers": [{
+                    "id": "hesitancy",
+                    "icon": "hesitancy",
+                    "label": "Vaccine Hesitancy",
+                    "shortLabel": "Hesitancy",
+                    "severity": "red",
+                    "summary": "As of late 2021, 55-60% of the population planned to get vaccinated...",
+                    "statements": [{
+                            "text": "As of late 2021, 55-60% of the population planned to get vaccinated.",
+                            "citation": "Ditekemena JD, Nkamba DM, Mutwadi A, et al. COVID-19 Vaccine Acceptance in the Democratic Republic of Congo: A Cross-Sectional Survey. Vaccines (Basel). 2021;9(2):153. Published 2021 Feb 14. doi:10.3390/vaccines9020153",
+                            "url": ""
+                        },
+                        {
+                            "text": "Lack of concern about COVID-19: one-quarter of respondents believed that COVID-19 did not exist.",
+                            "citation": "Ditekemena JD, Nkamba DM, Mutwadi A, et al. COVID-19 Vaccine Acceptance in the Democratic Republic of Congo: A Cross-Sectional Survey. Vaccines (Basel). 2021;9(2):153. Published 2021 Feb 14. doi:10.3390/vaccines9020153",
+                            "url": ""
+                        },
+                        {
+                            "text": "Being a healthcare worker was found to be associated with lower odds of accepting vaccination.",
+                            "citation": "",
+                            "url": ""
+                        },
+                        {
+                            "text": "Low and inconsistent vaccine supply alongside low-risk perception are factors to lower vaccine acceptance.",
+                            "citation": "Responding to COVID-19 in Africa: Finding the Balance Part IV Calls to Action [Internet]. Partnership for Evidence-Based COVID-19 Response; 2021.",
+                            "url": "https://preventepidemics.org/wp-content/uploads/2021/12/PERC-Finding-the-Balance-Part-IV.pdf"
+                        }
+                    ]
+                },
+                {
+                    "id": "logistics",
+                    "icon": "logistics",
+                    "label": "Cold chain & Logistics",
+                    "shortLabel": "Logistics",
+                    "severity": "red",
+                    "summary": "Poor transport networks in the DRC and difficulties due to the large geographical area, unreliable roads and unreliable electricity supply ...",
+                    "statements": [{
+                            "text": "Poor transport networks in the DRC and difficulties due to the large geographical area, unreliable roads and unreliable electricity supply makes delivery of vaccines, especially to remote areas, very challenging.",
+                            "citation": "Bempong Nyantakyi, Eugene & Munemo, Jonathan, Going The Last Mile. IMF; 2021.",
+                            "url": "https://www.imf.org/external/pubs/ft/fandd/2021/12/Last-Mile-Improving-Sub-Saharan-Africa-Vaccine-Access-Bempong-Munemo.htm"
+                        },
+                        {
+                            "text": "Limited ability to transmit information about vaccinations due to poor internet access.",
+                            "citation": "AFP. “DR Congo struggles with Covid vaccine push.” France24. December 3, 2021.",
+                            "url": "https://www.france24.com/en/live-news/20211203-dr-congo-struggles-with-covid-vaccine-push"
+                        },
+                        {
+                            "text": "Good Practice: UNICEF has set up an “SMS pre-registration system” that sends free text messages to people living in DRC to encourage vaccination and provide instructions on how to register for vaccination.",
+                            "citation": "Obibi, Miriam & and Chavanel, Sophie. “COVID-19 vaccine matchmaking: In the Democratic Republic of Congo, UNICEF is using SMS to connect people with available vaccines.” UNICEF. November 24, 2021.",
+                            "url": "https://www.unicef.org/coronavirus/covid-19-vaccine-matchmaking"
+                        }
+                    ]
+                },
+                {
+                    "id": "poverty",
+                    "icon": "poverty",
+                    "label": "Poverty",
+                    "shortLabel": "Poverty",
+                    "severity": "orange",
+                    "summary": "In a context of food insecurity: direct costs of travelling to vaccine sites and work opportunity...",
+                    "statements": [{
+                        "text": "In a context of food insecurity: direct costs of travelling to vaccine sites and work opportunity costs of vaccination often result in lost wages that many cannot afford, making vaccination more difficult.",
+                        "citation": "",
+                        "url": ""
+                    }]
+                },
+                {
+                    "id": "expired",
+                    "icon": "expired",
+                    "label": "Vaccines on verge of expiry",
+                    "shortLabel": "EXPIRED",
+                    "severity": "orange",
+                    "summary": "Challenges to vaccine distribution increase the risk of vaccine expiry given limited shelf...",
+                    "statements": [{
+                        "text": "Challenges to vaccine distribution increase the risk of vaccine expiry given limited shelf life, especially when vaccines are delivered under short notice.",
+                        "citation": "AFP. “DR Congo struggles with Covid vaccine push.” France24. December 3, 2021.",
+                        "url": "https://www.france24.com/en/live-news/20211203-dr-congo-struggles-with-covid-vaccine-push"
+                    }]
+                },
+                {
+                    "id": "fakenews",
+                    "icon": "fakenews",
+                    "label": "Fake News vs Evidence-Based News",
+                    "shortLabel": "FAKE NEWS",
+                    "severity": "orange",
+                    "summary": "President Felix Tshisekedi disparaged the AstraZeneca vaccine, affecting vaccine uptake and contributing...",
+                    "statements": [{
+                            "text": "President Felix Tshisekedi disparaged the AstraZeneca vaccine, affecting vaccine uptake and contributing to existing doubts related to the safety of the AstraZeneca vaccine.",
+                            "citation": "“DR Congo struggles with Covid vaccine push.” France24. December 3, 2021.",
+                            "url": "https://www.africanews.com/2021/12/04/dr-congo-struggles-with-covid-vaccine-push//"
+                        },
+                        {
+                            "text": "Many rumours contributing to hesitancy exist including rumours that COVID-19 doesn’t exist, the vaccine makes people sterile and that Africans are being used as “guinea pigs”.",
+                            "citation": "",
+                            "url": ""
+                        }
+                    ]
+                },
+                {
+                    "id": "conflict",
+                    "icon": "conflict",
+                    "label": "Political Instability, War & Unrest",
+                    "shortLabel": "political",
+                    "severity": "red",
+                    "summary": "Frequent conflict and mass displacement in the country...",
+                    "statements": [{
+                        "text": "Frequent conflict and mass displacement in the country.",
+                        "citation": "",
+                        "url": ""
+                    }]
+                },
+                {
+                    "id": "arrival",
+                    "icon": "arrival",
+                    "label": "Arrival at Vaccination Sites",
+                    "shortLabel": "arrived",
+                    "severity": "green",
+                    "summary": "SMS pre-registration system” encouraging vaccination: within the first month, almost 200,000 people...",
+                    "statements": [{
+                            "text": "“SMS pre-registration system” encouraging vaccination: within the first month, almost 200,000 people had accessed the platform and 54,000 had registered for vaccination.",
+                            "citation": "",
+                            "url": ""
+                        },
+                        {
+                            "text": "Community Animation Cells: 8-12 volunteer, elected “social mobilizers” engaged in community-led monitoring, supporting communities in providing feedback on COVID-19.",
+                            "citation": "",
+                            "url": ""
+                        }
+                    ]
+                },
+                {
+                    "id": "strikes",
+                    "icon": "strikes",
+                    "label": "Health Practitioner Labour Strikes",
+                    "shortLabel": "Nurses",
+                    "severity": "orange",
+                    "summary": "Nurses going on strike to protest lack of regular pay since June 2021 in Tshopo province...",
+                    "statements": [{
+                        "text": "Nurses going on strike to protest lack of regular pay since June 2021 in Tshopo province.",
+                        "citation": "Mbuyi Mutombo, Francoise. “A Tipping Point for Nurses in Battle for Regular Pay” Global Press Journal. November 29, 2021.",
+                        "url": "https://globalpressjournal.com/africa/democratic-republic-of-congo/nurses-tipping-point-battle-regular-pay/"
+                    }]
+                }
+            ]
+        },
+        "za": {
+            "_note": "PLACEHOLDER — copy the structure from \"drc\" above and fill in real numbers/text when you have them. Only the fields the Map page needs are filled in for now.",
+            "id": "za",
+            "name": "South Africa",
+            "shortName": "South Africa",
+            "vaccinatedPct": 50.41,
+            "vaccinatedPctNote": "% of population with at least one dose",
+            "progressLevel": "good",
+            "progressLabel": "Good progress",
+            "intro": "",
+            "reportIntro": "",
+            "stats": {
+                "population": "",
+                "totalSupply": "",
+                "supplyCoveragePct": "",
+                "administeredTotal": "",
+                "administeredPctOfSupply": "",
+                "partiallyVaccinatedPct": "",
+                "completelyVaccinatedPct": "",
+                "sourceLabel": "",
+                "sourceUrl": ""
+            },
+            "monitor": {
+                "name": "",
+                "orgLine": "",
+                "location": "",
+                "quote": "",
+                "photo": ""
+            },
+            "highlightedBarrierIds": [],
+            "facilitatorsIntro": "",
+            "facilitators": [],
+            "barriers": []
+        },
+        "ug": {
+            "_note": "PLACEHOLDER — same as above, fill in when ready.",
+            "id": "ug",
+            "name": "Uganda",
+            "shortName": "Uganda",
+            "vaccinatedPct": 27.17,
+            "vaccinatedPctNote": "% of population with at least one dose",
+            "progressLevel": "moderate",
+            "progressLabel": "Moderate progress",
+            "intro": "",
+            "reportIntro": "",
+            "stats": {
+                "population": "",
+                "totalSupply": "",
+                "supplyCoveragePct": "",
+                "administeredTotal": "",
+                "administeredPctOfSupply": "",
+                "partiallyVaccinatedPct": "",
+                "completelyVaccinatedPct": "",
+                "sourceLabel": "",
+                "sourceUrl": ""
+            },
+            "monitor": {
+                "name": "",
+                "orgLine": "",
+                "location": "",
+                "quote": "",
+                "photo": ""
+            },
+            "highlightedBarrierIds": [],
+            "facilitatorsIntro": "",
+            "facilitators": [],
+            "barriers": []
+        }
+    }
+}
