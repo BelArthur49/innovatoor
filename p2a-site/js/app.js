@@ -20,8 +20,8 @@
             if (!header) return;
             const links = [
                 { href: "index.html", label: "Home" },
-                { href: "report.html", label: "Country Report" },
-                { href: "barriers.html", label: "Barriers & Facilitators" }
+               /* { href: "report.html", label: "Country Report" },
+                { href: "barriers.html", label: "Barriers & Facilitators" }*/
             ];
             header.innerHTML = `
       <div class="wrap">
