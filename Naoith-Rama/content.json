@@ -1,0 +1,272 @@
+{
+    "_instructions": "EDIT ME, NOT THE HTML. Change any text between quotes below and save the file. Do not delete commas or quotation marks. To add a new item to a list (like a testimonial or gallery photo), copy an existing block between { and }, paste it before or after, and edit the text inside it. Images are referenced by URL - replace the 'image' values with a link to your own photo (upload photos to your website's /images folder or use a link from Google Drive/Dropbox set to 'anyone with link can view').",
+    "site": {
+        "name": "Naioth Ramah Centre",
+        "shortName": "Naioth Ramah",
+        "tagline": "Gather Beautifully.",
+        "phone": "+250 788 000 000",
+        "email": "hello@naiothramah.rw",
+        "whatsapp": "+250 788 000 000"
+    },
+    "nav": {
+        "links": [{
+                "label": "Home",
+                "href": "#"
+            },
+            {
+                "label": "About Us",
+                "href": "#about"
+            },
+            {
+                "label": "Weddings",
+                "href": "#events"
+            },
+
+            {
+                "label": "The Venue",
+                "href": "#spaces"
+            },
+            {
+                "label": "Gallery",
+                "href": "#gallery"
+            },
+            {
+                "label": "Contact",
+                "href": "#contact"
+            }
+        ],
+        "ctaLabel": "Book Your Event"
+    },
+    "hero": {
+        "eyebrow": "Nyamata \u00b7 Bugesera \u00b7 Rwanda",
+        "headline": "Where Every Gathering Becomes a Memory",
+        "subheadline": "A distinguished event venue in Nyamata, Bugesera \u2014 created for weddings, conferences, seminars, private celebrations and moments worth bringing people together for.",
+        "ctaPrimary": {
+            "label": "Plan Your Event",
+            "href": "#contact"
+        },
+        "ctaSecondary": {
+            "label": "Explore the Venue",
+            "href": "#spaces"
+        },
+        "stats": [{
+                "value": "1,000",
+                "suffix": "",
+                "label": "Seat event hall"
+            },
+            {
+                "value": "4",
+                "suffix": "Spacious",
+                "label": "Paved parking for your guests"
+            },
+            {
+                "value": "2",
+                "suffix": "Private",
+                "label": "Bride & groom preparation house"
+            },
+            {
+                "value": "1",
+                "suffix": "Prime",
+                "label": "Nyamata location, near La Palisse Hotel"
+            }
+        ]
+    },
+    "about": {
+        "eyebrow": "About the Centre",
+        "title": "More Than a Venue. A Place to Gather.",
+        "paragraphs": [
+            "Set in the heart of Nyamata, Bugesera District, Naioth Ramah Centre is a beautiful and spacious destination designed to welcome people for life's most meaningful occasions.",
+            "From an elegant wedding celebration to a 1,000-person conference, a private family gathering or a corporate event, our venue combines space, beauty and convenience in one exceptional setting.",
+            "And because the moments before an event matter too, our dedicated one-day preparation house provides a private space for the bride, groom or event hosts to prepare, relax and get ready for the occasion."
+        ],
+        "features": [{
+                "title": "1,000-Seat Capacity",
+                "text": "Room for large gatherings, celebrations and audiences."
+            },
+            {
+                "title": "Spacious Paved Parking",
+                "text": "Convenient parking designed to make arrival easy for your guests."
+            },
+            {
+                "title": "Bride & Groom Preparation House",
+                "text": "A private one-day space to prepare, relax and organize before the main event."
+            },
+            {
+                "title": "Beautiful Architecture & Landscaping",
+                "text": "An impressive setting from the moment your guests arrive."
+            },
+            {
+                "title": "Prime Nyamata Location",
+                "text": "Conveniently located in Nyamata town, Bugesera District, near La Palisse Hotel."
+            }
+        ]
+    },
+    "spaces": {
+        "eyebrow": "The Venue",
+        "title": "One Beautiful Setting, Built for Every Occasion",
+        "subtitle": "From the main hall to the preparation house, every corner is designed to welcome your guests.",
+        "items": [{
+                "name": "The Main Hall",
+                "capacity": "Up to 1,000 guests",
+                "description": "Our spacious hall provides an elegant and welcoming environment for weddings, conferences, seminars and large celebrations, with room to seat up to 1,000 guests.",
+                "image": "image/16Naoith.jpeg"
+            },
+            {
+                "name": "Paved Parking",
+                "capacity": "Ample space for your guests",
+                "description": "Spacious, secure paved parking makes arrival and departure easy for you and your guests.",
+                "image": "image/11Naoith.jpeg"
+            },
+            {
+                "name": "Bride & Groom Preparation House",
+                "capacity": "A private space",
+                "description": "A dedicated preparation house where the bride, groom or event hosts can prepare, relax and take a moment before welcoming their guests.",
+                "image": "image/9Naoith.jpeg"
+            }
+        ]
+    },
+    "events": {
+        "eyebrow": "What we host",
+        "title": "Designed for Your Occasion",
+        "items": [{
+                "title": "Weddings",
+                "text": "A beautiful beginning to your forever \u2014 celebrate your wedding in an elegant and spacious setting designed to welcome your family, friends and guests."
+            },
+            {
+                "title": "Conferences & Seminars",
+                "text": "With capacity for up to 1,000 guests, our venue provides the scale you need for conferences, seminars, workshops, trainings and large gatherings."
+            },
+            {
+                "title": "Private Celebrations",
+                "text": "Birthdays, anniversaries, graduations, family celebrations and special events deserve a setting that feels special."
+            },
+            {
+                "title": "Corporate & Institutional Events",
+                "text": "From corporate gatherings and ceremonies to organizational events and large presentations, Naioth Ramah Centre provides a professional and welcoming environment."
+            }
+        ]
+    },
+    "gallery": {
+        "eyebrow": "Gallery",
+        "title": "Come In. Look Around. Imagine Your Event.",
+        "images": [{
+                "image": "image/1Naoith.jpeg",
+                "caption": "The Venue"
+            },
+            {
+                "image": "image/2Naoith.jpeg",
+                "caption": "Weddings"
+            },
+            {
+                "image": "image/3Naoith.jpeg",
+                "caption": "Conferences"
+            },
+            {
+                "image": "image/4Naoith.jpeg",
+                "caption": "Parking"
+            },
+            {
+                "image": "image/5Naoith.jpeg",
+                "caption": "Preparation House"
+            },
+            {
+                "image": "image/6Naoith.jpeg",
+                "caption": "Events"
+            },
+            {
+                "image": "image/7Naoith.jpeg",
+                "caption": "The Venue"
+            },
+            {
+                "image": "image/8Naoith.jpeg",
+                "caption": "Weddings"
+            },
+            {
+                "image": "image/9Naoith.jpeg",
+                "caption": "Conferences"
+            },
+            {
+                "image": "image/10Naoith.jpeg",
+                "caption": "Parking"
+            },
+            {
+                "image": "image/11Naoith.jpeg",
+                "caption": "Preparation House"
+            },
+            {
+                "image": "image/12Naoith.jpeg",
+                "caption": "Events"
+            },
+            {
+                "image": "image/13Naoith.jpeg",
+                "caption": "The Venue"
+            },
+            {
+                "image": "image/14Naoith.jpeg",
+                "caption": "Weddings"
+            },
+            {
+                "image": "image/15Naoith.jpeg",
+                "caption": "Conferences"
+            },
+            {
+                "image": "image/16Naoith.jpeg",
+                "caption": "Parking"
+            },
+            {
+                "image": "image/17Naoith.jpeg",
+                "caption": "Preparation House"
+            },
+            {
+                "image": "image/18Naoith.jpeg",
+                "caption": "Events"
+            }
+        ]
+    },
+    "testimonials": {
+        "eyebrow": "Kind words",
+        "title": "From families we've hosted",
+        "items": [{
+                "quote": "Our wedding at Naioth Ramah Centre felt effortless. The team handled everything and the grounds photographed beautifully.",
+                "name": "Aline & Eric",
+                "event": "Wedding, March 2026"
+            },
+            {
+                "quote": "We ran a three-day church convention in the Main Hall and never once worried about sound or seating. The staff anticipated everything.",
+                "name": "Pastor Jean de Dieu",
+                "event": "Church Convention"
+            },
+            {
+                "quote": "Quiet, professional and close enough to Kigali for our whole team to attend. Easy to reach and easy to work with.",
+                "name": "Grace M.",
+                "event": "Corporate Retreat"
+            }
+        ]
+    },
+    "contact": {
+        "eyebrow": "Plan your event",
+        "title": "Let's Create Something Worth Remembering",
+        "subtitle": "Tell us what you are organizing, your expected number of guests and your preferred date. Our team will help you explore the possibilities at Naioth Ramah Centre.",
+        "address": "Naioth Ramah Centre, Nyamata Town, Bugesera District, near La Palisse Hotel, Rwanda",
+        "hours": "Open daily, 8:00 \u2013 18:00 \u2014 visits by appointment",
+        "mapEmbedUrl": "https://www.google.com/maps?q=Nyamata,Rwanda&output=embed",
+        "formNote": "This form opens your email app with the details pre-filled \u2014 no data is stored on this website."
+    },
+    "footer": {
+        "note": "Naioth Ramah Centre \u2014 Gather Beautifully.",
+        "socials": [{
+                "name": "Instagram",
+                "url": "https://instagram.com"
+            },
+            {
+                "name": "Facebook",
+                "url": "https://facebook.com"
+            },
+            {
+                "name": "WhatsApp",
+                "url": "https://wa.me/250788000000"
+            }
+        ],
+        "copyright": "\u00a9 2026 Naioth Ramah Centre. All rights reserved."
+    }
+}
