@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Innonzu | Find a home in Kigali without a commissionaire</title>
+<meta name="description" content="Innonzu by Innovatoor: rent or buy houses, offices and plots in Kigali directly from owners. Verified listings, full photos, no commission fees." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --black:#000;
+    --white:#fff;
+    --violet:#6D28D9;      /* text-safe purple */
+    --lav:#C4A5F7;         /* brand light purple */
+    --lav-2:#DCC8FB;
+    --lav-3:#F1E9FD;
+    --grey:#5E566B;
+    --line:#E6DDF3;
+    --display:'Sora', system-ui, sans-serif;
+    --body:'Manrope', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);color:var(--black);background:var(--white);line-height:1.6;overflow-x:hidden}
+  a{color:inherit}
+  img,svg{display:block;max-width:100%}
+  :focus-visible{outline:3px solid var(--violet);outline-offset:3px;border-radius:4px}
+  .wrap{width:min(1180px,90%);margin:0 auto}
+
+  /* NAV */
+  .nav{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
+  .nav.scrolled{border-color:var(--line)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{text-decoration:none;display:flex;align-items:baseline;gap:.5rem}
+  .logo b{font-family:var(--display);font-weight:800;font-size:1.5rem;letter-spacing:-.03em}
+  .logo b i{font-style:normal;color:var(--violet)}
+  .logo small{font-size:.78rem;color:var(--grey)}
+  .nav-links{display:flex;gap:2rem;align-items:center}
+  .nav-links a{text-decoration:none;font-weight:600;font-size:.93rem;color:var(--grey)}
+  .nav-links a:hover{color:var(--black)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:var(--body);font-weight:700;font-size:.95rem;text-decoration:none;border-radius:999px;padding:.85rem 1.6rem;border:2px solid var(--black);cursor:pointer;transition:background .2s,color .2s}
+  .btn-dark{background:var(--black);color:var(--white)}
+  .btn-dark:hover{background:var(--violet);border-color:var(--violet)}
+  .btn-ghost{background:transparent;color:var(--black)}
+  .btn-ghost:hover{background:var(--black);color:var(--white)}
+  .nav .btn{padding:.6rem 1.2rem;font-size:.88rem}
+  .nav-links a.btn-dark{color:var(--white)}
+  .burger{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer}
+  .burger span{display:block;width:24px;height:2px;background:var(--black);margin:5px auto;transition:transform .25s,opacity .25s}
+  .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  /* HERO */
+  .hero{position:relative;min-height:100vh;padding-top:140px;overflow:hidden;background:linear-gradient(180deg,var(--white) 0%,var(--lav-3) 100%)}
+  .hero-copy{position:relative;z-index:5;max-width:780px}
+  .hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2.5rem,6.2vw,5.4rem);line-height:.98;letter-spacing:-.045em}
+  .hero-sub{font-size:1.15rem;color:var(--grey);max-width:560px;margin:1.5rem 0 2.2rem}
+
+  .search{background:var(--white);border:2px solid var(--black);border-radius:22px;padding:.5rem;max-width:720px;box-shadow:8px 8px 0 var(--black)}
+  .tabs{display:flex;gap:.25rem;padding:.25rem .25rem .6rem;flex-wrap:wrap}
+  .tab{font:600 .88rem var(--body);border:0;background:none;padding:.5rem .95rem;border-radius:999px;cursor:pointer;color:var(--grey)}
+  .tab[aria-selected="true"]{background:var(--lav-3);color:var(--violet)}
+  .search-row{display:flex;gap:.5rem}
+  .search-row input{flex:1;min-width:0;font:500 1rem var(--body);border:0;background:var(--lav-3);border-radius:14px;padding:1rem 1.1rem;color:var(--black)}
+  .search-row input::placeholder{color:#8a8098}
+  .search-row .btn{border-radius:14px}
+
+  .hills{position:absolute;left:0;right:0;bottom:0;height:62%;pointer-events:none}
+  .hill{position:absolute;left:-5%;width:110%;bottom:0;will-change:transform}
+  .hill svg{width:100%;height:auto}
+  .hill-1{bottom:18%}
+  .hill-2{bottom:6%}
+  .hill-3{bottom:-2%}
+  .sun{position:absolute;right:12%;top:18%;width:clamp(120px,16vw,220px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 35%,var(--lav-2),var(--lav));opacity:.9;will-change:transform}
+
+  /* SPLIT */
+  section{position:relative}
+  .pad{padding:clamp(5rem,10vw,8rem) 0}
+  h2{font-family:var(--display);font-weight:700;font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;letter-spacing:-.035em}
+  .lead{color:var(--grey);font-size:1.08rem;max-width:560px;margin-top:1rem}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3rem}
+  .side{border:2px solid var(--black);border-radius:28px;padding:2.4rem;display:flex;flex-direction:column;gap:1.2rem}
+  .side.dark{background:var(--black);color:var(--white)}
+  .side h3{font-family:var(--display);font-size:1.6rem;letter-spacing:-.02em;line-height:1.15}
+  .side ul{list-style:none;display:grid;gap:.75rem;margin:.4rem 0 1rem}
+  .side li{padding-left:1.8rem;position:relative}
+  .side li::before{content:"";position:absolute;left:0;top:.55em;width:.8rem;height:.8rem;border-radius:3px;background:var(--lav)}
+  .side .btn{align-self:flex-start;margin-top:auto}
+  .side.dark .btn{background:var(--lav);border-color:var(--lav);color:var(--black)}
+  .side.dark .btn:hover{background:var(--white);border-color:var(--white)}
+
+  /* LISTING ANATOMY */
+  .anatomy{background:var(--lav-3)}
+  .anatomy-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:4rem;align-items:center}
+  .card{background:var(--white);border:2px solid var(--black);border-radius:26px;overflow:hidden;box-shadow:10px 10px 0 var(--black);will-change:transform}
+  .card-photo{height:230px;position:relative;background:linear-gradient(160deg,var(--lav-2),var(--lav))}
+  .card-photo svg{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:70%}
+  .card-thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:10px;border-bottom:2px solid var(--black)}
+  .card-thumbs span{aspect-ratio:1;border-radius:8px;background:var(--lav-3);font-size:.62rem;font-weight:700;color:var(--violet);display:grid;place-items:center;text-align:center;line-height:1.1}
+  .card-body{padding:1.4rem 1.5rem 1.6rem}
+  .price{font-family:var(--display);font-weight:800;font-size:1.7rem;letter-spacing:-.02em}
+  .price small{font-family:var(--body);font-weight:500;font-size:.9rem;color:var(--grey)}
+  .card-loc{color:var(--grey);font-weight:600;margin:.2rem 0 1rem}
+  .facts{display:flex;flex-wrap:wrap;gap:.45rem}
+  .facts span{font-size:.8rem;font-weight:700;padding:.35rem .7rem;border-radius:999px;border:1.5px solid var(--black)}
+  .anatomy dl{display:grid;gap:1.3rem;margin-top:2rem}
+  .anatomy dt{font-family:var(--display);font-weight:700;font-size:1.08rem}
+  .anatomy dd{color:var(--grey)}
+
+  /* BAND */
+  .band{background:var(--black);color:var(--white);overflow:hidden;padding:clamp(6rem,14vw,11rem) 0}
+  .band p{font-family:var(--display);font-weight:800;font-size:clamp(2.2rem,6vw,5rem);line-height:1;letter-spacing:-.045em;max-width:15ch;position:relative;z-index:2}
+  .band p span{color:var(--lav)}
+  .band .ring{position:absolute;border-radius:50%;border:2px solid var(--lav);opacity:.35;will-change:transform}
+  .band .r1{width:520px;height:520px;right:-120px;top:-140px}
+  .band .r2{width:300px;height:300px;right:160px;bottom:-160px;opacity:.2}
+  .band .dot{position:absolute;width:90px;height:90px;border-radius:50%;background:var(--lav);right:22%;top:30%;will-change:transform}
+
+  /* STEPS */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:3.2rem;counter-reset:s}
+  .step{border-top:2px solid var(--black);padding-top:1.3rem}
+  .step::before{counter-increment:s;content:counter(s);font-family:var(--display);font-weight:800;font-size:2.6rem;color:var(--lav);line-height:1}
+  .step h3{font-family:var(--display);font-size:1.12rem;margin:.8rem 0 .45rem;letter-spacing:-.01em}
+  .step p{color:var(--grey);font-size:.95rem}
+
+  /* FEES */
+  .fees{background:var(--lav-3)}
+  .fee-table{margin-top:2.8rem;border:2px solid var(--black);border-radius:24px;overflow:hidden;background:var(--white)}
+  .fee-row{display:grid;grid-template-columns:1.4fr 1fr;align-items:center;padding:1.4rem 1.8rem;border-bottom:1.5px solid var(--line)}
+  .fee-row:last-child{border-bottom:0}
+  .fee-row.head{background:var(--black);color:var(--white);font-weight:700;font-size:.9rem}
+  .fee-row strong{font-family:var(--display);font-size:1.35rem;letter-spacing:-.02em;text-align:right}
+  .fee-row.head span:last-child{text-align:right}
+  .note{color:var(--grey);font-size:.93rem;margin-top:1.2rem}
+
+  /* CTA */
+  .cta{text-align:center}
+  .cta h2{max-width:16ch;margin:0 auto}
+  .cta .lead{margin:1rem auto 2.2rem}
+  .cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+  footer{border-top:1px solid var(--line);padding:2rem 0}
+  footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.88rem;color:var(--grey)}
+  footer a{text-decoration:none;font-weight:600;color:var(--violet)}
+  footer nav{display:flex;gap:1.4rem}
+
+  @media (max-width:960px){
+    .anatomy-grid{grid-template-columns:1fr;gap:3rem}
+    .steps{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:780px){
+    .nav-links{position:fixed;top:72px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:var(--white);border-bottom:1px solid var(--line);padding:.5rem 5% 1.25rem;transform:translateY(-8px);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
+    .nav-links.open{opacity:1;transform:none;pointer-events:auto}
+    .nav-links a{padding:.8rem 0;width:100%;font-size:1rem}
+    .nav-links .btn{margin-top:.6rem;width:100%;padding:.8rem}
+    .burger{display:block}
+    .split{grid-template-columns:1fr}
+    .side{padding:1.8rem}
+    .search-row{flex-direction:column}
+    .hero{padding-top:120px}
+    .hills{height:40%}
+    .sun{top:auto;bottom:34%;right:6%}
+  }
+  @media (max-width:520px){
+    .steps{grid-template-columns:1fr}
+    .fee-row{padding:1.1rem 1.2rem}
+    .fee-row strong{font-size:1.1rem}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    [data-speed]{transform:none!important}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="innonzu by Innovatoor, home"><b>inno<i>nzu</i></b><small>by Innovatoor</small></a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    <nav class="nav-links" id="menu">
+      <a href="#search">Find a place</a>
+      <a href="#listing">What you see</a>
+      <a href="#how">How listing works</a>
+      <a href="#fees">Fees</a>
+      <a href="#" data-app-link="/post" class="btn btn-dark">List a property</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero" id="search">
+    <div class="sun" data-speed="0.35" aria-hidden="true"></div>
+
+    <div class="wrap"><div class="hero-copy">
+      <h1>Find your next home in Kigali without paying a commissionaire.</h1>
+      <p class="hero-sub">Houses, offices, and plots listed directly by their owners. Every listing is checked by Innovatoor and shows real photos and real details before you visit.</p>
+
+      <form class="search" id="searchForm" role="search">
+        <div class="tabs" role="tablist" aria-label="What are you looking for?">
+          <button type="button" class="tab" role="tab" aria-selected="true" data-type="rent">Rent a house</button>
+          <button type="button" class="tab" role="tab" aria-selected="false" data-type="sale">Buy a house</button>
+          <button type="button" class="tab" role="tab" aria-selected="false" data-type="plot">Plots</button>
+          <button type="button" class="tab" role="tab" aria-selected="false" data-type="office">Offices</button>
+        </div>
+        <div class="search-row">
+          <label for="q" class="visually-hidden" style="position:absolute;left:-9999px">Neighbourhood or street</label>
+          <input id="q" name="q" type="text" placeholder="Kimihurura, Kicukiro, KK 15 Rd..." autocomplete="off" />
+          <button class="btn btn-dark" type="submit">Search listings</button>
+        </div>
+      </form>
+    </div></div>
+
+    <!-- Parallax Kigali hills -->
+    <div class="hills" aria-hidden="true">
+      <div class="hill hill-1" data-speed="0.18">
+        <svg viewBox="0 0 1440 260" preserveAspectRatio="none"><path fill="#DCC8FB" d="M0 200 C120 120 240 90 380 140 C520 190 600 70 760 60 C920 50 1000 160 1150 130 C1280 105 1360 60 1440 80 L1440 260 L0 260Z"/></svg>
+      </div>
+      <div class="hill hill-2" data-speed="0.1">
+        <svg viewBox="0 0 1440 240" preserveAspectRatio="none"><path fill="#C4A5F7" d="M0 150 C160 80 300 170 470 130 C640 90 720 30 900 70 C1080 110 1180 190 1440 110 L1440 240 L0 240Z"/>
+          <g fill="#6D28D9">
+            <path d="M840 62 l18 -14 l18 14 v18 h-36z"/><path d="M880 70 l14 -11 l14 11 v14 h-28z"/><path d="M430 118 l16 -12 l16 12 v16 h-32z"/>
+          </g>
+        </svg>
+      </div>
+      <div class="hill hill-3" data-speed="0.03">
+        <svg viewBox="0 0 1440 200" preserveAspectRatio="none"><path fill="#000" d="M0 120 C200 60 360 140 560 110 C760 80 860 20 1040 60 C1200 95 1320 140 1440 100 L1440 200 L0 200Z"/>
+          <g fill="#C4A5F7">
+            <rect x="1000" y="46" width="6" height="8" rx="1"/><rect x="1014" y="42" width="6" height="8" rx="1"/><rect x="1060" y="58" width="6" height="8" rx="1"/>
+            <rect x="240" y="80" width="6" height="8" rx="1"/><rect x="256" y="84" width="6" height="8" rx="1"/><rect x="620" y="96" width="6" height="8" rx="1"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- TWO AUDIENCES -->
+  <section class="pad">
+    <div class="wrap">
+      <h2>One place for the people looking and the people listing.</h2>
+      <p class="lead">No middleman showing you houses you never asked for, and no visiting fees just to open a door.</p>
+      <div class="split">
+        <div class="side">
+          <h3>Looking for a place</h3>
+          <ul>
+            <li>Search houses to rent or buy, offices, and plots across Kigali</li>
+            <li>See every room, the ceiling, and the floors before you go</li>
+            <li>Know upfront whether water and electricity are shared or included</li>
+            <li>Contact the owner directly and pay no commission</li>
+          </ul>
+          <a href="#" data-app-link="/" class="btn btn-ghost">Browse listings</a>
+        </div>
+        <div class="side dark">
+          <h3>Have a property</h3>
+          <ul>
+            <li>Reach serious tenants and buyers, not window shoppers</li>
+            <li>Set your price in RWF or USD and change it any time</li>
+            <li>Pin your property on the map with its street name</li>
+            <li>Manage all your listings from your own dashboard</li>
+          </ul>
+          <a href="#" data-app-link="/post" class="btn">List a property</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LISTING ANATOMY -->
+  <section class="pad anatomy" id="listing">
+    <div class="wrap anatomy-grid">
+      <div class="card" data-speed="-0.06" aria-label="Example listing">
+        <div class="card-photo">
+          <svg viewBox="0 0 300 170" aria-hidden="true"><path fill="#000" d="M40 170V80l110-70 110 70v90z"/><rect x="80" y="100" width="40" height="40" fill="#F1E9FD"/><rect x="180" y="100" width="40" height="70" fill="#C4A5F7"/><rect x="130" y="60" width="40" height="28" fill="#F1E9FD"/></svg>
+        </div>
+        <div class="card-thumbs" aria-hidden="true">
+          <span>Outside</span><span>Living room</span><span>Bedrooms</span><span>Ceiling</span><span>Floors</span>
+        </div>
+        <div class="card-body">
+          <div class="price">650,000 RWF <small>/ month</small></div>
+          <div class="card-loc">KG 9 Ave, Kimihurura</div>
+          <div class="facts">
+            <span>3 bedrooms</span><span>Built 2016</span><span>Renovated 2023</span><span>Water included</span><span>Own electricity meter</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2>Everything you would ask on a visit, answered on the listing.</h2>
+        <dl>
+          <div><dt>Photos are required, not optional</dt><dd>Owners must show the outside, the inside, every room, the ceiling, and the floors. No listing goes live without them.</dd></div>
+          <div><dt>The details that decide a move</dt><dd>Year built, year renovated, and whether water and electricity are shared or included in the rent.</dd></div>
+          <div><dt>Only fresh listings</dt><dd>Listings expire after one month unless the owner renews, so you are not chasing houses that were taken weeks ago.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARALLAX BAND -->
+  <section class="band" aria-label="Innonzu promise">
+    <div class="ring r1" data-speed="0.2" aria-hidden="true"></div>
+    <div class="ring r2" data-speed="-0.15" aria-hidden="true"></div>
+    <div class="dot" data-speed="0.32" aria-hidden="true"></div>
+    <div class="wrap">
+      <p>Innonzu means <span>"this house."</span> See it properly before you go.</p>
+    </div>
+  </section>
+
+  <!-- HOW LISTING WORKS -->
+  <section class="pad" id="how">
+    <div class="wrap">
+      <h2>How listing a property works</h2>
+      <p class="lead">From your phone to a live listing in four steps.</p>
+      <div class="steps">
+        <div class="step"><h3>Create your listing</h3><p>Add the type, price, location on the map, and the required photos.</p></div>
+        <div class="step"><h3>Pay the listing fee</h3><p>Pay with mobile money in one tap. The dial code is filled in for you.</p></div>
+        <div class="step"><h3>Innovatoor verifies it</h3><p>We confirm your payment and check the listing before it goes live.</p></div>
+        <div class="step"><h3>Tenants contact you</h3><p>People reach you directly. Update your price or details any time.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEES -->
+  <section class="pad fees" id="fees">
+    <div class="wrap">
+      <h2>Simple listing fees</h2>
+      <p class="lead">Owners pay once per listing. People searching for a place never pay anything.</p>
+      <div class="fee-table" role="table" aria-label="Listing fees for houses to rent">
+        <div class="fee-row head" role="row"><span role="columnheader">Monthly rent of the house</span><span role="columnheader">Listing fee</span></div>
+        <div class="fee-row" role="row"><span role="cell">Up to 1,000,000 RWF</span><strong role="cell">20,000 RWF</strong></div>
+        <div class="fee-row" role="row"><span role="cell">1,000,001 to 2,000,000 RWF</span><strong role="cell">50,000 RWF</strong></div>
+        <div class="fee-row" role="row"><span role="cell">Above 2,000,000 RWF</span><strong role="cell">100,000 RWF</strong></div>
+      </div>
+      <p class="note">Fees for houses for sale, plots, and offices are shown when you post your listing.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="pad cta" id="contact">
+    <div class="wrap">
+      <h2>Your next home is already listed.</h2>
+      <p class="lead">Start searching now, or put your property in front of people who are ready to move.</p>
+      <div class="cta-actions">
+        <a href="#" data-app-link="/" class="btn btn-dark">Browse listings</a>
+        <a href="#" data-app-link="/post" class="btn btn-ghost">List a property</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 innonzu by <a href="https://innovatoor.com">Innovatoor Ltd</a>, Norrsken House Kigali</p>
+    <nav aria-label="Footer">
+      <a href="tel:+250782010317">+250 782 010 317</a>
+      <a href="mailto:info@innovatoor.com">info@innovatoor.com</a>
+      <a href="https://innovatoor.com">innovatoor.com</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  /* ── Change this once the Innonzu app is hosted ── */
+  const APP_URL = 'https://innonzu.innovatoor.com/app';
+
+  document.querySelectorAll('[data-app-link]').forEach(a => {
+    a.href = APP_URL.replace(/\/$/, '') + a.dataset.appLink;
+  });
+
+  // Search tabs
+  let type = 'rent';
+  document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.setAttribute('aria-selected', 'false'));
+    t.setAttribute('aria-selected', 'true');
+    type = t.dataset.type;
+  }));
+  document.getElementById('searchForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const q = document.getElementById('q').value.trim();
+    location.href = APP_URL + '?type=' + type + (q ? '&q=' + encodeURIComponent(q) : '');
+  });
+
+  // Mobile menu
+  const burger = document.getElementById('burger'), menu = document.getElementById('menu');
+  burger.addEventListener('click', () => {
+    const open = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!open));
+    burger.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+    menu.classList.toggle('open', !open);
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    burger.setAttribute('aria-expanded', 'false'); menu.classList.remove('open');
+  }));
+
+  // Nav border on scroll
+  const nav = document.getElementById('nav');
+
+  // Parallax: each [data-speed] element moves relative to its section's position
+  const layers = [...document.querySelectorAll('[data-speed]')];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let ticking = false;
+  function update(){
+    nav.classList.toggle('scrolled', scrollY > 10);
+    if (!reduce) {
+      const mid = innerHeight / 2;
+      layers.forEach(el => {
+        const sec = el.closest('section');
+        const r = sec.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > innerHeight + 200) return;
+        const offset = sec.classList.contains('hero') ? -r.top : (r.top + r.height / 2 - mid);
+        el.style.transform = `translate3d(0, ${offset * parseFloat(el.dataset.speed)}px, 0)`;
+      });
+    }
+    ticking = false;
+  }
+  addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(update); ticking = true; } }, { passive: true });
+  addEventListener('resize', update);
+  update();
+</script>
+</body>
+</html>

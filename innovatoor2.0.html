@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Innovatoor 2.0 | Your AI business advisor, built on African data</title>
+<meta name="description" content="Innovatoor 2.0 turns a single question into market research, competitor analysis and strategy in seconds, powered by a live data warehouse of African companies, markets and tenders." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --night:#140A26;       /* deep aubergine base, matches innovatoor.com */
+    --night-2:#1E1036;
+    --plum:#2B1650;
+    --violet:#A970FF;      /* the GOLD. purple from the main site */
+    --lilac:#D9C2FF;
+    --ink:#F4EEFF;
+    --muted:#B7A8D1;
+    --line:rgba(169,112,255,.22);
+    --display:'Unbounded', system-ui, sans-serif;
+    --body:'IBM Plex Sans', system-ui, sans-serif;
+    --mono:'IBM Plex Mono', ui-monospace, monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);background:var(--night);color:var(--ink);line-height:1.65;overflow-x:hidden}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--violet);outline-offset:3px;border-radius:4px}
+  .wrap{width:min(1200px,90%);margin:0 auto}
+
+  /* NAV */
+  .nav{position:fixed;inset:0 0 auto;z-index:50;background:rgba(20,10,38,.72);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
+  .nav.scrolled{border-color:var(--line)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .logo{text-decoration:none;display:flex;flex-direction:column;line-height:1.1}
+  .logo b{font-family:var(--display);font-weight:800;font-size:1.05rem;letter-spacing:.02em}
+  .logo b i{font-style:normal;color:var(--violet)}
+  .logo small{font-size:.72rem;color:var(--muted)}
+  .nav-links{display:flex;gap:2rem;align-items:center}
+  .nav-links a{text-decoration:none;font-size:.92rem;font-weight:500;color:var(--muted)}
+  .nav-links a:hover{color:var(--ink)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;font:600 .95rem var(--body);text-decoration:none;padding:.85rem 1.6rem;border-radius:10px;border:1.5px solid var(--violet);cursor:pointer;transition:background .2s,color .2s,box-shadow .2s}
+  .btn-solid{background:var(--violet);color:var(--night)}
+  .btn-solid:hover{background:var(--lilac);border-color:var(--lilac);box-shadow:0 0 32px rgba(169,112,255,.45)}
+  .btn-line{background:transparent;color:var(--ink)}
+  .btn-line:hover{background:rgba(169,112,255,.14)}
+  .nav .btn{padding:.6rem 1.15rem;font-size:.88rem}
+  .nav-links a.btn-solid{color:var(--night)}
+  .burger{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer}
+  .burger span{display:block;width:24px;height:2px;background:var(--ink);margin:5px auto;transition:transform .25s,opacity .25s}
+  .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  /* HERO */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:130px 0 90px;overflow:hidden;
+    background:radial-gradient(ellipse 70% 60% at 75% 40%,var(--plum) 0%,transparent 70%),var(--night)}
+  .layer{position:absolute;inset:-10% -5%;pointer-events:none;will-change:transform}
+  .layer svg{width:100%;height:100%}
+  .hero-grid{position:relative;z-index:3;display:grid;grid-template-columns:1fr 1.05fr;gap:4rem;align-items:center}
+  .hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2.5rem,3.4vw + 1.3rem,4.1rem);line-height:1.02;letter-spacing:-.03em}
+  .hero h1 .l2{display:block;color:transparent;-webkit-text-stroke:1.5px var(--violet)}
+  .hero-sub{color:var(--muted);font-size:1.1rem;max-width:500px;margin:1.6rem 0 2.2rem}
+  .actions{display:flex;gap:.9rem;flex-wrap:wrap}
+
+  /* Console demo */
+  .console{background:rgba(30,16,54,.82);border:1px solid var(--line);border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 0 1px rgba(169,112,255,.08) inset;overflow:hidden;backdrop-filter:blur(6px)}
+  .console-top{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.1rem;border-bottom:1px solid var(--line);font-size:.8rem;color:var(--muted)}
+  .console-top em{font-style:normal;padding:.15rem .55rem;border-radius:99px;background:rgba(169,112,255,.15);color:var(--lilac);font-size:.72rem}
+  .prompt{display:flex;gap:.7rem;align-items:flex-start;padding:1.2rem 1.2rem 1rem;font-family:var(--mono);font-size:.95rem}
+  .prompt .caret-sign{color:var(--violet)}
+  .typed::after{content:"";display:inline-block;width:.55em;height:1.1em;background:var(--violet);vertical-align:-.18em;margin-left:2px;animation:blink 1s steps(1) infinite}
+  .typed.done::after{display:none}
+  @keyframes blink{50%{opacity:0}}
+  .answer{padding:0 1.2rem 1.3rem;display:grid;gap:.7rem}
+  .block{border:1px solid var(--line);border-radius:12px;padding:.85rem 1rem;opacity:0;transform:translateY(8px);transition:opacity .45s,transform .45s}
+  .block.show{opacity:1;transform:none}
+  .block h4{font:600 .78rem var(--body);color:var(--violet);margin-bottom:.3rem}
+  .block p{font-size:.9rem;color:var(--ink)}
+  .bars{display:grid;gap:.4rem;margin-top:.35rem}
+  .bar{display:grid;grid-template-columns:7.5rem 1fr 2.2rem;gap:.6rem;align-items:center;font-size:.8rem;color:var(--muted)}
+  .bar i{height:6px;border-radius:9px;background:rgba(169,112,255,.15);position:relative;overflow:hidden}
+  .bar i::after{content:"";position:absolute;inset:0;width:var(--w);background:var(--violet);border-radius:9px}
+  .console-foot{padding:.7rem 1.2rem;border-top:1px solid var(--line);font-size:.75rem;color:var(--muted)}
+
+  /* SECTIONS */
+  section{position:relative}
+  .pad{padding:clamp(5rem,10vw,8rem) 0}
+  h2{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,3.8vw,3rem);line-height:1.08;letter-spacing:-.025em;max-width:20ch}
+  .lead{color:var(--muted);font-size:1.07rem;max-width:580px;margin-top:1rem}
+
+  /* Warehouse strip */
+  .strip{border-block:1px solid var(--line);background:var(--night-2)}
+  .strip .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+  .strip div > div{padding:2.2rem 1.2rem;border-left:1px solid var(--line)}
+  .strip div > div:first-child{border-left:0}
+  .strip strong{display:block;font-family:var(--display);font-weight:700;font-size:clamp(1.6rem,3vw,2.3rem);color:var(--lilac);letter-spacing:-.02em}
+  .strip span{color:var(--muted);font-size:.9rem}
+
+  /* Modules */
+  .modules{display:grid;grid-template-columns:1fr 1fr;margin-top:3.2rem;border-top:1px solid var(--line)}
+  .module{padding:2rem 2rem 2rem 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:3rem 1fr;gap:1rem}
+  .module:nth-child(even){padding-left:2rem;padding-right:0;border-left:1px solid var(--line)}
+  .module svg{width:2.2rem;height:2.2rem;stroke:var(--violet);fill:none;stroke-width:1.6}
+  .module h3{font-family:var(--display);font-weight:500;font-size:1.12rem;margin-bottom:.35rem;letter-spacing:-.01em}
+  .module p{color:var(--muted);font-size:.95rem}
+
+  /* Difference */
+  .diff{background:var(--night-2)}
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3rem}
+  .col{border-radius:18px;padding:2.2rem;border:1px solid var(--line)}
+  .col.ours{background:linear-gradient(160deg,var(--plum),var(--night-2));border-color:var(--violet)}
+  .col h3{font-family:var(--display);font-weight:500;font-size:1.15rem;margin-bottom:1.2rem}
+  .col.theirs h3{color:var(--muted)}
+  .col ul{list-style:none;display:grid;gap:.9rem}
+  .col li{padding-left:1.6rem;position:relative}
+  .col.theirs li{color:var(--muted)}
+  .col.theirs li::before{content:"";position:absolute;left:0;top:.7em;width:.8rem;height:1.5px;background:var(--muted)}
+  .col.ours li::before{content:"";position:absolute;left:0;top:.45em;width:.7rem;height:.7rem;border-radius:50%;background:var(--violet);box-shadow:0 0 12px var(--violet)}
+
+  /* Graph parallax */
+  .graph{overflow:hidden;min-height:620px;display:flex;align-items:center}
+  .graph .wrap{position:relative;z-index:3}
+  .graph .lead{max-width:470px}
+  .graph-art{position:absolute;right:-4%;top:50%;width:min(760px,70vw);aspect-ratio:1;transform:translateY(-50%);pointer-events:none}
+  .graph-art .g{position:absolute;inset:0;will-change:transform}
+  .graph-art svg{width:100%;height:100%}
+
+  /* Plans */
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem;align-items:stretch}
+  .plan{border:1px solid var(--line);border-radius:18px;padding:2rem;display:flex;flex-direction:column;background:var(--night-2)}
+  .plan.feat{border-color:var(--violet);background:linear-gradient(170deg,var(--plum),var(--night-2) 70%)}
+  .plan .tag{align-self:flex-start;font-size:.75rem;font-weight:600;color:var(--night);background:var(--violet);padding:.2rem .65rem;border-radius:99px;margin-bottom:.9rem}
+  .plan h3{font-family:var(--display);font-weight:700;font-size:1.4rem}
+  .plan .who{color:var(--muted);margin:.4rem 0 1.4rem;font-size:.95rem}
+  .plan ul{list-style:none;display:grid;gap:.65rem;margin-bottom:1.8rem;font-size:.95rem}
+  .plan li{padding-left:1.4rem;position:relative}
+  .plan li::before{content:"";position:absolute;left:0;top:.62em;width:.5rem;height:.5rem;border-radius:2px;background:var(--violet)}
+  .plan .btn{margin-top:auto}
+
+  /* CTA */
+  .cta{text-align:center;overflow:hidden}
+  .cta h2{margin:0 auto;max-width:18ch}
+  .cta .lead{margin:1rem auto 2.2rem}
+  .cta .actions{justify-content:center}
+  .cta .halo{position:absolute;left:50%;top:50%;width:900px;height:900px;margin:-450px 0 0 -450px;border-radius:50%;background:radial-gradient(circle,rgba(169,112,255,.18),transparent 60%);pointer-events:none;will-change:transform}
+
+  footer{border-top:1px solid var(--line);padding:2rem 0}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.88rem}
+  footer a{text-decoration:none;color:var(--lilac)}
+  footer nav{display:flex;gap:1.4rem;flex-wrap:wrap}
+
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:3rem}
+    .compare,.plans{grid-template-columns:1fr}
+    .graph-art{opacity:.35;right:-30%}
+  }
+  @media (max-width:780px){
+    .nav-links{position:fixed;top:74px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:var(--night);border-bottom:1px solid var(--line);padding:.5rem 5% 1.25rem;opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .2s,transform .2s}
+    .nav-links.open{opacity:1;transform:none;pointer-events:auto}
+    .nav-links a{padding:.8rem 0;width:100%;font-size:1rem}
+    .nav-links .btn{width:100%;margin-top:.6rem}
+    .burger{display:block}
+    .strip .wrap{grid-template-columns:1fr 1fr}
+    .strip div > div:nth-child(3){border-left:0}
+    .strip div > div:nth-child(n+3){border-top:1px solid var(--line)}
+    .modules{grid-template-columns:1fr}
+    .module,.module:nth-child(even){padding:1.6rem 0;border-left:0}
+    .bar{grid-template-columns:6rem 1fr 2rem}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    [data-speed]{transform:none!important}
+    .block{opacity:1;transform:none;transition:none}
+    .typed::after{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="Innovatoor 2.0, home"><b>INNOVATOOR <i>2.0</i></b><small>by Innovatoor Ltd</small></a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    <nav class="nav-links" id="menu">
+      <a href="#modules">What it does</a>
+      <a href="#difference">Why it's different</a>
+      <a href="#plans">Plans</a>
+      <a href="https://innovatoor.com">Innovatoor.com</a>
+      <a href="#access" class="btn btn-solid">Request access</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <!-- parallax layer: faint grid -->
+    <div class="layer" data-speed="0.25" aria-hidden="true">
+      <svg preserveAspectRatio="none" viewBox="0 0 100 100">
+        <defs><pattern id="grid" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M4 0H0V4" fill="none" stroke="rgba(169,112,255,.08)" stroke-width=".08"/></pattern></defs>
+        <rect width="100" height="100" fill="url(#grid)"/>
+      </svg>
+    </div>
+    <!-- parallax layer: data nodes -->
+    <div class="layer" data-speed="0.45" aria-hidden="true">
+      <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+        <g stroke="rgba(169,112,255,.25)" stroke-width="1">
+          <line x1="80" y1="140" x2="260" y2="90"/><line x1="260" y1="90" x2="330" y2="260"/><line x1="1040" y1="120" x2="1150" y2="280"/><line x1="980" y1="640" x2="1120" y2="560"/><line x1="140" y1="620" x2="300" y2="700"/>
+        </g>
+        <g fill="#A970FF"><circle cx="80" cy="140" r="4"/><circle cx="260" cy="90" r="6"/><circle cx="330" cy="260" r="3"/><circle cx="1040" cy="120" r="5"/><circle cx="1150" cy="280" r="3"/><circle cx="980" cy="640" r="4"/><circle cx="1120" cy="560" r="6"/><circle cx="140" cy="620" r="3"/><circle cx="300" cy="700" r="5"/></g>
+      </svg>
+    </div>
+
+    <div class="wrap hero-grid">
+      <div>
+        <h1>Ask less.<span class="l2">Understand more.</span></h1>
+        <p class="hero-sub">Innovatoor 2.0 is an AI business advisor that turns one question into market research, competitor analysis, and a clear recommendation in seconds. Its answers come from our own live data on African companies, markets, and tenders, not from generic internet knowledge.</p>
+        <div class="actions">
+          <a href="#access" class="btn btn-solid">Request access</a>
+          <a href="#modules" class="btn btn-line">See what it does</a>
+        </div>
+      </div>
+
+      <div class="console" data-speed="-0.08" aria-label="Example of an Innovatoor 2.0 answer">
+        <div class="console-top"><span>Business Advisor</span><em>Example answer</em></div>
+        <div class="prompt"><span class="caret-sign" aria-hidden="true">&gt;</span><span class="typed" id="typed"></span></div>
+        <div class="answer">
+          <div class="block"><h4>Market</h4><p>Demand in Musanze is growing with tourism and new residential areas, and pharmacy coverage per resident is below the Kigali average.</p></div>
+          <div class="block"><h4>Competition near your area</h4>
+            <div class="bars">
+              <div class="bar"><span>Town centre</span><i style="--w:82%"></i><span>High</span></div>
+              <div class="bar"><span>Muhoza</span><i style="--w:48%"></i><span>Mid</span></div>
+              <div class="bar"><span>Cyuve</span><i style="--w:22%"></i><span>Low</span></div>
+            </div>
+          </div>
+          <div class="block"><h4>Recommendation</h4><p>Open near Cyuve with a clinic partnership. Check open tenders for health supplies in Northern Province before you finalise.</p></div>
+        </div>
+        <div class="console-foot">Illustrative example. Real answers draw on the live Innovatoor data warehouse.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAREHOUSE STRIP -->
+  <section class="strip" aria-label="Innovatoor data warehouse">
+    <div class="wrap">
+      <div><strong>26</strong><span>Bots collecting data around the clock</span></div>
+      <div><strong>17,000+</strong><span>Records in the warehouse</span></div>
+      <div><strong>31</strong><span>Data categories, from tenders to real estate</span></div>
+      <div><strong>3,500+</strong><span>Companies tracked</span></div>
+    </div>
+  </section>
+
+  <!-- MODULES -->
+  <section class="pad" id="modules">
+    <div class="wrap">
+      <h2>Six advisors in one place</h2>
+      <p class="lead">Each module answers a different kind of business question. All of them reason over the same live data.</p>
+      <div class="modules">
+        <div class="module">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a7 7 0 0 0-4 12.7V19h8v-3.3A7 7 0 0 0 12 3zM9 22h6"/></svg>
+          <div><h3>Business Advisor</h3><p>Describe your idea or problem in a sentence and get a full strategic read with next steps.</p></div>
+        </div>
+        <div class="module">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18M6 16V9M11 16V5M16 16v-5M21 16V8"/></svg>
+          <div><h3>Market Research</h3><p>Size a market, spot trends, and see where demand is growing before you commit money.</p></div>
+        </div>
+        <div class="module">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="8" r="4"/><circle cx="16" cy="16" r="4"/><path d="M11 11l2 2"/></svg>
+          <div><h3>Competitor Analysis</h3><p>See who you are up against, how they position themselves, and where they leave gaps.</p></div>
+        </div>
+        <div class="module">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19l5-6 4 3 7-9M15 7h5v5"/></svg>
+          <div><h3>Investor Portal</h3><p>Explore sectors and companies with the data an investor needs to shortlist opportunities.</p></div>
+        </div>
+        <div class="module">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+          <div><h3>Due Diligence</h3><p>Check a company or partner before you sign, using public records, news, and our own data.</p></div>
+        </div>
+        <div class="module">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>
+          <div><h3>AI Chat</h3><p>Ask follow-up questions in plain language and dig deeper into any answer.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFFERENCE -->
+  <section class="pad diff" id="difference">
+    <div class="wrap">
+      <h2>General AI guesses. Innovatoor 2.0 checks.</h2>
+      <p class="lead">Most AI tools answer from whatever the internet said about Africa years ago. Innovatoor 2.0 answers from data our bots collected this week.</p>
+      <div class="compare">
+        <div class="col theirs">
+          <h3>General AI tools</h3>
+          <ul>
+            <li>Trained on generic, mostly non-African internet content</li>
+            <li>Knowledge stops at a fixed date</li>
+            <li>Little or no data on local companies, tenders, or prices</li>
+            <li>Confident answers you still have to verify yourself</li>
+          </ul>
+        </div>
+        <div class="col ours">
+          <h3>Innovatoor 2.0</h3>
+          <ul>
+            <li>Built and trained on real Rwandan and African data</li>
+            <li>A warehouse that bots update continuously</li>
+            <li>Thousands of local companies, influencers, and tenders tracked</li>
+            <li>Answers grounded in records you can trace</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRAPH (parallax) -->
+  <section class="pad graph">
+    <div class="graph-art" aria-hidden="true">
+      <div class="g" data-speed="0.12">
+        <svg viewBox="0 0 600 600"><g fill="none" stroke="rgba(169,112,255,.18)"><circle cx="300" cy="300" r="250"/><circle cx="300" cy="300" r="170"/><circle cx="300" cy="300" r="90"/></g></svg>
+      </div>
+      <div class="g" data-speed="-0.1">
+        <svg viewBox="0 0 600 600">
+          <g stroke="rgba(169,112,255,.5)" stroke-width="1.2">
+            <line x1="300" y1="300" x2="150" y2="180"/><line x1="300" y1="300" x2="460" y2="170"/><line x1="300" y1="300" x2="470" y2="420"/><line x1="300" y1="300" x2="160" y2="440"/><line x1="150" y1="180" x2="90" y2="300"/><line x1="460" y1="170" x2="540" y2="290"/><line x1="470" y1="420" x2="380" y2="520"/>
+          </g>
+          <circle cx="300" cy="300" r="22" fill="#A970FF"/>
+          <g fill="#D9C2FF"><circle cx="150" cy="180" r="12"/><circle cx="460" cy="170" r="10"/><circle cx="470" cy="420" r="13"/><circle cx="160" cy="440" r="9"/></g>
+          <g fill="#6E4AA8"><circle cx="90" cy="300" r="7"/><circle cx="540" cy="290" r="7"/><circle cx="380" cy="520" r="8"/></g>
+        </svg>
+      </div>
+    </div>
+    <div class="wrap">
+      <h2>See how companies and people connect</h2>
+      <p class="lead">The graph view maps the relationships behind a market: who owns what, who partners with whom, and which names keep appearing together. It shows the links a spreadsheet hides.</p>
+    </div>
+  </section>
+
+  <!-- PLANS -->
+  <section class="pad" id="plans">
+    <div class="wrap">
+      <h2>Choose how deep you want to go</h2>
+      <p class="lead">Start free and upgrade when you need live tracking of your own markets.</p>
+      <div class="plans">
+        <div class="plan">
+          <h3>Free</h3>
+          <p class="who">For trying the advisor on real questions.</p>
+          <ul><li>Business Advisor and AI Chat</li><li>Answers from the Innovatoor data warehouse</li></ul>
+          <a href="#access" class="btn btn-line">Start free</a>
+        </div>
+        <div class="plan">
+          <h3>Standard</h3>
+          <p class="who">For teams that make regular market decisions.</p>
+          <ul><li>All six advisor modules</li><li>Full warehouse access</li><li>Graph view</li></ul>
+          <a href="#access" class="btn btn-line">Request access</a>
+        </div>
+        <div class="plan feat">
+          <span class="tag">Most complete</span>
+          <h3>Premium</h3>
+          <p class="who">For businesses that want live intelligence on their own targets.</p>
+          <ul><li>Everything in Standard</li><li>Live scraping bots on your markets, competitors, and tenders</li><li>Priority support from the Innovatoor team</li></ul>
+          <a href="#access" class="btn btn-solid">Talk to us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="pad cta" id="access">
+    <div class="halo" data-speed="0.2" aria-hidden="true"></div>
+    <div class="wrap">
+      <h2>Your next decision deserves better data</h2>
+      <p class="lead">Tell us what you want to understand, and we will set up your access to Innovatoor 2.0.</p>
+      <div class="actions">
+        <a href="mailto:info@innovatoor.com?subject=Innovatoor%202.0%20access" class="btn btn-solid">Request access</a>
+        <a href="https://wa.me/250782010317" class="btn btn-line">Message us on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Innovatoor 2.0 by <a href="https://innovatoor.com">Innovatoor Ltd</a>, Norrsken House Kigali</p>
+    <nav aria-label="Footer">
+      <a href="tel:+250782010317">+250 782 010 317</a>
+      <a href="mailto:info@innovatoor.com">info@innovatoor.com</a>
+      <a href="https://innovatoor.com">innovatoor.com</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Typed prompt + staged answer (plays once)
+  const question = 'Should I open a pharmacy in Musanze?';
+  const typed = document.getElementById('typed');
+  const blocks = [...document.querySelectorAll('.block')];
+  function reveal(){ blocks.forEach((b,i) => setTimeout(() => b.classList.add('show'), reduce ? 0 : 450 + i * 650)); }
+  if (reduce) { typed.textContent = question; typed.classList.add('done'); reveal(); }
+  else {
+    let i = 0;
+    setTimeout(function type(){
+      typed.textContent = question.slice(0, ++i);
+      if (i < question.length) setTimeout(type, 38 + Math.random() * 40);
+      else { typed.classList.add('done'); reveal(); }
+    }, 700);
+  }
+
+  // Mobile menu
+  const burger = document.getElementById('burger'), menu = document.getElementById('menu');
+  burger.addEventListener('click', () => {
+    const open = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!open));
+    burger.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+    menu.classList.toggle('open', !open);
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    burger.setAttribute('aria-expanded', 'false'); menu.classList.remove('open');
+  }));
+
+  // Parallax
+  const nav = document.getElementById('nav');
+  const layers = [...document.querySelectorAll('[data-speed]')];
+  let ticking = false;
+  function update(){
+    nav.classList.toggle('scrolled', scrollY > 10);
+    if (!reduce) {
+      const mid = innerHeight / 2;
+      layers.forEach(el => {
+        const sec = el.closest('section');
+        const r = sec.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > innerHeight + 200) return;
+        const offset = sec.classList.contains('hero') ? -r.top : (r.top + r.height / 2 - mid);
+        el.style.transform = `translate3d(0, ${offset * parseFloat(el.dataset.speed)}px, 0)`;
+      });
+    }
+    ticking = false;
+  }
+  addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(update); ticking = true; } }, { passive: true });
+  addEventListener('resize', update);
+  update();
+</script>
+</body>
+</html>
