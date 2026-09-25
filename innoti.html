@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Innoti — Loan Management Platform by Innovatoor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <style>
+         :root {
+            --bg: #f5f4fa;
+            --bg2: #ffffff;
+            --surface: #f0eef8;
+            --purple: #7436bb;
+            --purple2: #9b59d0;
+            --purple-light: #ede8f7;
+            --purple-mid: #d4c5f0;
+            --text: #1a1228;
+            --text2: #4a4060;
+            --text3: #8a7aa0;
+            --border: #e2dcf0;
+            --shadow: 0 2px 12px rgba(116, 54, 187, .08);
+            --shadow-md: 0 8px 32px rgba(116, 54, 187, .12);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden
+        }
+        /* ── NAV ── */
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .9rem 5%;
+            background: rgba(255, 255, 255, .88);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            text-decoration: none
+        }
+        
+        .nav-logo-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--purple), var(--purple2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: #fff;
+            font-weight: 700
+        }
+        
+        .nav-logo-text {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text)
+        }
+        
+        .nav-logo-sub {
+            font-size: .7rem;
+            color: var(--text3);
+            margin-top: -.1rem;
+            display: block
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem
+        }
+        
+        .nav-links a {
+            color: var(--text2);
+            text-decoration: none;
+            font-size: .9rem;
+            font-weight: 500;
+            transition: color .2s
+        }
+        
+        .nav-links a:hover {
+            color: var(--purple)
+        }
+        
+        .btn-nav {
+            padding: .55rem 1.3rem;
+            background: var(--purple);
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: .88rem;
+            transition: all .2s;
+            box-shadow: 0 2px 8px rgba(116, 54, 187, .3)
+        }
+        
+        .btn-nav:hover {
+            background: var(--purple2);
+            transform: translateY(-1px)
+        }
+        /* ── HERO ── */
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 7rem 5% 5rem;
+            background: linear-gradient(160deg, #fff 0%, var(--bg) 60%, var(--purple-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(116, 54, 187, .08), transparent 70%);
+            pointer-events: none;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(155, 89, 208, .06), transparent 70%);
+            pointer-events: none;
+        }
+        
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .35rem .9rem;
+            border: 1.5px solid var(--purple-mid);
+            border-radius: 99px;
+            font-size: .78rem;
+            font-weight: 600;
+            color: var(--purple);
+            margin-bottom: 1.25rem;
+            background: var(--purple-light);
+        }
+        
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.2rem, 4vw, 3.6rem);
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--text);
+            margin-bottom: 1.25rem;
+        }
+        
+        .hero h1 span {
+            color: var(--purple)
+        }
+        
+        .hero p {
+            font-size: 1.05rem;
+            color: var(--text2);
+            line-height: 1.75;
+            margin-bottom: 2rem;
+            max-width: 480px
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap
+        }
+        
+        .btn-primary {
+            padding: .8rem 1.8rem;
+            background: var(--purple);
+            color: #fff;
+            border-radius: 9px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: .95rem;
+            transition: all .2s;
+            box-shadow: 0 4px 16px rgba(116, 54, 187, .3);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            background: var(--purple2);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(116, 54, 187, .35)
+        }
+        
+        .btn-outline {
+            padding: .8rem 1.8rem;
+            border: 2px solid var(--purple-mid);
+            color: var(--purple);
+            border-radius: 9px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: .95rem;
+            transition: all .2s;
+            background: #fff;
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--purple);
+            background: var(--purple-light)
+        }
+        /* ── HERO CARD PANEL ── */
+        
+        .hero-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem
+        }
+        
+        .hero-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.25rem 1.4rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: transform .2s, box-shadow .2s;
+        }
+        
+        .hero-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md)
+        }
+        
+        .hc-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            flex-shrink: 0;
+            background: var(--purple-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        .hc-title {
+            font-weight: 700;
+            font-size: .95rem;
+            color: var(--text);
+            margin-bottom: .25rem
+        }
+        
+        .hc-desc {
+            font-size: .83rem;
+            color: var(--text2);
+            line-height: 1.5
+        }
+        /* ── STATS STRIP ── */
+        
+        .stats-strip {
+            background: #fff;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 2.5rem 5%;
+        }
+        
+        .stats-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem
+        }
+        
+        .strip-stat {
+            text-align: center
+        }
+        
+        .strip-stat .num {
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--purple);
+        }
+        
+        .strip-stat .lbl {
+            font-size: .82rem;
+            color: var(--text3);
+            margin-top: .2rem
+        }
+        /* ── SECTION COMMON ── */
+        
+        .section {
+            padding: 5rem 5%
+        }
+        
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto
+        }
+        
+        .section-label {
+            display: inline-block;
+            font-size: .72rem;
+            font-weight: 700;
+            color: var(--purple);
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            margin-bottom: .65rem;
+        }
+        
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: .85rem;
+            line-height: 1.2
+        }
+        
+        .section-sub {
+            font-size: 1rem;
+            color: var(--text2);
+            max-width: 540px;
+            line-height: 1.75;
+            margin-bottom: 3rem
+        }
+        /* ── FEATURES ── */
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 1.25rem
+        }
+        
+        .feature-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.6rem;
+            transition: border-color .2s, box-shadow .2s, transform .2s;
+            position: relative;
+        }
+        
+        .feature-card:hover {
+            border-color: var(--purple-mid);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px)
+        }
+        
+        .feature-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background: var(--purple-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: .5rem
+        }
+        
+        .feature-card p {
+            font-size: .85rem;
+            color: var(--text2);
+            line-height: 1.65
+        }
+        /* ── HOW IT WORKS ── */
+        
+        .how-section {
+            background: var(--surface)
+        }
+        
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem
+        }
+        
+        .step {
+            text-align: center;
+            padding: 0 .5rem
+        }
+        
+        .step-num {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--purple), var(--purple2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Syne', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin: 0 auto 1rem;
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(116, 54, 187, .3);
+        }
+        
+        .step h4 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: .95rem;
+            color: var(--text);
+            margin-bottom: .5rem
+        }
+        
+        .step p {
+            font-size: .85rem;
+            color: var(--text2);
+            line-height: 1.6
+        }
+        /* ── BNR SECTION ── */
+        
+        .bnr-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center
+        }
+        
+        .bnr-content h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 1rem;
+            line-height: 1.2
+        }
+        
+        .bnr-content p {
+            font-size: .95rem;
+            color: var(--text2);
+            line-height: 1.75;
+            margin-bottom: 1.5rem
+        }
+        
+        .check-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: .65rem
+        }
+        
+        .check-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: .65rem;
+            font-size: .88rem;
+            color: var(--text2);
+            line-height: 1.5;
+        }
+        
+        .check-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--purple-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: .05rem;
+            font-size: .65rem;
+            color: var(--purple);
+            font-weight: 700;
+        }
+        
+        .bnr-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .bnr-card h4 {
+            font-family: 'Syne', sans-serif;
+            font-size: .95rem;
+            font-weight: 700;
+            color: var(--purple);
+            margin-bottom: 1rem
+        }
+        
+        .report-item {
+            display: flex;
+            align-items: center;
+            gap: .85rem;
+            padding: .65rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: .85rem;
+            color: var(--text2);
+        }
+        
+        .report-item:last-child {
+            border: none
+        }
+        
+        .report-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            background: var(--purple-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .9rem;
+            flex-shrink: 0;
+        }
+        /* ── FOR WHOM ── */
+        
+        .whom-section {
+            background: var(--surface)
+        }
+        
+        .whom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin-top: 3rem
+        }
+        
+        .whom-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform .2s, box-shadow .2s;
+        }
+        
+        .whom-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md)
+        }
+        
+        .whom-icon {
+            font-size: 2.2rem;
+            margin-bottom: .75rem;
+            display: block
+        }
+        
+        .whom-card h4 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: .95rem;
+            color: var(--text);
+            margin-bottom: .4rem
+        }
+        
+        .whom-card p {
+            font-size: .82rem;
+            color: var(--text2);
+            line-height: 1.5
+        }
+        /* ── CTA ── */
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--purple) 0%, var(--purple2) 100%);
+            padding: 5rem 5%;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 1rem
+        }
+        
+        .cta-section p {
+            color: rgba(255, 255, 255, .8);
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.75
+        }
+        
+        .btn-white {
+            padding: .8rem 2rem;
+            background: #fff;
+            color: var(--purple);
+            border-radius: 9px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: .95rem;
+            transition: all .2s;
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+        }
+        
+        .btn-white:hover {
+            background: var(--purple-light);
+            transform: translateY(-2px)
+        }
+        
+        .btn-white-outline {
+            padding: .8rem 2rem;
+            border: 2px solid rgba(255, 255, 255, .5);
+            color: #fff;
+            border-radius: 9px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: .95rem;
+            transition: all .2s;
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+        }
+        
+        .btn-white-outline:hover {
+            border-color: #fff;
+            background: rgba(255, 255, 255, .1)
+        }
+        /* ── FOOTER ── */
+        
+        footer {
+            background: #fff;
+            border-top: 1px solid var(--border);
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        footer p {
+            font-size: .82rem;
+            color: var(--text3)
+        }
+        
+        footer a {
+            color: var(--purple);
+            text-decoration: none;
+            font-size: .82rem;
+            font-weight: 500
+        }
+        
+        footer a:hover {
+            text-decoration: underline
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 1.5rem
+        }
+        /* ── RESPONSIVE ── */
+        
+        @media(max-width:900px) {
+            .hero-inner {
+                grid-template-columns: 1fr
+            }
+            .bnr-grid {
+                grid-template-columns: 1fr
+            }
+            .nav-links {
+                display: none
+            }
+            .hero {
+                padding: 6rem 5% 4rem
+            }
+        }
+        
+        @media(max-width:600px) {
+            .stats-inner {
+                gap: 1.25rem
+            }
+            .strip-stat .num {
+                font-size: 1.5rem
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="/" class="nav-logo">
+            <div class="nav-logo-icon">In</div>
+            <div>
+                <span class="nav-logo-text">Innoti</span>
+                <span class="nav-logo-sub">by Innovatoor</span>
+            </div>
+        </a>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#bnr">BNR Reports</a>
+            <a href="#who">Who It's For</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <!-- <a href="/login" class="btn-nav">Sign In →</a>-->
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div>
+                <div class="hero-badge">🇷🇼 Built for Rwanda · Powered by Innovatoor</div>
+                <h1>Loan management<br/>for <span>microfinances</span><br/>that means business.</h1>
+                <p>Innoti gives your institution a complete digital platform client registry, loan processing, repayment tracking, and BNR-compliant reports. No paper. No spreadsheets.</p>
+                <div class="hero-cta">
+                    <a href="mailto:info@innovatoor.com" class="btn-primary">Request a Demo</a>
+                    <a href="#features" class="btn-outline">See Features</a>
+                </div>
+            </div>
+            <div class="hero-cards">
+                <div class="hero-card">
+                    <div class="hc-icon">🏦</div>
+                    <div>
+                        <div class="hc-title">Multi-institution ready</div>
+                        <div class="hc-desc">One platform serving multiple banks and SACCOs. Each institution has its own isolated data and admin access.</div>
+                    </div>
+                </div>
+                <div class="hero-card">
+                    <div class="hc-icon">📊</div>
+                    <div>
+                        <div class="hc-title">BNR reports in one click</div>
+                        <div class="hc-desc">Monthly, quarterly, and annual reports with PAR ratio export to PDF or Excel, ready to submit.</div>
+                    </div>
+                </div>
+                <div class="hero-card">
+                    <div class="hc-icon">📍</div>
+                    <div>
+                        <div class="hc-title">Full Rwanda geography</div>
+                        <div class="hc-desc">Every province, district, and sector built in. Client addresses are precise and BNR-compliant from the first field.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats-strip">
+        <div class="stats-inner">
+            <div class="strip-stat">
+                <div class="num">BNR</div>
+                <div class="lbl">Compliant reports</div>
+            </div>
+            <div class="strip-stat">
+                <div class="num">2</div>
+                <div class="lbl">Interest methods (flat & reducing)</div>
+            </div>
+            <div class="strip-stat">
+                <div class="num">5</div>
+                <div class="lbl">Provinces fully mapped</div>
+            </div>
+            <div class="strip-stat">
+                <div class="num">PDF + Excel</div>
+                <div class="lbl">Export formats</div>
+            </div>
+            <div class="strip-stat">
+                <div class="num">Multi</div>
+                <div class="lbl">Institution support</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURES -->
+    <section class="section" id="features">
+        <div class="section-inner">
+            <span class="section-label">Platform Features</span>
+            <h2 class="section-title">Everything your institution needs</h2>
+            <p class="section-sub">From the first client registration to the final BNR submission Innoti handles the complete loan lifecycle.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Full Client Registry</h3>
+                    <p>Register clients with National ID, employment, monthly income, and complete Rwanda address down to village level.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💳</div>
+                    <h3>Loan Engine</h3>
+                    <p>Supports flat rate and reducing balance. Live calculator shows interest, monthly payment, and total repayable before approving.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Repayment Schedules</h3>
+                    <p>Auto-generated month-by-month schedule for every loan. Record payments and the balance updates instantly.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>BNR Reports</h3>
+                    <p>Monthly, quarterly, semestrial, or annual. PDF and Excel export. PAR ratio calculated automatically.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📂</div>
+                    <h3>Excel Import</h3>
+                    <p>Upload your existing Excel client data. Innoti reads it, previews it, and lets you analyze before importing.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Role-based Access</h3>
+                    <p>Platform owner, institution admin, and loan officer roles. Each sees only what they need to.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section how-section">
+        <div class="section-inner">
+            <span class="section-label">How It Works</span>
+            <h2 class="section-title">Up and running fast</h2>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <h4>Institution onboarded</h4>
+                    <p>Innovatoor registers your bank or SACCO on the platform. Your data is fully isolated from other institutions.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <h4>Import existing data</h4>
+                    <p>Upload your current client list from Excel. No manual re-entry Innoti reads your file directly.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <h4>Issue & track loans</h4>
+                    <p>Create loans with auto-calculated schedules. Staff record payments as they come in.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <h4>Generate BNR reports</h4>
+                    <p>Select the period, click export — PDF or Excel is ready to submit to the National Bank of Rwanda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BNR -->
+    <section class="section" id="bnr">
+        <div class="section-inner">
+            <div class="bnr-grid">
+                <div class="bnr-content">
+                    <span class="section-label">BNR Compliance</span>
+                    <h2>Reports built for the National Bank of Rwanda</h2>
+                    <p>Every metric BNR requires is calculated automatically from your loan data. No manual computation, no risk of error.</p>
+                    <ul class="check-list">
+
+                        <li>
+                            <div class="check-icon">✓</div>Loan disbursement list with client National IDs</li>
+                        <li>
+                            <div class="check-icon">✓</div>Collections received with payment method breakdown</li>
+                        <li>
+                            <div class="check-icon">✓</div>Active portfolio statement with outstanding balances</li>
+                        <li>
+                            <div class="check-icon">✓</div>Overdue loan aging by days past due</li>
+                        <li>
+                            <div class="check-icon">✓</div>New client registrations per period</li>
+                        <li>
+                            <div class="check-icon">✓</div>Institution license number on every report header</li>
+                    </ul>
+                </div>
+                <div class="bnr-card">
+                    <h4>📄 Report formats available</h4>
+                    <div class="report-item">
+                        <div class="report-icon">📆</div>Monthly Portfolio Summary</div>
+                    <div class="report-item">
+                        <div class="report-icon">📈</div>Trimestrial — Q1 / Q2 / Q3 / Q4</div>
+                    <div class="report-item">
+                        <div class="report-icon">📋</div>Semestrial — S1 / S2</div>
+                    <div class="report-item">
+                        <div class="report-icon">📁</div>Annual Report</div>
+
+                    <div class="report-item">
+                        <div class="report-icon">💰</div>Collections Statement</div>
+                    <div class="report-item">
+                        <div class="report-icon">🗂️</div>Excel multi-sheet export (4 sheets)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHO IS IT FOR -->
+    <section class="section whom-section" id="who">
+        <div class="section-inner">
+            <span class="section-label">Who It's For</span>
+            <h2 class="section-title">Built for Rwanda's financial sector</h2>
+            <p class="section-sub">Any institution that issues loans and needs to report to BNR can run Innoti.</p>
+            <div class="whom-grid">
+                <div class="whom-card">
+                    <span class="whom-icon">🏛️</span>
+                    <h4>Microfinance Institutions</h4>
+                    <p>Licensed MFIs that need structured loan tracking and periodic BNR reporting.</p>
+                </div>
+                <div class="whom-card">
+                    <span class="whom-icon">🤝</span>
+                    <h4>SACCOs</h4>
+                    <p>Savings and credit cooperatives managing member loans and repayments.</p>
+                </div>
+                <div class="whom-card">
+                    <span class="whom-icon">🏦</span>
+                    <h4>Community Banks</h4>
+                    <p>Small licensed banks that need full client management and regulatory reporting.</p>
+                </div>
+                <div class="whom-card">
+                    <span class="whom-icon">📊</span>
+                    <h4>Lending Groups</h4>
+                    <p>Organized lending cooperatives moving away from paper registers and Excel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="contact">
+        <h2>Ready to modernize your loan operations?</h2>
+        <p>Contact Innovatoor to schedule a demo or discuss how Innoti can be deployed for your institution.</p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+            <!--<a href="/login" class="btn-white">→ View Live Demo</a>-->
+            <a href="mailto:info@innovatoor.com" class="btn-white-outline">✉ Contact Innovatoor</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 <strong>Innoti</strong> by <a href="https://innovatoor.com">Innovatoor Ltd</a> · Norrsken House, Kigali, Rwanda</p>
+        <div class="footer-links">
+            <!-- <a href="/login">Sign In</a>-->
+            <a href="mailto:info@innovatoor.com">Contact</a>
+            <a href="https://innovatoor.com">Innovatoor.com</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>
