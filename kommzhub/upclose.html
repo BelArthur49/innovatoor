@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>The Up Close with Davis Higiro | A Kommz Hub production</title>
+    <meta name="description" content="Honest conversations with the people behind remarkable journeys. Hosted by Davis Higiro.">
+    <meta name="theme-color" content="#101622">
+    <link rel="icon" type="image/png" href="assets/img/upclose-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/motion.css">
+    <link rel="stylesheet" href="assets/css/upclose.css">
+</head>
+
+<body data-page="upclose" data-content="content/upclose.json" class="is-loading">
+
+    <!-- Preloader -->
+    <div class="preloader" aria-hidden="true">
+        <div class="preloader-inner">
+            <img class="preloader-mark" src="assets/img/upclose-logo.png" alt="">
+            <span class="preloader-count">0</span>
+        </div>
+        <div class="preloader-bar"><span></span></div>
+    </div>
+
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
+    <div class="cursor" aria-hidden="true"><span class="cursor-label"></span></div>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-nav" id="siteNav">
+        <div class="nav-inner">
+            <a class="nav-logo" href="upclose.html" aria-label="The Up Close home">
+                <img src="assets/img/upclose-logo.png" alt="The Up Close with Davis Higiro" width="56" height="60">
+            </a>
+            <button class="nav-toggle" aria-expanded="false" aria-controls="navMenu">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+            <nav class="nav-menu" id="navMenu" aria-label="Main">
+                <ul class="nav-links" data-slot="nav"></ul>
+                <a class="btn btn-gold nav-cta" data-slot="navButton" href="#booking">Be a guest</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+
+        <!-- HERO -->
+        <section class="uc-hero" aria-label="Introduction">
+            <div class="uc-hero-bg">
+                <img src="assets/img/uc-studio.webp" alt="" fetchpriority="high">
+            </div>
+            <div class="wrap uc-hero-grid">
+                <div class="uc-hero-copy">
+                    <img class="uc-hero-logo" src="assets/img/upclose-logo.png" alt="The Up Close with Davis Higiro" width="420" height="448">
+                    <h1 class="uc-hero-tagline" data-slot="hero.tagline"></h1>
+                    <p class="uc-hero-intro" data-slot="hero.intro"></p>
+                    <div class="btn-row">
+                        <a class="btn btn-gold" data-slot="hero.primaryButton" href="#episodes"></a>
+                        <a class="btn btn-ghost-light" data-slot="hero.secondaryButton" href="#booking"></a>
+                    </div>
+                </div>
+                <div class="uc-hero-mic" aria-hidden="true">
+                    <img src="assets/img/uc-mic.webp" alt="">
+                </div>
+            </div>
+            <div class="uc-hero-pattern" aria-hidden="true">
+                <div class="uc-pattern-strip" data-speed-x="-0.4"></div>
+            </div>
+            <div class="scroll-cue" aria-hidden="true"><span></span>Scroll</div>
+        </section>
+
+        <!-- MARQUEE -->
+        <div class="marquee uc-marquee" aria-hidden="true">
+            <div class="marquee-track" data-slot="marquee"></div>
+        </div>
+
+        <!-- ABOUT -->
+        <section class="uc-about">
+            <div class="wrap uc-about-grid">
+                <div class="uc-about-copy">
+                    <h2 class="uc-h2 split" data-slot="about.title"></h2>
+                    <p class="uc-about-text word-fill" data-slot="about.text"></p>
+                </div>
+                <figure class="uc-about-media">
+                    <div class="uc-about-block" aria-hidden="true"></div>
+                    <img data-slot="about.image" src="assets/img/uc-conversation.webp" alt="">
+                </figure>
+            </div>
+        </section>
+
+        <!-- TOPICS -->
+        <section class="uc-topics">
+            <div class="wrap">
+                <h2 class="uc-h2 split" data-slot="topics.title"></h2>
+                <div class="uc-topic-grid" data-slot="topics.items"></div>
+            </div>
+        </section>
+
+        <!-- HOST -->
+        <section class="uc-host" id="host">
+            <div class="wrap uc-host-grid">
+                <div class="uc-host-copy">
+                    <span class="uc-tag" data-slot="host.label"></span>
+                    <h2 class="uc-host-name" data-slot="host.name"></h2>
+                    <ul class="uc-host-roles" data-slot="host.roles"></ul>
+                    <p class="uc-host-bio" data-slot="host.bio"></p>
+                </div>
+                <div class="uc-host-media">
+                    <img data-slot="host.image" src="assets/img/uc-host.webp" alt="">
+                </div>
+            </div>
+        </section>
+
+        <!-- EPISODES -->
+        <section class="uc-episodes" id="episodes">
+            <div class="wrap">
+                <h2 class="uc-h2 uc-h2-light split" data-slot="episodes.title"></h2>
+                <div data-slot="episodes.latest"></div>
+                <ul class="uc-episode-list" data-slot="episodes.rest"></ul>
+            </div>
+            <div class="uc-artwork">
+                <div class="wrap">
+                    <h3 class="uc-h3" data-slot="artwork.title"></h3>
+                </div>
+                <div class="uc-artwork-track" data-speed-x="0.45" data-slot="artwork.images"></div>
+            </div>
+        </section>
+
+        <!-- REVIEWS -->
+        <section class="uc-reviews" id="reviews">
+            <div class="wrap">
+                <h2 class="uc-h2 split" data-slot="reviews.title"></h2>
+                <div class="slider" data-slot="reviews.items" aria-roledescription="carousel"></div>
+            </div>
+        </section>
+
+        <!-- LISTEN -->
+        <section class="uc-listen" id="listen">
+            <div class="wrap uc-listen-grid">
+                <div>
+                    <h2 class="uc-h2 split" data-slot="listen.title"></h2>
+                    <p class="uc-listen-text" data-slot="listen.text"></p>
+                </div>
+                <div>
+                    <div class="uc-platforms" data-slot="listen.platforms"></div>
+                    <p class="uc-handle" data-slot="listen.handle"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOOKING -->
+        <section class="uc-booking" id="booking">
+            <div class="wrap booking-grid">
+                <div class="booking-copy">
+                    <h2 class="uc-h2 split" data-slot="booking.title"></h2>
+                    <p class="lede" data-slot="booking.intro"></p>
+                </div>
+                <form class="booking-form" id="bookingForm" novalidate data-reveal></form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="uc-footer">
+        <div class="wrap uc-footer-grid">
+            <img class="uc-footer-logo" src="assets/img/upclose-logo.png" alt="The Up Close with Davis Higiro" width="120" height="128">
+            <div class="uc-footer-meta">
+                <a class="uc-produced" data-slot="footer.producedBy" href="index.html">
+                    <img src="assets/img/kommz-mark-white.svg" alt="" width="34" height="24">
+                    <span></span>
+                </a>
+                <a class="uc-footer-email" data-slot="footer.email" href="mailto:info@kommzhub.com"></a>
+                <ul class="footer-links footer-links-row" data-slot="footer.socials"></ul>
+            </div>
+        </div>
+        <div class="wrap uc-footer-base">
+            <span>&copy; <span data-year></span> The Up Close with Davis Higiro.</span>
+            <a class="dev-credit" href="https://innovatoor.com" target="_blank" rel="noopener">Developed by Innovatoor</a>
+        </div>
+    </footer>
+
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/vendor/ScrollTrigger.min.js"></script>
+    <script src="assets/vendor/lenis.min.js"></script>
+    <script src="assets/js/booking.js"></script>
+    <script src="assets/js/motion.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>

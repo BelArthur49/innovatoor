@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Kommz Hub | Strategic communications, Kigali</title>
+    <meta name="description" content="Kommz Hub helps brands, organisations and institutions communicate clearly and consistently.">
+    <meta name="theme-color" content="#0D0D0D">
+    <link rel="icon" type="image/svg+xml" href="assets/img/kommz-mark-black.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Syne:wght@500..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/motion.css">
+    <link rel="stylesheet" href="assets/css/kommzhub.css">
+</head>
+
+<body data-page="kommzhub" data-content="content/kommzhub.json" class="is-loading">
+
+    <!-- Preloader -->
+    <div class="preloader" aria-hidden="true">
+        <div class="preloader-inner">
+            <img class="preloader-mark" src="assets/img/kommz-mark-white.svg" alt="">
+            <span class="preloader-count">0</span>
+        </div>
+        <div class="preloader-bar"><span></span></div>
+    </div>
+
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
+    <div class="cursor" aria-hidden="true"><span class="cursor-label"></span></div>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-nav" id="siteNav">
+        <div class="nav-inner">
+            <a class="nav-logo" href="index.html" aria-label="Kommz Hub home">
+                <img src="assets/img/kommz-logo-white.svg" alt="Kommz Hub" width="120" height="67">
+            </a>
+            <button class="nav-toggle" aria-expanded="false" aria-controls="navMenu">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+            <nav class="nav-menu" id="navMenu" aria-label="Main">
+                <ul class="nav-links" data-slot="nav"></ul>
+                <a class="btn btn-light nav-cta" data-slot="navButton" href="#booking">Book a session</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+
+        <!-- HERO -->
+        <section class="kh-hero" aria-label="Introduction">
+            <div class="kh-hero-media">
+                <img data-slot="hero.image" src="assets/img/9kommz.jpg" alt="" fetchpriority="high">
+            </div>
+            <div class="wrap kh-hero-content">
+                <h1 class="kh-hero-title" data-slot="hero.lines"></h1>
+                <p class="kh-hero-intro" data-slot="hero.intro"></p>
+                <div class="btn-row kh-hero-actions">
+                    <a class="btn btn-light" data-slot="hero.primaryButton" href="#booking"></a>
+                    <a class="btn btn-ghost-light" data-slot="hero.secondaryButton" href="#work"></a>
+                </div>
+            </div>
+            <div class="scroll-cue" aria-hidden="true"><span></span>Scroll</div>
+        </section>
+
+        <!-- MARQUEE -->
+        <div class="marquee kh-marquee" aria-hidden="true">
+            <div class="marquee-track" data-slot="marquee"></div>
+        </div>
+
+        <!-- STATEMENT -->
+        <section class="kh-statement">
+            <div class="wrap kh-statement-grid">
+                <p class="kh-statement-text word-fill" data-slot="statement.text"></p>
+                <ul class="kh-values" data-slot="statement.values" aria-label="Our values"></ul>
+            </div>
+            <div class="wrap">
+                <dl class="kh-stats" data-slot="stats"></dl>
+            </div>
+        </section>
+
+        <!-- SERVICES (pinned horizontal scroll on desktop) -->
+        <section class="kh-services" id="services">
+            <div class="kh-hscroll">
+                <div class="kh-hscroll-track">
+                    <div class="kh-hpanel kh-hpanel-intro">
+                        <h2 class="kh-h2 split" data-slot="services.title"></h2>
+                        <p class="lede" data-slot="services.intro"></p>
+                        <p class="kh-hscroll-hint" aria-hidden="true">Keep scrolling</p>
+                    </div>
+                    <div class="kh-hpanels" data-slot="services.items"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WORDMARK BAND -->
+        <section class="kh-band" aria-hidden="true">
+            <div class="kh-band-rows" data-slot="wordmarkBand"></div>
+        </section>
+
+        <!-- WORK -->
+        <section class="kh-work" id="work">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2 class="kh-h2 split" data-slot="work.title"></h2>
+                    <p class="lede" data-slot="work.intro"></p>
+                </div>
+                <div class="kh-filters" role="group" aria-label="Filter projects" data-slot="work.filters"></div>
+                <div class="kh-work-grid" data-slot="work.items"></div>
+            </div>
+        </section>
+
+        <!-- PROCESS -->
+        <section class="kh-process" id="process">
+            <div class="wrap kh-process-grid">
+                <div class="kh-process-head">
+                    <h2 class="kh-h2 split" data-slot="process.title"></h2>
+                </div>
+                <div class="kh-process-body">
+                    <div class="kh-process-line" aria-hidden="true"><span></span></div>
+                    <ol class="kh-steps" data-slot="process.steps"></ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEAM -->
+        <section class="kh-team" id="team">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2 class="kh-h2 split" data-slot="team.title"></h2>
+                    <p class="lede" data-slot="team.intro"></p>
+                </div>
+                <div class="kh-team-grid" data-slot="team.members"></div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section class="kh-testimonials" id="testimonials">
+            <div class="wrap">
+                <h2 class="kh-h2 split" data-slot="testimonials.title"></h2>
+                <div class="slider" data-slot="testimonials.items" aria-roledescription="carousel"></div>
+            </div>
+        </section>
+
+        <!-- GALLERY -->
+        <section class="kh-gallery" aria-label="Photos of our work">
+            <div class="kh-gallery-track" data-speed-x="-0.5" data-slot="gallery.images"></div>
+        </section>
+
+        <!-- CTA -->
+        <section class="kh-cta">
+            <div class="wrap">
+                <p class="kh-cta-title" data-slot="cta.title"></p>
+                <a class="btn btn-dark btn-lg" data-slot="cta.button" href="#booking"></a>
+            </div>
+        </section>
+
+        <!-- BOOKING -->
+        <section class="kh-booking" id="booking">
+            <div class="wrap booking-grid">
+                <div class="booking-copy">
+                    <h2 class="kh-h2 split" data-slot="booking.title"></h2>
+                    <p class="lede" data-slot="booking.intro"></p>
+                    <dl class="contact-list" data-slot="contact"></dl>
+                </div>
+                <form class="booking-form" id="bookingForm" novalidate data-reveal></form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="kh-footer">
+        <div class="wrap kh-footer-grid">
+            <div>
+                <p class="kh-footer-note" data-slot="footer.note"></p>
+            </div>
+            <ul class="footer-links" data-slot="footer.nav"></ul>
+            <ul class="footer-links" data-slot="footer.socials"></ul>
+        </div>
+        <div class="wrap kh-footer-giant" aria-hidden="true">
+            <img src="assets/img/kommz-wordmark-white.svg" alt="">
+        </div>
+        <div class="wrap kh-footer-base">
+            <span>&copy; <span data-year></span> Kommz Hub. Kigali, Rwanda.</span>
+            <a href="upclose.html">Listen to The Up Close</a>
+            <a class="dev-credit" href="https://innovatoor.com" target="_blank" rel="noopener">Developed by Innovatoor</a>
+        </div>
+    </footer>
+
+    <!-- Project case study -->
+    <div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+        <div class="modal-backdrop" data-close></div>
+        <div class="modal-panel" tabindex="-1" data-lenis-prevent>
+            <button class="modal-close" data-close aria-label="Close case study">&times;</button>
+            <div class="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/vendor/ScrollTrigger.min.js"></script>
+    <script src="assets/vendor/lenis.min.js"></script>
+    <script src="assets/js/booking.js"></script>
+    <script src="assets/js/motion.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>
