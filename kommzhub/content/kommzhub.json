@@ -45,7 +45,7 @@
             "label": "See our work",
             "link": "#work"
         },
-        "image": "assets/img/9kommz.JPG",
+        "image": "assets/img/9kommz.jpg",
         "imageAlt": "Studio microphone lit against a black background"
     },
     "marquee": {
@@ -112,17 +112,17 @@
             {
                 "title": "Creative execution",
                 "text": "Design, photography, video and social content produced to the same standard across print and digital.",
-                "image": "assets/img/2kommz.jpg"
+                "image": "assets/img/8kommz.JPG"
             },
             {
                 "title": "Podcast and media production",
                 "text": "From concept and guest booking to recording, editing and distribution. The Up Close is our flagship show.",
-                "image": "assets/img/9kommz.JPG"
+                "image": "assets/img/11kommz.JPG"
             },
             {
                 "title": "Media relations and events",
                 "text": "Press engagement, launches and panels planned so the right people hear your story at the right time.",
-                "image": "assets/img/1kommz.jpg"
+                "image": "assets/img/2kommz.jpg"
             }
         ]
     },
@@ -167,7 +167,7 @@
                 "category": "Branding",
                 "year": "2026",
                 "summary": "Our own identity: a framed KH monogram, a strict monochrome palette and a voice built on clarity.",
-                "image": "assets/img/kh-work-stationery.webp",
+                "image": "assets/img/14kommz.JPG",
                 "imageAlt": "Kommz Hub letterhead, business cards and phone",
                 "challenge": "Give a young communications company an identity that looks established from day one and works in print, digital and on merchandise.",
                 "approach": "A geometric KH monogram, Geist and Syne typography, a black, white and mist palette, and a full guideline covering logo use, imagery and applications.",
@@ -212,7 +212,7 @@
                 "category": "Strategy",
                 "year": "2025",
                 "summary": "SAMPLE project. Replace with a real strategy engagement.",
-                "image": "assets/img/6kommz.JPG",
+                "image": "assets/img/6kommz.jpg",
                 "imageAlt": "Two professionals reviewing work on a laptop",
                 "challenge": "Describe the client's communication problem here.",
                 "approach": "Describe what Kommz Hub did here.",
