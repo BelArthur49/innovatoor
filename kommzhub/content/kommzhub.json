@@ -45,7 +45,7 @@
             "label": "See our work",
             "link": "#work"
         },
-        "image": "assets/img/kh-mic.webp",
+        "image": "assets/img/9kommz.jpg",
         "imageAlt": "Studio microphone lit against a black background"
     },
     "marquee": {
@@ -97,12 +97,12 @@
         "items": [{
                 "title": "Communication strategy",
                 "text": "Plans that tie every message to a goal, an audience and a channel, with a way to measure what worked.",
-                "image": "assets/img/kh-work-stationery.webp"
+                "image": "assets/img/3kommz.JPG"
             },
             {
                 "title": "Brand positioning",
                 "text": "We define what you stand for, how you sound and why people should care, then put it in writing your team can use.",
-                "image": "assets/img/kh-consult.webp"
+                "image": "assets/img/10kommz.JPG"
             },
             {
                 "title": "Storytelling and content",
@@ -112,17 +112,17 @@
             {
                 "title": "Creative execution",
                 "text": "Design, photography, video and social content produced to the same standard across print and digital.",
-                "image": "assets/img/kh-work-social.webp"
+                "image": "assets/img/2kommz.JPG"
             },
             {
                 "title": "Podcast and media production",
                 "text": "From concept and guest booking to recording, editing and distribution. The Up Close is our flagship show.",
-                "image": "assets/img/kh-mic.webp"
+                "image": "assets/img/9kommz.jpg"
             },
             {
                 "title": "Media relations and events",
                 "text": "Press engagement, launches and panels planned so the right people hear your story at the right time.",
-                "image": "assets/img/kh-interview.webp"
+                "image": "assets/img/1kommz.JPG"
             }
         ]
     },
@@ -191,7 +191,7 @@
                 "category": "Social media",
                 "year": "2026",
                 "summary": "Launch content and profile system for Instagram and stories.",
-                "image": "assets/img/kh-work-social.webp",
+                "image": "assets/img/kh-work-profile.webp",
                 "imageAlt": "Three phone screens showing Kommz Hub stories",
                 "challenge": "Introduce a new name and make people remember it within a few posts.",
                 "approach": "Short typographic statements, a repeating wordmark pattern and documentary photography, organised into highlights for Hub, Influence, Work and Process.",
@@ -212,7 +212,7 @@
                 "category": "Strategy",
                 "year": "2025",
                 "summary": "SAMPLE project. Replace with a real strategy engagement.",
-                "image": "assets/img/kh-consult.webp",
+                "image": "assets/img/6kommz.jpg",
                 "imageAlt": "Two professionals reviewing work on a laptop",
                 "challenge": "Describe the client's communication problem here.",
                 "approach": "Describe what Kommz Hub did here.",
@@ -248,7 +248,7 @@
                 "category": "Strategy",
                 "year": "2024",
                 "summary": "SAMPLE project. Replace with a real workshop or event.",
-                "image": "assets/img/kh-workshop.webp",
+                "image": "assets/img/1kommz.jpg",
                 "imageAlt": "Colleagues reviewing printed charts at a table",
                 "challenge": "Describe the brief here.",
                 "approach": "Describe what you ran here.",
@@ -339,30 +339,7 @@
             }
         ]
     },
-    "gallery": {
-        "_help": "Photos in the sliding strip. Add or remove items freely.",
-        "images": [{
-                "src": "assets/img/kh-presenter.webp",
-                "alt": "Presenter speaking to a camera in a studio"
-            },
-            {
-                "src": "assets/img/kh-meeting.webp",
-                "alt": "Team discussing ideas around a coffee table"
-            },
-            {
-                "src": "assets/img/kh-writing.webp",
-                "alt": "Close-up of hands signing a document"
-            },
-            {
-                "src": "assets/img/kh-interview.webp",
-                "alt": "Man in a suit being interviewed on camera"
-            },
-            {
-                "src": "assets/img/kh-workshop.webp",
-                "alt": "Colleagues reviewing printed charts at a table"
-            }
-        ]
-    },
+
     "cta": {
         "title": "Have something to say?",
         "button": {
