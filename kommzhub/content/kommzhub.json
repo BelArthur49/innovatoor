@@ -45,7 +45,7 @@
             "label": "See our work",
             "link": "#work"
         },
-        "image": "assets/img/9kommz.jpg",
+        "image": "assets/img/9kommz.JPG",
         "imageAlt": "Studio microphone lit against a black background"
     },
     "marquee": {
@@ -212,7 +212,7 @@
                 "category": "Strategy",
                 "year": "2025",
                 "summary": "SAMPLE project. Replace with a real strategy engagement.",
-                "image": "assets/img/6kommz.jpg",
+                "image": "assets/img/6kommz.JPG",
                 "imageAlt": "Two professionals reviewing work on a laptop",
                 "challenge": "Describe the client's communication problem here.",
                 "approach": "Describe what Kommz Hub did here.",
