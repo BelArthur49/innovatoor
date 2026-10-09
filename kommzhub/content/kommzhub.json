@@ -45,7 +45,7 @@
             "label": "See our work",
             "link": "#work"
         },
-        "image": "assets/img/9kommz.JPG",
+        "image": "assets/img/davis.jpeg",
         "imageAlt": "Studio microphone lit against a black background"
     },
     "marquee": {
@@ -121,8 +121,8 @@
             },
             {
                 "title": "Media relations and events",
-                "text": "Press engagement, launches and panels planned so the right people hear your story at the right time.",
-                "image": "assets/img/2kommz.jpg"
+                "text": "Right people hear your story at the right time.",
+                "image": "assets/img/9kommz.JPG"
             }
         ]
     },
