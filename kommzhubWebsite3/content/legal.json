@@ -1,0 +1,134 @@
+{
+  "_help": "Text for the Privacy Policy and Terms of Use pages. Have these reviewed by the client's legal adviser before publishing. Each section has a heading and one or more paragraphs.",
+  "nav": [
+    {
+      "label": "Home",
+      "link": "index.html"
+    },
+    {
+      "label": "Services",
+      "link": "index.html#services"
+    },
+    {
+      "label": "Our Work",
+      "link": "index.html#work"
+    },
+    {
+      "label": "The Up Close",
+      "link": "upclose.html"
+    },
+    {
+      "label": "Contact",
+      "link": "index.html#contact"
+    }
+  ],
+  "navButton": {
+    "label": "Let’s Talk",
+    "link": "index.html#contact"
+  },
+  "updated": "2026-10-19",
+  "privacy": {
+    "title": "Privacy Policy",
+    "intro": "This policy explains what information Kommz Hub Ltd collects through this website and how we use it.",
+    "sections": [
+      {
+        "heading": "Who we are",
+        "text": [
+          "Kommz Hub Ltd is a creative communications agency based in Kigali, Rwanda. For any question about this policy, contact us through the form on our contact page."
+        ]
+      },
+      {
+        "heading": "What we collect",
+        "text": [
+          "When you send an enquiry or booking request, we receive the details you type into the form: your name, email address, and any phone number, organisation, project description, budget or timeline you choose to share.",
+          "We do not use advertising trackers or analytics cookies on this website."
+        ]
+      },
+      {
+        "heading": "How we use it",
+        "text": [
+          "We use your details only to reply to your enquiry and to discuss the work you asked about. We do not sell or rent your information to anyone."
+        ]
+      },
+      {
+        "heading": "Services that help run this site",
+        "text": [
+          "Form messages are delivered to our inbox by FormSubmit (formsubmit.co). Fonts are loaded from Google Fonts. These providers process the minimum technical data needed to deliver their service, under their own privacy policies."
+        ]
+      },
+      {
+        "heading": "How long we keep it",
+        "text": [
+          "We keep enquiry emails for as long as needed to respond and to manage any work that follows, then delete them when they are no longer needed."
+        ]
+      },
+      {
+        "heading": "Your rights",
+        "text": [
+          "You can ask us to show, correct or delete the personal information we hold about you by contacting us. We will respond within a reasonable time."
+        ]
+      },
+      {
+        "heading": "Changes",
+        "text": [
+          "We may update this policy from time to time. The date at the top of this page shows when it last changed."
+        ]
+      }
+    ]
+  },
+  "terms": {
+    "title": "Terms of Use",
+    "intro": "By using this website you agree to these terms.",
+    "sections": [
+      {
+        "heading": "About this website",
+        "text": [
+          "This website is operated by Kommz Hub Ltd, Kigali, Rwanda. It presents our services, our work and The Up Close podcast."
+        ]
+      },
+      {
+        "heading": "Content and ownership",
+        "text": [
+          "Text, images, videos, logos and other material on this website belong to Kommz Hub Ltd or to the clients and partners who have allowed us to show them. You may not copy, reuse or republish this material without written permission."
+        ]
+      },
+      {
+        "heading": "Client work",
+        "text": [
+          "Projects shown in Our Work are displayed with the permission of the clients involved. Their names and brands remain their property."
+        ]
+      },
+      {
+        "heading": "Accuracy",
+        "text": [
+          "We work to keep the information on this website accurate and up to date, but it is provided for general information and may change without notice."
+        ]
+      },
+      {
+        "heading": "Links to other websites",
+        "text": [
+          "This website links to other sites, such as YouTube, Spotify and social media platforms. We are not responsible for the content or practices of those sites."
+        ]
+      },
+      {
+        "heading": "Enquiries",
+        "text": [
+          "Sending an enquiry through this website does not create a contract. Any work we agree to do is covered by a separate written agreement."
+        ]
+      },
+      {
+        "heading": "Governing law",
+        "text": [
+          "These terms are governed by the laws of the Republic of Rwanda."
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "Kommz Hub Ltd. All rights reserved.",
+    "credit": {
+      "label": "Developed by Innovatoor",
+      "link": "https://innovatoor.com"
+    }
+  }
+}

@@ -1,0 +1,681 @@
+{
+    "_help": "Edit the text between the quotes on the right of each colon. Keep every quote, comma and bracket. Lines starting with _help are notes and never appear on the website. A link left empty (\"\") shows the button but does nothing until you paste the real link.",
+    "meta": {
+        "title": "Kommz Hub | Creative communications agency, Kigali",
+        "description": "Kommz Hub is a creative communications agency in Kigali, Rwanda. Strategy, branding, digital marketing, creative production, PR and campaigns."
+    },
+    "nav": [{
+            "label": "Home",
+            "link": "#top"
+        },
+        {
+            "label": "Services",
+            "link": "#services"
+        },
+        {
+            "label": "Our Work",
+            "link": "#work"
+        },
+        {
+            "label": "Team",
+            "link": "#team"
+        },
+        {
+            "label": "The Up Close",
+            "link": "upclose.html"
+        },
+        {
+            "label": "Contact",
+            "link": "#contact"
+        }
+    ],
+    "navButton": {
+        "label": "Let’s Talk",
+        "link": "#contact"
+    },
+    "hero": {
+        "_help": "video = the main video file. Use MP4 (H.264): it plays on every browser and phone. videoFallback = a second file the browser tries if the first is missing or cannot play, such as the original .MOV. poster = image shown while the video loads. overlay = how much to darken the video behind the text: 0 means fully visible, 0.4 means 40% darker. The video always plays muted on its own; soundButton shows a button visitors can use to turn sound on.",
+        "lines": [
+            "Be heard.",
+            "Be understood.",
+            "Be remembered."
+        ],
+        "paragraphs": [
+            "We are Kommz Hub, a creative communications agency based in Kigali, Rwanda.",
+            "We help brands and organisations find their voice, tell stories worth sharing, and build meaningful connections with the people who matter to them.",
+            "Through strategy, creativity, and thoughtful execution, we turn ideas into communication that makes an impact."
+        ],
+        "primaryButton": {
+            "label": "Explore Our Work",
+            "link": "#work"
+        },
+        "secondaryButton": {
+            "label": "Let’s Talk",
+            "link": "#contact"
+        },
+        "video": "assets/video/AHTS.mp4",
+        "videoFallback": "assets/video/AHTS.MOV",
+        "poster": "assets/img/1kommz.jpg",
+        "overlay": 0,
+        "soundButton": true
+    },
+    "clientMarquee": {
+        "_help": "The sliding client logos under the opening video. To add a real logo, put the file in assets/img/clients/ and paste its path into logo, for example \"assets/img/clients/kayko.png\". Transparent PNG or SVG logos look best. monochrome: true shows every logo in plain white so they match; set it to false to show logos in their own colours. showNames: false hides the names and shows logos only.",
+        "monochrome": true,
+        "showNames": true,
+        "items": [{
+                "name": "Kayko",
+                "logo": "assets/img/kommz-mark-white.svg"
+            },
+            {
+                "name": "Oasis Interiors",
+                "logo": "assets/img/kommz-mark-white.svg"
+            },
+            {
+                "name": "F & Y Ltd",
+                "logo": "assets/img/kommz-mark-white.svg"
+            },
+            {
+                "name": "Moja ERP",
+                "logo": "assets/img/kommz-mark-white.svg"
+            },
+            {
+                "name": "The Nook",
+                "logo": "assets/img/kommz-mark-white.svg"
+            },
+            {
+                "name": "The Nest & Beyond",
+                "logo": "assets/img/kommz-mark-white.svg"
+            }
+        ]
+    },
+    "services": {
+        "_help": "Each service has a button. link chooses where it goes. preselect fills the 'What can we help you with?' box in the contact form when the button is clicked (it must match one of the contact form options exactly, or be empty).",
+        "heading": [
+            "Different expertise.",
+            "One connected approach."
+        ],
+        "intro": [
+            "Good communication rarely happens in isolation.",
+            "A strong campaign needs a clear strategy. A compelling story needs the right creative execution. And great content needs a plan to reach the people it was made for.",
+            "We bring these disciplines together to help our clients communicate more effectively."
+        ],
+        "listLabel": "Our services include",
+        "items": [{
+                "title": "Communication Strategy",
+                "headline": "Say the right thing, to the right people.",
+                "text": [
+                    "Before deciding what to communicate, we help you understand why it matters and who needs to hear it.",
+                    "We work with brands and organisations to develop communication strategies that align their objectives, messages, audiences, and channels."
+                ],
+                "list": [
+                    "Corporate communication strategies",
+                    "Communication planning",
+                    "Audience research and analysis",
+                    "Key messaging development",
+                    "Stakeholder communication",
+                    "Campaign communication strategies",
+                    "Internal and external communication"
+                ],
+                "button": {
+                    "label": "Let’s Build Your Strategy",
+                    "link": "#contact",
+                    "preselect": "Communication Strategy"
+                },
+                "image": "assets/img/12kommz.JPG"
+            },
+            {
+                "title": "Brand Strategy & Positioning",
+                "headline": "Know who you are. Make sure everyone else does too.",
+                "text": [
+                    "A strong brand is more than a logo or a colour palette. It’s what people understand, experience, and remember about your business.",
+                    "We help brands define their identity, communicate their value, and build a consistent presence across every touchpoint."
+                ],
+                "list": [
+                    "Brand positioning",
+                    "Brand identity development",
+                    "Brand messaging",
+                    "Brand storytelling",
+                    "Brand guidelines",
+                    "Campaign concepts",
+                    "Rebranding support"
+                ],
+                "button": {
+                    "label": "Build Your Brand",
+                    "link": "#contact",
+                    "preselect": "Branding & Identity"
+                },
+                "image": "assets/img/kh-work-stationery.webp"
+            },
+            {
+                "title": "Digital Marketing & Social Media",
+                "headline": "More than posts. A presence with purpose.",
+                "text": [
+                    "Being visible online is important. But visibility alone isn’t enough.",
+                    "We help businesses build meaningful digital connections through strategic content, thoughtful storytelling, and campaigns designed around clear objectives.",
+                    "From developing a content strategy to managing day-to-day communication, we help brands show up consistently and communicate effectively."
+                ],
+                "list": [
+                    "Social media strategy",
+                    "Social media management",
+                    "Content planning and calendars",
+                    "Community management",
+                    "Paid digital advertising",
+                    "Influencer marketing",
+                    "Digital campaign management",
+                    "Performance monitoring and reporting"
+                ],
+                "button": {
+                    "label": "Grow Your Digital Presence",
+                    "link": "#contact",
+                    "preselect": "Digital Marketing & Social Media"
+                },
+                "image": "assets/img/kh-work-social.webp"
+            },
+            {
+                "title": "Creative Production",
+                "headline": "Stories people can see, hear, and feel.",
+                "text": [
+                    "Some stories are best told through a photograph. Others need a film, a conversation, or a carefully designed visual.",
+                    "We bring ideas to life through creative production that captures attention while staying true to the message.",
+                    "Whether it’s a commercial, documentary, brand campaign, or social media video, we focus on creating work that people connect with."
+                ],
+                "list": [
+                    "Video production",
+                    "Commercials and promotional films",
+                    "Photography",
+                    "Documentary storytelling",
+                    "Podcast production",
+                    "Video editing and post-production",
+                    "Graphic design",
+                    "Event coverage"
+                ],
+                "button": {
+                    "label": "Explore Our Productions",
+                    "link": "#work",
+                    "preselect": ""
+                },
+                "image": "assets/img/8kommz.JPG"
+            },
+            {
+                "title": "Public Relations & Media Relations",
+                "headline": "The right story deserves the right audience.",
+                "text": [
+                    "How an organisation communicates with the public matters.",
+                    "We help businesses and institutions communicate their stories, engage with the media, and build stronger relationships with the audiences and stakeholders who influence their reputation."
+                ],
+                "list": [
+                    "Public relations strategy",
+                    "Media relations",
+                    "Press release development",
+                    "Media engagement and outreach",
+                    "Corporate storytelling",
+                    "Executive communication",
+                    "Event publicity",
+                    "Reputation communication support"
+                ],
+                "button": {
+                    "label": "Let’s Tell Your Story",
+                    "link": "#contact",
+                    "preselect": "Public Relations"
+                },
+                "image": "assets/img/6kommz.JPG"
+            },
+            {
+                "title": "Campaigns & Creative Experiences",
+                "headline": "Ideas that move beyond the brief.",
+                "text": [
+                    "Some messages need more than a single post or video.",
+                    "We develop integrated campaigns that bring strategy, creativity, content, and audience engagement together around a shared objective.",
+                    "From campaign concepts to execution, we help brands create experiences that people notice and remember."
+                ],
+                "list": [
+                    "Campaign strategy and development",
+                    "Creative concepts",
+                    "Product launch campaigns",
+                    "Influencer collaborations",
+                    "Promotional campaigns",
+                    "Event communication",
+                    "Campaign content production",
+                    "Digital campaign amplification"
+                ],
+                "button": {
+                    "label": "Let’s Create Something",
+                    "link": "#contact",
+                    "preselect": "Campaign Development"
+                },
+                "image": "assets/img/10kommz.JPG"
+            }
+        ]
+    },
+    "wordmarkBand": {
+        "rows": 4
+    },
+    "work": {
+        "_help": "Each project has a type: video, reel, photo, branding or social. The type decides how it opens. FILL-IN GUIDE: video = paste a YouTube or Vimeo link in videoUrl. reel = paste the Instagram Reel link in reelUrl, and optionally a short .mp4 clip in preview for the moving card. photo = list the photos in images; they open in a full-screen gallery. branding = logo, palette (colour name + hex code), mockups and applications (lists of image paths). social = posts (image paths), campaigns (title, text, image) and results (label + value). Empty fields and empty lists are hidden automatically. Never enter a result you cannot verify. cover is the card image; leave empty to use a suitable image automatically.",
+        "heading": [
+            "Our Work"
+        ],
+        "intro": [],
+        "filters": [{
+                "type": "video",
+                "label": "Video Production"
+            },
+            {
+                "type": "reel",
+                "label": "Instagram Reels"
+            },
+            {
+                "type": "photo",
+                "label": "Photography"
+            },
+            {
+                "type": "branding",
+                "label": "Branding"
+            },
+            {
+                "type": "social",
+                "label": "Social Media Management"
+            }
+        ],
+        "labels": {
+            "video": "Watch video",
+            "reel": "Watch reel",
+            "photo": "View gallery",
+            "branding": "View brand",
+            "social": "View campaign",
+            "openReel": "Open on Instagram",
+            "logo": "Logo",
+            "palette": "Colour palette",
+            "mockups": "Mockups",
+            "applications": "Applications",
+            "posts": "Selected posts",
+            "campaigns": "Campaign examples",
+            "results": "Verified results",
+            "overview": "Overview",
+            "contribution": "Our contribution",
+            "videoComing": "Video coming soon"
+        },
+        "items": [{
+                "type": "video",
+                "title": "Making Business Management Easier to Understand",
+                "client": "Kayko",
+                "year": "",
+                "summary": "Educational videos and customer-focused storytelling that show how Kayko’s digital tools support everyday business.",
+                "overview": [
+                    "Kayko is a Rwandan technology platform designed to help businesses manage their operations through digital tools.",
+                    "Our work focused on translating the platform’s features into relatable stories and accessible content that business owners could understand."
+                ],
+                "contribution": "Content strategy, video production, educational content, promotional campaigns, and digital storytelling.",
+                "videoUrl": "",
+                "cover": ""
+            },
+            {
+                "type": "video",
+                "title": "Making Complex Business Tools Simple to Understand",
+                "client": "Moja ERP",
+                "year": "",
+                "summary": "A campaign film connecting the platform to the everyday challenges businesses face.",
+                "overview": [
+                    "Enterprise management software can be difficult to explain through conventional advertising.",
+                    "Our creative approach connects the platform’s capabilities to everyday business challenges, using relatable storytelling and visual concepts."
+                ],
+                "contribution": "Creative concept development, promotional video production, and campaign messaging.",
+                "videoUrl": "",
+                "cover": ""
+            },
+            {
+                "type": "reel",
+                "title": "Bringing Home Inspiration to Life",
+                "client": "Oasis Interiors",
+                "year": "",
+                "summary": "Product and lifestyle reels showing collections the way customers live with them.",
+                "reelUrl": "",
+                "preview": "",
+                "cover": ""
+            },
+            {
+                "type": "photo",
+                "title": "Event Coverage",
+                "client": "SAMPLE: client or event name",
+                "year": "",
+                "summary": "Event and behind-the-scenes photography by the Kommz Hub team.",
+                "images": [
+                    "assets/img/1kommz.jpg",
+                    "assets/img/2kommz.jpg",
+                    "assets/img/3kommz.JPG",
+                    "assets/img/4kommz.JPG",
+                    "assets/img/5kommz.JPG",
+                    "assets/img/6kommz.JPG",
+                    "assets/img/7kommz.JPG",
+                    "assets/img/8kommz.JPG",
+                    "assets/img/9kommz.JPG",
+                    "assets/img/10kommz.JPG",
+                    "assets/img/11kommz.JPG",
+                    "assets/img/12kommz.JPG",
+                    "assets/img/13kommz.JPG",
+                    "assets/img/14kommz.JPG",
+                    "assets/img/15kommz.JPG"
+                ],
+                "cover": "assets/img/7kommz.JPG"
+            },
+            {
+                "type": "branding",
+                "title": "Kommz Hub Brand Identity",
+                "client": "Kommz Hub",
+                "year": "2026",
+                "summary": "A framed KH monogram, a strict monochrome palette and a system that works from stationery to merchandise.",
+                "overview": [
+                    "A geometric KH monogram, Geist and Syne typography, and a full guideline covering logo use, imagery and applications."
+                ],
+                "logo": "assets/img/kommz-logo-black.svg",
+                "logoBackground": "#FFFFFF",
+                "palette": [{
+                        "name": "Rich Black",
+                        "hex": "#0D0D0D"
+                    },
+                    {
+                        "name": "White",
+                        "hex": "#FFFFFF"
+                    },
+                    {
+                        "name": "Mist",
+                        "hex": "#A0A0A0"
+                    }
+                ],
+                "mockups": [
+                    "assets/img/kh-work-stationery.webp",
+                    "assets/img/kh-work-social.webp",
+                    "assets/img/kh-work-profile.webp"
+                ],
+                "applications": [
+                    "assets/img/kh-work-polo.webp",
+                    "assets/img/kh-work-mugs.webp",
+                    "assets/img/kh-work-cap.webp",
+                    "assets/img/kh-work-tote.webp"
+                ],
+                "cover": ""
+            },
+            {
+                "type": "social",
+                "title": "A Brand That Shows Up Beyond the Store",
+                "client": "F & Y Ltd",
+                "year": "",
+                "summary": "Consistent social storytelling across uniforms, branded merchandise, retail products and gift collections.",
+                "overview": [
+                    "Our work with F & Y has focused on communicating the breadth of its products and services through consistent digital storytelling."
+                ],
+                "contribution": "Social media management, content planning, photography, promotional videos, and campaign development.",
+                "posts": [],
+                "campaigns": [],
+                "results": [{
+                        "label": "Audience growth",
+                        "value": ""
+                    },
+                    {
+                        "label": "Engagement",
+                        "value": ""
+                    },
+                    {
+                        "label": "Reach",
+                        "value": ""
+                    }
+                ],
+                "cover": ""
+            },
+            {
+                "type": "social",
+                "title": "Three Brands. One Shared Purpose.",
+                "client": "The Giving Edit: Oasis Interiors, The Nook and The Nest & Beyond",
+                "year": "",
+                "summary": "One campaign identity uniting three lifestyle brands around a shared charitable initiative.",
+                "overview": [
+                    "The Giving Edit brought together three lifestyle brands around a shared charitable initiative.",
+                    "Our communication work presented the collaboration through a unified campaign identity, storytelling, and promotional content."
+                ],
+                "contribution": "Campaign communication planning, creative direction, video production, and promotional content.",
+                "posts": [],
+                "campaigns": [],
+                "results": [{
+                        "label": "Campaign reach",
+                        "value": ""
+                    },
+                    {
+                        "label": "Engagement",
+                        "value": ""
+                    }
+                ],
+                "cover": "",
+                "coverText": "The Giving Edit"
+            }
+        ]
+    },
+    "team": {
+        "_help": "founder is shown large. members are shown as cards below. To add someone, copy this block into members: { \"name\": \"Full name\", \"role\": \"Actual role\", \"bio\": \"40 to 60 words\", \"photo\": \"assets/img/name.webp\", \"linkedin\": \"\", \"instagram\": \"\" }",
+        "heading": "Meet the people behind the ideas.",
+        "intro": [
+            "Behind every campaign, photograph, strategy, and production is a team of people who care about getting the details right.",
+            "At Kommz Hub, we bring together different perspectives and creative skills, working collaboratively to deliver communication that serves our clients.",
+            "We believe great work comes from people who are curious, thoughtful, and willing to challenge ideas until they become better."
+        ],
+        "founder": {
+            "name": "Davis Higiro",
+            "role": "Founder, Kommz Hub",
+            "bio": [
+                "Davis Higiro is a communications professional and multimedia storyteller with experience spanning journalism, digital media, public relations, and creative production.",
+                "His work has involved developing stories, managing digital communication, producing multimedia content, and working with organisations to communicate their ideas to diverse audiences.",
+                "He founded Kommz Hub to bring together communication strategy and creative execution, helping brands approach storytelling with greater clarity and purpose."
+            ],
+            "photo": "assets/img/team-davis.webp",
+            "linkedin": "",
+            "instagram": ""
+        },
+        "members": []
+    },
+    "clients": {
+        "_help": "Add a logo path once the client approves showing it. Without a logo, the client name is shown. testimonials: only real quotes, with the person's permission. Copy this into testimonials to add one: { \"quote\": \"...\", \"name\": \"Full name\", \"role\": \"Title, Organisation\" }",
+        "heading": "Good work is built together.",
+        "paragraphs": [
+            "We’ve had the opportunity to collaborate with businesses, brands, and organisations across different industries.",
+            "Each partnership brings a new perspective, a different challenge, and an opportunity to create something meaningful.",
+            "We value the trust our clients place in us and the relationships we build along the way."
+        ],
+        "logos": [{
+                "name": "Kayko",
+                "logo": "",
+                "link": ""
+            },
+            {
+                "name": "Oasis Interiors",
+                "logo": "",
+                "link": ""
+            },
+            {
+                "name": "F & Y Ltd",
+                "logo": "",
+                "link": ""
+            },
+            {
+                "name": "Moja ERP",
+                "logo": "",
+                "link": ""
+            },
+            {
+                "name": "The Nook",
+                "logo": "",
+                "link": ""
+            },
+            {
+                "name": "The Nest & Beyond",
+                "logo": "",
+                "link": ""
+            }
+        ],
+        "testimonialsTitle": "In their words",
+        "testimonials": []
+    },
+    "booking": {
+        "_help": "email = where enquiries are delivered. Confirm it with the client. provider can be formsubmit (sends straight to the inbox) or mailto (opens the visitor's email app). fields controls the form: types are text, email, tel, select, textarea or date. half: true puts two fields side by side.",
+        "email": "info@kommzhub.com",
+        "provider": "formsubmit",
+        "heading": [
+            "Have something in mind?",
+            "Let’s talk about it."
+        ],
+        "paragraphs": [
+            "Whether you’re building a new brand, planning a campaign, looking for a creative production partner, or simply exploring an idea, we’d love to hear from you.",
+            "Tell us what you’re working on, and let’s see what we can create together."
+        ],
+        "subject": "New enquiry from the Kommz Hub website",
+        "subjectField": "request",
+        "fields": [{
+                "name": "name",
+                "label": "Your name",
+                "type": "text",
+                "required": true,
+                "half": true
+            },
+            {
+                "name": "organisation",
+                "label": "Company / Organisation",
+                "type": "text",
+                "half": true
+            },
+            {
+                "name": "email",
+                "label": "Email address",
+                "type": "email",
+                "required": true,
+                "half": true
+            },
+            {
+                "name": "phone",
+                "label": "Phone number",
+                "type": "tel",
+                "half": true
+            },
+            {
+                "name": "request",
+                "label": "What can we help you with?",
+                "type": "select",
+                "required": true,
+                "options": [
+                    "Communication Strategy",
+                    "Branding & Identity",
+                    "Digital Marketing & Social Media",
+                    "Video & Photography",
+                    "Public Relations",
+                    "Campaign Development",
+                    "Something Else"
+                ]
+            },
+            {
+                "name": "message",
+                "label": "Tell us about your project",
+                "type": "textarea",
+                "required": true
+            },
+            {
+                "name": "budget",
+                "label": "Estimated budget",
+                "type": "text",
+                "half": true
+            },
+            {
+                "name": "timeline",
+                "label": "Preferred timeline",
+                "type": "select",
+                "half": true,
+                "options": [
+                    "As soon as possible",
+                    "Within a month",
+                    "In 1 to 3 months",
+                    "In 3 months or more",
+                    "Not sure yet"
+                ]
+            }
+        ],
+        "buttonLabel": "Send Your Enquiry",
+        "successTitle": "Thank you for reaching out!",
+        "successMessage": "We’ve received your enquiry and look forward to learning more about your project. Our team will be in touch.",
+        "errorMessage": "Your enquiry could not be sent from this page. Use the button below to send it from your own email app instead."
+    },
+    "contact": {
+        "_help": "Leave email or phone empty to hide them. Social links left empty show as placeholders until you paste the real link.",
+        "title": "Other ways to reach us",
+        "location": "Kigali, Rwanda",
+        "email": "",
+        "phone": "",
+        "socials": [{
+                "name": "Instagram",
+                "link": ""
+            },
+            {
+                "name": "LinkedIn",
+                "link": ""
+            }
+        ]
+    },
+    "footer": {
+        "heading": [
+            "Your story deserves",
+            "to be told well."
+        ],
+        "text": "Let’s find the right words, visuals, and ideas to bring it to life.",
+        "button": {
+            "label": "Start a Conversation",
+            "link": "#contact"
+        },
+        "company": "Kommz Hub Ltd",
+        "tagline": "Creative Communications Agency",
+        "location": "Kigali, Rwanda",
+        "quickLinks": [{
+                "label": "Home",
+                "link": "#top"
+            },
+            {
+                "label": "Services",
+                "link": "#services"
+            },
+            {
+                "label": "Our Work",
+                "link": "#work"
+            },
+            {
+                "label": "The Up Close",
+                "link": "upclose.html"
+            },
+            {
+                "label": "Contact",
+                "link": "#contact"
+            }
+        ],
+        "socials": [{
+                "name": "Instagram",
+                "link": ""
+            },
+            {
+                "name": "LinkedIn",
+                "link": ""
+            },
+            {
+                "name": "YouTube",
+                "link": ""
+            }
+        ],
+        "legal": [{
+                "label": "Privacy Policy",
+                "link": "privacy.html"
+            },
+            {
+                "label": "Terms of Use",
+                "link": "terms.html"
+            }
+        ],
+        "copyright": "Kommz Hub Ltd. All rights reserved.",
+        "credit": {
+            "label": "Developed by Innovatoor",
+            "link": "https://innovatoor.com"
+        }
+    }
+}
