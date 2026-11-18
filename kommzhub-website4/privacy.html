@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Privacy Policy | Kommz Hub</title>
+  <meta name="theme-color" content="#0D0D0D">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="assets/img/kommz-mark-black.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Syne:wght@500..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/motion.css">
+  <link rel="stylesheet" href="assets/css/kommzhub.css">
+</head>
+<body data-page="legal" data-doc="privacy" data-content="content/legal.json" class="is-loading">
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-nav is-scrolled" id="siteNav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html" aria-label="Kommz Hub home">
+        <img src="assets/img/kommz-logo-white.svg" alt="Kommz Hub" width="120" height="67">
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="navMenu">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+      <nav class="nav-menu" id="navMenu" aria-label="Main">
+        <ul class="nav-links" data-slot="nav"></ul>
+        <a class="btn btn-light nav-cta" data-slot="navButton" href="index.html#contact">Let’s Talk</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="kh-legal">
+    <article class="wrap kh-legal-inner" data-slot="legal"></article>
+  </main>
+  <footer class="kh-footer kh-footer-slim">
+    <div class="wrap kh-footer-base" data-slot="footer.base"></div>
+  </footer>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script src="assets/vendor/lenis.min.js"></script>
+  <script src="assets/js/motion.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
